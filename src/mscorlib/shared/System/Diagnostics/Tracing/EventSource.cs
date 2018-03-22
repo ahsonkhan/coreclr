@@ -1622,7 +1622,7 @@ namespace System.Diagnostics.Tracing
             byte[] bytes = Encoding.BigEndianUnicode.GetBytes(name);
             var hash = new Sha1ForNonSecretPurposes();
             hash.Start();
-            hash.Append(namespaceBytes);
+            hash.Append(NamespaceBytes);
             hash.Append(bytes);
             Array.Resize(ref bytes, 16);
             hash.Finish(bytes);
@@ -3666,7 +3666,7 @@ namespace System.Diagnostics.Tracing
         internal const string s_ActivityStopSuffix = "Stop";
 
         // used for generating GUID from eventsource name
-        private static readonly byte[] namespaceBytes = new byte[] {
+        private static ReadOnlySpan<byte> NamespaceBytes => new byte[16] {
             0x48, 0x2C, 0x2D, 0xB2, 0xC3, 0x90, 0x47, 0xC8,
             0x87, 0xF8, 0x1A, 0x15, 0xBF, 0xC1, 0x30, 0xFB,
         };

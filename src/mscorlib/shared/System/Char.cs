@@ -37,7 +37,7 @@ namespace System
         public const char MinValue = (char)0x00;
 
         // Unicode category values from Unicode U+0000 ~ U+00FF. Store them in byte[] array to save space.
-        private static readonly byte[] s_categoryForLatin1 = {
+        private static ReadOnlySpan<byte> CategoryForLatin => new byte[256] {
             (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control,    // 0000 - 0007
             (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control,    // 0008 - 000F
             (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control, (byte)UnicodeCategory.Control,    // 0010 - 0017
@@ -88,7 +88,7 @@ namespace System
         private static UnicodeCategory GetLatin1UnicodeCategory(char ch)
         {
             Debug.Assert(IsLatin1(ch), "Char.GetLatin1UnicodeCategory(): ch should be <= 007f");
-            return (UnicodeCategory)(s_categoryForLatin1[(int)ch]);
+            return (UnicodeCategory)(CategoryForLatin[ch]);
         }
 
         //

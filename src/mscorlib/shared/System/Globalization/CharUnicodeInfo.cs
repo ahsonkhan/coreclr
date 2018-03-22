@@ -175,7 +175,7 @@ namespace System.Globalization
             fixed (ushort* pUshortPtr = &(s_pNumericLevel1Index[index]))
             {
                 byte* pBytePtr = (byte*)pUshortPtr;
-                fixed (byte* pByteNum = s_pNumericValues)
+                fixed (byte* pByteNum = PNumericValues)
                 {
                     double* pDouble = (double*)pByteNum;
                     return pDouble[pBytePtr[(ch & 0x000f)]];
@@ -324,7 +324,7 @@ namespace System.Globalization
                 byte* pBytePtr = (byte*)pUshortPtr;
                 // Get the result from the 0 -3 bit of ch.
                 byte valueIndex = pBytePtr[(ch & 0x000f)];
-                byte uc = s_pCategoriesValue[valueIndex * 2 + offset];
+                byte uc = PCategoriesValue[valueIndex * 2 + offset];
                 //
                 // Make sure that OtherNotAssigned is the last category in UnicodeCategory.
                 // If that changes, change the following assertion as well.
