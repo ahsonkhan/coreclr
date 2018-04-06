@@ -216,8 +216,10 @@ namespace System.Threading
 
             if (empty == null)
             {
-                empty = new ReaderWriterCount();
-                empty.next = t_rwc;
+                empty = new ReaderWriterCount
+                {
+                    next = t_rwc
+                };
                 t_rwc = empty;
             }
 

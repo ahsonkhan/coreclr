@@ -306,9 +306,10 @@ namespace System.Reflection
                 (assemblyString[0] == '\0'))
                 throw new ArgumentException(SR.Format_StringZeroLength);
 
-            AssemblyName an = new AssemblyName();
-
-            an.Name = assemblyString;
+            AssemblyName an = new AssemblyName
+            {
+                Name = assemblyString
+            };
             an.nInit(out assemblyFromResolveEvent, true);
 
             return an;

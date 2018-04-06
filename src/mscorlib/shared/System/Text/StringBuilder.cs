@@ -2307,8 +2307,10 @@ namespace System.Text
             }
 
             // Allocate space for the new chunk, which will go before the current one.
-            StringBuilder newChunk = new StringBuilder(Math.Max(count, DefaultCapacity), chunk.m_MaxCapacity, chunk.m_ChunkPrevious);
-            newChunk.m_ChunkLength = count;
+            StringBuilder newChunk = new StringBuilder(Math.Max(count, DefaultCapacity), chunk.m_MaxCapacity, chunk.m_ChunkPrevious)
+            {
+                m_ChunkLength = count
+            };
 
             // Copy the head of the current buffer to the new buffer.
             int copyCount1 = Math.Min(count, indexInChunk);

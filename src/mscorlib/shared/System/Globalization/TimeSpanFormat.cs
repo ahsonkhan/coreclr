@@ -381,8 +381,10 @@ namespace System.Globalization
             /* factory method for static invariant FormatLiterals */
             internal static FormatLiterals InitInvariant(bool isNegative)
             {
-                FormatLiterals x = new FormatLiterals();
-                x._literals = new string[6];
+                FormatLiterals x = new FormatLiterals
+                {
+                    _literals = new string[6]
+                };
                 x._literals[0] = isNegative ? "-" : string.Empty;
                 x._literals[1] = ".";
                 x._literals[2] = ":";

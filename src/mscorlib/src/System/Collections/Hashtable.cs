@@ -308,10 +308,12 @@ namespace System.Collections
         public virtual object Clone()
         {
             bucket[] lbuckets = buckets;
-            Hashtable ht = new Hashtable(count, _keycomparer);
-            ht.version = version;
-            ht.loadFactor = loadFactor;
-            ht.count = 0;
+            Hashtable ht = new Hashtable(count, _keycomparer)
+            {
+                version = version,
+                loadFactor = loadFactor,
+                count = 0
+            };
 
             int bucket = lbuckets.Length;
             while (bucket > 0)

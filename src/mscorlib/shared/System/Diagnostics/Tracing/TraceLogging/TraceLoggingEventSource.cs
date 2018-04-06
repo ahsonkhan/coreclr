@@ -731,15 +731,17 @@ namespace System.Diagnostics.Tracing
 
         private unsafe void WriteToAllListeners(string eventName, ref EventDescriptor eventDescriptor, EventTags tags, Guid* pActivityId, Guid* pChildActivityId, EventPayload payload)
         {
-            EventWrittenEventArgs eventCallbackArgs = new EventWrittenEventArgs(this);
-            eventCallbackArgs.EventName = eventName;
-            eventCallbackArgs.m_level = (EventLevel) eventDescriptor.Level;
-            eventCallbackArgs.m_keywords = (EventKeywords) eventDescriptor.Keywords;
-            eventCallbackArgs.m_opcode = (EventOpcode) eventDescriptor.Opcode;
-            eventCallbackArgs.m_tags = tags;
+            EventWrittenEventArgs eventCallbackArgs = new EventWrittenEventArgs(this)
+            {
+                EventName = eventName,
+                m_level = (EventLevel)eventDescriptor.Level,
+                m_keywords = (EventKeywords)eventDescriptor.Keywords,
+                m_opcode = (EventOpcode)eventDescriptor.Opcode,
+                m_tags = tags,
 
-            // Self described events do not have an id attached. We mark it internally with -1.
-            eventCallbackArgs.EventId = -1;
+                // Self described events do not have an id attached. We mark it internally with -1.
+                EventId = -1
+            };
             if (pActivityId != null)
                 eventCallbackArgs.ActivityId = *pActivityId;
             if (pChildActivityId != null)

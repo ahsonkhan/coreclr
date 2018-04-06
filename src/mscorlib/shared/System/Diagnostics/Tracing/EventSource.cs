@@ -1985,8 +1985,10 @@ namespace System.Diagnostics.Tracing
         // helper for writing to all EventListeners attached the current eventSource.  
         private unsafe void WriteToAllListeners(int eventId, Guid* activityID, Guid* childActivityID, params object[] args)
         {
-            EventWrittenEventArgs eventCallbackArgs = new EventWrittenEventArgs(this);
-            eventCallbackArgs.EventId = eventId;
+            EventWrittenEventArgs eventCallbackArgs = new EventWrittenEventArgs(this)
+            {
+                EventId = eventId
+            };
             if (activityID != null)
                 eventCallbackArgs.ActivityId = *activityID;
             if (childActivityID != null)
@@ -2062,10 +2064,12 @@ namespace System.Diagnostics.Tracing
                     fixed (char* msgStringPtr = msgString)
                     {
                         EventDescriptor descr = new EventDescriptor(0, 0, 0, (byte)level, 0, 0, keywords);
-                        EventProvider.EventData data = new EventProvider.EventData();
-                        data.Ptr = (ulong)msgStringPtr;
-                        data.Size = (uint)(2 * (msgString.Length + 1));
-                        data.Reserved = 0;
+                        EventProvider.EventData data = new EventProvider.EventData
+                        {
+                            Ptr = (ulong)msgStringPtr,
+                            Size = (uint)(2 * (msgString.Length + 1)),
+                            Reserved = 0
+                        };
                         m_provider.WriteEvent(ref descr, IntPtr.Zero, null, null, 1, (IntPtr)((void*)&data));
                     }
                 }
@@ -2079,12 +2083,14 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         private void WriteStringToAllListeners(string eventName, string msg)
         {
-            EventWrittenEventArgs eventCallbackArgs = new EventWrittenEventArgs(this);
-            eventCallbackArgs.EventId = 0;
-            eventCallbackArgs.Message = msg;
-            eventCallbackArgs.Payload = new ReadOnlyCollection<object>(new List<object>() { msg });
-            eventCallbackArgs.PayloadNames = new ReadOnlyCollection<string>(new List<string> { "message" });
-            eventCallbackArgs.EventName = eventName;
+            EventWrittenEventArgs eventCallbackArgs = new EventWrittenEventArgs(this)
+            {
+                EventId = 0,
+                Message = msg,
+                Payload = new ReadOnlyCollection<object>(new List<object>() { msg }),
+                PayloadNames = new ReadOnlyCollection<string>(new List<string> { "message" }),
+                EventName = eventName
+            };
 
             for (EventDispatcher dispatcher = m_Dispatchers; dispatcher != null; dispatcher = dispatcher.m_Next)
             {
@@ -2674,12 +2680,13 @@ namespace System.Diagnostics.Tracing
                 // we don't want the manifest to show up in the event log channels so we specify as keywords 
                 // everything but the first 8 bits (reserved for the 8 channels)
                 var manifestDescr = new EventDescriptor(0xFFFE, 1, 0, 0, 0xFE, 0xFFFE, 0x00ffFFFFffffFFFF);
-                ManifestEnvelope envelope = new ManifestEnvelope();
-
-                envelope.Format = ManifestEnvelope.ManifestFormats.SimpleXmlFormat;
-                envelope.MajorVersion = 1;
-                envelope.MinorVersion = 0;
-                envelope.Magic = 0x5B;              // An unusual number that can be checked for consistency. 
+                ManifestEnvelope envelope = new ManifestEnvelope
+                {
+                    Format = ManifestEnvelope.ManifestFormats.SimpleXmlFormat,
+                    MajorVersion = 1,
+                    MinorVersion = 0,
+                    Magic = 0x5B              // An unusual number that can be checked for consistency. 
+                };
                 int dataLeft = rawManifest.Length;
                 envelope.ChunkNumber = 0;
 
@@ -3927,8 +3934,10 @@ namespace System.Diagnostics.Tracing
             EventHandler<EventSourceCreatedEventArgs> callBack = this._EventSourceCreated;
             if (callBack != null)
             {
-                EventSourceCreatedEventArgs args = new EventSourceCreatedEventArgs();
-                args.EventSource = eventSource;
+                EventSourceCreatedEventArgs args = new EventSourceCreatedEventArgs
+                {
+                    EventSource = eventSource
+                };
                 callBack(this, args);
             }
         }
@@ -4172,8 +4181,10 @@ namespace System.Diagnostics.Tracing
                         EventSource eventSource = eventSourceRef.Target as EventSource;
                         if (eventSource != null)
                         {
-                            EventSourceCreatedEventArgs args = new EventSourceCreatedEventArgs();
-                            args.EventSource = eventSource;
+                            EventSourceCreatedEventArgs args = new EventSourceCreatedEventArgs
+                            {
+                                EventSource = eventSource
+                            };
                             callback(this, args);
                         }
                     }
@@ -5073,8 +5084,10 @@ namespace System.Diagnostics.Tracing
         }
         private EventChannelAttribute GetDefaultChannelAttribute(EventChannel channel)
         {
-            EventChannelAttribute attrib = new EventChannelAttribute();
-            attrib.EventChannelType = EventChannelToChannelType(channel);
+            EventChannelAttribute attrib = new EventChannelAttribute
+            {
+                EventChannelType = EventChannelToChannelType(channel)
+            };
             if (attrib.EventChannelType <= EventChannelType.Operational)
                 attrib.Enabled = true;
             return attrib;

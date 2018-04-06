@@ -554,8 +554,10 @@ namespace System
                     case 8: /*VT_BSTR*/
                         if (pValue == null)
                         {
-                            v = new Variant(null);
-                            v.m_flags = CV_STRING;
+                            v = new Variant(null)
+                            {
+                                m_flags = CV_STRING
+                            };
                         }
                         else
                         {

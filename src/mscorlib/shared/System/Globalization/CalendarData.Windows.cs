@@ -131,9 +131,11 @@ namespace System.Globalization
         {
             Debug.Assert(!GlobalizationMode.Invariant);
 
-            EnumCalendarsData data = new EnumCalendarsData();
-            data.userOverride = 0;
-            data.calendars = new List<int>();
+            EnumCalendarsData data = new EnumCalendarsData
+            {
+                userOverride = 0,
+                calendars = new List<int>()
+            };
 
             // First call GetLocaleInfo if necessary
             if (useUserOverride)
@@ -303,9 +305,11 @@ namespace System.Globalization
 
         private static unsafe bool CallEnumCalendarInfo(string localeName, CalendarId calendar, uint calType, uint lcType, out string[] data)
         {
-            EnumData context = new EnumData();
-            context.userOverride = null;
-            context.strings = new List<string>();
+            EnumData context = new EnumData
+            {
+                userOverride = null,
+                strings = new List<string>()
+            };
             // First call GetLocaleInfo if necessary
             if (((lcType != 0) && ((lcType & CAL_NOUSEROVERRIDE) == 0)) &&
                 // Get user locale, see if it matches localeName.

@@ -208,8 +208,10 @@ namespace System.Globalization
                 {
                     // Lazy create the invariant info. This cannot be done in a .cctor because exceptions can
                     // be thrown out of a .cctor stack that will need this.
-                    NumberFormatInfo nfi = new NumberFormatInfo();
-                    nfi.m_isInvariant = true;
+                    NumberFormatInfo nfi = new NumberFormatInfo
+                    {
+                        m_isInvariant = true
+                    };
                     s_invariantInfo = ReadOnly(nfi);
                 }
                 return s_invariantInfo;

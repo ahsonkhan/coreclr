@@ -2208,16 +2208,17 @@ namespace System.Reflection
                 default: break;
             }
 
-            DllImportAttribute attribute = new DllImportAttribute(dllName);
-
-            attribute.EntryPoint = entryPoint;
-            attribute.CharSet = charSet;
-            attribute.SetLastError = (flags & PInvokeAttributes.SupportsLastError) != 0;
-            attribute.ExactSpelling = (flags & PInvokeAttributes.NoMangle) != 0;
-            attribute.PreserveSig = (method.GetMethodImplementationFlags() & MethodImplAttributes.PreserveSig) != 0;
-            attribute.CallingConvention = callingConvention;
-            attribute.BestFitMapping = (flags & PInvokeAttributes.BestFitMask) == PInvokeAttributes.BestFitEnabled;
-            attribute.ThrowOnUnmappableChar = (flags & PInvokeAttributes.ThrowOnUnmappableCharMask) == PInvokeAttributes.ThrowOnUnmappableCharEnabled;
+            DllImportAttribute attribute = new DllImportAttribute(dllName)
+            {
+                EntryPoint = entryPoint,
+                CharSet = charSet,
+                SetLastError = (flags & PInvokeAttributes.SupportsLastError) != 0,
+                ExactSpelling = (flags & PInvokeAttributes.NoMangle) != 0,
+                PreserveSig = (method.GetMethodImplementationFlags() & MethodImplAttributes.PreserveSig) != 0,
+                CallingConvention = callingConvention,
+                BestFitMapping = (flags & PInvokeAttributes.BestFitMask) == PInvokeAttributes.BestFitEnabled,
+                ThrowOnUnmappableChar = (flags & PInvokeAttributes.ThrowOnUnmappableCharMask) == PInvokeAttributes.ThrowOnUnmappableCharEnabled
+            };
 
             return attribute;
         }
@@ -2263,17 +2264,18 @@ namespace System.Reflection
                 Debug.Assert(marshalTypeName != null);
             }
 
-            MarshalAsAttribute attribute = new MarshalAsAttribute(unmanagedType);
-
-            attribute.SafeArraySubType = safeArraySubType;
-            attribute.SafeArrayUserDefinedSubType = safeArrayUserDefinedType;
-            attribute.IidParameterIndex = iidParamIndex;
-            attribute.ArraySubType = arraySubType;
-            attribute.SizeParamIndex = (short)sizeParamIndex;
-            attribute.SizeConst = sizeConst;
-            attribute.MarshalType = marshalTypeName;
-            attribute.MarshalTypeRef = marshalTypeRef;
-            attribute.MarshalCookie = marshalCookie;
+            MarshalAsAttribute attribute = new MarshalAsAttribute(unmanagedType)
+            {
+                SafeArraySubType = safeArraySubType,
+                SafeArrayUserDefinedSubType = safeArrayUserDefinedType,
+                IidParameterIndex = iidParamIndex,
+                ArraySubType = arraySubType,
+                SizeParamIndex = (short)sizeParamIndex,
+                SizeConst = sizeConst,
+                MarshalType = marshalTypeName,
+                MarshalTypeRef = marshalTypeRef,
+                MarshalCookie = marshalCookie
+            };
 
             return attribute;
         }
@@ -2320,11 +2322,12 @@ namespace System.Reflection
             if (pack == 0)
                 pack = 8; // DEFAULT_PACKING_SIZE
 
-            StructLayoutAttribute attribute = new StructLayoutAttribute(layoutKind);
-
-            attribute.Pack = pack;
-            attribute.Size = size;
-            attribute.CharSet = charSet;
+            StructLayoutAttribute attribute = new StructLayoutAttribute(layoutKind)
+            {
+                Pack = pack,
+                Size = size,
+                CharSet = charSet
+            };
 
             return attribute;
         }

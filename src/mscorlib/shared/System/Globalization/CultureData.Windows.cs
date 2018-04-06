@@ -277,9 +277,11 @@ namespace System.Globalization
             const uint LOCALE_SUPPLEMENTAL = 0x00000002;
             const uint LOCALE_SPECIFICDATA = 0x00000020;
 
-            EnumLocaleData context = new EnumLocaleData();
-            context.cultureName = null;
-            context.regionName = regionName;
+            EnumLocaleData context = new EnumLocaleData
+            {
+                cultureName = null,
+                regionName = regionName
+            };
 
             unsafe
             {
@@ -589,8 +591,10 @@ namespace System.Globalization
             const uint LOCALE_SSHORTTIME = 0x00000079;
             const uint LOCALE_STIMEFORMAT = 0x00001003;
 
-            EnumData data = new EnumData();
-            data.strings = new List<string>();
+            EnumData data = new EnumData
+            {
+                strings = new List<string>()
+            };
 
             // Now call the enumeration API. Work is done by our callback function
             Interop.Kernel32.EnumTimeFormatsEx(EnumTimeCallback, localeName, (uint)dwFlags, Unsafe.AsPointer(ref data));
@@ -717,8 +721,10 @@ namespace System.Globalization
                 flags |= Interop.Kernel32.LOCALE_SUPPLEMENTAL;
             }
 
-            EnumData context = new EnumData();
-            context.strings = new List<string>();
+            EnumData context = new EnumData
+            {
+                strings = new List<string>()
+            };
 
             unsafe
             {
@@ -753,8 +759,10 @@ namespace System.Globalization
         {
             get
             {
-                EnumData context = new EnumData();
-                context.strings = new List<string>();
+                EnumData context = new EnumData
+                {
+                    strings = new List<string>()
+                };
 
                 unsafe
                 {

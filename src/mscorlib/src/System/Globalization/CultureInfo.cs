@@ -841,8 +841,10 @@ namespace System.Globalization
             {
                 if (numInfo == null)
                 {
-                    NumberFormatInfo temp = new NumberFormatInfo(_cultureData);
-                    temp.isReadOnly = _isReadOnly;
+                    NumberFormatInfo temp = new NumberFormatInfo(_cultureData)
+                    {
+                        isReadOnly = _isReadOnly
+                    };
                     Interlocked.CompareExchange(ref numInfo, temp, null);
                 }
                 return (numInfo);
@@ -873,8 +875,10 @@ namespace System.Globalization
                 if (dateTimeInfo == null)
                 {
                     // Change the calendar of DTFI to the specified calendar of this CultureInfo.
-                    DateTimeFormatInfo temp = new DateTimeFormatInfo(_cultureData, this.Calendar);
-                    temp._isReadOnly = _isReadOnly;
+                    DateTimeFormatInfo temp = new DateTimeFormatInfo(_cultureData, this.Calendar)
+                    {
+                        _isReadOnly = _isReadOnly
+                    };
                     Interlocked.CompareExchange(ref dateTimeInfo, temp, null);
                 }
                 return (dateTimeInfo);

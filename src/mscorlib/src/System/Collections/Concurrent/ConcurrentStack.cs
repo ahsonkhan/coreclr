@@ -220,8 +220,10 @@ namespace System.Collections.Concurrent
             // lock freedom. If the CAS fails, we add some back off to statistically decrease
             // contention at the head, and then go back around and retry.
 
-            Node newNode = new Node(item);
-            newNode._next = _head;
+            Node newNode = new Node(item)
+            {
+                _next = _head
+            };
             if (Interlocked.CompareExchange(ref _head, newNode, newNode._next) == newNode._next)
             {
                 return;

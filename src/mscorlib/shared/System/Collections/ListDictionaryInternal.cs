@@ -79,9 +79,11 @@ namespace System.Collections
                     return;
                 }
                 // Not found, so add a new one
-                DictionaryNode newNode = new DictionaryNode();
-                newNode.key = key;
-                newNode.value = value;
+                DictionaryNode newNode = new DictionaryNode
+                {
+                    key = key,
+                    value = value
+                };
                 if (last != null)
                 {
                     last.next = newNode;
@@ -180,9 +182,11 @@ namespace System.Collections
                 return;
             }
             // Not found, so add a new one
-            DictionaryNode newNode = new DictionaryNode();
-            newNode.key = key;
-            newNode.value = value;
+            DictionaryNode newNode = new DictionaryNode
+            {
+                key = key,
+                value = value
+            };
             if (last != null)
             {
                 last.next = newNode;

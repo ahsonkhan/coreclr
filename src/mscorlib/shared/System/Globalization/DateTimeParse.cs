@@ -2511,8 +2511,10 @@ new DS[] { DS.ERROR, DS.TX_NNN,  DS.TX_NNN,  DS.TX_NNN,  DS.ERROR,   DS.ERROR,  
             DS dps = DS.BEGIN;     // Date Parsing State.
             bool reachTerminalState = false;
 
-            DateTimeToken dtok = new DateTimeToken();      // The buffer to store the parsing token.
-            dtok.suffix = TokenType.SEP_Unk;
+            DateTimeToken dtok = new DateTimeToken
+            {
+                suffix = TokenType.SEP_Unk
+            };      // The buffer to store the parsing token.
             DateTimeRawInfo raw = new DateTimeRawInfo();    // The buffer to store temporary parsing information.
             unsafe
             {
@@ -5330,9 +5332,11 @@ new DS[] { DS.ERROR, DS.TX_NNN,  DS.TX_NNN,  DS.TX_NNN,  DS.ERROR,   DS.ERROR,  
 
         internal DTSubString GetSubString()
         {
-            DTSubString sub = new DTSubString();
-            sub.index = Index;
-            sub.s = Value;
+            DTSubString sub = new DTSubString
+            {
+                index = Index,
+                s = Value
+            };
             while (Index + sub.length < Length)
             {
                 DTSubStringType currentType;

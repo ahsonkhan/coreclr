@@ -687,8 +687,10 @@ namespace System.Globalization
         {
             if (raw._lastSeenTTT == TTT.Num)
             {
-                TimeSpanToken tok = new TimeSpanToken();
-                tok._ttt = TTT.Sep;
+                TimeSpanToken tok = new TimeSpanToken
+                {
+                    _ttt = TTT.Sep
+                };
                 if (!raw.ProcessToken(ref tok, ref result))
                 {
                     return result.SetFailure(ParseFailureKind.Format, nameof(SR.Format_BadTimeSpan));

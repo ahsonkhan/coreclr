@@ -537,22 +537,26 @@ namespace System.Globalization
             //
             time.GetDatePart(out gregorianYear, out gregorianMonth, out gregorianDay);
 
-            __DateBuffer lunarDate = new __DateBuffer();    // lunar month and day for Jan 1
+            __DateBuffer lunarDate = new __DateBuffer
+            {
 
-            // From the table looking-up value of HebrewTable[index] (stored in lunarDate.day), we get the the
-            // lunar month and lunar day where the Gregorian date 1/1 falls.
-            lunarDate.year = gregorianYear + HebrewYearOf1AD;
+                // From the table looking-up value of HebrewTable[index] (stored in lunarDate.day), we get the the
+                // lunar month and lunar day where the Gregorian date 1/1 falls.
+                year = gregorianYear + HebrewYearOf1AD
+            };    // lunar month and day for Jan 1
             hebrewYearType = GetLunarMonthDay(gregorianYear, lunarDate);
 
             // This is the buffer used to store the result Hebrew date.
-            __DateBuffer result = new __DateBuffer();
+            __DateBuffer result = new __DateBuffer
+            {
 
-            //
-            //  Store the values for the start of the new year - 1/1.
-            //
-            result.year = lunarDate.year;
-            result.month = lunarDate.month;
-            result.day = lunarDate.day;
+                //
+                //  Store the values for the start of the new year - 1/1.
+                //
+                year = lunarDate.year,
+                month = lunarDate.month,
+                day = lunarDate.day
+            };
 
             //
             //  Get the absolute date from 1/1/1600.

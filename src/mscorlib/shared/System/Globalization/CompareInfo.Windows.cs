@@ -632,8 +632,10 @@ namespace System.Globalization
         {
             Debug.Assert(!_invariantMode);
 
-            Interop.Kernel32.NlsVersionInfoEx nlsVersion = new Interop.Kernel32.NlsVersionInfoEx();
-            nlsVersion.dwNLSVersionInfoSize = sizeof(Interop.Kernel32.NlsVersionInfoEx);
+            Interop.Kernel32.NlsVersionInfoEx nlsVersion = new Interop.Kernel32.NlsVersionInfoEx
+            {
+                dwNLSVersionInfoSize = sizeof(Interop.Kernel32.NlsVersionInfoEx)
+            };
             Interop.Kernel32.GetNLSVersionEx(Interop.Kernel32.COMPARE_STRING, _sortName, &nlsVersion);
             return new SortVersion(
                         nlsVersion.dwNLSVersion,

@@ -250,9 +250,11 @@ namespace Microsoft.Win32
             // only mark the SafeHandle as ownsHandle if the key is HKEY_PERFORMANCE_DATA.
             SafeRegistryHandle srh = new SafeRegistryHandle(hKey, isPerf);
 
-            RegistryKey key = new RegistryKey(srh, true, true, false, isPerf, view);
-            key.checkMode = RegistryKeyPermissionCheck.Default;
-            key.keyName = hkeyNames[index];
+            RegistryKey key = new RegistryKey(srh, true, true, false, isPerf, view)
+            {
+                checkMode = RegistryKeyPermissionCheck.Default,
+                keyName = hkeyNames[index]
+            };
             return key;
         }
 
@@ -280,9 +282,11 @@ namespace Microsoft.Win32
 
             if (ret == 0 && !result.IsInvalid)
             {
-                RegistryKey key = new RegistryKey(result, writable, false, remoteKey, false, regView);
-                key.checkMode = GetSubKeyPermissonCheck(writable);
-                key.keyName = keyName + "\\" + name;
+                RegistryKey key = new RegistryKey(result, writable, false, remoteKey, false, regView)
+                {
+                    checkMode = GetSubKeyPermissonCheck(writable),
+                    keyName = keyName + "\\" + name
+                };
                 return key;
             }
 

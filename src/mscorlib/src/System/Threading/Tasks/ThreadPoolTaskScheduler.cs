@@ -44,8 +44,10 @@ namespace System.Threading.Tasks
             if ((task.Options & TaskCreationOptions.LongRunning) != 0)
             {
                 // Run LongRunning tasks on their own dedicated thread.
-                Thread thread = new Thread(s_longRunningThreadWork);
-                thread.IsBackground = true; // Keep this thread from blocking process shutdown
+                Thread thread = new Thread(s_longRunningThreadWork)
+                {
+                    IsBackground = true // Keep this thread from blocking process shutdown
+                };
                 thread.Start(task);
             }
             else

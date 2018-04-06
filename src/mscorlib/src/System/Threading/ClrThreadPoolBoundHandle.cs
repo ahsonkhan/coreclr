@@ -135,8 +135,10 @@ namespace System.Threading
 
             EnsureNotDisposed();
 
-            ThreadPoolBoundHandleOverlapped overlapped = new ThreadPoolBoundHandleOverlapped(callback, state, pinData, preAllocated: null);
-            overlapped._boundHandle = this;
+            ThreadPoolBoundHandleOverlapped overlapped = new ThreadPoolBoundHandleOverlapped(callback, state, pinData, preAllocated: null)
+            {
+                _boundHandle = this
+            };
             return overlapped._nativeOverlapped;
         }
 

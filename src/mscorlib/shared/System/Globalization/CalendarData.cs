@@ -58,33 +58,35 @@ namespace System.Globalization
         {
             // Set our default/gregorian US calendar data
             // Calendar IDs are 1-based, arrays are 0 based.
-            CalendarData invariant = new CalendarData();
+            CalendarData invariant = new CalendarData
+            {
 
-            // Set default data for calendar
-            // Note that we don't load resources since this IS NOT supposed to change (by definition)
-            invariant.sNativeName = "Gregorian Calendar";  // Calendar Name
+                // Set default data for calendar
+                // Note that we don't load resources since this IS NOT supposed to change (by definition)
+                sNativeName = "Gregorian Calendar",  // Calendar Name
 
-            // Year
-            invariant.iTwoDigitYearMax = 2029; // Max 2 digit year (for Y2K bug data entry)
-            invariant.iCurrentEra = 1; // Current era #
+                // Year
+                iTwoDigitYearMax = 2029, // Max 2 digit year (for Y2K bug data entry)
+                iCurrentEra = 1, // Current era #
 
-            // Formats
-            invariant.saShortDates = new string[] { "MM/dd/yyyy", "yyyy-MM-dd" };          // short date format
-            invariant.saLongDates = new string[] { "dddd, dd MMMM yyyy" };                 // long date format
-            invariant.saYearMonths = new string[] { "yyyy MMMM" };                         // year month format
-            invariant.sMonthDay = "MMMM dd";                                            // Month day pattern
+                // Formats
+                saShortDates = new string[] { "MM/dd/yyyy", "yyyy-MM-dd" },          // short date format
+                saLongDates = new string[] { "dddd, dd MMMM yyyy" },                 // long date format
+                saYearMonths = new string[] { "yyyy MMMM" },                         // year month format
+                sMonthDay = "MMMM dd",                                            // Month day pattern
 
-            // Calendar Parts Names
-            invariant.saEraNames = new string[] { "A.D." };     // Era names
-            invariant.saAbbrevEraNames = new string[] { "AD" };      // Abbreviated Era names
-            invariant.saAbbrevEnglishEraNames = new string[] { "AD" };     // Abbreviated era names in English
-            invariant.saDayNames = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };// day names
-            invariant.saAbbrevDayNames = new string[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };     // abbreviated day names
-            invariant.saSuperShortDayNames = new string[] { "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" };      // The super short day names
-            invariant.saMonthNames = new string[] { "January", "February", "March", "April", "May", "June",
-                                                            "July", "August", "September", "October", "November", "December", String.Empty}; // month names
-            invariant.saAbbrevMonthNames = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", String.Empty}; // abbreviated month names
+                // Calendar Parts Names
+                saEraNames = new string[] { "A.D." },     // Era names
+                saAbbrevEraNames = new string[] { "AD" },      // Abbreviated Era names
+                saAbbrevEnglishEraNames = new string[] { "AD" },     // Abbreviated era names in English
+                saDayNames = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" },// day names
+                saAbbrevDayNames = new string[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" },     // abbreviated day names
+                saSuperShortDayNames = new string[] { "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" },      // The super short day names
+                saMonthNames = new string[] { "January", "February", "March", "April", "May", "June",
+                                                            "July", "August", "September", "October", "November", "December", String.Empty}, // month names
+                saAbbrevMonthNames = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", String.Empty} // abbreviated month names
+            };
             invariant.saMonthGenitiveNames = invariant.saMonthNames;              // Genitive month names (same as month names for invariant)
             invariant.saAbbrevMonthGenitiveNames = invariant.saAbbrevMonthNames;    // Abbreviated genitive month names (same as abbrev month names for invariant)
             invariant.saLeapYearMonthNames = invariant.saMonthNames;              // leap year month names are unused in Gregorian English (invariant)
