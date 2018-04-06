@@ -464,7 +464,7 @@ namespace System
             info.AddValue("HelpURL", _helpURL, typeof(string)); // Do not rename (binary serialization)
             info.AddValue("StackTraceString", tempStackTraceString, typeof(string)); // Do not rename (binary serialization)
             info.AddValue("RemoteStackTraceString", _remoteStackTraceString, typeof(string)); // Do not rename (binary serialization)
-            info.AddValue("RemoteStackIndex", _remoteStackIndex, typeof(Int32)); // Do not rename (binary serialization)
+            info.AddValue("RemoteStackIndex", _remoteStackIndex, typeof(int)); // Do not rename (binary serialization)
             info.AddValue("ExceptionMethod", null, typeof(string)); // Do not rename (binary serialization)
             info.AddValue("HResult", HResult); // Do not rename (binary serialization)
             info.AddValue("Source", _source, typeof(string)); // Do not rename (binary serialization)

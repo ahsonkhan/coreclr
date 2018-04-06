@@ -1476,7 +1476,7 @@ namespace System.Runtime.InteropServices
         // release the COM component and zombie this object
         // further usage of this Object might throw an exception
         //====================================================================
-        public static Int32 FinalReleaseComObject(object o)
+        public static int FinalReleaseComObject(object o)
         {
             if (o == null)
                 throw new ArgumentNullException(nameof(o));
@@ -1696,7 +1696,7 @@ namespace System.Runtime.InteropServices
             IBindCtx bindctx = null;
             CreateBindCtx(0, out bindctx);
 
-            UInt32 cbEaten;
+            uint cbEaten;
             IMoniker pmoniker = null;
             MkParseDisplayName(bindctx, monikerName, out cbEaten, out pmoniker);
 
@@ -1705,13 +1705,13 @@ namespace System.Runtime.InteropServices
         }
 
         [DllImport(Interop.Libraries.Ole32, PreserveSig = false)]
-        private static extern void CreateBindCtx(UInt32 reserved, out IBindCtx ppbc);
+        private static extern void CreateBindCtx(uint reserved, out IBindCtx ppbc);
 
         [DllImport(Interop.Libraries.Ole32, PreserveSig = false)]
-        private static extern void MkParseDisplayName(IBindCtx pbc, [MarshalAs(UnmanagedType.LPWStr)] string szUserName, out UInt32 pchEaten, out IMoniker ppmk);
+        private static extern void MkParseDisplayName(IBindCtx pbc, [MarshalAs(UnmanagedType.LPWStr)] string szUserName, out uint pchEaten, out IMoniker ppmk);
 
         [DllImport(Interop.Libraries.Ole32, PreserveSig = false)]
-        private static extern void BindMoniker(IMoniker pmk, UInt32 grfOpt, ref Guid iidResult, [MarshalAs(UnmanagedType.Interface)] out object ppvResult);
+        private static extern void BindMoniker(IMoniker pmk, uint grfOpt, ref Guid iidResult, [MarshalAs(UnmanagedType.Interface)] out object ppvResult);
 
         //========================================================================
         // Private method called from EE upon use of license/ICF2 marshaling.

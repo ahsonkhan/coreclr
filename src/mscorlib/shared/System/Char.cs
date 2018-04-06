@@ -21,7 +21,7 @@ namespace System
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     [System.Runtime.CompilerServices.TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")] 
-    public struct Char : IComparable, IComparable<Char>, IEquatable<Char>, IConvertible
+    public struct Char : IComparable, IComparable<char>, IEquatable<char>, IConvertible
     {
         //
         // Member Variables
@@ -109,15 +109,15 @@ namespace System
         //
         public override bool Equals(object obj)
         {
-            if (!(obj is Char))
+            if (!(obj is char))
             {
                 return false;
             }
-            return (m_value == ((Char)obj).m_value);
+            return (m_value == ((char)obj).m_value);
         }
 
         [System.Runtime.Versioning.NonVersionable]
-        public bool Equals(Char obj)
+        public bool Equals(char obj)
         {
             return m_value == obj;
         }
@@ -134,15 +134,15 @@ namespace System
             {
                 return 1;
             }
-            if (!(value is Char))
+            if (!(value is char))
             {
                 throw new ArgumentException(SR.Arg_MustBeChar);
             }
 
-            return (m_value - ((Char)value).m_value);
+            return (m_value - ((char)value).m_value);
         }
 
-        public int CompareTo(Char value)
+        public int CompareTo(char value)
         {
             return (m_value - value);
         }
@@ -182,7 +182,7 @@ namespace System
             return s[0];
         }
 
-        public static bool TryParse(string s, out Char result)
+        public static bool TryParse(string s, out char result)
         {
             result = '\0';
             if (s == null)

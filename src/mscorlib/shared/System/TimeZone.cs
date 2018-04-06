@@ -129,8 +129,8 @@ namespace System
             {
                 return time;
             }
-            Boolean isAmbiguousLocalDst = false;
-            Int64 offset = ((CurrentSystemTimeZone)(TimeZone.CurrentTimeZone)).GetUtcOffsetFromUniversalTime(time, ref isAmbiguousLocalDst);
+            bool isAmbiguousLocalDst = false;
+            long offset = ((CurrentSystemTimeZone)(TimeZone.CurrentTimeZone)).GetUtcOffsetFromUniversalTime(time, ref isAmbiguousLocalDst);
             return new DateTime(time.Ticks + offset, DateTimeKind.Local, isAmbiguousLocalDst);
         }
 
@@ -247,7 +247,7 @@ namespace System
                 ambiguousEnd = startTime - daylightTimes.Delta;
             }
 
-            Boolean isDst = false;
+            bool isDst = false;
             if (startTime > endTime)
             {
                 // In southern hemisphere, the daylight saving time starts later in the year, and ends in the beginning of next year.

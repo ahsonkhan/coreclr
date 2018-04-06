@@ -503,7 +503,7 @@ namespace System.Reflection
             }
         }
 
-        public override Int64 HostContext
+        public override long HostContext
         {
             get
             {

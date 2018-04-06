@@ -530,7 +530,7 @@ namespace System.IO
 
             if (count == 0)
             {
-                return Array.Empty<Char>();
+                return Array.Empty<char>();
             }
 
             // SafeCritical: we own the chars buffer, and therefore can guarantee that the index and count are valid
@@ -576,7 +576,7 @@ namespace System.IO
 
             if (count == 0)
             {
-                return Array.Empty<Byte>();
+                return Array.Empty<byte>();
             }
 
             byte[] result = new byte[count];

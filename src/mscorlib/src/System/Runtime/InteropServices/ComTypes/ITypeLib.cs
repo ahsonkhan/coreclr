@@ -38,8 +38,8 @@ namespace System.Runtime.InteropServices.ComTypes
         public Guid guid;
         public int lcid;
         public SYSKIND syskind;
-        public Int16 wMajorVerNum;
-        public Int16 wMinorVerNum;
+        public short wMajorVerNum;
+        public short wMinorVerNum;
         public LIBFLAGS wLibFlags;
     }
 
@@ -58,7 +58,7 @@ namespace System.Runtime.InteropServices.ComTypes
         void GetDocumentation(int index, out string strName, out string strDocString, out int dwHelpContext, out string strHelpFile);
         [return: MarshalAs(UnmanagedType.Bool)]
         bool IsName([MarshalAs(UnmanagedType.LPWStr)] string szNameBuf, int lHashVal);
-        void FindName([MarshalAs(UnmanagedType.LPWStr)] string szNameBuf, int lHashVal, [MarshalAs(UnmanagedType.LPArray), Out] ITypeInfo[] ppTInfo, [MarshalAs(UnmanagedType.LPArray), Out] int[] rgMemId, ref Int16 pcFound);
+        void FindName([MarshalAs(UnmanagedType.LPWStr)] string szNameBuf, int lHashVal, [MarshalAs(UnmanagedType.LPArray), Out] ITypeInfo[] ppTInfo, [MarshalAs(UnmanagedType.LPArray), Out] int[] rgMemId, ref short pcFound);
         [PreserveSig]
         void ReleaseTLibAttr(IntPtr pTLibAttr);
     }

@@ -417,9 +417,9 @@ namespace System.Reflection
             if (parameters[2].ParameterType == typeof(uint))
             {
                 // DecimalConstantAttribute(byte scale, byte sign, uint hi, uint mid, uint low)
-                int low = (int)(UInt32)args[4].Value;
-                int mid = (int)(UInt32)args[3].Value;
-                int hi = (int)(UInt32)args[2].Value;
+                int low = (int)(uint)args[4].Value;
+                int mid = (int)(uint)args[3].Value;
+                int hi = (int)(uint)args[2].Value;
                 byte sign = (byte)args[1].Value;
                 byte scale = (byte)args[0].Value;
 

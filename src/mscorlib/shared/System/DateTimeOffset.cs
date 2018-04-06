@@ -34,8 +34,8 @@ namespace System
     public struct DateTimeOffset : IComparable, IFormattable, IComparable<DateTimeOffset>, IEquatable<DateTimeOffset>, ISerializable, IDeserializationCallback, ISpanFormattable
     {
         // Constants
-        internal const Int64 MaxOffset = TimeSpan.TicksPerHour * 14;
-        internal const Int64 MinOffset = -MaxOffset;
+        internal const long MaxOffset = TimeSpan.TicksPerHour * 14;
+        internal const long MinOffset = -MaxOffset;
 
         private const long UnixEpochSeconds = DateTime.UnixEpochTicks / TimeSpan.TicksPerSecond; // 62,135,596,800
         private const long UnixEpochMilliseconds = DateTime.UnixEpochTicks / TimeSpan.TicksPerMillisecond; // 62,135,596,800,000
@@ -50,7 +50,7 @@ namespace System
 
         // Instance Fields
         private DateTime _dateTime;
-        private Int16 _offsetMinutes;
+        private short _offsetMinutes;
 
         // Constructors
 
@@ -583,7 +583,7 @@ namespace System
             }
 
             _dateTime = (DateTime)info.GetValue("DateTime", typeof(DateTime)); // Do not rename (binary serialization)
-            _offsetMinutes = (Int16)info.GetValue("OffsetMinutes", typeof(Int16)); // Do not rename (binary serialization)
+            _offsetMinutes = (short)info.GetValue("OffsetMinutes", typeof(short)); // Do not rename (binary serialization)
         }
 
         // Returns the hash code for this DateTimeOffset.
@@ -781,11 +781,11 @@ namespace System
             return new DateTimeOffset(UtcDateTime);
         }
 
-        public static Boolean TryParse(string input, out DateTimeOffset result)
+        public static bool TryParse(string input, out DateTimeOffset result)
         {
             TimeSpan offset;
             DateTime dateResult;
-            Boolean parsed = DateTimeParse.TryParse(input,
+            bool parsed = DateTimeParse.TryParse(input,
                                                     DateTimeFormatInfo.CurrentInfo,
                                                     DateTimeStyles.None,
                                                     out dateResult,
@@ -801,7 +801,7 @@ namespace System
             return parsed;
         }
 
-        public static Boolean TryParse(string input, IFormatProvider formatProvider, DateTimeStyles styles, out DateTimeOffset result)
+        public static bool TryParse(string input, IFormatProvider formatProvider, DateTimeStyles styles, out DateTimeOffset result)
         {
             styles = ValidateStyles(styles, nameof(styles));
             if (input == null)
@@ -812,7 +812,7 @@ namespace System
 
             TimeSpan offset;
             DateTime dateResult;
-            Boolean parsed = DateTimeParse.TryParse(input,
+            bool parsed = DateTimeParse.TryParse(input,
                                                     DateTimeFormatInfo.GetInstance(formatProvider),
                                                     styles,
                                                     out dateResult,
@@ -829,7 +829,7 @@ namespace System
             return parsed;
         }
 
-        public static Boolean TryParseExact(string input, string format, IFormatProvider formatProvider, DateTimeStyles styles,
+        public static bool TryParseExact(string input, string format, IFormatProvider formatProvider, DateTimeStyles styles,
                                             out DateTimeOffset result)
         {
             styles = ValidateStyles(styles, nameof(styles));
@@ -841,7 +841,7 @@ namespace System
 
             TimeSpan offset;
             DateTime dateResult;
-            Boolean parsed = DateTimeParse.TryParseExact(input,
+            bool parsed = DateTimeParse.TryParseExact(input,
                                                          format,
                                                          DateTimeFormatInfo.GetInstance(formatProvider),
                                                          styles,
@@ -860,7 +860,7 @@ namespace System
             return parsed;
         }
 
-        public static Boolean TryParseExact(string input, string[] formats, IFormatProvider formatProvider, DateTimeStyles styles,
+        public static bool TryParseExact(string input, string[] formats, IFormatProvider formatProvider, DateTimeStyles styles,
                                             out DateTimeOffset result)
         {
             styles = ValidateStyles(styles, nameof(styles));
@@ -872,7 +872,7 @@ namespace System
 
             TimeSpan offset;
             DateTime dateResult;
-            Boolean parsed = DateTimeParse.TryParseExactMultiple(input,
+            bool parsed = DateTimeParse.TryParseExactMultiple(input,
                                                                  formats,
                                                                  DateTimeFormatInfo.GetInstance(formatProvider),
                                                                  styles,
@@ -892,9 +892,9 @@ namespace System
         }
 
         // Ensures the TimeSpan is valid to go in a DateTimeOffset.
-        private static Int16 ValidateOffset(TimeSpan offset)
+        private static short ValidateOffset(TimeSpan offset)
         {
-            Int64 ticks = offset.Ticks;
+            long ticks = offset.Ticks;
             if (ticks % TimeSpan.TicksPerMinute != 0)
             {
                 throw new ArgumentException(SR.Argument_OffsetPrecision, nameof(offset));
@@ -903,7 +903,7 @@ namespace System
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), SR.Argument_OffsetOutOfRange);
             }
-            return (Int16)(offset.Ticks / TimeSpan.TicksPerMinute);
+            return (short)(offset.Ticks / TimeSpan.TicksPerMinute);
         }
 
         // Ensures that the time and offset are in range.
@@ -915,7 +915,7 @@ namespace System
 
             // This operation cannot overflow because offset should have already been validated to be within
             // 14 hours and the DateTime instance is more than that distance from the boundaries of Int64.
-            Int64 utcTicks = dateTime.Ticks - offset.Ticks;
+            long utcTicks = dateTime.Ticks - offset.Ticks;
             if (utcTicks < DateTime.MinTicks || utcTicks > DateTime.MaxTicks)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), SR.Argument_UTCOutOfRange);

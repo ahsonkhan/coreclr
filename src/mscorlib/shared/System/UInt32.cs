@@ -13,7 +13,7 @@ namespace System
     [CLSCompliant(false)]
     [StructLayout(LayoutKind.Sequential)]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct UInt32 : IComparable, IConvertible, IFormattable, IComparable<UInt32>, IEquatable<UInt32>, ISpanFormattable
+    public struct UInt32 : IComparable, IConvertible, IFormattable, IComparable<uint>, IEquatable<uint>, ISpanFormattable
     {
         private uint m_value; // Do not rename (binary serialization)
 
@@ -33,7 +33,7 @@ namespace System
             {
                 return 1;
             }
-            if (value is UInt32)
+            if (value is uint)
             {
                 // Need to use compare because subtraction will wrap
                 // to positive for very large neg numbers, etc.
@@ -45,7 +45,7 @@ namespace System
             throw new ArgumentException(SR.Arg_MustBeUInt32);
         }
 
-        public int CompareTo(UInt32 value)
+        public int CompareTo(uint value)
         {
             // Need to use compare because subtraction will wrap
             // to positive for very large neg numbers, etc.
@@ -56,15 +56,15 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (!(obj is UInt32))
+            if (!(obj is uint))
             {
                 return false;
             }
-            return m_value == ((UInt32)obj).m_value;
+            return m_value == ((uint)obj).m_value;
         }
 
         [NonVersionable]
-        public bool Equals(UInt32 obj)
+        public bool Equals(uint obj)
         {
             return m_value == obj;
         }
@@ -140,7 +140,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(string s, out UInt32 result)
+        public static bool TryParse(string s, out uint result)
         {
             if (s == null)
             {
@@ -158,7 +158,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out UInt32 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out uint result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

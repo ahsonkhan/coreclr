@@ -12,7 +12,7 @@ namespace System
     [Serializable]
     [CLSCompliant(false)]    [StructLayout(LayoutKind.Sequential)]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct SByte : IComparable, IConvertible, IFormattable, IComparable<SByte>, IEquatable<SByte>, ISpanFormattable
+    public struct SByte : IComparable, IConvertible, IFormattable, IComparable<sbyte>, IEquatable<sbyte>, ISpanFormattable
     {
         private sbyte m_value; // Do not rename (binary serialization)
 
@@ -35,14 +35,14 @@ namespace System
             {
                 return 1;
             }
-            if (!(obj is SByte))
+            if (!(obj is sbyte))
             {
                 throw new ArgumentException(SR.Arg_MustBeSByte);
             }
-            return m_value - ((SByte)obj).m_value;
+            return m_value - ((sbyte)obj).m_value;
         }
 
-        public int CompareTo(SByte value)
+        public int CompareTo(sbyte value)
         {
             return m_value - value;
         }
@@ -50,15 +50,15 @@ namespace System
         // Determines whether two Byte objects are equal.
         public override bool Equals(object obj)
         {
-            if (!(obj is SByte))
+            if (!(obj is sbyte))
             {
                 return false;
             }
-            return m_value == ((SByte)obj).m_value;
+            return m_value == ((sbyte)obj).m_value;
         }
 
         [NonVersionable]
-        public bool Equals(SByte obj)
+        public bool Equals(sbyte obj)
         {
             return m_value == obj;
         }
@@ -179,7 +179,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(string s, out SByte result)
+        public static bool TryParse(string s, out sbyte result)
         {
             if (s == null)
             {
@@ -197,7 +197,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out SByte result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out sbyte result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 
@@ -217,7 +217,7 @@ namespace System
             return TryParse(s, style, NumberFormatInfo.GetInstance(provider), out result);
         }
 
-        private static bool TryParse(ReadOnlySpan<char> s, NumberStyles style, NumberFormatInfo info, out SByte result)
+        private static bool TryParse(ReadOnlySpan<char> s, NumberStyles style, NumberFormatInfo info, out sbyte result)
         {
             result = 0;
             int i;

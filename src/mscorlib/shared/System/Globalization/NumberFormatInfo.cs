@@ -327,7 +327,7 @@ namespace System.Globalization
                 }
                 VerifyWritable();
 
-                Int32[] inputSizes = (Int32[])value.Clone();
+                int[] inputSizes = (int[])value.Clone();
                 CheckGroupSize(nameof(CurrencyGroupSizes), inputSizes);
                 currencyGroupSizes = inputSizes;
             }
@@ -350,7 +350,7 @@ namespace System.Globalization
                 }
                 VerifyWritable();
 
-                Int32[] inputSizes = (Int32[])value.Clone();
+                int[] inputSizes = (int[])value.Clone();
                 CheckGroupSize(nameof(NumberGroupSizes), inputSizes);
                 numberGroupSizes = inputSizes;
             }
@@ -371,7 +371,7 @@ namespace System.Globalization
                         SR.ArgumentNull_Obj);
                 }
                 VerifyWritable();
-                Int32[] inputSizes = (Int32[])value.Clone();
+                int[] inputSizes = (int[])value.Clone();
                 CheckGroupSize(nameof(PercentGroupSizes), inputSizes);
                 percentGroupSizes = inputSizes;
             }

@@ -40,7 +40,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
             try
             {
-                return _this[(Int32)index];
+                return _this[(int)index];
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -123,7 +123,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
             try
             {
-                _this.RemoveAt((Int32)index);
+                _this.RemoveAt((int)index);
             }
             catch (ArgumentOutOfRangeException ex)
             {

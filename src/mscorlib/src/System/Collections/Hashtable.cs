@@ -123,7 +123,7 @@ namespace System.Collections
            -- 
         */
 
-        private const Int32 InitialSize = 3;
+        private const int InitialSize = 3;
         private const string LoadFactorName = "LoadFactor";
         private const string VersionName = "Version";
         private const string ComparerName = "Comparer";

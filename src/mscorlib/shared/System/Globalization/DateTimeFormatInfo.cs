@@ -2106,7 +2106,7 @@ namespace System.Globalization
             return formatFlags;
         }
 
-        internal Boolean HasForceTwoDigitYears
+        internal bool HasForceTwoDigitYears
         {
             get
             {
@@ -2129,7 +2129,7 @@ namespace System.Globalization
         }
 
         // Returns whether the YearMonthAdjustment function has any fix-up work to do for this culture/calendar.
-        internal Boolean HasYearMonthAdjustment
+        internal bool HasYearMonthAdjustment
         {
             get
             {
@@ -2142,7 +2142,7 @@ namespace System.Globalization
         // the Hebrew calendar, but this could be extended to other cultures.
         //
         // The return value is whether the year and month are actually valid for this calendar.
-        internal Boolean YearMonthAdjustment(ref int year, ref int month, Boolean parsedMonthName)
+        internal bool YearMonthAdjustment(ref int year, ref int month, bool parsedMonthName)
         {
             if ((FormatFlags & DateTimeFormatFlags.UseHebrewRule) != 0)
             {
@@ -2568,7 +2568,7 @@ namespace System.Globalization
 
         private static bool TryParseHebrewNumber(
             ref __DTString str,
-            out Boolean badFormat,
+            out bool badFormat,
             out int number)
         {
             number = -1;

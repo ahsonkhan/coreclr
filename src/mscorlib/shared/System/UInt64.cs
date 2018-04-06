@@ -13,7 +13,7 @@ namespace System
     [CLSCompliant(false)]
     [StructLayout(LayoutKind.Sequential)]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct UInt64 : IComparable, IConvertible, IFormattable, IComparable<UInt64>, IEquatable<UInt64>, ISpanFormattable
+    public struct UInt64 : IComparable, IConvertible, IFormattable, IComparable<ulong>, IEquatable<ulong>, ISpanFormattable
     {
         private ulong m_value; // Do not rename (binary serialization)
 
@@ -32,7 +32,7 @@ namespace System
             {
                 return 1;
             }
-            if (value is UInt64)
+            if (value is ulong)
             {
                 // Need to use compare because subtraction will wrap
                 // to positive for very large neg numbers, etc.
@@ -44,7 +44,7 @@ namespace System
             throw new ArgumentException(SR.Arg_MustBeUInt64);
         }
 
-        public int CompareTo(UInt64 value)
+        public int CompareTo(ulong value)
         {
             // Need to use compare because subtraction will wrap
             // to positive for very large neg numbers, etc.
@@ -55,15 +55,15 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (!(obj is UInt64))
+            if (!(obj is ulong))
             {
                 return false;
             }
-            return m_value == ((UInt64)obj).m_value;
+            return m_value == ((ulong)obj).m_value;
         }
 
         [NonVersionable]
-        public bool Equals(UInt64 obj)
+        public bool Equals(ulong obj)
         {
             return m_value == obj;
         }
@@ -137,7 +137,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static Boolean TryParse(string s, out UInt64 result)
+        public static bool TryParse(string s, out ulong result)
         {
             if (s == null)
             {
@@ -155,7 +155,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static Boolean TryParse(string s, NumberStyles style, IFormatProvider provider, out UInt64 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out ulong result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

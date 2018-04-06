@@ -81,10 +81,10 @@ namespace System
         private const int ScaleShift = 16;
 
         // The maximum power of 10 that a 32 bit integer can store
-        private const Int32 MaxInt32Scale = 9;
+        private const int MaxInt32Scale = 9;
 
         // Fast access for 10^n where n is 0-9        
-        private static UInt32[] Powers10 = new UInt32[] {
+        private static uint[] Powers10 = new uint[] {
             1,
             10,
             100,
@@ -545,7 +545,7 @@ namespace System
             return Number.ParseDecimal(s, style, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static Boolean TryParse(string s, out decimal result)
+        public static bool TryParse(string s, out decimal result)
         {
             if (s == null)
             {
@@ -561,7 +561,7 @@ namespace System
             return Number.TryParseDecimal(s, NumberStyles.Number, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static Boolean TryParse(string s, NumberStyles style, IFormatProvider provider, out decimal result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out decimal result)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
 
@@ -634,21 +634,21 @@ namespace System
         // ingores the sign and scale. This means that it is not equivalent to just adding
         // that number, as the sign and scale are effectively applied to the UInt32 value also.
         // 'unchecked' means that it does not fail if you overflow the 96 bit value.
-        private static void InternalAddUInt32RawUnchecked(ref decimal value, UInt32 i)
+        private static void InternalAddUInt32RawUnchecked(ref decimal value, uint i)
         {
-            UInt32 v;
-            UInt32 sum;
-            v = (UInt32)value.lo;
+            uint v;
+            uint sum;
+            v = (uint)value.lo;
             sum = v + i;
-            value.lo = (Int32)sum;
+            value.lo = (int)sum;
             if (sum < v || sum < i)
             {
-                v = (UInt32)value.mid;
+                v = (uint)value.mid;
                 sum = v + 1;
-                value.mid = (Int32)sum;
+                value.mid = (int)sum;
                 if (sum < v || sum < 1)
                 {
-                    value.hi = (Int32)((UInt32)value.hi + 1);
+                    value.hi = (int)((uint)value.hi + 1);
                 }
             }
         }
@@ -656,27 +656,27 @@ namespace System
         // This method does an in-place division of a decimal by a UInt32, returning the remainder. 
         // Although it does not operate on the sign or scale, this does not result in any 
         // caveat for the result. It is equivalent to dividing by that number.
-        private static UInt32 InternalDivRemUInt32(ref decimal value, UInt32 divisor)
+        private static uint InternalDivRemUInt32(ref decimal value, uint divisor)
         {
-            UInt32 remainder = 0;
-            UInt64 n;
+            uint remainder = 0;
+            ulong n;
             if (value.hi != 0)
             {
-                n = ((UInt32)value.hi);
-                value.hi = (Int32)((UInt32)(n / divisor));
-                remainder = (UInt32)(n % divisor);
+                n = ((uint)value.hi);
+                value.hi = (int)((uint)(n / divisor));
+                remainder = (uint)(n % divisor);
             }
             if (value.mid != 0 || remainder != 0)
             {
-                n = ((UInt64)remainder << 32) | (UInt32)value.mid;
-                value.mid = (Int32)((UInt32)(n / divisor));
-                remainder = (UInt32)(n % divisor);
+                n = ((ulong)remainder << 32) | (uint)value.mid;
+                value.mid = (int)((uint)(n / divisor));
+                remainder = (uint)(n % divisor);
             }
             if (value.lo != 0 || remainder != 0)
             {
-                n = ((UInt64)remainder << 32) | (UInt32)value.lo;
-                value.lo = (Int32)((UInt32)(n / divisor));
-                remainder = (UInt32)(n % divisor);
+                n = ((ulong)remainder << 32) | (uint)value.lo;
+                value.lo = (int)((uint)(n / divisor));
+                remainder = (uint)(n % divisor);
             }
             return remainder;
         }
@@ -685,18 +685,18 @@ namespace System
         // away from zero
         private static void InternalRoundFromZero(ref decimal d, int decimalCount)
         {
-            Int32 scale = (d.flags & ScaleMask) >> ScaleShift;
-            Int32 scaleDifference = scale - decimalCount;
+            int scale = (d.flags & ScaleMask) >> ScaleShift;
+            int scaleDifference = scale - decimalCount;
             if (scaleDifference <= 0)
             {
                 return;
             }
             // Divide the value by 10^scaleDifference
-            UInt32 lastRemainder;
-            UInt32 lastDivisor;
+            uint lastRemainder;
+            uint lastDivisor;
             do
             {
-                Int32 diffChunk = (scaleDifference > MaxInt32Scale) ? MaxInt32Scale : scaleDifference;
+                int diffChunk = (scaleDifference > MaxInt32Scale) ? MaxInt32Scale : scaleDifference;
                 lastDivisor = Powers10[diffChunk];
                 lastRemainder = InternalDivRemUInt32(ref d, lastDivisor);
                 scaleDifference -= diffChunk;
@@ -1129,7 +1129,7 @@ namespace System
 
         public static explicit operator char(decimal value)
         {
-            UInt16 temp;
+            ushort temp;
             try
             {
                 temp = ToUInt16(value);

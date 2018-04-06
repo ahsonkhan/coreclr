@@ -62,7 +62,7 @@ namespace System
             }
         }
 
-        internal long GetUtcOffsetFromUniversalTime(DateTime time, ref Boolean isAmbiguousLocalDst)
+        internal long GetUtcOffsetFromUniversalTime(DateTime time, ref bool isAmbiguousLocalDst)
         {
             // Get the daylight changes for the year of the specified time.
             TimeSpan offset = new TimeSpan(m_ticksOffset);
@@ -93,7 +93,7 @@ namespace System
                 ambiguousEnd = startTime - daylightTime.Delta;
             }
 
-            Boolean isDst = false;
+            bool isDst = false;
             if (startTime > endTime)
             {
                 // In southern hemisphere, the daylight saving time starts later in the year, and ends in the beginning of next year.
@@ -126,8 +126,8 @@ namespace System
             {
                 return time;
             }
-            Boolean isAmbiguousLocalDst = false;
-            Int64 offset = GetUtcOffsetFromUniversalTime(time, ref isAmbiguousLocalDst);
+            bool isAmbiguousLocalDst = false;
+            long offset = GetUtcOffsetFromUniversalTime(time, ref isAmbiguousLocalDst);
             long tick = time.Ticks + offset;
             if (tick > DateTime.MaxTicks)
             {

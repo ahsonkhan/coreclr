@@ -62,7 +62,7 @@ namespace System.Threading.Tasks
         /// <summary>Default MaxItemsPerTask to use for processing if none is specified.</summary>
         private const int DEFAULT_MAXITEMSPERTASK = UNLIMITED_PROCESSING;
         /// <summary>Default MaxConcurrencyLevel is the processor count if not otherwise specified.</summary>
-        private static Int32 DefaultMaxConcurrencyLevel { get { return Environment.ProcessorCount; } }
+        private static int DefaultMaxConcurrencyLevel { get { return Environment.ProcessorCount; } }
 
         /// <summary>Gets the sync obj used to protect all state on this instance.</summary>
         private object ValueLock { get { return m_threadProcessingMapping; } }

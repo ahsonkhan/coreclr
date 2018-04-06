@@ -611,7 +611,7 @@ namespace System
             return MemberwiseClone();
         }
 
-        Int32 IStructuralComparable.CompareTo(object other, IComparer comparer)
+        int IStructuralComparable.CompareTo(object other, IComparer comparer)
         {
             if (other == null)
             {
@@ -640,7 +640,7 @@ namespace System
             return c;
         }
 
-        Boolean IStructuralEquatable.Equals(object other, IEqualityComparer comparer)
+        bool IStructuralEquatable.Equals(object other, IEqualityComparer comparer)
         {
             if (other == null)
             {

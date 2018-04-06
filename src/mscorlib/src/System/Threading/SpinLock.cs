@@ -224,7 +224,7 @@ namespace System.Threading
         public void TryEnter(TimeSpan timeout, ref bool lockTaken)
         {
             // Validate the timeout
-            Int64 totalMilliseconds = (Int64)timeout.TotalMilliseconds;
+            long totalMilliseconds = (long)timeout.TotalMilliseconds;
             if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
             {
                 throw new System.ArgumentOutOfRangeException(

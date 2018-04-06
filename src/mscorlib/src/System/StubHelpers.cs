@@ -495,24 +495,24 @@ namespace System.StubHelpers
     [StructLayout(LayoutKind.Sequential)]
     internal struct DateTimeNative
     {
-        public Int64 UniversalTime;
+        public long UniversalTime;
     };
 
     internal static class DateTimeOffsetMarshaler
     {
         // Numer of ticks counted between 0001-01-01, 00:00:00 and 1601-01-01, 00:00:00.
         // You can get this through:  (new DateTimeOffset(1601, 1, 1, 0, 0, 1, TimeSpan.Zero)).Ticks;
-        private const Int64 ManagedUtcTicksAtNativeZero = 504911232000000000;
+        private const long ManagedUtcTicksAtNativeZero = 504911232000000000;
 
         internal static void ConvertToNative(ref DateTimeOffset managedDTO, out DateTimeNative dateTime)
         {
-            Int64 managedUtcTicks = managedDTO.UtcTicks;
+            long managedUtcTicks = managedDTO.UtcTicks;
             dateTime.UniversalTime = managedUtcTicks - ManagedUtcTicksAtNativeZero;
         }
 
         internal static void ConvertToManaged(out DateTimeOffset managedLocalDTO, ref DateTimeNative nativeTicks)
         {
-            Int64 managedUtcTicks = ManagedUtcTicksAtNativeZero + nativeTicks.UniversalTime;
+            long managedUtcTicks = ManagedUtcTicksAtNativeZero + nativeTicks.UniversalTime;
             DateTimeOffset managedUtcDTO = new DateTimeOffset(managedUtcTicks, TimeSpan.Zero);
 
             // Some Utc times cannot be represented in local time in certain timezones. E.g. 0001-01-01 12:00:00 AM cannot 
@@ -794,7 +794,7 @@ namespace System.StubHelpers
         {
             if (managedArray != null)
             {
-                Int32* nativeBuffer = *(Int32**)pNativeHome;
+                int* nativeBuffer = *(int**)pNativeHome;
                 for (int i = 0; i < managedArray.Length; i++)
                 {
                     nativeBuffer[i] = HResultExceptionMarshaler.ConvertToNative(managedArray[i]);
@@ -861,7 +861,7 @@ namespace System.StubHelpers
         {
             if (managedArray != null)
             {
-                Int32* nativeBuffer = *(Int32**)pNativeHome;
+                int* nativeBuffer = *(int**)pNativeHome;
                 for (int i = 0; i < managedArray.Length; i++)
                 {
                     managedArray[i] = HResultExceptionMarshaler.ConvertToManaged(nativeBuffer[i]);
@@ -1796,7 +1796,7 @@ namespace System.StubHelpers
 
 #if FEATURE_MULTICASTSTUB_AS_IL
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        internal static extern void MulticastDebuggerTraceHelper(object o, Int32 count);
+        internal static extern void MulticastDebuggerTraceHelper(object o, int count);
 #endif
     }  // class StubHelpers
 }

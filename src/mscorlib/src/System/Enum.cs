@@ -100,19 +100,19 @@ namespace System
                     // direct cast from bool to byte is not allowed
                     return Convert.ToByte((bool)value).ToString("X2", null);
                 case TypeCode.Int16:
-                    return ((UInt16)(Int16)value).ToString("X4", null);
+                    return ((ushort)(short)value).ToString("X4", null);
                 case TypeCode.UInt16:
-                    return ((UInt16)value).ToString("X4", null);
+                    return ((ushort)value).ToString("X4", null);
                 case TypeCode.Char:
-                    return ((UInt16)(Char)value).ToString("X4", null);
+                    return ((ushort)(char)value).ToString("X4", null);
                 case TypeCode.UInt32:
-                    return ((UInt32)value).ToString("X8", null);
+                    return ((uint)value).ToString("X8", null);
                 case TypeCode.Int32:
-                    return ((UInt32)(Int32)value).ToString("X8", null);
+                    return ((uint)(int)value).ToString("X8", null);
                 case TypeCode.UInt64:
-                    return ((UInt64)value).ToString("X16", null);
+                    return ((ulong)value).ToString("X16", null);
                 case TypeCode.Int64:
-                    return ((UInt64)(Int64)value).ToString("X16", null);
+                    return ((ulong)(long)value).ToString("X16", null);
                 // All unsigned types will be directly cast
                 default:
                     throw new InvalidOperationException(SR.InvalidOperation_UnknownEnumType);
@@ -240,16 +240,16 @@ namespace System
                     result = Convert.ToByte((bool)value);
                     break;
                 case TypeCode.Int16:
-                    result = (ulong)(Int16)value;
+                    result = (ulong)(short)value;
                     break;
                 case TypeCode.UInt16:
-                    result = (UInt16)value;
+                    result = (ushort)value;
                     break;
                 case TypeCode.Char:
-                    result = (Char)value;
+                    result = (char)value;
                     break;
                 case TypeCode.UInt32:
-                    result = (UInt32)value;
+                    result = (uint)value;
                     break;
                 case TypeCode.Int32:
                     result = (ulong)(int)value;
@@ -258,7 +258,7 @@ namespace System
                     result = (ulong)value;
                     break;
                 case TypeCode.Int64:
-                    result = (ulong)(Int64)value;
+                    result = (ulong)(long)value;
                     break;
                 // All unsigned types will be directly cast
                 default:
@@ -959,7 +959,7 @@ namespace System
         }
 
         [Intrinsic]
-        public Boolean HasFlag(Enum flag)
+        public bool HasFlag(Enum flag)
         {
             if (flag == null)
                 throw new ArgumentNullException(nameof(flag));

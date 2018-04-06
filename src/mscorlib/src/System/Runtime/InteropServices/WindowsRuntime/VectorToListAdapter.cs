@@ -109,7 +109,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             }
         }
 
-        private static void SetAt<T>(IVector<T> _this, UInt32 index, T value)
+        private static void SetAt<T>(IVector<T> _this, uint index, T value)
         {
             try
             {

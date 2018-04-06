@@ -105,10 +105,10 @@ namespace System
         internal static extern bool IsServerGC();
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        private static extern void _AddMemoryPressure(UInt64 bytesAllocated);
+        private static extern void _AddMemoryPressure(ulong bytesAllocated);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        private static extern void _RemoveMemoryPressure(UInt64 bytesAllocated);
+        private static extern void _RemoveMemoryPressure(ulong bytesAllocated);
 
         public static void AddMemoryPressure(long bytesAllocated)
         {

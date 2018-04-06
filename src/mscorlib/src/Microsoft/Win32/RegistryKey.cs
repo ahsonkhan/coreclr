@@ -927,7 +927,7 @@ namespace Microsoft.Win32
             // This logic matches what used to be in SetValue(string name, object value) in the v1.0 and v1.1 days.
             // Even though we could add detection for an int64 in here, we want to maintain compatibility with the
             // old behavior.
-            if (value is Int32)
+            if (value is int)
                 return RegistryValueKind.DWord;
             else if (value is Array)
             {

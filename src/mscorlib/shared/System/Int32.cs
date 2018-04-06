@@ -12,7 +12,7 @@ namespace System
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct Int32 : IComparable, IConvertible, IFormattable, IComparable<Int32>, IEquatable<Int32>, ISpanFormattable
+    public struct Int32 : IComparable, IConvertible, IFormattable, IComparable<int>, IEquatable<int>, ISpanFormattable
     {
         private int m_value; // Do not rename (binary serialization)
 
@@ -34,7 +34,7 @@ namespace System
             {
                 return 1;
             }
-            if (value is Int32)
+            if (value is int)
             {
                 // NOTE: Cannot use return (_value - value) as this causes a wrap
                 // around in cases where _value - value > MaxValue.
@@ -57,15 +57,15 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Int32))
+            if (!(obj is int))
             {
                 return false;
             }
-            return m_value == ((Int32)obj).m_value;
+            return m_value == ((int)obj).m_value;
         }
 
         [NonVersionable]
-        public bool Equals(Int32 obj)
+        public bool Equals(int obj)
         {
             return m_value == obj;
         }
@@ -144,7 +144,7 @@ namespace System
         // Parses an integer from a String. Returns false rather
         // than throwing exceptin if input is invalid
         // 
-        public static bool TryParse(string s, out Int32 result)
+        public static bool TryParse(string s, out int result)
         {
             if (s == null)
             {
@@ -163,7 +163,7 @@ namespace System
         // Parses an integer from a String in the given style. Returns false rather
         // than throwing exceptin if input is invalid
         // 
-        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out Int32 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out int result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

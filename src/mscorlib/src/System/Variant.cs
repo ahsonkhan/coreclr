@@ -86,20 +86,20 @@ namespace System
         internal const int EnumMask = 0xF00000;
 
         internal static readonly Type[] ClassTypes = {
-            typeof(System.Empty),
+            typeof(Empty),
             typeof(void),
-            typeof(Boolean),
-            typeof(Char),
-            typeof(SByte),
-            typeof(Byte),
-            typeof(Int16),
-            typeof(UInt16),
-            typeof(Int32),
-            typeof(UInt32),
-            typeof(Int64),
-            typeof(UInt64),
-            typeof(Single),
-            typeof(Double),
+            typeof(bool),
+            typeof(char),
+            typeof(sbyte),
+            typeof(byte),
+            typeof(short),
+            typeof(ushort),
+            typeof(int),
+            typeof(uint),
+            typeof(long),
+            typeof(ulong),
+            typeof(float),
+            typeof(double),
             typeof(string),
             typeof(void),           // ptr for the moment
             typeof(DateTime),
@@ -107,13 +107,13 @@ namespace System
             typeof(object),
             typeof(decimal),
             typeof(object),     // Treat enum as Object
-            typeof(System.Reflection.Missing),
-            typeof(System.DBNull),
+            typeof(Missing),
+            typeof(DBNull),
         };
 
         internal static readonly Variant Empty = new Variant();
-        internal static readonly Variant Missing = new Variant(Variant.CV_MISSING, Type.Missing, 0, 0);
-        internal static readonly Variant DBNull = new Variant(Variant.CV_NULL, System.DBNull.Value, 0, 0);
+        internal static readonly Variant Missing = new Variant(CV_MISSING, Type.Missing, 0, 0);
+        internal static readonly Variant DBNull = new Variant(CV_NULL, System.DBNull.Value, 0, 0);
 
         //
         // Native Methods

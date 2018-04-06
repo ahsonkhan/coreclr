@@ -1875,7 +1875,7 @@ namespace System.Text
                 else
                     return new byte[2] { 0xff, 0xfe };
             }
-            return Array.Empty<Byte>();
+            return Array.Empty<byte>();
         }
 
         public override ReadOnlySpan<byte> Preamble =>

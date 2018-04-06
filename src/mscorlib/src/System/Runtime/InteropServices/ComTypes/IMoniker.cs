@@ -36,7 +36,7 @@ namespace System.Runtime.InteropServices.ComTypes
         int IsDirty();
         void Load(IStream pStm);
         void Save(IStream pStm, [MarshalAs(UnmanagedType.Bool)] bool fClearDirty);
-        void GetSizeMax(out Int64 pcbSize);
+        void GetSizeMax(out long pcbSize);
 
         // IMoniker portion
         void BindToObject(IBindCtx pbc, IMoniker pmkToLeft, [In()] ref Guid riidResult, [MarshalAs(UnmanagedType.Interface)] out object ppvResult);

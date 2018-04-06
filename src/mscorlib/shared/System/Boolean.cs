@@ -19,7 +19,7 @@ namespace System
 {
     [Serializable]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct Boolean : IComparable, IConvertible, IComparable<Boolean>, IEquatable<Boolean>
+    public struct Boolean : IComparable, IConvertible, IComparable<bool>, IEquatable<bool>
     {
         //
         // Member Variables
@@ -115,16 +115,16 @@ namespace System
         public override bool Equals(object obj)
         {
             //If it's not a boolean, we're definitely not equal
-            if (!(obj is Boolean))
+            if (!(obj is bool))
             {
                 return false;
             }
 
-            return (m_value == ((Boolean)obj).m_value);
+            return (m_value == ((bool)obj).m_value);
         }
 
         [NonVersionable]
-        public bool Equals(Boolean obj)
+        public bool Equals(bool obj)
         {
             return m_value == obj;
         }
@@ -142,12 +142,12 @@ namespace System
             {
                 return 1;
             }
-            if (!(obj is Boolean))
+            if (!(obj is bool))
             {
                 throw new ArgumentException(SR.Arg_MustBeBoolean);
             }
 
-            if (m_value == ((Boolean)obj).m_value)
+            if (m_value == ((bool)obj).m_value)
             {
                 return 0;
             }
@@ -158,7 +158,7 @@ namespace System
             return 1;
         }
 
-        public int CompareTo(Boolean value)
+        public int CompareTo(bool value)
         {
             if (m_value == value)
             {
@@ -177,7 +177,7 @@ namespace System
 
         // Determines whether a String represents true or false.
         // 
-        public static Boolean Parse(string value)
+        public static bool Parse(string value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
             return Parse(value.AsSpan());
@@ -188,7 +188,7 @@ namespace System
 
         // Determines whether a String represents true or false.
         // 
-        public static Boolean TryParse(string value, out Boolean result)
+        public static bool TryParse(string value, out bool result)
         {
             if (value == null)
             {

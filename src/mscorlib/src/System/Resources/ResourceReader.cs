@@ -557,25 +557,25 @@ namespace System.Resources
 
             if (type == typeof(string))
                 return _store.ReadString();
-            else if (type == typeof(Int32))
+            else if (type == typeof(int))
                 return _store.ReadInt32();
-            else if (type == typeof(Byte))
+            else if (type == typeof(byte))
                 return _store.ReadByte();
-            else if (type == typeof(SByte))
+            else if (type == typeof(sbyte))
                 return _store.ReadSByte();
-            else if (type == typeof(Int16))
+            else if (type == typeof(short))
                 return _store.ReadInt16();
-            else if (type == typeof(Int64))
+            else if (type == typeof(long))
                 return _store.ReadInt64();
-            else if (type == typeof(UInt16))
+            else if (type == typeof(ushort))
                 return _store.ReadUInt16();
-            else if (type == typeof(UInt32))
+            else if (type == typeof(uint))
                 return _store.ReadUInt32();
-            else if (type == typeof(UInt64))
+            else if (type == typeof(ulong))
                 return _store.ReadUInt64();
-            else if (type == typeof(Single))
+            else if (type == typeof(float))
                 return _store.ReadSingle();
-            else if (type == typeof(Double))
+            else if (type == typeof(double))
                 return _store.ReadDouble();
             else if (type == typeof(DateTime))
             {
@@ -673,11 +673,11 @@ namespace System.Resources
 
                 case ResourceTypeCode.DateTime:
                     // Use DateTime's ToBinary & FromBinary.
-                    Int64 data = _store.ReadInt64();
+                    long data = _store.ReadInt64();
                     return DateTime.FromBinary(data);
 
                 case ResourceTypeCode.TimeSpan:
-                    Int64 ticks = _store.ReadInt64();
+                    long ticks = _store.ReadInt64();
                     return new TimeSpan(ticks);
 
                 // Special types

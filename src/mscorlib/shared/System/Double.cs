@@ -24,7 +24,7 @@ namespace System
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct Double : IComparable, IConvertible, IFormattable, IComparable<Double>, IEquatable<Double>, ISpanFormattable
+    public struct Double : IComparable, IConvertible, IFormattable, IComparable<double>, IEquatable<double>, ISpanFormattable
     {
         private double m_value; // Do not rename (binary serialization)
 
@@ -129,7 +129,7 @@ namespace System
             {
                 return 1;
             }
-            if (value is Double)
+            if (value is double)
             {
                 double d = (double)value;
                 if (m_value < d) return -1;
@@ -145,7 +145,7 @@ namespace System
             throw new ArgumentException(SR.Arg_MustBeDouble);
         }
 
-        public int CompareTo(Double value)
+        public int CompareTo(double value)
         {
             if (m_value < value) return -1;
             if (m_value > value) return 1;
@@ -162,11 +162,11 @@ namespace System
         // a method of object equality, that only returns true if obj is also a double.
         public override bool Equals(object obj)
         {
-            if (!(obj is Double))
+            if (!(obj is double))
             {
                 return false;
             }
-            double temp = ((Double)obj).m_value;
+            double temp = ((double)obj).m_value;
             // This code below is written this way for performance reasons i.e the != and == check is intentional.
             if (temp == m_value)
             {
@@ -176,42 +176,42 @@ namespace System
         }
 
         [NonVersionable]
-        public static bool operator ==(Double left, Double right)
+        public static bool operator ==(double left, double right)
         {
             return left == right;
         }
 
         [NonVersionable]
-        public static bool operator !=(Double left, Double right)
+        public static bool operator !=(double left, double right)
         {
             return left != right;
         }
 
         [NonVersionable]
-        public static bool operator <(Double left, Double right)
+        public static bool operator <(double left, double right)
         {
             return left < right;
         }
 
         [NonVersionable]
-        public static bool operator >(Double left, Double right)
+        public static bool operator >(double left, double right)
         {
             return left > right;
         }
 
         [NonVersionable]
-        public static bool operator <=(Double left, Double right)
+        public static bool operator <=(double left, double right)
         {
             return left <= right;
         }
 
         [NonVersionable]
-        public static bool operator >=(Double left, Double right)
+        public static bool operator >=(double left, double right)
         {
             return left >= right;
         }
 
-        public bool Equals(Double obj)
+        public bool Equals(double obj)
         {
             if (obj == m_value)
             {

@@ -42,7 +42,7 @@ namespace System.Globalization
 
         internal const int StringBuilderDefaultCapacity = 16;
 
-        internal const Int64 MaxOffset = TimeSpan.TicksPerHour * 14;
-        internal const Int64 MinOffset = -MaxOffset;
+        internal const long MaxOffset = TimeSpan.TicksPerHour * 14;
+        internal const long MinOffset = -MaxOffset;
     }
 }

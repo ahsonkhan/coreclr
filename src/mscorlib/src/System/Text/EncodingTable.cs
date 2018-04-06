@@ -231,7 +231,7 @@ namespace System.Text
     internal unsafe struct InternalEncodingDataItem
     {
         internal sbyte* webName;
-        internal UInt16 codePage;
+        internal ushort codePage;
     }
 
     /*=================================InternalCodePageDataItem==========================
@@ -242,8 +242,8 @@ namespace System.Text
     [System.Runtime.InteropServices.StructLayout(LayoutKind.Sequential)]
     internal unsafe struct InternalCodePageDataItem
     {
-        internal UInt16 codePage;
-        internal UInt16 uiFamilyCodePage;
+        internal ushort codePage;
+        internal ushort uiFamilyCodePage;
         internal uint flags;
         internal sbyte* Names;
     }

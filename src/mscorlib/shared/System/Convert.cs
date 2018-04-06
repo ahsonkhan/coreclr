@@ -104,19 +104,19 @@ namespace System
         internal static readonly Type[] ConvertTypes = {
             typeof(System.Empty),
             typeof(object),
-            typeof(System.DBNull),
-            typeof(Boolean),
-            typeof(Char),
-            typeof(SByte),
-            typeof(Byte),
-            typeof(Int16),
-            typeof(UInt16),
-            typeof(Int32),
-            typeof(UInt32),
-            typeof(Int64),
-            typeof(UInt64),
-            typeof(Single),
-            typeof(Double),
+            typeof(DBNull),
+            typeof(bool),
+            typeof(char),
+            typeof(sbyte),
+            typeof(byte),
+            typeof(short),
+            typeof(ushort),
+            typeof(int),
+            typeof(uint),
+            typeof(long),
+            typeof(ulong),
+            typeof(float),
+            typeof(double),
             typeof(decimal),
             typeof(DateTime),
             typeof(object), //TypeCode is discontinuous so we need a placeholder.
@@ -132,7 +132,7 @@ namespace System
                                                        't','u','v','w','x','y','z','0','1','2','3','4','5','6','7',
                                                        '8','9','+','/','=' };
 
-        private const Int32 base64LineBreakPosition = 76;
+        private const int base64LineBreakPosition = 76;
 
 #if DEBUG
         private static bool TriggerAsserts = DoAsserts();
@@ -1540,7 +1540,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ulong ToUInt64(UInt64 value)
+        public static ulong ToUInt64(ulong value)
         {
             return value;
         }
@@ -2629,7 +2629,7 @@ namespace System
         /// </summary>
         /// <param name="s">The string to convert</param>
         /// <returns>The array of bytes represented by the specified Base64 string.</returns>
-        public static Byte[] FromBase64String(string s)
+        public static byte[] FromBase64String(string s)
         {
             // "s" is an unfortunate parameter name, but we need to keep it for backward compat.
 
@@ -2639,7 +2639,7 @@ namespace System
 
             unsafe
             {
-                fixed (Char* sPtr = s)
+                fixed (char* sPtr = s)
                 {
                     return FromBase64CharPtr(sPtr, s.Length);
                 }
@@ -2781,7 +2781,7 @@ namespace System
         /// <param name="offset">A position within the input array.</param>
         /// <param name="length">Number of element to convert.</param>
         /// <returns>The array of bytes represented by the specified Base64 encoding characters.</returns>
-        public static Byte[] FromBase64CharArray(Char[] inArray, Int32 offset, Int32 length)
+        public static byte[] FromBase64CharArray(char[] inArray, int offset, int length)
         {
             if (inArray == null)
                 throw new ArgumentNullException(nameof(inArray));
@@ -2803,7 +2803,7 @@ namespace System
 
             unsafe
             {
-                fixed (Char* inArrayPtr = &inArray[0])
+                fixed (char* inArrayPtr = &inArray[0])
                 {
                     return FromBase64CharPtr(inArrayPtr + offset, length);
                 }
@@ -2819,7 +2819,7 @@ namespace System
         /// <param name="inputPtr">Pointer to the first input char</param>
         /// <param name="inputLength">Number of input chars</param>
         /// <returns></returns>
-        private static unsafe Byte[] FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+        private static unsafe byte[] FromBase64CharPtr(char* inputPtr, int inputLength)
         {
             // The validity of parameters much be checked by callers, thus we are Critical here.
 
@@ -2829,14 +2829,14 @@ namespace System
             // Otherwise we would be rejecting input such as "abc= ":
             while (inputLength > 0)
             {
-                Int32 lastChar = inputPtr[inputLength - 1];
-                if (lastChar != (Int32)' ' && lastChar != (Int32)'\n' && lastChar != (Int32)'\r' && lastChar != (Int32)'\t')
+                int lastChar = inputPtr[inputLength - 1];
+                if (lastChar != (int)' ' && lastChar != (int)'\n' && lastChar != (int)'\r' && lastChar != (int)'\t')
                     break;
                 inputLength--;
             }
 
             // Compute the output length:
-            Int32 resultLength = FromBase64_ComputeResultLength(inputPtr, inputLength);
+            int resultLength = FromBase64_ComputeResultLength(inputPtr, inputLength);
 
             Debug.Assert(0 <= resultLength);
 
@@ -2844,7 +2844,7 @@ namespace System
             // It may either simply write no bytes (e.g. input = " ") or throw (e.g. input = "ab").
 
             // Create result byte blob:
-            Byte[] decodedBytes = new Byte[resultLength];
+            byte[] decodedBytes = new byte[resultLength];
 
             // Convert Base64 chars into bytes:
             if (!TryFromBase64Chars(new ReadOnlySpan<char>(inputPtr, inputLength), decodedBytes, out int _))
@@ -2863,20 +2863,20 @@ namespace System
         /// Walk the entire input counting white spaces and padding chars, then compute result length
         /// based on 3 bytes per 4 chars.
         /// </summary>
-        private static unsafe Int32 FromBase64_ComputeResultLength(Char* inputPtr, Int32 inputLength)
+        private static unsafe int FromBase64_ComputeResultLength(char* inputPtr, int inputLength)
         {
-            const UInt32 intEq = (UInt32)'=';
-            const UInt32 intSpace = (UInt32)' ';
+            const uint intEq = (uint)'=';
+            const uint intSpace = (uint)' ';
 
             Debug.Assert(0 <= inputLength);
 
-            Char* inputEndPtr = inputPtr + inputLength;
-            Int32 usefulInputLength = inputLength;
-            Int32 padding = 0;
+            char* inputEndPtr = inputPtr + inputLength;
+            int usefulInputLength = inputLength;
+            int padding = 0;
 
             while (inputPtr < inputEndPtr)
             {
-                UInt32 c = (UInt32)(*inputPtr);
+                uint c = (uint)(*inputPtr);
                 inputPtr++;
 
                 // We want to be as fast as possible and filter out spaces with as few comparisons as possible.

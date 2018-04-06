@@ -116,7 +116,7 @@ namespace System.IO
             return CopyToAsync(destination, bufferSize);
         }
 
-        public Task CopyToAsync(Stream destination, Int32 bufferSize)
+        public Task CopyToAsync(Stream destination, int bufferSize)
         {
             return CopyToAsync(destination, bufferSize, CancellationToken.None);
         }
@@ -128,14 +128,14 @@ namespace System.IO
             return CopyToAsync(destination, bufferSize, cancellationToken);
         }
 
-        public virtual Task CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+        public virtual Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
         {
             StreamHelpers.ValidateCopyToArgs(this, destination, bufferSize);
 
             return CopyToAsyncInternal(destination, bufferSize, cancellationToken);
         }
 
-        private async Task CopyToAsyncInternal(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+        private async Task CopyToAsyncInternal(Stream destination, int bufferSize, CancellationToken cancellationToken)
         {
             byte[] buffer = ArrayPool<byte>.Shared.Rent(bufferSize);
             try
@@ -360,12 +360,12 @@ namespace System.IO
             }
         }
 
-        public Task<int> ReadAsync(Byte[] buffer, int offset, int count)
+        public Task<int> ReadAsync(byte[] buffer, int offset, int count)
         {
             return ReadAsync(buffer, offset, count, CancellationToken.None);
         }
 
-        public virtual Task<int> ReadAsync(Byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+        public virtual Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
             // If cancellation was requested, bail early with an already completed task.
             // Otherwise, return a task that represents the Begin/End methods.
@@ -404,17 +404,17 @@ namespace System.IO
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern bool HasOverriddenBeginEndRead();
 
-        private Task<Int32> BeginEndReadAsync(Byte[] buffer, Int32 offset, Int32 count)
+        private Task<int> BeginEndReadAsync(byte[] buffer, int offset, int count)
         {
             if (!HasOverriddenBeginEndRead())
             {
                 // If the Stream does not override Begin/EndRead, then we can take an optimized path
                 // that skips an extra layer of tasks / IAsyncResults.
-                return (Task<Int32>)BeginReadInternal(buffer, offset, count, null, null, serializeAsynchronously: true, apm: false);
+                return (Task<int>)BeginReadInternal(buffer, offset, count, null, null, serializeAsynchronously: true, apm: false);
             }
 
             // Otherwise, we need to wrap calls to Begin/EndWrite to ensure we use the derived type's functionality.
-            return TaskFactory<Int32>.FromAsyncTrim(
+            return TaskFactory<int>.FromAsyncTrim(
                         this, new ReadWriteParameters { Buffer = buffer, Offset = offset, Count = count },
                         (stream, args, callback, state) => stream.BeginRead(args.Buffer, args.Offset, args.Count, callback, state), // cached by compiler
                         (stream, asyncResult) => stream.EndRead(asyncResult)); // cached by compiler
@@ -669,12 +669,12 @@ namespace System.IO
             bool ITaskCompletionAction.InvokeMayRunArbitraryCode { get { return true; } }
         }
 
-        public Task WriteAsync(Byte[] buffer, int offset, int count)
+        public Task WriteAsync(byte[] buffer, int offset, int count)
         {
             return WriteAsync(buffer, offset, count, CancellationToken.None);
         }
 
-        public virtual Task WriteAsync(Byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+        public virtual Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
             // If cancellation was requested, bail early with an already completed task.
             // Otherwise, return a task that represents the Begin/End methods.
@@ -712,7 +712,7 @@ namespace System.IO
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern bool HasOverriddenBeginEndWrite();
 
-        private Task BeginEndWriteAsync(Byte[] buffer, Int32 offset, Int32 count)
+        private Task BeginEndWriteAsync(byte[] buffer, int offset, int count)
         {
             if (!HasOverriddenBeginEndWrite())
             {
@@ -977,7 +977,7 @@ namespace System.IO
                 return 0;
             }
 
-            public override Task<int> ReadAsync(Byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
             {
                 return AsyncTaskMethodBuilder<int>.s_defaultResultTask;
             }
@@ -1000,7 +1000,7 @@ namespace System.IO
             {
             }
 
-            public override Task WriteAsync(Byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
             {
                 return cancellationToken.IsCancellationRequested ?
                     Task.FromCanceled(cancellationToken) :
@@ -1038,9 +1038,9 @@ namespace System.IO
             private ExceptionDispatchInfo _exceptionInfo;
 
             private bool _endXxxCalled;
-            private Int32 _bytesRead;
+            private int _bytesRead;
 
-            internal SynchronousAsyncResult(Int32 bytesRead, object asyncStateObject)
+            internal SynchronousAsyncResult(int bytesRead, object asyncStateObject)
             {
                 _bytesRead = bytesRead;
                 _stateObject = asyncStateObject;
@@ -1090,7 +1090,7 @@ namespace System.IO
                     _exceptionInfo.Throw();
             }
 
-            internal static Int32 EndRead(IAsyncResult asyncResult)
+            internal static int EndRead(IAsyncResult asyncResult)
             {
                 SynchronousAsyncResult ar = asyncResult as SynchronousAsyncResult;
                 if (ar == null || ar._isWrite)

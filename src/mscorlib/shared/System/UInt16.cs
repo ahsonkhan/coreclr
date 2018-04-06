@@ -13,7 +13,7 @@ namespace System
     [CLSCompliant(false)]
     [StructLayout(LayoutKind.Sequential)]
     [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    public struct UInt16 : IComparable, IConvertible, IFormattable, IComparable<UInt16>, IEquatable<UInt16>, ISpanFormattable
+    public struct UInt16 : IComparable, IConvertible, IFormattable, IComparable<ushort>, IEquatable<ushort>, ISpanFormattable
     {
         private ushort m_value; // Do not rename (binary serialization)
 
@@ -33,29 +33,29 @@ namespace System
             {
                 return 1;
             }
-            if (value is UInt16)
+            if (value is ushort)
             {
-                return m_value - ((UInt16)value).m_value;
+                return m_value - ((ushort)value).m_value;
             }
             throw new ArgumentException(SR.Arg_MustBeUInt16);
         }
 
-        public int CompareTo(UInt16 value)
+        public int CompareTo(ushort value)
         {
             return ((int)m_value - (int)value);
         }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is UInt16))
+            if (!(obj is ushort))
             {
                 return false;
             }
-            return m_value == ((UInt16)obj).m_value;
+            return m_value == ((ushort)obj).m_value;
         }
 
         [NonVersionable]
-        public bool Equals(UInt16 obj)
+        public bool Equals(ushort obj)
         {
             return m_value == obj;
         }
@@ -148,7 +148,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(string s, out UInt16 result)
+        public static bool TryParse(string s, out ushort result)
         {
             if (s == null)
             {
@@ -166,7 +166,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out UInt16 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out ushort result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 
@@ -186,10 +186,10 @@ namespace System
             return TryParse(s, style, NumberFormatInfo.GetInstance(provider), out result);
         }
 
-        private static bool TryParse(ReadOnlySpan<char> s, NumberStyles style, NumberFormatInfo info, out UInt16 result)
+        private static bool TryParse(ReadOnlySpan<char> s, NumberStyles style, NumberFormatInfo info, out ushort result)
         {
             result = 0;
-            UInt32 i;
+            uint i;
             if (!Number.TryParseUInt32(s, style, info, out i))
             {
                 return false;
@@ -198,7 +198,7 @@ namespace System
             {
                 return false;
             }
-            result = (UInt16)i;
+            result = (ushort)i;
             return true;
         }
 

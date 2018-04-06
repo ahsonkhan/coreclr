@@ -605,7 +605,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public override Int64 HostContext
+        public override long HostContext
         {
             get
             {
