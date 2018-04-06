@@ -476,14 +476,14 @@ namespace System
         {
             if (value == null)
                 return false;
-            return Boolean.Parse(value);
+            return bool.Parse(value);
         }
 
         public static bool ToBoolean(string value, IFormatProvider provider)
         {
             if (value == null)
                 return false;
-            return Boolean.Parse(value);
+            return bool.Parse(value);
         }
 
         public static bool ToBoolean(float value)
@@ -649,7 +649,7 @@ namespace System
         [CLSCompliant(false)]
         public static sbyte ToSByte(bool value)
         {
-            return value ? (sbyte)Boolean.True : (sbyte)Boolean.False;
+            return value ? (sbyte)bool.True : (sbyte)bool.False;
         }
 
         [CLSCompliant(false)]
@@ -769,7 +769,7 @@ namespace System
 
         public static byte ToByte(bool value)
         {
-            return value ? (byte)Boolean.True : (byte)Boolean.False;
+            return value ? (byte)bool.True : (byte)bool.False;
         }
 
         public static byte ToByte(byte value)
@@ -881,7 +881,7 @@ namespace System
 
         public static short ToInt16(bool value)
         {
-            return value ? (short)Boolean.True : (short)Boolean.False;
+            return value ? (short)bool.True : (short)bool.False;
         }
 
         public static short ToInt16(char value)
@@ -995,7 +995,7 @@ namespace System
         [CLSCompliant(false)]
         public static ushort ToUInt16(bool value)
         {
-            return value ? (ushort)Boolean.True : (ushort)Boolean.False;
+            return value ? (ushort)bool.True : (ushort)bool.False;
         }
 
         [CLSCompliant(false)]
@@ -1117,7 +1117,7 @@ namespace System
 
         public static int ToInt32(bool value)
         {
-            return value ? Boolean.True : Boolean.False;
+            return value ? bool.True : bool.False;
         }
 
         public static int ToInt32(char value)
@@ -1248,7 +1248,7 @@ namespace System
         [CLSCompliant(false)]
         public static uint ToUInt32(bool value)
         {
-            return value ? (uint)Boolean.True : (uint)Boolean.False;
+            return value ? (uint)bool.True : (uint)bool.False;
         }
 
         [CLSCompliant(false)]
@@ -1375,7 +1375,7 @@ namespace System
 
         public static long ToInt64(bool value)
         {
-            return value ? Boolean.True : Boolean.False;
+            return value ? bool.True : bool.False;
         }
 
         public static long ToInt64(char value)
@@ -1483,7 +1483,7 @@ namespace System
         [CLSCompliant(false)]
         public static ulong ToUInt64(bool value)
         {
-            return value ? (ulong)Boolean.True : (ulong)Boolean.False;
+            return value ? (ulong)bool.True : (ulong)bool.False;
         }
 
         [CLSCompliant(false)]
@@ -1681,7 +1681,7 @@ namespace System
 
         public static float ToSingle(bool value)
         {
-            return value ? Boolean.True : Boolean.False;
+            return value ? bool.True : bool.False;
         }
 
         public static float ToSingle(DateTime value)
@@ -1785,7 +1785,7 @@ namespace System
 
         public static double ToDouble(bool value)
         {
-            return value ? Boolean.True : Boolean.False;
+            return value ? bool.True : bool.False;
         }
 
         public static double ToDouble(DateTime value)
@@ -1888,7 +1888,7 @@ namespace System
 
         public static decimal ToDecimal(bool value)
         {
-            return value ? Boolean.True : Boolean.False;
+            return value ? bool.True : bool.False;
         }
 
         public static decimal ToDecimal(DateTime value)

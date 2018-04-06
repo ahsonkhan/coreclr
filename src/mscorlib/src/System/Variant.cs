@@ -153,7 +153,7 @@ namespace System
         {
             m_objref = null;
             m_flags = CV_BOOLEAN;
-            m_data1 = (val) ? Boolean.True : Boolean.False;
+            m_data1 = (val) ? bool.True : bool.False;
             m_data2 = 0;
         }
 

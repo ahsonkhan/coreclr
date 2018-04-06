@@ -911,7 +911,7 @@ namespace System.Threading
         /// <param name="disposing">true to release both managed and unmanaged resources;
         /// false to release only unmanaged resources.</param>
         /// <remarks>
-        /// Unlike most of the members of <see cref="SemaphoreSlim"/>, <see cref="Dispose(Boolean)"/> is not
+        /// Unlike most of the members of <see cref="SemaphoreSlim"/>, <see cref="Dispose(bool)"/> is not
         /// thread-safe and may not be used concurrently with other members of this instance.
         /// </remarks>
         protected virtual void Dispose(bool disposing)
