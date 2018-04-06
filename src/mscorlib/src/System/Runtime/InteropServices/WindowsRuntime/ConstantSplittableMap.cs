@@ -208,7 +208,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
                 }
             }
 
-            Object IEnumerator.Current
+            object IEnumerator.Current
             {
                 get
                 {

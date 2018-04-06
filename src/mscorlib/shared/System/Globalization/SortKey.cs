@@ -133,7 +133,7 @@ namespace System.Globalization
         //  or not object refers to the same SortKey as the current instance.
         //
         ////////////////////////////////////////////////////////////////////////
-        public override bool Equals(Object value)
+        public override bool Equals(object value)
         {
             SortKey that = value as SortKey;
 

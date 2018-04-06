@@ -1159,7 +1159,7 @@ namespace System.Text
             _emitUTF32ByteOrderMark ? (_bigEndian ? s_bigEndianPreamble : s_littleEndianPreamble) :
             Array.Empty<byte>();
 
-        public override bool Equals(Object value)
+        public override bool Equals(object value)
         {
             UTF32Encoding that = value as UTF32Encoding;
             if (that != null)

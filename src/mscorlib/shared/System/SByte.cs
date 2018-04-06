@@ -29,7 +29,7 @@ namespace System
         // null is considered to be less than any instance.
         // If object is not of type SByte, this method throws an ArgumentException.
         // 
-        public int CompareTo(Object obj)
+        public int CompareTo(object obj)
         {
             if (obj == null)
             {
@@ -48,7 +48,7 @@ namespace System
         }
 
         // Determines whether two Byte objects are equal.
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is SByte))
             {
@@ -324,7 +324,7 @@ namespace System
             throw new InvalidCastException(SR.Format(SR.InvalidCast_FromTo, "SByte", "DateTime"));
         }
 
-        Object IConvertible.ToType(Type type, IFormatProvider provider)
+        object IConvertible.ToType(Type type, IFormatProvider provider)
         {
             return Convert.DefaultToType((IConvertible)this, type, provider);
         }

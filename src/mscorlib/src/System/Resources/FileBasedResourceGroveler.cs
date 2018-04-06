@@ -108,7 +108,7 @@ namespace System.Resources
             }
             else
             {
-                Object[] args = new Object[1];
+                object[] args = new object[1];
                 args[0] = file;
                 try
                 {

@@ -1191,7 +1191,7 @@ namespace System.Reflection.Emit
             // one of the types for which Console.WriteLine implements overloads. (e.g.
             // we do *not* call ToString on the locals.
 
-            Object cls;
+            object cls;
             if (m_methodBuilder == null)
             {
                 throw new ArgumentException(SR.InvalidOperation_BadILGeneratorUsage);
@@ -1223,7 +1223,7 @@ namespace System.Reflection.Emit
             // one of the types for which Console.WriteLine implements overloads. (e.g.
             // we do *not* call ToString on the fields.
 
-            Object cls;
+            object cls;
 
             if (fld == null)
             {

@@ -140,7 +140,7 @@ namespace System.Text
                 throw new ArgumentNullException(nameof(name));
             }
 
-            Object codePageObj;
+            object codePageObj;
 
             //
             // The name is case-insensitive, but ToLower isn't free.  Check for

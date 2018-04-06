@@ -11,7 +11,7 @@ namespace System
     {
         private DaylightTime GetCachedDaylightChanges(int year)
         {
-            Object objYear = (Object)year;
+            object objYear = (object)year;
 
             if (!m_CachedDaylightChanges.Contains(objYear))
             {

@@ -164,7 +164,7 @@ namespace System.Reflection
 
 
         // Make a copy of this assembly name.
-        public Object Clone()
+        public object Clone()
         {
             AssemblyName name = new AssemblyName();
             name.Init(_Name,
@@ -299,7 +299,7 @@ namespace System.Reflection
             throw new PlatformNotSupportedException();
         }
 
-        public void OnDeserialization(Object sender)
+        public void OnDeserialization(object sender)
         {
             throw new PlatformNotSupportedException();
         }

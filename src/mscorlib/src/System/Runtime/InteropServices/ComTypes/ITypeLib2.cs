@@ -33,7 +33,7 @@ namespace System.Runtime.InteropServices.ComTypes
         new void FindName([MarshalAs(UnmanagedType.LPWStr)] String szNameBuf, int lHashVal, [MarshalAs(UnmanagedType.LPArray), Out] ITypeInfo[] ppTInfo, [MarshalAs(UnmanagedType.LPArray), Out] int[] rgMemId, ref Int16 pcFound);
         [PreserveSig]
         new void ReleaseTLibAttr(IntPtr pTLibAttr);
-        void GetCustData(ref Guid guid, out Object pVarVal);
+        void GetCustData(ref Guid guid, out object pVarVal);
         [LCIDConversionAttribute(1)]
         void GetDocumentation2(int index, out String pbstrHelpString, out int pdwHelpStringContext, out String pbstrHelpStringDll);
         void GetLibStatistics(IntPtr pcUniqueNames, out int pcchUniqueNames);

@@ -386,13 +386,13 @@ namespace System.Globalization
             provider.GetFormat(typeof(DateTimeFormatInfo)) is DateTimeFormatInfo info2 ? info2 :
             CurrentInfo; // Couldn't get anything, just use currentInfo as fallback
 
-        public Object GetFormat(Type formatType)
+        public object GetFormat(Type formatType)
         {
             return (formatType == typeof(DateTimeFormatInfo) ? this : null);
         }
 
 
-        public Object Clone()
+        public object Clone()
         {
             DateTimeFormatInfo n = (DateTimeFormatInfo)MemberwiseClone();
             // We can use the data member calendar in the setter, instead of the property Calendar,

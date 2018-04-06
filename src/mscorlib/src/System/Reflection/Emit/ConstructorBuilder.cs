@@ -95,7 +95,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region MethodBase Overrides
-        public override Object Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+        public override object Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
         {
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
         }
@@ -124,7 +124,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region ConstructorInfo Overrides
-        public override Object Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+        public override object Invoke(BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
         {
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
         }
@@ -132,12 +132,12 @@ namespace System.Reflection.Emit
         #endregion
 
         #region ICustomAttributeProvider Implementation
-        public override Object[] GetCustomAttributes(bool inherit)
+        public override object[] GetCustomAttributes(bool inherit)
         {
             return m_methodBuilder.GetCustomAttributes(inherit);
         }
 
-        public override Object[] GetCustomAttributes(Type attributeType, bool inherit)
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
         {
             return m_methodBuilder.GetCustomAttributes(attributeType, inherit);
         }

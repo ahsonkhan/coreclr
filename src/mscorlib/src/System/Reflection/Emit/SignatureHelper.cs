@@ -821,7 +821,7 @@ namespace System.Reflection.Emit
             AddElementType(CorElementType.Sentinel);
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is SignatureHelper))
             {

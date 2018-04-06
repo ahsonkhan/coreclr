@@ -264,13 +264,13 @@ namespace System.IO
             return new ManualResetEvent(false);
         }
 
-        public virtual IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+        public virtual IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
         {
             return BeginReadInternal(buffer, offset, count, callback, state, serializeAsynchronously: false, apm: true);
         }
 
         internal IAsyncResult BeginReadInternal(
-            byte[] buffer, int offset, int count, AsyncCallback callback, Object state,
+            byte[] buffer, int offset, int count, AsyncCallback callback, object state,
             bool serializeAsynchronously, bool apm)
         {
             if (!CanRead) throw Error.GetReadNotSupported();
@@ -429,13 +429,13 @@ namespace System.IO
 
 
 
-        public virtual IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+        public virtual IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
         {
             return BeginWriteInternal(buffer, offset, count, callback, state, serializeAsynchronously: false, apm: true);
         }
 
         internal IAsyncResult BeginWriteInternal(
-            byte[] buffer, int offset, int count, AsyncCallback callback, Object state,
+            byte[] buffer, int offset, int count, AsyncCallback callback, object state,
             bool serializeAsynchronously, bool apm)
         {
             if (!CanWrite) throw Error.GetWriteNotSupported();
@@ -809,7 +809,7 @@ namespace System.IO
         {
         }
 
-        internal IAsyncResult BlockingBeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+        internal IAsyncResult BlockingBeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
         {
             // To avoid a race with a stream's position pointer & generating conditions
             // with internal buffer indexes in our own streams that 
@@ -841,7 +841,7 @@ namespace System.IO
             return SynchronousAsyncResult.EndRead(asyncResult);
         }
 
-        internal IAsyncResult BlockingBeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+        internal IAsyncResult BlockingBeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
         {
             // To avoid a race condition with a stream's position pointer & generating conditions 
             // with internal buffer indexes in our own streams that 
@@ -937,7 +937,7 @@ namespace System.IO
                     Task.CompletedTask;
             }
 
-            public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+            public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
             {
                 if (!CanRead) throw Error.GetReadNotSupported();
 
@@ -952,7 +952,7 @@ namespace System.IO
                 return BlockingEndRead(asyncResult);
             }
 
-            public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+            public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
             {
                 if (!CanWrite) throw Error.GetWriteNotSupported();
 
@@ -1032,7 +1032,7 @@ namespace System.IO
         /// <summary>Used as the IAsyncResult object when using asynchronous IO methods on the base Stream class.</summary>
         internal sealed class SynchronousAsyncResult : IAsyncResult
         {
-            private readonly Object _stateObject;
+            private readonly object _stateObject;
             private readonly bool _isWrite;
             private ManualResetEvent _waitHandle;
             private ExceptionDispatchInfo _exceptionInfo;
@@ -1040,20 +1040,20 @@ namespace System.IO
             private bool _endXxxCalled;
             private Int32 _bytesRead;
 
-            internal SynchronousAsyncResult(Int32 bytesRead, Object asyncStateObject)
+            internal SynchronousAsyncResult(Int32 bytesRead, object asyncStateObject)
             {
                 _bytesRead = bytesRead;
                 _stateObject = asyncStateObject;
                 //_isWrite = false;
             }
 
-            internal SynchronousAsyncResult(Object asyncStateObject)
+            internal SynchronousAsyncResult(object asyncStateObject)
             {
                 _stateObject = asyncStateObject;
                 _isWrite = true;
             }
 
-            internal SynchronousAsyncResult(Exception ex, Object asyncStateObject, bool isWrite)
+            internal SynchronousAsyncResult(Exception ex, object asyncStateObject, bool isWrite)
             {
                 _exceptionInfo = ExceptionDispatchInfo.Capture(ex);
                 _stateObject = asyncStateObject;
@@ -1074,7 +1074,7 @@ namespace System.IO
                 }
             }
 
-            public Object AsyncState
+            public object AsyncState
             {
                 get { return _stateObject; }
             }
@@ -1268,7 +1268,7 @@ namespace System.IO
                     return _stream.ReadByte();
             }
 
-            public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+            public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
             {
                 bool overridesBeginRead = _stream.HasOverriddenBeginEndRead();
 
@@ -1325,7 +1325,7 @@ namespace System.IO
                     _stream.WriteByte(b);
             }
 
-            public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, Object state)
+            public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
             {
                 bool overridesBeginWrite = _stream.HasOverriddenBeginEndWrite();
 

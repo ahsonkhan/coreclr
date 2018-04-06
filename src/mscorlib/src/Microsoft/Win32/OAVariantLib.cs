@@ -52,7 +52,7 @@ namespace Microsoft.Win32
             typeof(void),
             typeof(DateTime),
             typeof(TimeSpan),
-            typeof(Object),
+            typeof(object),
             typeof(Decimal),
             null,  // Enums - what do we do here?
             typeof(Missing),
@@ -100,7 +100,7 @@ namespace Microsoft.Win32
         private static int GetCVTypeFromClass(Type ctype)
         {
             Debug.Assert(ctype != null);
-            Debug.Assert(ClassTypes[CV_OBJECT] == typeof(Object), "OAVariantLib::ClassTypes[CV_OBJECT] == Object.class");
+            Debug.Assert(ClassTypes[CV_OBJECT] == typeof(object), "OAVariantLib::ClassTypes[CV_OBJECT] == Object.class");
 
             int cvtype = -1;
             for (int i = 0; i < ClassTypes.Length; i++)

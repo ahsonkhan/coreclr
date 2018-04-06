@@ -24,7 +24,7 @@ namespace System.Runtime.Serialization
         {
         }
 
-        public Object Convert(Object value, Type type)
+        public object Convert(object value, Type type)
         {
             if (value == null)
             {
@@ -33,7 +33,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ChangeType(value, type, CultureInfo.InvariantCulture);
         }
 
-        public Object Convert(Object value, TypeCode typeCode)
+        public object Convert(object value, TypeCode typeCode)
         {
             if (value == null)
             {
@@ -42,7 +42,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ChangeType(value, typeCode, CultureInfo.InvariantCulture);
         }
 
-        public bool ToBoolean(Object value)
+        public bool ToBoolean(object value)
         {
             if (value == null)
             {
@@ -51,7 +51,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToBoolean(value, CultureInfo.InvariantCulture);
         }
 
-        public char ToChar(Object value)
+        public char ToChar(object value)
         {
             if (value == null)
             {
@@ -61,7 +61,7 @@ namespace System.Runtime.Serialization
         }
 
         [CLSCompliant(false)]
-        public sbyte ToSByte(Object value)
+        public sbyte ToSByte(object value)
         {
             if (value == null)
             {
@@ -70,7 +70,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToSByte(value, CultureInfo.InvariantCulture);
         }
 
-        public byte ToByte(Object value)
+        public byte ToByte(object value)
         {
             if (value == null)
             {
@@ -79,7 +79,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToByte(value, CultureInfo.InvariantCulture);
         }
 
-        public short ToInt16(Object value)
+        public short ToInt16(object value)
         {
             if (value == null)
             {
@@ -89,7 +89,7 @@ namespace System.Runtime.Serialization
         }
 
         [CLSCompliant(false)]
-        public ushort ToUInt16(Object value)
+        public ushort ToUInt16(object value)
         {
             if (value == null)
             {
@@ -98,7 +98,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToUInt16(value, CultureInfo.InvariantCulture);
         }
 
-        public int ToInt32(Object value)
+        public int ToInt32(object value)
         {
             if (value == null)
             {
@@ -108,7 +108,7 @@ namespace System.Runtime.Serialization
         }
 
         [CLSCompliant(false)]
-        public uint ToUInt32(Object value)
+        public uint ToUInt32(object value)
         {
             if (value == null)
             {
@@ -117,7 +117,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToUInt32(value, CultureInfo.InvariantCulture);
         }
 
-        public long ToInt64(Object value)
+        public long ToInt64(object value)
         {
             if (value == null)
             {
@@ -127,7 +127,7 @@ namespace System.Runtime.Serialization
         }
 
         [CLSCompliant(false)]
-        public ulong ToUInt64(Object value)
+        public ulong ToUInt64(object value)
         {
             if (value == null)
             {
@@ -136,7 +136,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToUInt64(value, CultureInfo.InvariantCulture);
         }
 
-        public float ToSingle(Object value)
+        public float ToSingle(object value)
         {
             if (value == null)
             {
@@ -145,7 +145,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToSingle(value, CultureInfo.InvariantCulture);
         }
 
-        public double ToDouble(Object value)
+        public double ToDouble(object value)
         {
             if (value == null)
             {
@@ -154,7 +154,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToDouble(value, CultureInfo.InvariantCulture);
         }
 
-        public Decimal ToDecimal(Object value)
+        public Decimal ToDecimal(object value)
         {
             if (value == null)
             {
@@ -163,7 +163,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToDecimal(value, CultureInfo.InvariantCulture);
         }
 
-        public DateTime ToDateTime(Object value)
+        public DateTime ToDateTime(object value)
         {
             if (value == null)
             {
@@ -172,7 +172,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToDateTime(value, CultureInfo.InvariantCulture);
         }
 
-        public String ToString(Object value)
+        public String ToString(object value)
         {
             if (value == null)
             {

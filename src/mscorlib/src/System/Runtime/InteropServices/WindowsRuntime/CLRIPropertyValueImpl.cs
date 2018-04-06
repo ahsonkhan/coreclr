@@ -14,12 +14,12 @@ namespace System.Runtime.InteropServices.WindowsRuntime
     internal class CLRIPropertyValueImpl : IPropertyValue
     {
         private PropertyType _type;
-        private Object _data;
+        private object _data;
 
         // Numeric scalar types which participate in coersion
         private static volatile Tuple<Type, PropertyType>[] s_numericScalarTypes;
 
-        internal CLRIPropertyValueImpl(PropertyType type, Object data)
+        internal CLRIPropertyValueImpl(PropertyType type, object data)
         {
             _type = type;
             _data = data;
@@ -248,11 +248,11 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             return CoerceArrayValue<String>(PropertyType.StringArray);
         }
 
-        public Object[] GetInspectableArray()
+        public object[] GetInspectableArray()
         {
             if (this.Type != PropertyType.InspectableArray)
                 throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Inspectable[]"), HResults.TYPE_E_TYPEMISMATCH);
-            return (Object[])_data;
+            return (object[])_data;
         }
 
         public Guid[] GetGuidArray()

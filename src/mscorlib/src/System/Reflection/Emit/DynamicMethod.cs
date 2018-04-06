@@ -241,7 +241,7 @@ namespace System.Reflection.Emit
                     return s_anonymouslyHostedDynamicMethodsModule;
 
                 ConstructorInfo transparencyCtor = typeof(SecurityTransparentAttribute).GetConstructor(Type.EmptyTypes);
-                CustomAttributeBuilder transparencyAttribute = new CustomAttributeBuilder(transparencyCtor, Array.Empty<Object>());
+                CustomAttributeBuilder transparencyAttribute = new CustomAttributeBuilder(transparencyCtor, Array.Empty<object>());
                 List<CustomAttributeBuilder> assemblyAttributes = new List<CustomAttributeBuilder>();
                 assemblyAttributes.Add(transparencyAttribute);
 
@@ -365,7 +365,7 @@ namespace System.Reflection.Emit
             return d;
         }
 
-        public sealed override Delegate CreateDelegate(Type delegateType, Object target)
+        public sealed override Delegate CreateDelegate(Type delegateType, object target)
         {
             if (m_restrictedSkipVisibility)
             {
@@ -455,7 +455,7 @@ namespace System.Reflection.Emit
             get { return false; }
         }
 
-        public override Object Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+        public override object Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
         {
             if ((CallingConvention & CallingConventions.VarArgs) == CallingConventions.VarArgs)
                 throw new NotSupportedException(SR.NotSupported_CallToVarArg);
@@ -482,10 +482,10 @@ namespace System.Reflection.Emit
 
             // if we are here we passed all the previous checks. Time to look at the arguments
             bool wrapExceptions = (invokeAttr & BindingFlags.DoNotWrapExceptions) == 0;
-            Object retValue = null;
+            object retValue = null;
             if (actualCount > 0)
             {
-                Object[] arguments = CheckArguments(parameters, binder, invokeAttr, culture, sig);
+                object[] arguments = CheckArguments(parameters, binder, invokeAttr, culture, sig);
                 retValue = RuntimeMethodHandle.InvokeMethod(null, arguments, sig, false, wrapExceptions);
                 // copy out. This should be made only if ByRef are present.
                 for (int index = 0; index < arguments.Length; index++)
@@ -500,12 +500,12 @@ namespace System.Reflection.Emit
             return retValue;
         }
 
-        public override Object[] GetCustomAttributes(Type attributeType, bool inherit)
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
         {
             return m_dynMethod.GetCustomAttributes(attributeType, inherit);
         }
 
-        public override Object[] GetCustomAttributes(bool inherit) { return m_dynMethod.GetCustomAttributes(inherit); }
+        public override object[] GetCustomAttributes(bool inherit) { return m_dynMethod.GetCustomAttributes(inherit); }
 
         public override bool IsDefined(Type attributeType, bool inherit) { return m_dynMethod.IsDefined(attributeType, inherit); }
 
@@ -650,7 +650,7 @@ namespace System.Reflection.Emit
                 return MethodImplAttributes.IL | MethodImplAttributes.NoInlining;
             }
 
-            public override Object Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+            public override object Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
             {
                 // We want the creator of the DynamicMethod to control who has access to the
                 // DynamicMethod (just like we do for delegates). However, a user can get to
@@ -661,21 +661,21 @@ namespace System.Reflection.Emit
                 throw new ArgumentException(SR.Argument_MustBeRuntimeMethodInfo, "this");
             }
 
-            public override Object[] GetCustomAttributes(Type attributeType, bool inherit)
+            public override object[] GetCustomAttributes(Type attributeType, bool inherit)
             {
                 if (attributeType == null)
                     throw new ArgumentNullException(nameof(attributeType));
 
                 if (attributeType.IsAssignableFrom(typeof(MethodImplAttribute)))
-                    return new Object[] { new MethodImplAttribute((MethodImplOptions)GetMethodImplementationFlags()) };
+                    return new object[] { new MethodImplAttribute((MethodImplOptions)GetMethodImplementationFlags()) };
                 else
-                    return Array.Empty<Object>();
+                    return Array.Empty<object>();
             }
 
-            public override Object[] GetCustomAttributes(bool inherit)
+            public override object[] GetCustomAttributes(bool inherit)
             {
                 // support for MethodImplAttribute PCA
-                return new Object[] { new MethodImplAttribute((MethodImplOptions)GetMethodImplementationFlags()) };
+                return new object[] { new MethodImplAttribute((MethodImplOptions)GetMethodImplementationFlags()) };
             }
 
             public override bool IsDefined(Type attributeType, bool inherit)
@@ -753,14 +753,14 @@ namespace System.Reflection.Emit
             {
                 internal EmptyCAHolder() { }
 
-                Object[] ICustomAttributeProvider.GetCustomAttributes(Type attributeType, bool inherit)
+                object[] ICustomAttributeProvider.GetCustomAttributes(Type attributeType, bool inherit)
                 {
-                    return Array.Empty<Object>();
+                    return Array.Empty<object>();
                 }
 
-                Object[] ICustomAttributeProvider.GetCustomAttributes(bool inherit)
+                object[] ICustomAttributeProvider.GetCustomAttributes(bool inherit)
                 {
-                    return Array.Empty<Object>();
+                    return Array.Empty<object>();
                 }
 
                 bool ICustomAttributeProvider.IsDefined(Type attributeType, bool inherit)

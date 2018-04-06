@@ -412,7 +412,7 @@ namespace System.Runtime.Loader
         private static volatile AssemblyLoadContext s_DefaultAssemblyLoadContext;
 
         // Synchronization primitive for controlling initialization of Default load context
-        private static readonly object s_initLock = new Object();
+        private static readonly object s_initLock = new object();
 
         // Occurs when an Assembly is loaded
         public static event AssemblyLoadEventHandler AssemblyLoad

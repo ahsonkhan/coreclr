@@ -31,7 +31,7 @@ namespace System.Runtime.Serialization
         // Even though we have a dictionary, we're still keeping all the arrays around for back-compat. 
         // Otherwise we may run into potentially breaking behaviors like GetEnumerator() not returning entries in the same order they were added.
         internal String[] m_members;
-        internal Object[] m_data;
+        internal object[] m_data;
         internal Type[] m_types;
         private Dictionary<string, int> m_nameToIndex;
         internal int m_currMember;
@@ -68,7 +68,7 @@ namespace System.Runtime.Serialization
             m_assemName = type.Module.Assembly.FullName;
 
             m_members = new String[defaultSize];
-            m_data = new Object[defaultSize];
+            m_data = new object[defaultSize];
             m_types = new Type[defaultSize];
 
             m_nameToIndex = new Dictionary<string, int>();
@@ -202,7 +202,7 @@ namespace System.Runtime.Serialization
             // Allocate more space and copy the data
             //
             String[] newMembers = new String[newSize];
-            Object[] newData = new Object[newSize];
+            object[] newData = new object[newSize];
             Type[] newTypes = new Type[newSize];
 
             Array.Copy(m_members, newMembers, m_currMember);
@@ -217,7 +217,7 @@ namespace System.Runtime.Serialization
             m_types = newTypes;
         }
 
-        public void AddValue(String name, Object value, Type type)
+        public void AddValue(String name, object value, Type type)
         {
             if (null == name)
             {
@@ -232,11 +232,11 @@ namespace System.Runtime.Serialization
             AddValueInternal(name, value, type);
         }
 
-        public void AddValue(String name, Object value)
+        public void AddValue(String name, object value)
         {
             if (null == value)
             {
-                AddValue(name, value, typeof(Object));
+                AddValue(name, value, typeof(object));
             }
             else
             {
@@ -246,80 +246,80 @@ namespace System.Runtime.Serialization
 
         public void AddValue(String name, bool value)
         {
-            AddValue(name, (Object)value, typeof(bool));
+            AddValue(name, (object)value, typeof(bool));
         }
 
         public void AddValue(String name, char value)
         {
-            AddValue(name, (Object)value, typeof(char));
+            AddValue(name, (object)value, typeof(char));
         }
 
 
         [CLSCompliant(false)]
         public void AddValue(String name, sbyte value)
         {
-            AddValue(name, (Object)value, typeof(sbyte));
+            AddValue(name, (object)value, typeof(sbyte));
         }
 
         public void AddValue(String name, byte value)
         {
-            AddValue(name, (Object)value, typeof(byte));
+            AddValue(name, (object)value, typeof(byte));
         }
 
         public void AddValue(String name, short value)
         {
-            AddValue(name, (Object)value, typeof(short));
+            AddValue(name, (object)value, typeof(short));
         }
 
         [CLSCompliant(false)]
         public void AddValue(String name, ushort value)
         {
-            AddValue(name, (Object)value, typeof(ushort));
+            AddValue(name, (object)value, typeof(ushort));
         }
 
         public void AddValue(String name, int value)
         {
-            AddValue(name, (Object)value, typeof(int));
+            AddValue(name, (object)value, typeof(int));
         }
 
         [CLSCompliant(false)]
         public void AddValue(String name, uint value)
         {
-            AddValue(name, (Object)value, typeof(uint));
+            AddValue(name, (object)value, typeof(uint));
         }
 
         public void AddValue(String name, long value)
         {
-            AddValue(name, (Object)value, typeof(long));
+            AddValue(name, (object)value, typeof(long));
         }
 
         [CLSCompliant(false)]
         public void AddValue(String name, ulong value)
         {
-            AddValue(name, (Object)value, typeof(ulong));
+            AddValue(name, (object)value, typeof(ulong));
         }
 
         public void AddValue(String name, float value)
         {
-            AddValue(name, (Object)value, typeof(float));
+            AddValue(name, (object)value, typeof(float));
         }
 
         public void AddValue(String name, double value)
         {
-            AddValue(name, (Object)value, typeof(double));
+            AddValue(name, (object)value, typeof(double));
         }
 
         public void AddValue(String name, decimal value)
         {
-            AddValue(name, (Object)value, typeof(decimal));
+            AddValue(name, (object)value, typeof(decimal));
         }
 
         public void AddValue(String name, DateTime value)
         {
-            AddValue(name, (Object)value, typeof(DateTime));
+            AddValue(name, (object)value, typeof(DateTime));
         }
 
-        internal void AddValueInternal(String name, Object value, Type type)
+        internal void AddValueInternal(String name, object value, Type type)
         {
             if (m_nameToIndex.ContainsKey(name))
             {
@@ -358,7 +358,7 @@ namespace System.Runtime.Serialization
         // This should not be used by clients: exposing out this functionality would allow children
         // to overwrite their parent's values. It is public in order to give corefx access to it for
         // its ObjectManager implementation, but it should not be exposed out of a contract.
-        public void UpdateValue(String name, Object value, Type type)
+        public void UpdateValue(String name, object value, Type type)
         {
             Debug.Assert(null != name, "[SerializationInfo.UpdateValue]name!=null");
             Debug.Assert(null != value, "[SerializationInfo.UpdateValue]value!=null");
@@ -400,7 +400,7 @@ namespace System.Runtime.Serialization
         **Exceptions: None.  FindElement does null checking and throws for elements not 
         **            found.
         ==============================================================================*/
-        private Object GetElement(String name, out Type foundType)
+        private object GetElement(String name, out Type foundType)
         {
             int index = FindElement(name);
             if (index == -1)
@@ -416,7 +416,7 @@ namespace System.Runtime.Serialization
             return m_data[index];
         }
 
-        private Object GetElementNoThrow(String name, out Type foundType)
+        private object GetElementNoThrow(String name, out Type foundType)
         {
             int index = FindElement(name);
             if (index == -1)
@@ -438,7 +438,7 @@ namespace System.Runtime.Serialization
         // form requested.  
         //
 
-        public Object GetValue(String name, Type type)
+        public object GetValue(String name, Type type)
         {
             if ((object)type == null)
             {
@@ -450,7 +450,7 @@ namespace System.Runtime.Serialization
                 throw new ArgumentException(SR.Argument_MustBeRuntimeType);
 
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
 
@@ -464,10 +464,10 @@ namespace System.Runtime.Serialization
             return m_converter.Convert(value, type);
         }
 
-        internal Object GetValueNoThrow(String name, Type type)
+        internal object GetValueNoThrow(String name, Type type)
         {
             Type foundType;
-            Object value;
+            object value;
 
             Debug.Assert((object)type != null, "[SerializationInfo.GetValue]type ==null");
             Debug.Assert(type is RuntimeType, "[SerializationInfo.GetValue]type is not a runtime type");
@@ -489,7 +489,7 @@ namespace System.Runtime.Serialization
         public bool GetBoolean(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(bool)))
@@ -502,7 +502,7 @@ namespace System.Runtime.Serialization
         public char GetChar(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(char)))
@@ -516,7 +516,7 @@ namespace System.Runtime.Serialization
         public sbyte GetSByte(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(sbyte)))
@@ -529,7 +529,7 @@ namespace System.Runtime.Serialization
         public byte GetByte(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(byte)))
@@ -542,7 +542,7 @@ namespace System.Runtime.Serialization
         public short GetInt16(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(short)))
@@ -556,7 +556,7 @@ namespace System.Runtime.Serialization
         public ushort GetUInt16(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(ushort)))
@@ -569,7 +569,7 @@ namespace System.Runtime.Serialization
         public int GetInt32(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(int)))
@@ -583,7 +583,7 @@ namespace System.Runtime.Serialization
         public uint GetUInt32(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(uint)))
@@ -596,7 +596,7 @@ namespace System.Runtime.Serialization
         public long GetInt64(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(long)))
@@ -610,7 +610,7 @@ namespace System.Runtime.Serialization
         public ulong GetUInt64(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(ulong)))
@@ -623,7 +623,7 @@ namespace System.Runtime.Serialization
         public float GetSingle(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(float)))
@@ -637,7 +637,7 @@ namespace System.Runtime.Serialization
         public double GetDouble(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(double)))
@@ -650,7 +650,7 @@ namespace System.Runtime.Serialization
         public decimal GetDecimal(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(decimal)))
@@ -663,7 +663,7 @@ namespace System.Runtime.Serialization
         public DateTime GetDateTime(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(DateTime)))
@@ -676,7 +676,7 @@ namespace System.Runtime.Serialization
         public String GetString(String name)
         {
             Type foundType;
-            Object value;
+            object value;
 
             value = GetElement(name, out foundType);
             if (Object.ReferenceEquals(foundType, typeof(String)) || value == null)

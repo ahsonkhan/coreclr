@@ -447,7 +447,7 @@ namespace System
         // argument must be another DateTimeOffset, or otherwise an exception
         // occurs.  Null is considered less than any instance.
         //
-        int IComparable.CompareTo(Object obj)
+        int IComparable.CompareTo(object obj)
         {
             if (obj == null) return 1;
             if (!(obj is DateTimeOffset))
@@ -477,7 +477,7 @@ namespace System
         // is equal to the value of this DateTimeOffset. Returns false
         // otherwise.
         //
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (obj is DateTimeOffset)
             {
@@ -549,7 +549,7 @@ namespace System
 
         // ----- SECTION: private serialization instance methods  ----------------*
 
-        void IDeserializationCallback.OnDeserialization(Object sender)
+        void IDeserializationCallback.OnDeserialization(object sender)
         {
             try
             {

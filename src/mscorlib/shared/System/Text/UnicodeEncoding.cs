@@ -1928,7 +1928,7 @@ namespace System.Text
         }
 
 
-        public override bool Equals(Object value)
+        public override bool Equals(object value)
         {
             UnicodeEncoding that = value as UnicodeEncoding;
             if (that != null)

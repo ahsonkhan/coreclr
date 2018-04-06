@@ -26,6 +26,6 @@ namespace System.Collections
         // Interfaces are not serializable
         // Returns a hash code for the given object.  
         // 
-        int GetHashCode(Object obj);
+        int GetHashCode(object obj);
     }
 }

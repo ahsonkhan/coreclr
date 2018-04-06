@@ -22,7 +22,7 @@ namespace System.Reflection.Emit
     public class ParameterBuilder
     {
         // Set the default value of the parameter
-        public virtual void SetConstant(Object defaultValue)
+        public virtual void SetConstant(object defaultValue)
         {
             TypeBuilder.SetConstantValue(
                 m_methodBuilder.GetModuleBuilder(),

@@ -4367,7 +4367,7 @@ namespace System.Diagnostics.Tracing
         /// <summary>
         /// Gets the payload for the event.
         /// </summary>
-        public ReadOnlyCollection<Object> Payload { get; internal set; }
+        public ReadOnlyCollection<object> Payload { get; internal set; }
 
         /// <summary>
         /// Gets the payload argument names.

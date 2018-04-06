@@ -28,36 +28,36 @@ namespace System.Reflection.Emit
     {
         // public constructor to form the custom attribute with constructor and constructor
         // parameters.
-        public CustomAttributeBuilder(ConstructorInfo con, Object[] constructorArgs)
+        public CustomAttributeBuilder(ConstructorInfo con, object[] constructorArgs)
         {
             InitCustomAttributeBuilder(con, constructorArgs,
-                                       new PropertyInfo[] { }, new Object[] { },
-                                       new FieldInfo[] { }, new Object[] { });
+                                       new PropertyInfo[] { }, new object[] { },
+                                       new FieldInfo[] { }, new object[] { });
         }
 
         // public constructor to form the custom attribute with constructor, constructor
         // parameters and named properties.
-        public CustomAttributeBuilder(ConstructorInfo con, Object[] constructorArgs,
-                                      PropertyInfo[] namedProperties, Object[] propertyValues)
+        public CustomAttributeBuilder(ConstructorInfo con, object[] constructorArgs,
+                                      PropertyInfo[] namedProperties, object[] propertyValues)
         {
             InitCustomAttributeBuilder(con, constructorArgs, namedProperties,
-                                       propertyValues, new FieldInfo[] { }, new Object[] { });
+                                       propertyValues, new FieldInfo[] { }, new object[] { });
         }
 
         // public constructor to form the custom attribute with constructor and constructor
         // parameters.
-        public CustomAttributeBuilder(ConstructorInfo con, Object[] constructorArgs,
-                                      FieldInfo[] namedFields, Object[] fieldValues)
+        public CustomAttributeBuilder(ConstructorInfo con, object[] constructorArgs,
+                                      FieldInfo[] namedFields, object[] fieldValues)
         {
             InitCustomAttributeBuilder(con, constructorArgs, new PropertyInfo[] { },
-                                       new Object[] { }, namedFields, fieldValues);
+                                       new object[] { }, namedFields, fieldValues);
         }
 
         // public constructor to form the custom attribute with constructor and constructor
         // parameters.
-        public CustomAttributeBuilder(ConstructorInfo con, Object[] constructorArgs,
-                                      PropertyInfo[] namedProperties, Object[] propertyValues,
-                                      FieldInfo[] namedFields, Object[] fieldValues)
+        public CustomAttributeBuilder(ConstructorInfo con, object[] constructorArgs,
+                                      PropertyInfo[] namedProperties, object[] propertyValues,
+                                      FieldInfo[] namedFields, object[] fieldValues)
         {
             InitCustomAttributeBuilder(con, constructorArgs, namedProperties,
                                        propertyValues, namedFields, fieldValues);
@@ -97,12 +97,12 @@ namespace System.Reflection.Emit
                     return false;
                 return ValidateType(t.GetElementType());
             }
-            return t == typeof(Object);
+            return t == typeof(object);
         }
 
-        internal void InitCustomAttributeBuilder(ConstructorInfo con, Object[] constructorArgs,
-                                                 PropertyInfo[] namedProperties, Object[] propertyValues,
-                                                 FieldInfo[] namedFields, Object[] fieldValues)
+        internal void InitCustomAttributeBuilder(ConstructorInfo con, object[] constructorArgs,
+                                                 PropertyInfo[] namedProperties, object[] propertyValues,
+                                                 FieldInfo[] namedFields, object[] fieldValues)
         {
             if (con == null)
                 throw new ArgumentNullException(nameof(con));
@@ -130,7 +130,7 @@ namespace System.Reflection.Emit
 
             // Cache information used elsewhere.
             m_con = con;
-            m_constructorArgs = new Object[constructorArgs.Length];
+            m_constructorArgs = new object[constructorArgs.Length];
             Array.Copy(constructorArgs, 0, m_constructorArgs, 0, constructorArgs.Length);
 
             Type[] paramTypes;
@@ -401,7 +401,7 @@ namespace System.Reflection.Emit
             writer.Write(utf8Str);
         }
 
-        private void EmitValue(BinaryWriter writer, Type type, Object value)
+        private void EmitValue(BinaryWriter writer, Type type, object value)
         {
             if (type.IsEnum)
             {
@@ -559,7 +559,7 @@ namespace System.Reflection.Emit
         }
 
         internal ConstructorInfo m_con;
-        internal Object[] m_constructorArgs;
+        internal object[] m_constructorArgs;
         internal byte[] m_blob;
     }
 }

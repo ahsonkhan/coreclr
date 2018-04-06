@@ -524,7 +524,7 @@ namespace System
         // occurs.  Null is considered less than any instance.
         //
         // Returns a value less than zero if this  object
-        public int CompareTo(Object value)
+        public int CompareTo(object value)
         {
             if (value == null) return 1;
             if (!(value is DateTime))
@@ -610,7 +610,7 @@ namespace System
         // is equal to the value of this DateTime. Returns false
         // otherwise.
         //
-        public override bool Equals(Object value)
+        public override bool Equals(object value)
         {
             if (value is DateTime)
             {
@@ -1544,7 +1544,7 @@ namespace System
             return this;
         }
 
-        Object IConvertible.ToType(Type type, IFormatProvider provider)
+        object IConvertible.ToType(Type type, IFormatProvider provider)
         {
             return Convert.DefaultToType((IConvertible)this, type, provider);
         }

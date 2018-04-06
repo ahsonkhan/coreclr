@@ -55,7 +55,7 @@ namespace System.Globalization
             {
                 try
                 {
-                    Object value = key.InternalGetValue(HijriAdvanceRegKeyEntry, null, false, false);
+                    object value = key.InternalGetValue(HijriAdvanceRegKeyEntry, null, false, false);
                     if (value == null)
                     {
                         return (0);

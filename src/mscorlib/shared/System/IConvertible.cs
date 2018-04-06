@@ -57,7 +57,7 @@ namespace System
         Decimal ToDecimal(IFormatProvider provider);
         DateTime ToDateTime(IFormatProvider provider);
         String ToString(IFormatProvider provider);
-        Object ToType(Type conversionType, IFormatProvider provider);
+        object ToType(Type conversionType, IFormatProvider provider);
     }
 }
 

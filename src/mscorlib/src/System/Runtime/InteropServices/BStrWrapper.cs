@@ -24,7 +24,7 @@ namespace System.Runtime.InteropServices
             m_WrappedObject = value;
         }
 
-        public BStrWrapper(Object value)
+        public BStrWrapper(object value)
         {
             m_WrappedObject = (String)value;
         }

@@ -447,7 +447,7 @@ namespace Microsoft.Win32
          *
          * @return the data associated with the value.
          */
-        public Object GetValue(String name)
+        public object GetValue(String name)
         {
             return InternalGetValue(name, null, false, true);
         }
@@ -465,12 +465,12 @@ namespace Microsoft.Win32
          *
          * @return the data associated with the value.
          */
-        public Object GetValue(String name, Object defaultValue)
+        public object GetValue(String name, object defaultValue)
         {
             return InternalGetValue(name, defaultValue, false, true);
         }
 
-        public Object GetValue(String name, Object defaultValue, RegistryValueOptions options)
+        public object GetValue(String name, object defaultValue, RegistryValueOptions options)
         {
             if (options < RegistryValueOptions.None || options > RegistryValueOptions.DoNotExpandEnvironmentNames)
             {
@@ -480,7 +480,7 @@ namespace Microsoft.Win32
             return InternalGetValue(name, defaultValue, doNotExpand, true);
         }
 
-        internal Object InternalGetValue(String name, Object defaultValue, bool doNotExpand, bool checkSecurity)
+        internal object InternalGetValue(String name, object defaultValue, bool doNotExpand, bool checkSecurity)
         {
             if (checkSecurity)
             {
@@ -488,7 +488,7 @@ namespace Microsoft.Win32
                 EnsureNotDisposed();
             }
 
-            Object data = defaultValue;
+            object data = defaultValue;
             int type = 0;
             int datasize = 0;
 
@@ -760,12 +760,12 @@ namespace Microsoft.Win32
          * @param name Name of value to store data in.
          * @param value Data to store.
          */
-        public void SetValue(String name, Object value)
+        public void SetValue(String name, object value)
         {
             SetValue(name, value, RegistryValueKind.Unknown);
         }
 
-        public unsafe void SetValue(String name, Object value, RegistryValueKind valueKind)
+        public unsafe void SetValue(String name, object value, RegistryValueKind valueKind)
         {
             if (value == null)
                 ThrowHelper.ThrowArgumentNullException(ExceptionArgument.value);
@@ -918,7 +918,7 @@ namespace Microsoft.Win32
                 Win32Error(ret, null);
         }
 
-        private RegistryValueKind CalculateValueKind(Object value)
+        private RegistryValueKind CalculateValueKind(object value)
         {
             // This logic matches what used to be in SetValue(string name, object value) in the v1.0 and v1.1 days.
             // Even though we could add detection for an int64 in here, we want to maintain compatibility with the

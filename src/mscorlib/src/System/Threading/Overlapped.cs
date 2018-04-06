@@ -71,7 +71,7 @@ namespace System.Threading
         }
         // Context callback: same sig for SendOrPostCallback and ContextCallback
         internal static ContextCallback _ccb = new ContextCallback(IOCompletionCallback_Context);
-        internal static void IOCompletionCallback_Context(Object state)
+        internal static void IOCompletionCallback_Context(object state)
         {
             _IOCompletionCallback helper = (_IOCompletionCallback)state;
             Debug.Assert(helper != null, "_IOCompletionCallback cannot be null");
@@ -127,7 +127,7 @@ namespace System.Threading
         internal IOCompletionCallback m_iocb;
         internal _IOCompletionCallback m_iocbHelper;
         internal Overlapped m_overlapped;
-        private Object m_userObject;
+        private object m_userObject;
         private IntPtr m_pinSelf;
         private IntPtr m_userObjectInternal;
         private int m_AppDomainId;
@@ -160,7 +160,7 @@ namespace System.Threading
             m_nativeOverlapped.InternalHigh = IntPtr.Zero;
         }
 
-        internal unsafe NativeOverlapped* Pack(IOCompletionCallback iocb, Object userData)
+        internal unsafe NativeOverlapped* Pack(IOCompletionCallback iocb, object userData)
         {
             if (m_pinSelf != IntPtr.Zero)
             {
@@ -181,7 +181,7 @@ namespace System.Threading
             m_userObject = userData;
             if (m_userObject != null)
             {
-                if (m_userObject.GetType() == typeof(Object[]))
+                if (m_userObject.GetType() == typeof(object[]))
                 {
                     m_isArray = 1;
                 }
@@ -193,7 +193,7 @@ namespace System.Threading
             return AllocateNativeOverlapped();
         }
 
-        internal unsafe NativeOverlapped* UnsafePack(IOCompletionCallback iocb, Object userData)
+        internal unsafe NativeOverlapped* UnsafePack(IOCompletionCallback iocb, object userData)
         {
             if (m_pinSelf != IntPtr.Zero)
             {
@@ -202,7 +202,7 @@ namespace System.Threading
             m_userObject = userData;
             if (m_userObject != null)
             {
-                if (m_userObject.GetType() == typeof(Object[]))
+                if (m_userObject.GetType() == typeof(object[]))
                 {
                     m_isArray = 1;
                 }
@@ -320,7 +320,7 @@ namespace System.Threading
         }
 
         [CLSCompliant(false)]
-        public unsafe NativeOverlapped* Pack(IOCompletionCallback iocb, Object userData)
+        public unsafe NativeOverlapped* Pack(IOCompletionCallback iocb, object userData)
         {
             return m_overlappedData.Pack(iocb, userData);
         }
@@ -333,7 +333,7 @@ namespace System.Threading
         }
 
         [CLSCompliant(false)]
-        public unsafe NativeOverlapped* UnsafePack(IOCompletionCallback iocb, Object userData)
+        public unsafe NativeOverlapped* UnsafePack(IOCompletionCallback iocb, object userData)
         {
             return m_overlappedData.UnsafePack(iocb, userData);
         }

@@ -112,7 +112,7 @@ namespace System
         }
 
         // Determines whether two Boolean objects are equal.
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             //If it's not a boolean, we're definitely not equal
             if (!(obj is Boolean))
@@ -136,7 +136,7 @@ namespace System
         // 
         // Returns a value less than zero if this  object
         // 
-        public int CompareTo(Object obj)
+        public int CompareTo(object obj)
         {
             if (obj == null)
             {
@@ -341,7 +341,7 @@ namespace System
             throw new InvalidCastException(SR.Format(SR.InvalidCast_FromTo, "Boolean", "DateTime"));
         }
 
-        Object IConvertible.ToType(Type type, IFormatProvider provider)
+        object IConvertible.ToType(Type type, IFormatProvider provider)
         {
             return Convert.DefaultToType((IConvertible)this, type, provider);
         }

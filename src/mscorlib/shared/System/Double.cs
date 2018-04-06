@@ -123,7 +123,7 @@ namespace System
         //
         // Returns a value less than zero if this  object
         //
-        public int CompareTo(Object value)
+        public int CompareTo(object value)
         {
             if (value == null)
             {
@@ -160,7 +160,7 @@ namespace System
 
         // True if obj is another Double with the same value as the current instance.  This is
         // a method of object equality, that only returns true if obj is also a double.
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is Double))
             {
@@ -445,7 +445,7 @@ namespace System
             throw new InvalidCastException(SR.Format(SR.InvalidCast_FromTo, "Double", "DateTime"));
         }
 
-        Object IConvertible.ToType(Type type, IFormatProvider provider)
+        object IConvertible.ToType(Type type, IFormatProvider provider)
         {
             return Convert.DefaultToType((IConvertible)this, type, provider);
         }

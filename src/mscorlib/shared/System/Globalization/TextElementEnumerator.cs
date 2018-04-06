@@ -61,7 +61,7 @@ namespace System.Globalization
         // Get the current text element.
         //
 
-        public Object Current
+        public object Current
         {
             get
             {

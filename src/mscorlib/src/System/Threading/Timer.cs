@@ -17,7 +17,7 @@ using Internal.Runtime.Augments;
 
 namespace System.Threading
 {
-    public delegate void TimerCallback(Object state);
+    public delegate void TimerCallback(object state);
 
     //
     // TimerQueue maintains a list of active timers in this AppDomain.  We use a single native timer, supplied by the VM,
@@ -424,7 +424,7 @@ namespace System.Threading
         // Info about the user's callback
         //
         private readonly TimerCallback m_timerCallback;
-        private readonly Object m_state;
+        private readonly object m_state;
         private readonly ExecutionContext m_executionContext;
 
 
@@ -675,7 +675,7 @@ namespace System.Threading
         private TimerHolder m_timer;
 
         public Timer(TimerCallback callback,
-                     Object state,
+                     object state,
                      int dueTime,
                      int period)
         {
@@ -688,7 +688,7 @@ namespace System.Threading
         }
 
         public Timer(TimerCallback callback,
-                     Object state,
+                     object state,
                      TimeSpan dueTime,
                      TimeSpan period)
         {
@@ -709,7 +709,7 @@ namespace System.Threading
 
         [CLSCompliant(false)]
         public Timer(TimerCallback callback,
-                     Object state,
+                     object state,
                      UInt32 dueTime,
                      UInt32 period)
         {
@@ -717,7 +717,7 @@ namespace System.Threading
         }
 
         public Timer(TimerCallback callback,
-                     Object state,
+                     object state,
                      long dueTime,
                      long period)
         {
@@ -743,7 +743,7 @@ namespace System.Threading
         }
 
         private void TimerSetup(TimerCallback callback,
-                                Object state,
+                                object state,
                                 UInt32 dueTime,
                                 UInt32 period)
         {

@@ -103,7 +103,7 @@ namespace System
         //will give you the type of an Int16.
         internal static readonly Type[] ConvertTypes = {
             typeof(System.Empty),
-            typeof(Object),
+            typeof(object),
             typeof(System.DBNull),
             typeof(Boolean),
             typeof(Char),
@@ -119,7 +119,7 @@ namespace System
             typeof(Double),
             typeof(Decimal),
             typeof(DateTime),
-            typeof(Object), //TypeCode is discontinuous so we need a placeholder.
+            typeof(object), //TypeCode is discontinuous so we need a placeholder.
             typeof(String)
         };
 
@@ -150,7 +150,7 @@ namespace System
         }
 #endif
 
-        public static readonly Object DBNull = System.DBNull.Value;
+        public static readonly object DBNull = System.DBNull.Value;
 
         // Returns the type code for the given object. If the argument is null,
         // the result is TypeCode.Empty. If the argument is not a value (i.e. if
@@ -189,12 +189,12 @@ namespace System
         // object already has the given type code, in which case the object is
         // simply returned. Otherwise, the appropriate ToXXX() is invoked on the
         // object's implementation of IConvertible.
-        public static Object ChangeType(Object value, TypeCode typeCode)
+        public static object ChangeType(object value, TypeCode typeCode)
         {
             return ChangeType(value, typeCode, CultureInfo.CurrentCulture);
         }
 
-        public static Object ChangeType(Object value, TypeCode typeCode, IFormatProvider provider)
+        public static object ChangeType(object value, TypeCode typeCode, IFormatProvider provider)
         {
             if (value == null && (typeCode == TypeCode.Empty || typeCode == TypeCode.String || typeCode == TypeCode.Object))
             {
@@ -253,7 +253,7 @@ namespace System
             }
         }
 
-        internal static Object DefaultToType(IConvertible value, Type targetType, IFormatProvider provider)
+        internal static object DefaultToType(IConvertible value, Type targetType, IFormatProvider provider)
         {
             Debug.Assert(value != null, "[Convert.DefaultToType]value!=null");
             if (targetType == null)
@@ -297,7 +297,7 @@ namespace System
             if (ReferenceEquals(targetType, ConvertTypes[(int)TypeCode.String]))
                 return value.ToString(provider);
             if (ReferenceEquals(targetType, ConvertTypes[(int)TypeCode.Object]))
-                return (Object)value;
+                return (object)value;
             //  Need to special case Enum because typecode will be underlying type, e.g. Int32
             if (ReferenceEquals(targetType, EnumType))
                 return (Enum)value;
@@ -309,12 +309,12 @@ namespace System
             throw new InvalidCastException(string.Format(SR.InvalidCast_FromTo, value.GetType().FullName, targetType.FullName));
         }
 
-        public static Object ChangeType(Object value, Type conversionType)
+        public static object ChangeType(object value, Type conversionType)
         {
             return ChangeType(value, conversionType, CultureInfo.CurrentCulture);
         }
 
-        public static Object ChangeType(Object value, Type conversionType, IFormatProvider provider)
+        public static object ChangeType(object value, Type conversionType, IFormatProvider provider)
         {
             if (ReferenceEquals(conversionType, null))
             {
@@ -371,7 +371,7 @@ namespace System
             if (ReferenceEquals(conversionType, ConvertTypes[(int)TypeCode.String]))
                 return ic.ToString(provider);
             if (ReferenceEquals(conversionType, ConvertTypes[(int)TypeCode.Object]))
-                return (Object)value;
+                return (object)value;
 
             return ic.ToType(conversionType, provider);
         }
@@ -404,12 +404,12 @@ namespace System
         private static void ThrowUInt64OverflowException() { throw new OverflowException(SR.Overflow_UInt64); }
 
         // Conversions to Boolean
-        public static bool ToBoolean(Object value)
+        public static bool ToBoolean(object value)
         {
             return value == null ? false : ((IConvertible)value).ToBoolean(null);
         }
 
-        public static bool ToBoolean(Object value, IFormatProvider provider)
+        public static bool ToBoolean(object value, IFormatProvider provider)
         {
             return value == null ? false : ((IConvertible)value).ToBoolean(provider);
         }
@@ -2004,12 +2004,12 @@ namespace System
 
         // Conversions to String
 
-        public static string ToString(Object value)
+        public static string ToString(object value)
         {
             return ToString(value, null);
         }
 
-        public static string ToString(Object value, IFormatProvider provider)
+        public static string ToString(object value, IFormatProvider provider)
         {
             IConvertible ic = value as IConvertible;
             if (ic != null)

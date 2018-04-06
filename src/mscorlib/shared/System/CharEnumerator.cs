@@ -54,7 +54,7 @@ namespace System
             _str = null;
         }
 
-        Object IEnumerator.Current
+        object IEnumerator.Current
         {
             get { return Current; }
         }

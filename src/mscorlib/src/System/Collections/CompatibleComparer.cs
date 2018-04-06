@@ -20,7 +20,7 @@ namespace System.Collections
         }
 #pragma warning restore 618
 
-        public int Compare(Object a, Object b)
+        public int Compare(object a, object b)
         {
             if (a == b) return 0;
             if (a == null) return -1;
@@ -34,12 +34,12 @@ namespace System.Collections
             throw new ArgumentException(SR.Argument_ImplementIComparable);
         }
 
-        public new bool Equals(Object a, Object b)
+        public new bool Equals(object a, object b)
         {
             return Compare(a, b) == 0;
         }
 
-        public int GetHashCode(Object obj)
+        public int GetHashCode(object obj)
         {
             if (obj == null)
             {

@@ -292,7 +292,7 @@ namespace System.Resources
             // This isn't for security reasons, but to ensure we can make
             // breaking changes to mscorlib's internal resources without 
             // assuming users may have taken a dependency on them.
-            if (assembly == typeof(Object).Assembly && _callingAssembly != assembly)
+            if (assembly == typeof(object).Assembly && _callingAssembly != assembly)
             {
                 _callingAssembly = null;
             }
@@ -322,7 +322,7 @@ namespace System.Resources
             // This isn't for security reasons, but to ensure we can make
             // breaking changes to mscorlib's internal resources without 
             // assuming users may have taken a dependency on them.
-            if (assembly == typeof(Object).Assembly && _callingAssembly != assembly)
+            if (assembly == typeof(object).Assembly && _callingAssembly != assembly)
                 _callingAssembly = null;
         }
 
@@ -345,7 +345,7 @@ namespace System.Resources
 
             _callingAssembly = (RuntimeAssembly)Assembly.GetCallingAssembly();
             // Special case for mscorlib - protect mscorlib's private resources.
-            if (MainAssembly == typeof(Object).Assembly && _callingAssembly != MainAssembly)
+            if (MainAssembly == typeof(object).Assembly && _callingAssembly != MainAssembly)
             {
                 _callingAssembly = null;
             }
@@ -797,7 +797,7 @@ namespace System.Resources
         //       contains the PRI resources.
         private bool ShouldUseSatelliteAssemblyResourceLookupUnderAppX(RuntimeAssembly resourcesAssembly)
         {
-            bool fUseSatelliteAssemblyResourceLookupUnderAppX = typeof(Object).Assembly == resourcesAssembly;
+            bool fUseSatelliteAssemblyResourceLookupUnderAppX = typeof(object).Assembly == resourcesAssembly;
 
             if (!fUseSatelliteAssemblyResourceLookupUnderAppX)
             {
@@ -844,7 +844,7 @@ namespace System.Resources
 
             if (resourcesAssembly != null)
             {
-                if (resourcesAssembly != typeof(Object).Assembly) // We are not loading resources for mscorlib
+                if (resourcesAssembly != typeof(object).Assembly) // We are not loading resources for mscorlib
                 {
                     // Cannot load the WindowsRuntimeResourceManager when in a compilation process, since it
                     // lives in System.Runtime.WindowsRuntime and only mscorlib may be loaded for execution.
@@ -1087,7 +1087,7 @@ namespace System.Resources
         // current thread's CultureInfo, and if not found, all parent CultureInfos.
         // Returns null if the resource wasn't found.
         // 
-        public virtual Object GetObject(String name)
+        public virtual object GetObject(String name)
         {
             return GetObject(name, (CultureInfo)null, true);
         }
@@ -1095,12 +1095,12 @@ namespace System.Resources
         // Looks up a resource value for a particular name.  Looks in the 
         // specified CultureInfo, and if not found, all parent CultureInfos.
         // Returns null if the resource wasn't found.
-        public virtual Object GetObject(String name, CultureInfo culture)
+        public virtual object GetObject(String name, CultureInfo culture)
         {
             return GetObject(name, culture, true);
         }
 
-        private Object GetObject(String name, CultureInfo culture, bool wrapUnmanagedMemStream)
+        private object GetObject(String name, CultureInfo culture, bool wrapUnmanagedMemStream)
         {
             if (null == name)
                 throw new ArgumentNullException(nameof(name));
@@ -1128,7 +1128,7 @@ namespace System.Resources
             ResourceSet last = GetFirstResourceSet(culture);
             if (last != null)
             {
-                Object value = last.GetObject(name, _ignoreCase);
+                object value = last.GetObject(name, _ignoreCase);
 
                 if (value != null)
                 {
@@ -1158,7 +1158,7 @@ namespace System.Resources
 
                 if (rs != last)
                 {
-                    Object value = rs.GetObject(name, _ignoreCase);
+                    object value = rs.GetObject(name, _ignoreCase);
                     if (value != null)
                     {
                         // update the last used ResourceSet
@@ -1192,7 +1192,7 @@ namespace System.Resources
 
         public UnmanagedMemoryStream GetStream(String name, CultureInfo culture)
         {
-            Object obj = GetObject(name, culture, false);
+            object obj = GetObject(name, culture, false);
             UnmanagedMemoryStream ums = obj as UnmanagedMemoryStream;
             if (ums == null && obj != null)
                 throw new InvalidOperationException(SR.Format(SR.InvalidOperation_ResourceNotStream_Name, name));

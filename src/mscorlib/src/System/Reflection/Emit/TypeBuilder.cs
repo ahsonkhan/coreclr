@@ -288,7 +288,7 @@ namespace System.Reflection.Emit
             return false;
         }
 
-        internal static unsafe void SetConstantValue(ModuleBuilder module, int tk, Type destType, Object value)
+        internal static unsafe void SetConstantValue(ModuleBuilder module, int tk, Type destType, object value)
         {
             // This is a helper function that is used by ParameterBuilder, PropertyBuilder,
             // and FieldBuilder to validate a default value and save it in the meta-data.
@@ -800,8 +800,8 @@ namespace System.Reflection.Emit
             }
         }
 
-        public override Object InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target,
-            Object[] args, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParameters)
+        public override object InvokeMember(String name, BindingFlags invokeAttr, Binder binder, object target,
+            object[] args, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParameters)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -1191,7 +1191,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region ICustomAttributeProvider Implementation
-        public override Object[] GetCustomAttributes(bool inherit)
+        public override object[] GetCustomAttributes(bool inherit)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -1199,7 +1199,7 @@ namespace System.Reflection.Emit
             return CustomAttribute.GetCustomAttributes(m_bakedRuntimeType, typeof(object) as RuntimeType, inherit);
         }
 
-        public override Object[] GetCustomAttributes(Type attributeType, bool inherit)
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -2062,7 +2062,7 @@ namespace System.Reflection.Emit
             {
                 if ((m_iAttr & TypeAttributes.Interface) != TypeAttributes.Interface)
                 {
-                    m_typeParent = typeof(Object);
+                    m_typeParent = typeof(object);
                 }
                 else
                 {

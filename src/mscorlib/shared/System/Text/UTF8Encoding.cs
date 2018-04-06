@@ -2481,7 +2481,7 @@ namespace System.Text
             _emitUTF8Identifier ? s_preamble :
             Array.Empty<byte>();
 
-        public override bool Equals(Object value)
+        public override bool Equals(object value)
         {
             UTF8Encoding that = value as UTF8Encoding;
             if (that != null)

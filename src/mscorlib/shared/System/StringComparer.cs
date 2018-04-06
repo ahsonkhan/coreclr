@@ -133,7 +133,7 @@ namespace System
             throw new ArgumentException(SR.Argument_ImplementIComparable);
         }
 
-        public new bool Equals(Object x, Object y)
+        public new bool Equals(object x, object y)
         {
             if (x == y) return true;
             if (x == null || y == null) return false;

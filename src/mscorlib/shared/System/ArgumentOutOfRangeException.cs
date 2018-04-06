@@ -22,7 +22,7 @@ namespace System
     [System.Runtime.CompilerServices.TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public class ArgumentOutOfRangeException : ArgumentException
     {
-        private Object _actualValue;
+        private object _actualValue;
 
         // Creates a new ArgumentOutOfRangeException with its message 
         // string set to a default message explaining an argument was out of range.
@@ -53,7 +53,7 @@ namespace System
         // We will not use this in the classlibs, but we'll provide it for
         // anyone that's really interested so they don't have to stick a bunch
         // of printf's in their code.
-        public ArgumentOutOfRangeException(String paramName, Object actualValue, String message)
+        public ArgumentOutOfRangeException(String paramName, object actualValue, String message)
             : base(message, paramName)
         {
             _actualValue = actualValue;
@@ -92,7 +92,7 @@ namespace System
         // Note - we don't set this anywhere in the class libraries in 
         // version 1, but it might come in handy for other developers who
         // want to avoid sticking printf's in their code.
-        public virtual Object ActualValue
+        public virtual object ActualValue
         {
             get { return _actualValue; }
         }

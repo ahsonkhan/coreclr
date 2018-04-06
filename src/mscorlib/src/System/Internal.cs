@@ -59,36 +59,36 @@ namespace System
 
             new ArraySegment<byte>(new byte[1], 0, 0);
 
-            new Dictionary<Char, Object>();
+            new Dictionary<Char, object>();
             new Dictionary<Guid, Byte>();
-            new Dictionary<Guid, Object>();
+            new Dictionary<Guid, object>();
             new Dictionary<Guid, Guid>(); // Added for Visual Studio 2010
             new Dictionary<Int16, IntPtr>();
             new Dictionary<Int32, Byte>();
             new Dictionary<Int32, Int32>();
-            new Dictionary<Int32, Object>();
+            new Dictionary<Int32, object>();
             new Dictionary<IntPtr, Boolean>();
             new Dictionary<IntPtr, Int16>();
-            new Dictionary<Object, Boolean>();
-            new Dictionary<Object, Char>();
-            new Dictionary<Object, Guid>();
-            new Dictionary<Object, Int32>();
-            new Dictionary<Object, Int64>(); // Added for Visual Studio 2010
+            new Dictionary<object, Boolean>();
+            new Dictionary<object, Char>();
+            new Dictionary<object, Guid>();
+            new Dictionary<object, Int32>();
+            new Dictionary<object, Int64>(); // Added for Visual Studio 2010
             new Dictionary<uint, WeakReference>();  // NCL team needs this
-            new Dictionary<Object, UInt32>();
-            new Dictionary<UInt32, Object>();
-            new Dictionary<Int64, Object>();
+            new Dictionary<object, UInt32>();
+            new Dictionary<UInt32, object>();
+            new Dictionary<Int64, object>();
 
             // to genereate mdil for Dictionary instantiation when key is user defined value type
             new Dictionary<Guid, Int32>();
 
             // Microsoft.Windows.Design
-            new Dictionary<System.Reflection.MemberTypes, Object>();
+            new Dictionary<System.Reflection.MemberTypes, object>();
             new EnumEqualityComparer<System.Reflection.MemberTypes>();
 
             // Microsoft.Expression.DesignModel
-            new Dictionary<Object, KeyValuePair<Object, Object>>();
-            new Dictionary<KeyValuePair<Object, Object>, Object>();
+            new Dictionary<object, KeyValuePair<object, object>>();
+            new Dictionary<KeyValuePair<object, object>, object>();
 
             NullableHelper<Boolean>();
             NullableHelper<Byte>();
@@ -121,13 +121,13 @@ namespace System
             new List<UInt32>();
             new List<UInt64>();
             new List<IntPtr>();
-            new List<KeyValuePair<Object, Object>>();
+            new List<KeyValuePair<object, object>>();
             new List<GCHandle>();  // NCL team needs this
             new List<DateTimeOffset>();
 
             new KeyValuePair<Char, UInt16>('\0', UInt16.MinValue);
             new KeyValuePair<UInt16, Double>(UInt16.MinValue, Double.MinValue);
-            new KeyValuePair<Object, Int32>(String.Empty, Int32.MinValue);
+            new KeyValuePair<object, Int32>(String.Empty, Int32.MinValue);
             new KeyValuePair<Int32, Int32>(Int32.MinValue, Int32.MinValue);
             SZArrayHelper<Boolean>(null);
             SZArrayHelper<Byte>(null);

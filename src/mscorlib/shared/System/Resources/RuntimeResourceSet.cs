@@ -258,34 +258,34 @@ namespace System.Resources
 
         public override String GetString(String key)
         {
-            Object o = GetObject(key, false, true);
+            object o = GetObject(key, false, true);
             return (String)o;
         }
 
         public override String GetString(String key, bool ignoreCase)
         {
-            Object o = GetObject(key, ignoreCase, true);
+            object o = GetObject(key, ignoreCase, true);
             return (String)o;
         }
 
-        public override Object GetObject(String key)
+        public override object GetObject(String key)
         {
             return GetObject(key, false, false);
         }
 
-        public override Object GetObject(String key, bool ignoreCase)
+        public override object GetObject(String key, bool ignoreCase)
         {
             return GetObject(key, ignoreCase, false);
         }
 
-        private Object GetObject(String key, bool ignoreCase, bool isString)
+        private object GetObject(String key, bool ignoreCase, bool isString)
         {
             if (key == null)
                 throw new ArgumentNullException(nameof(key));
             if (Reader == null || _resCache == null)
                 throw new ObjectDisposedException(null, SR.ObjectDisposed_ResourceSet);
 
-            Object value = null;
+            object value = null;
             ResourceLocator resLocation;
 
             lock (Reader)
@@ -383,7 +383,7 @@ namespace System.Resources
                     }
                     _haveReadFromReader = true;
                 }
-                Object obj = null;
+                object obj = null;
                 bool found = false;
                 bool keyInWrongCase = false;
                 if (_defaultReader != null)
@@ -410,11 +410,11 @@ namespace System.Resources
         // The last parameter indicates whether the lookup required a 
         // case-insensitive lookup to succeed, indicating we shouldn't add 
         // the ResourceLocation to our case-sensitive cache.
-        private Object ResolveResourceLocator(ResourceLocator resLocation, String key, Dictionary<String, ResourceLocator> copyOfCache, bool keyInWrongCase)
+        private object ResolveResourceLocator(ResourceLocator resLocation, String key, Dictionary<String, ResourceLocator> copyOfCache, bool keyInWrongCase)
         {
             // We need to explicitly resolve loosely linked manifest
             // resources, and we need to resolve ResourceLocators with null objects.
-            Object value = resLocation.Value;
+            object value = resLocation.Value;
             if (value == null)
             {
                 ResourceTypeCode typeCode;

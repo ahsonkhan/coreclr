@@ -113,7 +113,7 @@ namespace System.Reflection.Emit
             get { return m_fieldType; }
         }
 
-        public override Object GetValue(Object obj)
+        public override object GetValue(object obj)
         {
             // NOTE!!  If this is implemented, make sure that this throws 
             // a NotSupportedException for Save-only dynamic assemblies.
@@ -122,7 +122,7 @@ namespace System.Reflection.Emit
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
         }
 
-        public override void SetValue(Object obj, Object val, BindingFlags invokeAttr, Binder binder, CultureInfo culture)
+        public override void SetValue(object obj, object val, BindingFlags invokeAttr, Binder binder, CultureInfo culture)
         {
             // NOTE!!  If this is implemented, make sure that this throws 
             // a NotSupportedException for Save-only dynamic assemblies.
@@ -144,12 +144,12 @@ namespace System.Reflection.Emit
         #endregion
 
         #region ICustomAttributeProvider Implementation
-        public override Object[] GetCustomAttributes(bool inherit)
+        public override object[] GetCustomAttributes(bool inherit)
         {
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
         }
 
-        public override Object[] GetCustomAttributes(Type attributeType, bool inherit)
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
         {
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
         }
@@ -174,7 +174,7 @@ namespace System.Reflection.Emit
             TypeBuilder.SetFieldLayoutOffset(m_typeBuilder.GetModuleBuilder().GetNativeHandle(), GetToken().Token, iOffset);
         }
 
-        public void SetConstant(Object defaultValue)
+        public void SetConstant(object defaultValue)
         {
             m_typeBuilder.ThrowIfCreated();
 

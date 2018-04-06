@@ -40,10 +40,10 @@ namespace System.Resources
 
     internal struct ResourceLocator
     {
-        internal Object _value;  // Can be null.  Consider WeakReference instead?
+        internal object _value;  // Can be null.  Consider WeakReference instead?
         internal int _dataPos;
 
-        internal ResourceLocator(int dataPos, Object value)
+        internal ResourceLocator(int dataPos, object value)
         {
             _dataPos = dataPos;
             _value = value;
@@ -57,7 +57,7 @@ namespace System.Resources
 
         // Allows adding in profiling data in a future version, or a special
         // resource profiling build.  We could also use WeakReference.
-        internal Object Value
+        internal object Value
         {
             get { return _value; }
             set { _value = value; }
@@ -439,7 +439,7 @@ namespace System.Resources
         // This is used in the enumerator.  The enumerator iterates from 0 to n
         // of our resources and this returns the resource value for a particular
         // index.  The parameter is NOT a virtual offset.
-        private Object GetValueForNameIndex(int index)
+        private object GetValueForNameIndex(int index)
         {
             Debug.Assert(_store != null, "ResourceReader is closed!");
             long nameVA = GetNamePosition(index);
@@ -500,7 +500,7 @@ namespace System.Resources
         }
 
         // Called from RuntimeResourceSet
-        internal Object LoadObject(int pos)
+        internal object LoadObject(int pos)
         {
             if (_version == 1)
                 return LoadObjectV1(pos);
@@ -508,11 +508,11 @@ namespace System.Resources
             return LoadObjectV2(pos, out typeCode);
         }
 
-        internal Object LoadObject(int pos, out ResourceTypeCode typeCode)
+        internal object LoadObject(int pos, out ResourceTypeCode typeCode)
         {
             if (_version == 1)
             {
-                Object o = LoadObjectV1(pos);
+                object o = LoadObjectV1(pos);
                 typeCode = (o is String) ? ResourceTypeCode.String : ResourceTypeCode.StartOfUserTypes;
                 return o;
             }
@@ -523,7 +523,7 @@ namespace System.Resources
         // from that location.
         // Anyone who calls LoadObject should make sure they take a lock so 
         // no one can cause us to do a seek in here.
-        internal Object LoadObjectV1(int pos)
+        internal object LoadObjectV1(int pos)
         {
             Debug.Assert(_store != null, "ResourceReader is closed!");
             Debug.Assert(_version == 1, ".resources file was not a V1 .resources file!");
@@ -544,7 +544,7 @@ namespace System.Resources
             }
         }
 
-        private Object _LoadObjectV1(int pos)
+        private object _LoadObjectV1(int pos)
         {
             _store.BaseStream.Seek(_dataSectionOffset + pos, SeekOrigin.Begin);
             int typeIndex = _store.Read7BitEncodedInt();
@@ -598,7 +598,7 @@ namespace System.Resources
             }
         }
 
-        internal Object LoadObjectV2(int pos, out ResourceTypeCode typeCode)
+        internal object LoadObjectV2(int pos, out ResourceTypeCode typeCode)
         {
             Debug.Assert(_store != null, "ResourceReader is closed!");
             Debug.Assert(_version >= 2, ".resources file was not a V2 (or higher) .resources file!");
@@ -619,7 +619,7 @@ namespace System.Resources
             }
         }
 
-        private Object _LoadObjectV2(int pos, out ResourceTypeCode typeCode)
+        private object _LoadObjectV2(int pos, out ResourceTypeCode typeCode)
         {
             _store.BaseStream.Seek(_dataSectionOffset + pos, SeekOrigin.Begin);
             typeCode = (ResourceTypeCode)_store.Read7BitEncodedInt();
@@ -1098,7 +1098,7 @@ namespace System.Resources
                 return true;
             }
 
-            public Object Key
+            public object Key
             {
                 get
                 {
@@ -1110,7 +1110,7 @@ namespace System.Resources
                 }
             }
 
-            public Object Current
+            public object Current
             {
                 get
                 {
@@ -1136,7 +1136,7 @@ namespace System.Resources
                     if (_reader._resCache == null) throw new InvalidOperationException(SR.ResourceReaderIsClosed);
 
                     String key;
-                    Object value = null;
+                    object value = null;
                     lock (_reader)
                     { // locks should be taken in the same order as in RuntimeResourceSet.GetObject to avoid deadlock
                         lock (_reader._resCache)
@@ -1165,7 +1165,7 @@ namespace System.Resources
                 }
             }
 
-            public Object Value
+            public object Value
             {
                 get
                 {

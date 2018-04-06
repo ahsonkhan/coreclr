@@ -92,7 +92,7 @@ namespace System
             // We use the no throw version since we could be deserializing a pre-V4
             // exception object that may not have this entry. In such a case, we would
             // get null.
-            _watsonBuckets = (Object)info.GetValueNoThrow("WatsonBuckets", typeof(byte[])); // Do not rename (binary serialization)
+            _watsonBuckets = (object)info.GetValueNoThrow("WatsonBuckets", typeof(byte[])); // Do not rename (binary serialization)
 
 
             if (_className == null || HResult == 0)
@@ -258,7 +258,7 @@ namespace System
 
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        static private extern IRuntimeMethodInfo GetMethodFromStackTrace(Object stackTrace);
+        static private extern IRuntimeMethodInfo GetMethodFromStackTrace(object stackTrace);
 
         private MethodBase GetExceptionMethodFromStackTrace()
         {
@@ -658,9 +658,9 @@ namespace System
         private IDictionary _data;
         private Exception _innerException;
         private String _helpURL;
-        private Object _stackTrace;
+        private object _stackTrace;
         [OptionalField] // This isnt present in pre-V4 exception objects that would be serialized.
-        private Object _watsonBuckets;
+        private object _watsonBuckets;
         private String _stackTraceString; //Needed for serialization.  
         private String _remoteStackTraceString;
         private int _remoteStackIndex;
@@ -669,7 +669,7 @@ namespace System
         // DynamicMethodDescs alive for the lifetime of the exception. We do this because
         // the _stackTrace field holds MethodDescs, and a DynamicMethodDesc can be destroyed
         // unless a System.Resolver object roots it.
-        private Object _dynamicMethods;
+        private object _dynamicMethods;
 #pragma warning restore 414
 
         // @MANAGED: HResult is used from within the EE!  Rename with care - check VM directory

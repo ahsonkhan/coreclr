@@ -274,10 +274,10 @@ namespace System.Reflection
             }
         }
 
-        public override Object DefaultValue { get { return GetDefaultValue(false); } }
-        public override Object RawDefaultValue { get { return GetDefaultValue(true); } }
+        public override object DefaultValue { get { return GetDefaultValue(false); } }
+        public override object RawDefaultValue { get { return GetDefaultValue(true); } }
 
-        private Object GetDefaultValue(bool raw)
+        private object GetDefaultValue(bool raw)
         {
             // OLD COMMENT (Is this even true?)
             // Cannot cache because default value could be non-agile user defined enumeration.
@@ -303,7 +303,7 @@ namespace System.Reflection
         }
 
         // returns DBNull.Value if the parameter doesn't have a default value
-        private Object GetDefaultValueInternal(bool raw)
+        private object GetDefaultValueInternal(bool raw)
         {
             Debug.Assert(!m_noMetadata);
 
@@ -371,7 +371,7 @@ namespace System.Reflection
                 }
                 else
                 {
-                    Object[] CustomAttrs = GetCustomAttributes(s_CustomConstantAttributeType, false);
+                    object[] CustomAttrs = GetCustomAttributes(s_CustomConstantAttributeType, false);
                     if (CustomAttrs.Length != 0)
                     {
                         defaultValue = ((CustomConstantAttribute)CustomAttrs[0]).Value;
@@ -505,21 +505,21 @@ namespace System.Reflection
         #endregion
 
         #region ICustomAttributeProvider
-        public override Object[] GetCustomAttributes(bool inherit)
+        public override object[] GetCustomAttributes(bool inherit)
         {
             if (MdToken.IsNullToken(m_tkParamDef))
-                return Array.Empty<Object>();
+                return Array.Empty<object>();
 
             return CustomAttribute.GetCustomAttributes(this, typeof(object) as RuntimeType);
         }
 
-        public override Object[] GetCustomAttributes(Type attributeType, bool inherit)
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
         {
             if (attributeType == null)
                 throw new ArgumentNullException(nameof(attributeType));
 
             if (MdToken.IsNullToken(m_tkParamDef))
-                return Array.Empty<Object>();
+                return Array.Empty<object>();
 
             RuntimeType attributeRuntimeType = attributeType.UnderlyingSystemType as RuntimeType;
 

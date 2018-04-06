@@ -237,7 +237,7 @@ namespace System.Globalization
             }
         }
 
-        public Object Clone()
+        public object Clone()
         {
             NumberFormatInfo n = (NumberFormatInfo)MemberwiseClone();
             n.isReadOnly = false;
@@ -774,7 +774,7 @@ namespace System.Globalization
             }
         }
 
-        public Object GetFormat(Type formatType)
+        public object GetFormat(Type formatType)
         {
             return formatType == typeof(NumberFormatInfo) ? this : null;
         }

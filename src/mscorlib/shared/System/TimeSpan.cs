@@ -178,7 +178,7 @@ namespace System
         }
 
         // Returns a value less than zero if this  object
-        public int CompareTo(Object value)
+        public int CompareTo(object value)
         {
             if (value == null) return 1;
             if (!(value is TimeSpan))
@@ -209,7 +209,7 @@ namespace System
             return new TimeSpan(_ticks >= 0 ? _ticks : -_ticks);
         }
 
-        public override bool Equals(Object value)
+        public override bool Equals(object value)
         {
             if (value is TimeSpan)
             {
