@@ -478,7 +478,7 @@ namespace System
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
-            if (startIndex < 0 || startIndex > this.Length)
+            if (startIndex < 0 || startIndex > Length)
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
 
             int oldLength = Length;
@@ -872,7 +872,7 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
             if (count < 0)
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NegativeCount);
-            int oldLength = this.Length;
+            int oldLength = Length;
             if (count > oldLength - startIndex)
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_IndexCount);
 
@@ -966,7 +966,7 @@ namespace System
 
             do
             {
-                index = ci.IndexOf(this, oldValue, startIndex, this.Length - startIndex, options, &matchLength);
+                index = ci.IndexOf(this, oldValue, startIndex, Length - startIndex, options, &matchLength);
                 if (index >= 0)
                 {
                     // append the unmodified portion of string
@@ -988,7 +988,7 @@ namespace System
                 }
                 else
                 {
-                    result.Append(this, startIndex, this.Length - startIndex);
+                    result.Append(this, startIndex, Length - startIndex);
                 }
             } while (index >= 0);
 
@@ -1080,7 +1080,7 @@ namespace System
                 fixed (char* pThis = &_firstChar)
                 {
                     int matchIdx = 0;
-                    int lastPossibleMatchIdx = this.Length - oldValue.Length;
+                    int lastPossibleMatchIdx = Length - oldValue.Length;
                     while (matchIdx <= lastPossibleMatchIdx)
                     {
                         char* pMatch = pThis + matchIdx;
@@ -1118,7 +1118,7 @@ namespace System
         {
             Debug.Assert(indices.Length > 0);
 
-            long dstLength = this.Length + ((long)(newValue.Length - oldValueLength)) * indices.Length;
+            long dstLength = Length + ((long)(newValue.Length - oldValueLength)) * indices.Length;
             if (dstLength > int.MaxValue)
                 throw new OutOfMemoryException();
             string dst = FastAllocateString((int)dstLength);
@@ -1147,7 +1147,7 @@ namespace System
             }
 
             // Copy over the final non-matching portion at the end of the string.
-            Debug.Assert(this.Length - thisIdx == dstSpan.Length - dstIdx);
+            Debug.Assert(Length - thisIdx == dstSpan.Length - dstIdx);
             this.AsSpan(thisIdx).CopyTo(dstSpan.Slice(dstIdx));
 
             return dst;
@@ -1618,7 +1618,7 @@ namespace System
                 return string.Empty;
             }
 
-            if (startIndex == 0 && length == this.Length)
+            if (startIndex == 0 && length == Length)
             {
                 return this;
             }
@@ -1628,8 +1628,8 @@ namespace System
 
         private unsafe string InternalSubString(int startIndex, int length)
         {
-            Debug.Assert(startIndex >= 0 && startIndex <= this.Length, "StartIndex is out of range!");
-            Debug.Assert(length >= 0 && startIndex <= this.Length - length, "length is out of range!");
+            Debug.Assert(startIndex >= 0 && startIndex <= Length, "StartIndex is out of range!");
+            Debug.Assert(length >= 0 && startIndex <= Length - length, "length is out of range!");
 
             string result = FastAllocateString(length);
 

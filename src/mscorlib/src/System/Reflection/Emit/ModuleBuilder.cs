@@ -1148,7 +1148,7 @@ namespace System.Reflection.Emit
             ModuleBuilder refedModuleBuilder = refedModule as ModuleBuilder;
 
             string strRefedModuleFileName = String.Empty;
-            if (refedModule.Assembly.Equals(this.Assembly))
+            if (refedModule.Assembly.Equals(Assembly))
             {
                 // if the referenced module is in the same assembly, the resolution
                 // scope of the type token will be a module ref, we will need
@@ -1158,7 +1158,7 @@ namespace System.Reflection.Emit
                 // the file name of the referenced module.
                 if (refedModuleBuilder == null)
                 {
-                    refedModuleBuilder = this.ContainingAssemblyBuilder.GetModuleBuilder((InternalModuleBuilder)refedModule);
+                    refedModuleBuilder = ContainingAssemblyBuilder.GetModuleBuilder((InternalModuleBuilder)refedModule);
                 }
                 strRefedModuleFileName = refedModuleBuilder.m_moduleData.m_strFileName;
             }
@@ -1324,7 +1324,7 @@ namespace System.Reflection.Emit
                     methodInfoUnbound = methodInfo.GetGenericMethodDefinition();
                 }
 
-                if (!this.Equals(methodInfoUnbound.Module)
+                if (!Equals(methodInfoUnbound.Module)
                     || (methodInfoUnbound.DeclaringType != null && methodInfoUnbound.DeclaringType.IsGenericType))
                 {
                     tk = GetMemberRefToken(methodInfoUnbound, null);
@@ -1346,7 +1346,7 @@ namespace System.Reflection.Emit
                     this, methodInfo.GetGenericArguments()).InternalGetSignature(out sigLength);
 
                 // Create MethodSepc M<Bar> with parent G?.M<S> 
-                tk = TypeBuilder.DefineMethodSpec(this.GetNativeHandle(), tk, sigBytes, sigLength);
+                tk = TypeBuilder.DefineMethodSpec(GetNativeHandle(), tk, sigBytes, sigLength);
             }
             else
             {
@@ -1586,7 +1586,7 @@ namespace System.Reflection.Emit
             TypeBuilder.DefineCustomAttribute(
                 this,
                 1,                                          // This is hard coding the module token to 1
-                this.GetConstructorToken(con).Token,
+                GetConstructorToken(con).Token,
                 binaryAttribute,
                 false, false);
         }

@@ -5568,23 +5568,23 @@ new DS[] { DS.ERROR, DS.TX_NNN,  DS.TX_NNN,  DS.TX_NNN,  DS.ERROR,   DS.ERROR,  
 
         internal void SetBadFormatSpecifierFailure(ReadOnlySpan<char> failedFormatSpecifier)
         {
-            this.failure = ParseFailureKind.FormatWithFormatSpecifier;
-            this.failureMessageID = nameof(SR.Format_BadFormatSpecifier);
+            failure = ParseFailureKind.FormatWithFormatSpecifier;
+            failureMessageID = nameof(SR.Format_BadFormatSpecifier);
             this.failedFormatSpecifier = failedFormatSpecifier;
         }
 
         internal void SetBadDateTimeFailure()
         {
-            this.failure = ParseFailureKind.FormatWithOriginalDateTime;
-            this.failureMessageID = nameof(SR.Format_BadDateTime);
-            this.failureMessageFormatArgument = null;
+            failure = ParseFailureKind.FormatWithOriginalDateTime;
+            failureMessageID = nameof(SR.Format_BadDateTime);
+            failureMessageFormatArgument = null;
         }
 
         internal void SetFailure(ParseFailureKind failure, string failureMessageID)
         {
             this.failure = failure;
             this.failureMessageID = failureMessageID;
-            this.failureMessageFormatArgument = null;
+            failureMessageFormatArgument = null;
         }
 
         internal void SetFailure(ParseFailureKind failure, string failureMessageID, object failureMessageFormatArgument)

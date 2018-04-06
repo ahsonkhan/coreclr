@@ -76,14 +76,14 @@ namespace System.Threading
             // our cache be much faster than a more general cache might be.  This is important, because this
             // is a *very* hot code path for many WPF and WinForms apps.
             //
-            Type type = this.GetType();
+            Type type = GetType();
             if (s_cachedPreparedType1 != type &&
                 s_cachedPreparedType2 != type &&
                 s_cachedPreparedType3 != type &&
                 s_cachedPreparedType4 != type &&
                 s_cachedPreparedType5 != type)
             {
-                RuntimeHelpers.PrepareDelegate(new WaitDelegate(this.Wait));
+                RuntimeHelpers.PrepareDelegate(new WaitDelegate(Wait));
 
                 if (s_cachedPreparedType1 == null) s_cachedPreparedType1 = type;
                 else if (s_cachedPreparedType2 == null) s_cachedPreparedType2 = type;

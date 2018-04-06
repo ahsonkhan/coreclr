@@ -33,13 +33,13 @@ namespace System.Text
         {
             _encoding = encoding;
             _fallback = _encoding.EncoderFallback;
-            this.Reset();
+            Reset();
         }
 
         internal EncoderNLS()
         {
             _encoding = null;
-            this.Reset();
+            Reset();
         }
 
         public override void Reset()
@@ -198,7 +198,7 @@ namespace System.Text
             charsUsed = _charsUsed;
 
             // Its completed if they've used what they wanted AND if they didn't want flush or if we are flushed
-            completed = (charsUsed == charCount) && (!flush || !this.HasState) &&
+            completed = (charsUsed == charCount) && (!flush || !HasState) &&
                 (_fallbackBuffer == null || _fallbackBuffer.Remaining == 0);
 
             // Our data thingys are now full, we can return

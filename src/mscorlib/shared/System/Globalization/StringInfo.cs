@@ -29,7 +29,7 @@ namespace System.Globalization
         // Primary, useful constructor
         public StringInfo(string value)
         {
-            this.String = value;
+            String = value;
         }
 
         public override bool Equals(object value)
@@ -54,9 +54,9 @@ namespace System.Globalization
         {
             get
             {
-                if ((null == _indexes) && (0 < this.String.Length))
+                if ((null == _indexes) && (0 < String.Length))
                 {
-                    _indexes = StringInfo.ParseCombiningCharacters(this.String);
+                    _indexes = StringInfo.ParseCombiningCharacters(String);
                 }
 
                 return (_indexes);
@@ -86,20 +86,20 @@ namespace System.Globalization
         {
             get
             {
-                if (null == this.Indexes)
+                if (null == Indexes)
                 {
                     // Indexes not initialized, so assume length zero
                     return (0);
                 }
 
-                return (this.Indexes.Length);
+                return (Indexes.Length);
             }
         }
 
         public string SubstringByTextElements(int startingTextElement)
         {
             // If the string is empty, no sense going further. 
-            if (null == this.Indexes)
+            if (null == Indexes)
             {
                 // Just decide which error to give depending on the param they gave us....
                 if (startingTextElement < 0)
@@ -121,7 +121,7 @@ namespace System.Globalization
                 throw new ArgumentOutOfRangeException(nameof(startingTextElement), SR.ArgumentOutOfRange_NeedPosNum);
             }
 
-            if (this.String.Length == 0 || startingTextElement >= Indexes.Length)
+            if (String.Length == 0 || startingTextElement >= Indexes.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(startingTextElement), SR.Arg_ArgumentOutOfRangeException);
             }
@@ -142,11 +142,11 @@ namespace System.Globalization
             {
                 // We are at the last text element in the string and because of that
                 // must handle the call differently.
-                return (this.String.Substring(start));
+                return (String.Substring(start));
             }
             else
             {
-                return (this.String.Substring(start, (Indexes[lengthInTextElements + startingTextElement] - start)));
+                return (String.Substring(start, (Indexes[lengthInTextElements + startingTextElement] - start)));
             }
         }
 

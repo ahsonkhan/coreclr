@@ -179,8 +179,8 @@ namespace System
             // copy _methodPtr and _methodPtrAux fields rather than calling into the EE to get them
             if (thisIsMultiCastAlready)
             {
-                result._methodPtr = this._methodPtr;
-                result._methodPtrAux = this._methodPtrAux;
+                result._methodPtr = _methodPtr;
+                result._methodPtrAux = _methodPtrAux;
             }
             else
             {
@@ -347,7 +347,7 @@ namespace System
                 if (invocationList == null)
                 {
                     // they are both not real Multicast
-                    if (this.Equals(value))
+                    if (Equals(value))
                         return null;
                 }
                 else
@@ -568,64 +568,64 @@ namespace System
         {
             if (target == null)
                 ThrowNullThisInDelegateToInstance();
-            this._target = target;
-            this._methodPtr = methodPtr;
+            _target = target;
+            _methodPtr = methodPtr;
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorClosedStatic(object target, IntPtr methodPtr)
         {
-            this._target = target;
-            this._methodPtr = methodPtr;
+            _target = target;
+            _methodPtr = methodPtr;
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorRTClosed(object target, IntPtr methodPtr)
         {
-            this._target = target;
-            this._methodPtr = AdjustTarget(target, methodPtr);
+            _target = target;
+            _methodPtr = AdjustTarget(target, methodPtr);
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorOpened(object target, IntPtr methodPtr, IntPtr shuffleThunk)
         {
-            this._target = this;
-            this._methodPtr = shuffleThunk;
-            this._methodPtrAux = methodPtr;
+            _target = this;
+            _methodPtr = shuffleThunk;
+            _methodPtrAux = methodPtr;
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorVirtualDispatch(object target, IntPtr methodPtr, IntPtr shuffleThunk)
         {
-            this._target = this;
-            this._methodPtr = shuffleThunk;
-            this._methodPtrAux = GetCallStub(methodPtr);
+            _target = this;
+            _methodPtr = shuffleThunk;
+            _methodPtrAux = GetCallStub(methodPtr);
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorCollectibleClosedStatic(object target, IntPtr methodPtr, IntPtr gchandle)
         {
-            this._target = target;
-            this._methodPtr = methodPtr;
-            this._methodBase = System.Runtime.InteropServices.GCHandle.InternalGet(gchandle);
+            _target = target;
+            _methodPtr = methodPtr;
+            _methodBase = System.Runtime.InteropServices.GCHandle.InternalGet(gchandle);
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorCollectibleOpened(object target, IntPtr methodPtr, IntPtr shuffleThunk, IntPtr gchandle)
         {
-            this._target = this;
-            this._methodPtr = shuffleThunk;
-            this._methodPtrAux = methodPtr;
-            this._methodBase = System.Runtime.InteropServices.GCHandle.InternalGet(gchandle);
+            _target = this;
+            _methodPtr = shuffleThunk;
+            _methodPtrAux = methodPtr;
+            _methodBase = System.Runtime.InteropServices.GCHandle.InternalGet(gchandle);
         }
 
         [System.Diagnostics.DebuggerNonUserCode]
         private void CtorCollectibleVirtualDispatch(object target, IntPtr methodPtr, IntPtr shuffleThunk, IntPtr gchandle)
         {
-            this._target = this;
-            this._methodPtr = shuffleThunk;
-            this._methodPtrAux = GetCallStub(methodPtr);
-            this._methodBase = System.Runtime.InteropServices.GCHandle.InternalGet(gchandle);
+            _target = this;
+            _methodPtr = shuffleThunk;
+            _methodPtrAux = GetCallStub(methodPtr);
+            _methodBase = System.Runtime.InteropServices.GCHandle.InternalGet(gchandle);
         }
     }
 }

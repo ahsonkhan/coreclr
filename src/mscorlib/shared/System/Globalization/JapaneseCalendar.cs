@@ -151,7 +151,7 @@ namespace System.Globalization
             }
             catch (ArgumentException e)
             {
-                throw new TypeInitializationException(this.GetType().ToString(), e);
+                throw new TypeInitializationException(GetType().ToString(), e);
             }
             helper = new GregorianCalendarHelper(this, GetEraInfo());
         }

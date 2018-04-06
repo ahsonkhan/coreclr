@@ -1001,7 +1001,7 @@ namespace System.Collections.Concurrent
         {
             if (key == null) ThrowKeyNullException();
 
-            return (key is TKey) && this.ContainsKey((TKey)key);
+            return (key is TKey) && ContainsKey((TKey)key);
         }
 
         /// <summary>Provides an <see cref="T:System.Collections.Generics.IDictionaryEnumerator"/> for the

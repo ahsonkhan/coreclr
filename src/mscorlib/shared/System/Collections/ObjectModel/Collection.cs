@@ -334,7 +334,7 @@ namespace System.Collections.ObjectModel
                 ThrowHelper.ThrowWrongValueTypeArgumentException(value, typeof(T));
             }
 
-            return this.Count - 1;
+            return Count - 1;
         }
 
         bool IList.Contains(object value)

@@ -51,7 +51,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public EventSource EventSource
         {
-            get { return this.eventSource; }
+            get { return eventSource; }
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public Guid Id
         {
-            get { return this.activityId; }
+            get { return activityId; }
         }
 
 #if false // don't expose RelatedActivityId unless there is a need.   
@@ -94,7 +94,7 @@ namespace System.Diagnostics.Tracing
         /// <param name="data">The data to include in the event.</param>
         public EventSourceActivity Start<T>(string eventName, EventSourceOptions options, T data)
         {
-            return this.Start(eventName, ref options, ref data);
+            return Start(eventName, ref options, ref data);
         }
         /// <summary>
         /// Shortcut version see Start(string eventName, EventSourceOptions options, T data) Options is empty (no keywords 
@@ -104,7 +104,7 @@ namespace System.Diagnostics.Tracing
         {
             var options = new EventSourceOptions();
             var data = new EmptyStruct();
-            return this.Start(eventName, ref options, ref data);
+            return Start(eventName, ref options, ref data);
         }
         /// <summary>
         /// Shortcut version see Start(string eventName, EventSourceOptions options, T data).  Data payload is empty. 
@@ -112,7 +112,7 @@ namespace System.Diagnostics.Tracing
         public EventSourceActivity Start(string eventName, EventSourceOptions options)
         {
             var data = new EmptyStruct();
-            return this.Start(eventName, ref options, ref data);
+            return Start(eventName, ref options, ref data);
         }
         /// <summary>
         /// Shortcut version see Start(string eventName, EventSourceOptions options, T data) Options is empty (no keywords 
@@ -121,7 +121,7 @@ namespace System.Diagnostics.Tracing
         public EventSourceActivity Start<T>(string eventName, T data)
         {
             var options = new EventSourceOptions();
-            return this.Start(eventName, ref options, ref data);
+            return Start(eventName, ref options, ref data);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace System.Diagnostics.Tracing
         /// <param name="data">The data to include in the event.</param>
         public void Stop<T>(T data)
         {
-            this.Stop(null, ref data);
+            Stop(null, ref data);
         }
         /// <summary>
         /// Used if you wish to use the non-default stop name (which is the start name with Start replace with 'Stop')
@@ -144,7 +144,7 @@ namespace System.Diagnostics.Tracing
         public void Stop<T>(string eventName)
         {
             var data = new EmptyStruct();
-            this.Stop(eventName, ref data);
+            Stop(eventName, ref data);
         }
         /// <summary>
         /// Used if you wish to use the non-default stop name (which is the start name with Start replace with 'Stop')
@@ -153,7 +153,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public void Stop<T>(string eventName, T data)
         {
-            this.Stop(eventName, ref data);
+            Stop(eventName, ref data);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace System.Diagnostics.Tracing
         /// <param name="data">The data to include in the event.</param>
         public void Write<T>(string eventName, EventSourceOptions options, T data)
         {
-            this.Write(this.eventSource, eventName, ref options, ref data);
+            Write(eventSource, eventName, ref options, ref data);
         }
         /// <summary>
         /// Writes an event associated with this activity.
@@ -184,7 +184,7 @@ namespace System.Diagnostics.Tracing
         public void Write<T>(string eventName, T data)
         {
             var options = new EventSourceOptions();
-            this.Write(this.eventSource, eventName, ref options, ref data);
+            Write(eventSource, eventName, ref options, ref data);
         }
         /// <summary>
         /// Writes a trivial event associated with this activity.
@@ -199,7 +199,7 @@ namespace System.Diagnostics.Tracing
         public void Write(string eventName, EventSourceOptions options)
         {
             var data = new EmptyStruct();
-            this.Write(this.eventSource, eventName, ref options, ref data);
+            Write(eventSource, eventName, ref options, ref data);
         }
         /// <summary>
         /// Writes a trivial event associated with this activity.
@@ -212,14 +212,14 @@ namespace System.Diagnostics.Tracing
         {
             var options = new EventSourceOptions();
             var data = new EmptyStruct();
-            this.Write(this.eventSource, eventName, ref options, ref data);
+            Write(eventSource, eventName, ref options, ref data);
         }
         /// <summary>
         /// Writes an event to a arbitrary eventSource stamped with the activity ID of this activity.   
         /// </summary>
         public void Write<T>(EventSource source, string eventName, EventSourceOptions options, T data)
         {
-            this.Write(source, eventName, ref options, ref data);
+            Write(source, eventName, ref options, ref data);
         }
 
         /// <summary>
@@ -228,38 +228,38 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public void Dispose()
         {
-            if (this.state == State.Started)
+            if (state == State.Started)
             {
                 var data = new EmptyStruct();
-                this.Stop(null, ref data);
+                Stop(null, ref data);
             }
         }
 
         #region private
         private EventSourceActivity Start<T>(string eventName, ref EventSourceOptions options, ref T data)
         {
-            if (this.state != State.Started)
+            if (state != State.Started)
                 throw new InvalidOperationException();
 
             // If the source is not on at all, then we don't need to do anything and we can simply return ourselves.  
-            if (!this.eventSource.IsEnabled())
+            if (!eventSource.IsEnabled())
                 return this;
 
             var newActivity = new EventSourceActivity(eventSource);
-            if (!this.eventSource.IsEnabled(options.Level, options.Keywords))
+            if (!eventSource.IsEnabled(options.Level, options.Keywords))
             {
                 // newActivity.relatedActivityId = this.Id;
-                Guid relatedActivityId = this.Id;
+                Guid relatedActivityId = Id;
                 newActivity.activityId = Guid.NewGuid();
                 newActivity.startStopOptions = options;
                 newActivity.eventName = eventName;
                 newActivity.startStopOptions.Opcode = EventOpcode.Start;
-                this.eventSource.Write(eventName, ref newActivity.startStopOptions, ref newActivity.activityId, ref relatedActivityId, ref data);
+                eventSource.Write(eventName, ref newActivity.startStopOptions, ref newActivity.activityId, ref relatedActivityId, ref data);
             }
             else
             {
                 // If we are not active, we don't set the eventName, which basically also turns off the Stop event as well.  
-                newActivity.activityId = this.Id;
+                newActivity.activityId = Id;
             }
 
             return newActivity;
@@ -267,24 +267,24 @@ namespace System.Diagnostics.Tracing
 
         private void Write<T>(EventSource eventSource, string eventName, ref EventSourceOptions options, ref T data)
         {
-            if (this.state != State.Started)
+            if (state != State.Started)
                 throw new InvalidOperationException();      // Write after stop. 
             if (eventName == null)
                 throw new ArgumentNullException();
 
-            eventSource.Write(eventName, ref options, ref this.activityId, ref s_empty, ref data);
+            eventSource.Write(eventName, ref options, ref activityId, ref s_empty, ref data);
         }
 
         private void Stop<T>(string eventName, ref T data)
         {
-            if (this.state != State.Started)
+            if (state != State.Started)
                 throw new InvalidOperationException();
 
             // If start was not fired, then stop isn't as well.  
             if (!StartEventWasFired)
                 return;
 
-            this.state = State.Stopped;
+            state = State.Stopped;
             if (eventName == null)
             {
                 eventName = this.eventName;
@@ -292,8 +292,8 @@ namespace System.Diagnostics.Tracing
                     eventName = eventName.Substring(0, eventName.Length - 5);
                 eventName = eventName + "Stop";
             }
-            this.startStopOptions.Opcode = EventOpcode.Stop;
-            this.eventSource.Write(eventName, ref this.startStopOptions, ref this.activityId, ref s_empty, ref data);
+            startStopOptions.Opcode = EventOpcode.Stop;
+            eventSource.Write(eventName, ref startStopOptions, ref activityId, ref s_empty, ref data);
         }
 
         private enum State

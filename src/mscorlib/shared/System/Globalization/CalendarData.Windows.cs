@@ -19,7 +19,7 @@ namespace System.Globalization
 
             bool ret = true;
 
-            uint useOverrides = this.bUseUserOverrides ? 0 : CAL_NOUSEROVERRIDE;
+            uint useOverrides = bUseUserOverrides ? 0 : CAL_NOUSEROVERRIDE;
 
             //
             // Windows doesn't support some calendars right now, so remap those.
@@ -48,50 +48,50 @@ namespace System.Globalization
             CheckSpecialCalendar(ref calendarId, ref localeName);
 
             // Numbers
-            ret &= CallGetCalendarInfoEx(localeName, calendarId, CAL_ITWODIGITYEARMAX | useOverrides, out this.iTwoDigitYearMax);
+            ret &= CallGetCalendarInfoEx(localeName, calendarId, CAL_ITWODIGITYEARMAX | useOverrides, out iTwoDigitYearMax);
 
             // Strings
-            ret &= CallGetCalendarInfoEx(localeName, calendarId, CAL_SCALNAME, out this.sNativeName);
-            ret &= CallGetCalendarInfoEx(localeName, calendarId, CAL_SMONTHDAY | useOverrides, out this.sMonthDay);
+            ret &= CallGetCalendarInfoEx(localeName, calendarId, CAL_SCALNAME, out sNativeName);
+            ret &= CallGetCalendarInfoEx(localeName, calendarId, CAL_SMONTHDAY | useOverrides, out sMonthDay);
 
             // String Arrays
             // Formats
-            ret &= CallEnumCalendarInfo(localeName, calendarId, CAL_SSHORTDATE, LOCALE_SSHORTDATE | useOverrides, out this.saShortDates);
-            ret &= CallEnumCalendarInfo(localeName, calendarId, CAL_SLONGDATE, LOCALE_SLONGDATE | useOverrides, out this.saLongDates);
+            ret &= CallEnumCalendarInfo(localeName, calendarId, CAL_SSHORTDATE, LOCALE_SSHORTDATE | useOverrides, out saShortDates);
+            ret &= CallEnumCalendarInfo(localeName, calendarId, CAL_SLONGDATE, LOCALE_SLONGDATE | useOverrides, out saLongDates);
 
             // Get the YearMonth pattern.
-            ret &= CallEnumCalendarInfo(localeName, calendarId, CAL_SYEARMONTH, LOCALE_SYEARMONTH, out this.saYearMonths);
+            ret &= CallEnumCalendarInfo(localeName, calendarId, CAL_SYEARMONTH, LOCALE_SYEARMONTH, out saYearMonths);
 
             // Day & Month Names
             // These are all single calType entries, 1 per day, so we have to make 7 or 13 calls to collect all the names
 
             // Day
             // Note that we're off-by-one since managed starts on sunday and windows starts on monday
-            ret &= GetCalendarDayInfo(localeName, calendarId, CAL_SDAYNAME7, out this.saDayNames);
-            ret &= GetCalendarDayInfo(localeName, calendarId, CAL_SABBREVDAYNAME7, out this.saAbbrevDayNames);
+            ret &= GetCalendarDayInfo(localeName, calendarId, CAL_SDAYNAME7, out saDayNames);
+            ret &= GetCalendarDayInfo(localeName, calendarId, CAL_SABBREVDAYNAME7, out saAbbrevDayNames);
 
             // Month names
-            ret &= GetCalendarMonthInfo(localeName, calendarId, CAL_SMONTHNAME1, out this.saMonthNames);
-            ret &= GetCalendarMonthInfo(localeName, calendarId, CAL_SABBREVMONTHNAME1, out this.saAbbrevMonthNames);
+            ret &= GetCalendarMonthInfo(localeName, calendarId, CAL_SMONTHNAME1, out saMonthNames);
+            ret &= GetCalendarMonthInfo(localeName, calendarId, CAL_SABBREVMONTHNAME1, out saAbbrevMonthNames);
 
             //
             // The following LCTYPE are not supported in some platforms.  If the call fails,
             // don't return a failure.
             //
-            GetCalendarDayInfo(localeName, calendarId, CAL_SSHORTESTDAYNAME7, out this.saSuperShortDayNames);
+            GetCalendarDayInfo(localeName, calendarId, CAL_SSHORTESTDAYNAME7, out saSuperShortDayNames);
 
             // Gregorian may have genitive month names
             if (calendarId == CalendarId.GREGORIAN)
             {
-                GetCalendarMonthInfo(localeName, calendarId, CAL_SMONTHNAME1 | CAL_RETURN_GENITIVE_NAMES, out this.saMonthGenitiveNames);
-                GetCalendarMonthInfo(localeName, calendarId, CAL_SABBREVMONTHNAME1 | CAL_RETURN_GENITIVE_NAMES, out this.saAbbrevMonthGenitiveNames);
+                GetCalendarMonthInfo(localeName, calendarId, CAL_SMONTHNAME1 | CAL_RETURN_GENITIVE_NAMES, out saMonthGenitiveNames);
+                GetCalendarMonthInfo(localeName, calendarId, CAL_SABBREVMONTHNAME1 | CAL_RETURN_GENITIVE_NAMES, out saAbbrevMonthGenitiveNames);
             }
 
             // Calendar Parts Names
             // This doesn't get always get localized names for gregorian (not available in windows < 7)
             // so: eg: coreclr on win < 7 won't get these
-            CallEnumCalendarInfo(localeName, calendarId, CAL_SERASTRING, 0, out this.saEraNames);
-            CallEnumCalendarInfo(localeName, calendarId, CAL_SABBREVERASTRING, 0, out this.saAbbrevEraNames);
+            CallEnumCalendarInfo(localeName, calendarId, CAL_SERASTRING, 0, out saEraNames);
+            CallEnumCalendarInfo(localeName, calendarId, CAL_SABBREVERASTRING, 0, out saAbbrevEraNames);
 
             //
             // Calendar Era Info
@@ -100,10 +100,10 @@ namespace System.Globalization
             //
 
             // Clean up the escaping of the formats
-            this.saShortDates = CultureData.ReescapeWin32Strings(this.saShortDates);
-            this.saLongDates = CultureData.ReescapeWin32Strings(this.saLongDates);
-            this.saYearMonths = CultureData.ReescapeWin32Strings(this.saYearMonths);
-            this.sMonthDay = CultureData.ReescapeWin32String(this.sMonthDay);
+            saShortDates = CultureData.ReescapeWin32Strings(saShortDates);
+            saLongDates = CultureData.ReescapeWin32Strings(saLongDates);
+            saYearMonths = CultureData.ReescapeWin32Strings(saYearMonths);
+            sMonthDay = CultureData.ReescapeWin32String(sMonthDay);
 
             return ret;
         }

@@ -236,7 +236,7 @@ namespace System.Globalization
                     _cultureData = CultureData.GetCultureData(culture, useUserOverride);
                     break;
             }
-            _isInherited = (this.GetType() != typeof(System.Globalization.CultureInfo));
+            _isInherited = (GetType() != typeof(System.Globalization.CultureInfo));
             _name = _cultureData.CultureName;
         }
 
@@ -251,7 +251,7 @@ namespace System.Globalization
             }
 
             _name = _cultureData.CultureName;
-            _isInherited = (this.GetType() != typeof(System.Globalization.CultureInfo));
+            _isInherited = (GetType() != typeof(System.Globalization.CultureInfo));
         }
 
         // Constructor called by SQL Server's special munged culture - creates a culture with
@@ -521,7 +521,7 @@ namespace System.Globalization
         {
             get
             {
-                return (this._cultureData.ILANGUAGE);
+                return (_cultureData.ILANGUAGE);
             }
         }
 
@@ -588,14 +588,14 @@ namespace System.Globalization
             get
             {
                 // special case the compatibility cultures
-                switch (this.Name)
+                switch (Name)
                 {
                     case "zh-CHT":
                         return "zh-Hant";
                     case "zh-CHS":
                         return "zh-Hans";
                     default:
-                        return this.Name;
+                        return Name;
                 }
             }
         }
@@ -698,12 +698,12 @@ namespace System.Globalization
         {
             get
             {
-                if (this.compareInfo == null)
+                if (compareInfo == null)
                 {
                     // Since CompareInfo's don't have any overrideable properties, get the CompareInfo from
                     // the Non-Overridden CultureInfo so that we only create one CompareInfo per culture
-                    this.compareInfo = UseUserOverride
-                                        ? GetCultureInfo(this._name).CompareInfo
+                    compareInfo = UseUserOverride
+                                        ? GetCultureInfo(_name).CompareInfo
                                         : new CompareInfo(this);
                 }
                 return (compareInfo);
@@ -754,7 +754,7 @@ namespace System.Globalization
                 // using CompareInfo to verify the data passed through the constructor
                 // CultureInfo(String cultureName, String textAndCompareCultureName)
 
-                return (this.Name.Equals(that.Name) && this.CompareInfo.Equals(that.CompareInfo));
+                return (Name.Equals(that.Name) && CompareInfo.Equals(that.CompareInfo));
             }
 
             return (false);
@@ -773,7 +773,7 @@ namespace System.Globalization
 
         public override int GetHashCode()
         {
-            return (this.Name.GetHashCode() + this.CompareInfo.GetHashCode());
+            return (Name.GetHashCode() + CompareInfo.GetHashCode());
         }
 
 
@@ -875,7 +875,7 @@ namespace System.Globalization
                 if (dateTimeInfo == null)
                 {
                     // Change the calendar of DTFI to the specified calendar of this CultureInfo.
-                    DateTimeFormatInfo temp = new DateTimeFormatInfo(_cultureData, this.Calendar)
+                    DateTimeFormatInfo temp = new DateTimeFormatInfo(_cultureData, Calendar)
                     {
                         _isReadOnly = _isReadOnly
                     };
@@ -1044,19 +1044,19 @@ namespace System.Globalization
             //they've already been allocated.  If this is a derived type, we'll take a more generic codepath.
             if (!_isInherited)
             {
-                if (this.dateTimeInfo != null)
+                if (dateTimeInfo != null)
                 {
-                    ci.dateTimeInfo = (DateTimeFormatInfo)this.dateTimeInfo.Clone();
+                    ci.dateTimeInfo = (DateTimeFormatInfo)dateTimeInfo.Clone();
                 }
-                if (this.numInfo != null)
+                if (numInfo != null)
                 {
-                    ci.numInfo = (NumberFormatInfo)this.numInfo.Clone();
+                    ci.numInfo = (NumberFormatInfo)numInfo.Clone();
                 }
             }
             else
             {
-                ci.DateTimeFormat = (DateTimeFormatInfo)this.DateTimeFormat.Clone();
-                ci.NumberFormat = (NumberFormatInfo)this.NumberFormat.Clone();
+                ci.DateTimeFormat = (DateTimeFormatInfo)DateTimeFormat.Clone();
+                ci.NumberFormat = (NumberFormatInfo)NumberFormat.Clone();
             }
 
             if (textInfo != null)

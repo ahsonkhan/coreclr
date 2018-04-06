@@ -58,14 +58,14 @@ namespace System.Text
             EncodingInfo that = value as EncodingInfo;
             if (that != null)
             {
-                return (this.CodePage == that.CodePage);
+                return (CodePage == that.CodePage);
             }
             return (false);
         }
 
         public override int GetHashCode()
         {
-            return this.CodePage;
+            return CodePage;
         }
     }
 }

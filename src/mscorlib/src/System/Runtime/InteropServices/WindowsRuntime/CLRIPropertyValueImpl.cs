@@ -122,15 +122,15 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         public char GetChar16()
         {
-            if (this.Type != PropertyType.Char16)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Char16"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.Char16)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Char16"), HResults.TYPE_E_TYPEMISMATCH);
             return (char)_data;
         }
 
         public bool GetBoolean()
         {
-            if (this.Type != PropertyType.Boolean)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Boolean"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.Boolean)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Boolean"), HResults.TYPE_E_TYPEMISMATCH);
             return (bool)_data;
         }
 
@@ -148,38 +148,38 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         public DateTimeOffset GetDateTime()
         {
-            if (this.Type != PropertyType.DateTime)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "DateTime"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.DateTime)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "DateTime"), HResults.TYPE_E_TYPEMISMATCH);
             return (DateTimeOffset)_data;
         }
 
         public TimeSpan GetTimeSpan()
         {
-            if (this.Type != PropertyType.TimeSpan)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "TimeSpan"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.TimeSpan)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "TimeSpan"), HResults.TYPE_E_TYPEMISMATCH);
             return (TimeSpan)_data;
         }
 
         public Point GetPoint()
         {
-            if (this.Type != PropertyType.Point)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Point"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.Point)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Point"), HResults.TYPE_E_TYPEMISMATCH);
 
             return Unbox<Point>(IReferenceFactory.s_pointType);
         }
 
         public Size GetSize()
         {
-            if (this.Type != PropertyType.Size)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Size"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.Size)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Size"), HResults.TYPE_E_TYPEMISMATCH);
 
             return Unbox<Size>(IReferenceFactory.s_sizeType);
         }
 
         public Rect GetRect()
         {
-            if (this.Type != PropertyType.Rect)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Rect"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.Rect)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Rect"), HResults.TYPE_E_TYPEMISMATCH);
 
             return Unbox<Rect>(IReferenceFactory.s_rectType);
         }
@@ -231,15 +231,15 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         public char[] GetChar16Array()
         {
-            if (this.Type != PropertyType.Char16Array)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Char16[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.Char16Array)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Char16[]"), HResults.TYPE_E_TYPEMISMATCH);
             return (char[])_data;
         }
 
         public bool[] GetBooleanArray()
         {
-            if (this.Type != PropertyType.BooleanArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Boolean[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.BooleanArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Boolean[]"), HResults.TYPE_E_TYPEMISMATCH);
             return (bool[])_data;
         }
 
@@ -250,8 +250,8 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         public object[] GetInspectableArray()
         {
-            if (this.Type != PropertyType.InspectableArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Inspectable[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.InspectableArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Inspectable[]"), HResults.TYPE_E_TYPEMISMATCH);
             return (object[])_data;
         }
 
@@ -262,30 +262,30 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         public DateTimeOffset[] GetDateTimeArray()
         {
-            if (this.Type != PropertyType.DateTimeArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "DateTimeOffset[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.DateTimeArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "DateTimeOffset[]"), HResults.TYPE_E_TYPEMISMATCH);
             return (DateTimeOffset[])_data;
         }
 
         public TimeSpan[] GetTimeSpanArray()
         {
-            if (this.Type != PropertyType.TimeSpanArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "TimeSpan[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.TimeSpanArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "TimeSpan[]"), HResults.TYPE_E_TYPEMISMATCH);
             return (TimeSpan[])_data;
         }
 
         public Point[] GetPointArray()
         {
-            if (this.Type != PropertyType.PointArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Point[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.PointArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Point[]"), HResults.TYPE_E_TYPEMISMATCH);
 
             return UnboxArray<Point>(IReferenceFactory.s_pointType);
         }
 
         public Size[] GetSizeArray()
         {
-            if (this.Type != PropertyType.SizeArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Size[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.SizeArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Size[]"), HResults.TYPE_E_TYPEMISMATCH);
 
 
             return UnboxArray<Size>(IReferenceFactory.s_sizeType);
@@ -293,8 +293,8 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         public Rect[] GetRectArray()
         {
-            if (this.Type != PropertyType.RectArray)
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, "Rect[]"), HResults.TYPE_E_TYPEMISMATCH);
+            if (Type != PropertyType.RectArray)
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, "Rect[]"), HResults.TYPE_E_TYPEMISMATCH);
 
             return UnboxArray<Rect>(IReferenceFactory.s_rectType);
         }
@@ -311,7 +311,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             Array dataArray = _data as Array;
             if (dataArray == null)
             {
-                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, this.Type, typeof (T).MakeArrayType().Name), HResults.TYPE_E_TYPEMISMATCH);
+                throw new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueElement, Type, typeof (T).MakeArrayType().Name), HResults.TYPE_E_TYPEMISMATCH);
             }
 
             // Array types are 1024 larger than their equivilent scalar counterpart
@@ -329,7 +329,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
                 }
                 catch (InvalidCastException elementCastException)
                 {
-                    Exception e = new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueArrayCoersion, this.Type, typeof (T).MakeArrayType().Name, i, elementCastException.Message), elementCastException);
+                    Exception e = new InvalidCastException(SR.Format(SR.InvalidCast_WinRTIPropertyValueArrayCoersion, Type, typeof (T).MakeArrayType().Name, i, elementCastException.Message), elementCastException);
                     e.SetErrorCode(elementCastException._HResult);
                     throw e;
                 }

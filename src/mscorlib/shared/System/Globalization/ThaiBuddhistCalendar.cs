@@ -225,7 +225,7 @@ namespace System.Globalization
                     SR.ArgumentOutOfRange_NeedNonNegNum);
             }
 
-            return (helper.ToFourDigitYear(year, this.TwoDigitYearMax));
+            return (helper.ToFourDigitYear(year, TwoDigitYearMax));
         }
     }
 }

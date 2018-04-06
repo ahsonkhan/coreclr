@@ -471,7 +471,7 @@ namespace System.Reflection.Emit
 
             // create a signature object
             Signature sig = new Signature(
-                this.m_methodHandle, m_parameterTypes, m_returnType, CallingConvention);
+                m_methodHandle, m_parameterTypes, m_returnType, CallingConvention);
 
 
             // verify arguments

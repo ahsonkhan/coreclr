@@ -381,7 +381,7 @@ namespace System.Reflection.Emit
                     throw new ArgumentException(SR.Argument_ShouldNotSpecifyExceptionType);
                 }
 
-                this.Emit(OpCodes.Endfilter);
+                Emit(OpCodes.Endfilter);
 
                 current.MarkCatchAddr(ILOffset, null);
             }
@@ -395,7 +395,7 @@ namespace System.Reflection.Emit
                     throw new ArgumentException(SR.Argument_MustBeRuntimeType);
 
                 Label endLabel = current.GetEndLabel();
-                this.Emit(OpCodes.Leave, endLabel);
+                Emit(OpCodes.Leave, endLabel);
 
                 // if this is a catch block the exception will be pushed on the stack and we need to update the stack info
                 UpdateStackSize(OpCodes.Nop, 1);

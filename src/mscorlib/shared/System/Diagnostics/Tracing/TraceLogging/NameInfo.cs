@@ -50,33 +50,33 @@ namespace System.Diagnostics.Tracing
         {
             this.name = name;
             this.tags = tags & Statics.EventTagsMask;
-            this.identity = Interlocked.Increment(ref lastIdentity);
+            identity = Interlocked.Increment(ref lastIdentity);
 
             int tagsPos = 0;
             Statics.EncodeTags((int)this.tags, ref tagsPos, null);
 
-            this.nameMetadata = Statics.MetadataForString(name, tagsPos, 0, typeMetadataSize);
+            nameMetadata = Statics.MetadataForString(name, tagsPos, 0, typeMetadataSize);
 
             tagsPos = 2;
-            Statics.EncodeTags((int)this.tags, ref tagsPos, this.nameMetadata);
+            Statics.EncodeTags((int)this.tags, ref tagsPos, nameMetadata);
         }
 
         public override int Compare(NameInfo other)
         {
-            return this.Compare(other.name, other.tags);
+            return Compare(other.name, other.tags);
         }
 
         public override int Compare(KeyValuePair<string, EventTags> key)
         {
-            return this.Compare(key.Key, key.Value & Statics.EventTagsMask);
+            return Compare(key.Key, key.Value & Statics.EventTagsMask);
         }
 
         private int Compare(string otherName, EventTags otherTags)
         {
-            int result = StringComparer.Ordinal.Compare(this.name, otherName);
-            if (result == 0 && this.tags != otherTags)
+            int result = StringComparer.Ordinal.Compare(name, otherName);
+            if (result == 0 && tags != otherTags)
             {
-                result = this.tags < otherTags ? -1 : 1;
+                result = tags < otherTags ? -1 : 1;
             }
             return result;
         }

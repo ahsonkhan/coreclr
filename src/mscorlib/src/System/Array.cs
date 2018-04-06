@@ -326,7 +326,7 @@ namespace System
             if (index > Int32.MaxValue || index < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            return this.GetValue((int)index);
+            return GetValue((int)index);
         }
 
         public object GetValue(long index1, long index2)
@@ -336,7 +336,7 @@ namespace System
             if (index2 > Int32.MaxValue || index2 < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index2, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            return this.GetValue((int)index1, (int)index2);
+            return GetValue((int)index1, (int)index2);
         }
 
         public object GetValue(long index1, long index2, long index3)
@@ -348,7 +348,7 @@ namespace System
             if (index3 > Int32.MaxValue || index3 < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index3, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            return this.GetValue((int)index1, (int)index2, (int)index3);
+            return GetValue((int)index1, (int)index2, (int)index3);
         }
 
         public object GetValue(params long[] indices)
@@ -368,7 +368,7 @@ namespace System
                 intIndices[i] = (int)index;
             }
 
-            return this.GetValue(intIndices);
+            return GetValue(intIndices);
         }
 
 
@@ -429,7 +429,7 @@ namespace System
             if (index > Int32.MaxValue || index < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            this.SetValue(value, (int)index);
+            SetValue(value, (int)index);
         }
 
         public void SetValue(object value, long index1, long index2)
@@ -439,7 +439,7 @@ namespace System
             if (index2 > Int32.MaxValue || index2 < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index2, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            this.SetValue(value, (int)index1, (int)index2);
+            SetValue(value, (int)index1, (int)index2);
         }
 
         public void SetValue(object value, long index1, long index2, long index3)
@@ -451,7 +451,7 @@ namespace System
             if (index3 > Int32.MaxValue || index3 < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index3, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            this.SetValue(value, (int)index1, (int)index2, (int)index3);
+            SetValue(value, (int)index1, (int)index2, (int)index3);
         }
 
         public void SetValue(object value, params long[] indices)
@@ -471,7 +471,7 @@ namespace System
                 intIndices[i] = (int)index;
             }
 
-            this.SetValue(value, intIndices);
+            SetValue(value, intIndices);
         }
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -576,12 +576,12 @@ namespace System
 
         bool IList.Contains(object value)
         {
-            return Array.IndexOf(this, value) >= this.GetLowerBound(0);
+            return Array.IndexOf(this, value) >= GetLowerBound(0);
         }
 
         void IList.Clear()
         {
-            Array.Clear(this, this.GetLowerBound(0), this.Length);
+            Array.Clear(this, GetLowerBound(0), Length);
         }
 
         int IList.IndexOf(object value)
@@ -620,7 +620,7 @@ namespace System
 
             Array o = other as Array;
 
-            if (o == null || this.Length != o.Length)
+            if (o == null || Length != o.Length)
             {
                 ThrowHelper.ThrowArgumentException(ExceptionResource.ArgumentException_OtherNotArrayOfCorrectLength, ExceptionArgument.other);
             }
@@ -654,7 +654,7 @@ namespace System
 
             Array o = other as Array;
 
-            if (o == null || o.Length != this.Length)
+            if (o == null || o.Length != Length)
             {
                 return false;
             }
@@ -688,7 +688,7 @@ namespace System
 
             int ret = 0;
 
-            for (int i = (this.Length >= 8 ? this.Length - 8 : 0); i < this.Length; i++)
+            for (int i = (Length >= 8 ? Length - 8 : 0); i < Length; i++)
             {
                 ret = CombineHashCodes(ret, comparer.GetHashCode(GetValue(i)));
             }
@@ -931,7 +931,7 @@ namespace System
             if (index > Int32.MaxValue || index < Int32.MinValue)
                 ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_HugeArrayNotSupported);
 
-            this.CopyTo(array, (int)index);
+            CopyTo(array, (int)index);
         }
 
         private static class EmptyArray<T>

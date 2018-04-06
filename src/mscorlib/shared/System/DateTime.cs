@@ -151,7 +151,7 @@ namespace System
 
         private DateTime(ulong dateData)
         {
-            this._dateData = dateData;
+            _dateData = dateData;
         }
 
         public DateTime(long ticks, DateTimeKind kind)
@@ -1212,7 +1212,7 @@ namespace System
         public long ToFileTimeUtc()
         {
             // Treats the input as universal if it is not specified
-            long ticks = ((InternalKind & LocalMask) != 0) ? ToUniversalTime().InternalTicks : this.InternalTicks;
+            long ticks = ((InternalKind & LocalMask) != 0) ? ToUniversalTime().InternalTicks : InternalTicks;
             ticks -= FileTimeOffset;
             if (ticks < 0)
             {

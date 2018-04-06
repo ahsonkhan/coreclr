@@ -593,7 +593,7 @@ namespace System.Diagnostics.Tracing
 
             if (eventSourceGuid.Equals(Guid.Empty) || eventSourceName == null)
             {
-                var myType = this.GetType();
+                var myType = GetType();
                 eventSourceGuid = GetGuid(myType);
                 eventSourceName = GetName(myType);
             }
@@ -1057,9 +1057,9 @@ namespace System.Diagnostics.Tracing
             /// <param name="reserved">Value for reserved: 2 for per-provider metadata, 1 for per-event metadata</param>
             internal unsafe void SetMetadata(byte* pointer, int size, int reserved)
             {
-                this.m_Ptr = (ulong)pointer;
-                this.m_Size = size;
-                this.m_Reserved = reserved; // Mark this descriptor as containing tracelogging-compatible metadata.
+                m_Ptr = (ulong)pointer;
+                m_Size = size;
+                m_Reserved = reserved; // Mark this descriptor as containing tracelogging-compatible metadata.
             }
 
             //Important, we pass this structure directly to the Win32 EventWrite API, so this structure must be layed out exactly
@@ -1243,7 +1243,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
         /// <summary>
@@ -1290,7 +1290,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         ~EventSource()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 #endregion
 
@@ -1367,7 +1367,7 @@ namespace System.Diagnostics.Tracing
 #if FEATURE_MANAGED_ETW
                 // Create and register our provider traits.  We do this early because it is needed to log errors 
                 // In the self-describing event case. 
-                this.InitializeProviderMetadata();
+                InitializeProviderMetadata();
 
                 // Register the provider with ETW
                 var provider = new OverideEventProvider(this);
@@ -1386,7 +1386,7 @@ namespace System.Diagnostics.Tracing
 #if (!ES_BUILD_STANDALONE && !ES_BUILD_PN)
                 // API available on OS >= Win 8 and patched Win 7.
                 // Disable only for FrameworkEventSource to avoid recursion inside exception handling.
-                if (this.Name != "System.Diagnostics.Eventing.FrameworkEventSource" || Environment.IsWindows8OrAbove)
+                if (Name != "System.Diagnostics.Eventing.FrameworkEventSource" || Environment.IsWindows8OrAbove)
 #endif
                 {
                     int setInformationResult;
@@ -1459,18 +1459,18 @@ namespace System.Diagnostics.Tracing
             /// </summary>
             public void Start()
             {
-                if (this.w == null)
+                if (w == null)
                 {
-                    this.w = new uint[85];
+                    w = new uint[85];
                 }
 
-                this.length = 0;
-                this.pos = 0;
-                this.w[80] = 0x67452301;
-                this.w[81] = 0xEFCDAB89;
-                this.w[82] = 0x98BADCFE;
-                this.w[83] = 0x10325476;
-                this.w[84] = 0xC3D2E1F0;
+                length = 0;
+                pos = 0;
+                w[80] = 0x67452301;
+                w[81] = 0xEFCDAB89;
+                w[82] = 0x98BADCFE;
+                w[83] = 0x10325476;
+                w[84] = 0xC3D2E1F0;
             }
 
             /// <summary>
@@ -1479,10 +1479,10 @@ namespace System.Diagnostics.Tracing
             /// <param name="input">Data to include in the hash.</param>
             public void Append(byte input)
             {
-                this.w[this.pos / 4] = (this.w[this.pos / 4] << 8) | input;
-                if (64 == ++this.pos)
+                w[pos / 4] = (w[pos / 4] << 8) | input;
+                if (64 == ++pos)
                 {
-                    this.Drain();
+                    Drain();
                 }
             }
 
@@ -1496,7 +1496,7 @@ namespace System.Diagnostics.Tracing
             {
                 foreach (var b in input)
                 {
-                    this.Append(b);
+                    Append(b);
                 }
             }
 
@@ -1516,30 +1516,30 @@ namespace System.Diagnostics.Tracing
             /// </param>
             public void Finish(byte[] output)
             {
-                long l = this.length + 8 * this.pos;
-                this.Append(0x80);
-                while (this.pos != 56)
+                long l = length + 8 * pos;
+                Append(0x80);
+                while (pos != 56)
                 {
-                    this.Append(0x00);
+                    Append(0x00);
                 }
 
                 unchecked
                 {
-                    this.Append((byte)(l >> 56));
-                    this.Append((byte)(l >> 48));
-                    this.Append((byte)(l >> 40));
-                    this.Append((byte)(l >> 32));
-                    this.Append((byte)(l >> 24));
-                    this.Append((byte)(l >> 16));
-                    this.Append((byte)(l >> 8));
-                    this.Append((byte)l);
+                    Append((byte)(l >> 56));
+                    Append((byte)(l >> 48));
+                    Append((byte)(l >> 40));
+                    Append((byte)(l >> 32));
+                    Append((byte)(l >> 24));
+                    Append((byte)(l >> 16));
+                    Append((byte)(l >> 8));
+                    Append((byte)l);
 
                     int end = output.Length < 20 ? output.Length : 20;
                     for (int i = 0; i != end; i++)
                     {
-                        uint temp = this.w[80 + i / 4];
+                        uint temp = w[80 + i / 4];
                         output[i] = (byte)(temp >> 24);
-                        this.w[80 + i / 4] = temp << 8;
+                        w[80 + i / 4] = temp << 8;
                     }
                 }
             }
@@ -1551,54 +1551,54 @@ namespace System.Diagnostics.Tracing
             {
                 for (int i = 16; i != 80; i++)
                 {
-                    this.w[i] = Rol1((this.w[i - 3] ^ this.w[i - 8] ^ this.w[i - 14] ^ this.w[i - 16]));
+                    w[i] = Rol1((w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]));
                 }
 
                 unchecked
                 {
-                    uint a = this.w[80];
-                    uint b = this.w[81];
-                    uint c = this.w[82];
-                    uint d = this.w[83];
-                    uint e = this.w[84];
+                    uint a = w[80];
+                    uint b = w[81];
+                    uint c = w[82];
+                    uint d = w[83];
+                    uint e = w[84];
 
                     for (int i = 0; i != 20; i++)
                     {
                         const uint k = 0x5A827999;
                         uint f = (b & c) | ((~b) & d);
-                        uint temp = Rol5(a) + f + e + k + this.w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
+                        uint temp = Rol5(a) + f + e + k + w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
                     }
 
                     for (int i = 20; i != 40; i++)
                     {
                         uint f = b ^ c ^ d;
                         const uint k = 0x6ED9EBA1;
-                        uint temp = Rol5(a) + f + e + k + this.w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
+                        uint temp = Rol5(a) + f + e + k + w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
                     }
 
                     for (int i = 40; i != 60; i++)
                     {
                         uint f = (b & c) | (b & d) | (c & d);
                         const uint k = 0x8F1BBCDC;
-                        uint temp = Rol5(a) + f + e + k + this.w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
+                        uint temp = Rol5(a) + f + e + k + w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
                     }
 
                     for (int i = 60; i != 80; i++)
                     {
                         uint f = b ^ c ^ d;
                         const uint k = 0xCA62C1D6;
-                        uint temp = Rol5(a) + f + e + k + this.w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
+                        uint temp = Rol5(a) + f + e + k + w[i]; e = d; d = c; c = Rol30(b); b = a; a = temp;
                     }
 
-                    this.w[80] += a;
-                    this.w[81] += b;
-                    this.w[82] += c;
-                    this.w[83] += d;
-                    this.w[84] += e;
+                    w[80] += a;
+                    w[81] += b;
+                    w[82] += c;
+                    w[83] += d;
+                    w[84] += e;
                 }
 
-                this.length += 512; // 64 bytes == 512 bits
-                this.pos = 0;
+                length += 512; // 64 bytes == 512 bits
+                pos = 0;
             }
 
             private static uint Rol1(uint input)
@@ -2162,7 +2162,7 @@ namespace System.Diagnostics.Tracing
             {
 #if FEATURE_MANAGED_ETW_CHANNELS
                 // is there a channel with keywords that match currentMatchAnyKeyword?
-                if (eventChannel != EventChannel.None && this.m_channelData != null && this.m_channelData.Length > (int)eventChannel)
+                if (eventChannel != EventChannel.None && m_channelData != null && m_channelData.Length > (int)eventChannel)
                 {
                     EventKeywords channel_keywords = unchecked((EventKeywords)(m_channelData[(int)eventChannel] | (ulong)eventKeywords));
                     if (channel_keywords != 0 && (channel_keywords & currentMatchAnyKeyword) == 0)
@@ -2265,7 +2265,7 @@ namespace System.Diagnostics.Tracing
         {
             public OverideEventProvider(EventSource eventSource)
             {
-                this.m_eventSource = eventSource;
+                m_eventSource = eventSource;
             }
             protected override void OnControllerCommand(ControllerCommand command, IDictionary<string, string> arguments,
                                                               int perEventSourceSessionId, int etwSessionId)
@@ -2359,7 +2359,7 @@ namespace System.Diagnostics.Tracing
                 if (m_completelyInited)
                 {
                     // After the first command arrive after construction, we are ready to get rid of the deferred commands
-                    this.m_deferredCommands = null;
+                    m_deferredCommands = null;
                     // We are fully initialized, do the command 
                     DoCommand(commandArgs);
                 }
@@ -2485,8 +2485,8 @@ namespace System.Diagnostics.Tracing
                         m_eventSourceEnabled = true;
                     }
 
-                    this.OnEventCommand(commandArgs);
-                    var eventCommandCallback = this.m_eventCommandExecuted;
+                    OnEventCommand(commandArgs);
+                    var eventCommandCallback = m_eventCommandExecuted;
                     if (eventCommandCallback != null)
                         eventCommandCallback(this, commandArgs);
 
@@ -2536,7 +2536,7 @@ namespace System.Diagnostics.Tracing
                     // Debug.Assert(level == EventLevel.LogAlways);
                     // Debug.Assert(matchAnyKeyword == EventKeywords.None);
 
-                    this.OnEventCommand(commandArgs);
+                    OnEventCommand(commandArgs);
                     var eventCommandCallback = m_eventCommandExecuted;
                     if (eventCommandCallback != null)
                         eventCommandCallback(this, commandArgs);
@@ -2615,7 +2615,7 @@ namespace System.Diagnostics.Tracing
                     // GetMetadata failed, so we have to set it via reflection.
                     Debug.Assert(m_rawManifest == null);
 
-                    m_rawManifest = CreateManifestAndDescriptors(this.GetType(), Name, this);
+                    m_rawManifest = CreateManifestAndDescriptors(GetType(), Name, this);
                     Debug.Assert(m_eventData != null);
 
                 }
@@ -3771,11 +3771,11 @@ namespace System.Diagnostics.Tracing
             {
                 CallBackForExistingEventSources(false, value);
 
-                this._EventSourceCreated = (EventHandler<EventSourceCreatedEventArgs>)Delegate.Combine(_EventSourceCreated, value);
+                _EventSourceCreated = (EventHandler<EventSourceCreatedEventArgs>)Delegate.Combine(_EventSourceCreated, value);
             }
             remove
             {
-                this._EventSourceCreated = (EventHandler<EventSourceCreatedEventArgs>)Delegate.Remove(_EventSourceCreated, value);
+                _EventSourceCreated = (EventHandler<EventSourceCreatedEventArgs>)Delegate.Remove(_EventSourceCreated, value);
             }
         }
 
@@ -3813,7 +3813,7 @@ namespace System.Diagnostics.Tracing
                     if (this == s_Listeners)
                     {
                         EventListener cur = s_Listeners;
-                        s_Listeners = this.m_Next;
+                        s_Listeners = m_Next;
                         RemoveReferencesToListenerInEventSources(cur);
                     }
                     else
@@ -3931,7 +3931,7 @@ namespace System.Diagnostics.Tracing
         /// <param name="eventSource"></param>
         internal protected virtual void OnEventSourceCreated(EventSource eventSource)
         {
-            EventHandler<EventSourceCreatedEventArgs> callBack = this._EventSourceCreated;
+            EventHandler<EventSourceCreatedEventArgs> callBack = _EventSourceCreated;
             if (callBack != null)
             {
                 EventSourceCreatedEventArgs args = new EventSourceCreatedEventArgs
@@ -3949,7 +3949,7 @@ namespace System.Diagnostics.Tracing
         /// <param name="eventData"></param>
         internal protected virtual void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            EventHandler<EventWrittenEventArgs> callBack = this.EventWritten;
+            EventHandler<EventWrittenEventArgs> callBack = EventWritten;
             if (callBack != null)
             {
                 callBack(this, eventData);
@@ -4164,7 +4164,7 @@ namespace System.Diagnostics.Tracing
                     {
                         // Add to list of listeners in the system, do this BEFORE firing the 'OnEventSourceCreated' so that 
                         // Those added sources see this listener.
-                        this.m_Next = s_Listeners;
+                        m_Next = s_Listeners;
                         s_Listeners = this;
                     }
 
@@ -4273,8 +4273,8 @@ namespace System.Diagnostics.Tracing
         internal EventCommandEventArgs(EventCommand command, IDictionary<string, string> arguments, EventSource eventSource,
             EventListener listener, int perEventSourceSessionId, int etwSessionId, bool enable, EventLevel level, EventKeywords matchAnyKeyword)
         {
-            this.Command = command;
-            this.Arguments = arguments;
+            Command = command;
+            Arguments = arguments;
             this.eventSource = eventSource;
             this.listener = listener;
             this.perEventSourceSessionId = perEventSourceSessionId;
@@ -4599,7 +4599,7 @@ namespace System.Diagnostics.Tracing
     {
         /// <summary>Construct an EventAttribute with specified eventId</summary>
         /// <param name="eventId">ID of the ETW event (an integer between 1 and 65535)</param>
-        public EventAttribute(int eventId) { this.EventId = eventId; Level = EventLevel.Informational; this.m_opcodeSet = false; }
+        public EventAttribute(int eventId) { EventId = eventId; Level = EventLevel.Informational; m_opcodeSet = false; }
         /// <summary>Event's ID</summary>
         public int EventId { get; private set; }
         /// <summary>Event's severity level: indicates the severity or verbosity of the event</summary>
@@ -4615,8 +4615,8 @@ namespace System.Diagnostics.Tracing
             }
             set
             {
-                this.m_opcode = value;
-                this.m_opcodeSet = true;
+                m_opcode = value;
+                m_opcodeSet = true;
             }
         }
 
@@ -4817,7 +4817,7 @@ namespace System.Diagnostics.Tracing
 
         public bool IsEqualOrSupersetOf(SessionMask m)
         {
-            return (this.m_mask | m.m_mask) == this.m_mask;
+            return (m_mask | m.m_mask) == m_mask;
         }
 
         public static SessionMask All
@@ -5095,7 +5095,7 @@ namespace System.Diagnostics.Tracing
 
         public ulong[] GetChannelData()
         {
-            if (this.channelTab == null)
+            if (channelTab == null)
             {
                 return new ulong[0];
             }
@@ -5103,7 +5103,7 @@ namespace System.Diagnostics.Tracing
             // We create an array indexed by the channel id for fast look up.
             // E.g. channelMask[Admin] will give you the bit mask for Admin channel.
             int maxkey = -1;
-            foreach (var item in this.channelTab.Keys)
+            foreach (var item in channelTab.Keys)
             {
                 if (item > maxkey)
                 {
@@ -5112,7 +5112,7 @@ namespace System.Diagnostics.Tracing
             }
 
             ulong[] channelMask = new ulong[maxkey + 1];
-            foreach (var item in this.channelTab)
+            foreach (var item in channelTab)
             {
                 channelMask[item.Key] = item.Value.Keywords;
             }

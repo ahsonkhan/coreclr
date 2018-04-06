@@ -69,7 +69,7 @@ namespace System
 
         public TimeSpan(long ticks)
         {
-            this._ticks = ticks;
+            _ticks = ticks;
         }
 
         public TimeSpan(int hours, int minutes, int seconds)

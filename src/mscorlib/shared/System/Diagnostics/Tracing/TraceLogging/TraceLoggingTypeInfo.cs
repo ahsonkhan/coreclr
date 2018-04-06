@@ -39,9 +39,9 @@ namespace System.Diagnostics.Tracing
                 throw new ArgumentNullException(nameof(dataType));
             }
 
-            this.name = dataType.Name;
+            name = dataType.Name;
             this.dataType = dataType;
-            this.propertyValueFactory = PropertyValue.GetFactory(dataType);
+            propertyValueFactory = PropertyValue.GetFactory(dataType);
         }
 
         internal TraceLoggingTypeInfo(
@@ -70,7 +70,7 @@ namespace System.Diagnostics.Tracing
             this.opcode = opcode;
             this.tags = tags;
             this.dataType = dataType;
-            this.propertyValueFactory = PropertyValue.GetFactory(dataType);
+            propertyValueFactory = PropertyValue.GetFactory(dataType);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public string Name
         {
-            get { return this.name; }
+            get { return name; }
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public EventLevel Level
         {
-            get { return this.level; }
+            get { return level; }
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public EventOpcode Opcode
         {
-            get { return this.opcode; }
+            get { return opcode; }
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public EventKeywords Keywords
         {
-            get { return this.keywords; }
+            get { return keywords; }
         }
 
         /// <summary>
@@ -116,17 +116,17 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         public EventTags Tags
         {
-            get { return this.tags; }
+            get { return tags; }
         }
 
         internal Type DataType
         {
-            get { return this.dataType; }
+            get { return dataType; }
         }
 
         internal Func<object, PropertyValue> PropertyValueFactory
         {
-            get { return this.propertyValueFactory; }
+            get { return propertyValueFactory; }
         }
 
         /// <summary>

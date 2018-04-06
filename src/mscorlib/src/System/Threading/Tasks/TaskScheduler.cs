@@ -263,7 +263,7 @@ namespace System.Threading.Tasks
                 task.FireTaskScheduledIfNeeded(this);
             }
 
-            this.QueueTask(task);
+            QueueTask(task);
         }
 
 

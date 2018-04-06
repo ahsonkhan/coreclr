@@ -341,7 +341,7 @@ namespace System
 
             // For backward-compatibility, we need to special case for the types
             // whose UnderlyingSystemType are runtime implemented. 
-            Type toType = this.UnderlyingSystemType;
+            Type toType = UnderlyingSystemType;
             if (toType.IsRuntimeImplemented())
                 return toType.IsAssignableFrom(c);
 
@@ -349,7 +349,7 @@ namespace System
             if (c.IsSubclassOf(this))
                 return true;
 
-            if (this.IsInterface)
+            if (IsInterface)
             {
                 return c.ImplementInterface(this);
             }

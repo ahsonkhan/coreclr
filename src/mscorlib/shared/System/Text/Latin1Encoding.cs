@@ -53,7 +53,7 @@ namespace System.Text
                     "[Latin1CodePageEncoding.GetByteCount]Expected empty fallback buffer");
             }
             else
-                fallback = this.EncoderFallback as EncoderReplacementFallback;
+                fallback = EncoderFallback as EncoderReplacementFallback;
 
             if ((fallback != null && fallback.MaxCharCount == 1)/* || bIsBestFit*/)
             {
@@ -122,7 +122,7 @@ namespace System.Text
                     if (fallbackBuffer == null)
                     {
                         if (encoder == null)
-                            fallbackBuffer = this.encoderFallback.CreateFallbackBuffer();
+                            fallbackBuffer = encoderFallback.CreateFallbackBuffer();
                         else
                             fallbackBuffer = encoder.FallbackBuffer;
                         fallbackBuffer.InternalInitialize(charEnd - charCount, charEnd, encoder, false);
@@ -174,7 +174,7 @@ namespace System.Text
             }
             else
             {
-                fallback = this.EncoderFallback as EncoderReplacementFallback;
+                fallback = EncoderFallback as EncoderReplacementFallback;
             }
 
             // prepare our end
@@ -294,7 +294,7 @@ namespace System.Text
                     if (fallbackBuffer == null)
                     {
                         if (encoder == null)
-                            fallbackBuffer = this.encoderFallback.CreateFallbackBuffer();
+                            fallbackBuffer = encoderFallback.CreateFallbackBuffer();
                         else
                             fallbackBuffer = encoder.FallbackBuffer;
                         fallbackBuffer.InternalInitialize(charEnd - charCount, charEnd, encoder, true);

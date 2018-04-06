@@ -38,13 +38,13 @@ namespace System.Diagnostics.Tracing
         {
             get
             {
-                return (EventLevel)this.level;
+                return (EventLevel)level;
             }
 
             set
             {
-                this.level = checked((byte)value);
-                this.valuesSet |= levelSet;
+                level = checked((byte)value);
+                valuesSet |= levelSet;
             }
         }
 
@@ -56,13 +56,13 @@ namespace System.Diagnostics.Tracing
         {
             get
             {
-                return (EventOpcode)this.opcode;
+                return (EventOpcode)opcode;
             }
 
             set
             {
-                this.opcode = checked((byte)value);
-                this.valuesSet |= opcodeSet;
+                opcode = checked((byte)value);
+                valuesSet |= opcodeSet;
             }
         }
 
@@ -70,7 +70,7 @@ namespace System.Diagnostics.Tracing
         {
             get
             {
-                return (this.valuesSet & opcodeSet) != 0;
+                return (valuesSet & opcodeSet) != 0;
             }
         }
 
@@ -82,13 +82,13 @@ namespace System.Diagnostics.Tracing
         {
             get
             {
-                return this.keywords;
+                return keywords;
             }
 
             set
             {
-                this.keywords = value;
-                this.valuesSet |= keywordsSet;
+                keywords = value;
+                valuesSet |= keywordsSet;
             }
         }
 
@@ -100,13 +100,13 @@ namespace System.Diagnostics.Tracing
         {
             get
             {
-                return this.tags;
+                return tags;
             }
 
             set
             {
-                this.tags = value;
-                this.valuesSet |= tagsSet;
+                tags = value;
+                valuesSet |= tagsSet;
             }
         }
 
@@ -118,12 +118,12 @@ namespace System.Diagnostics.Tracing
         {
             get
             {
-                return this.activityOptions;
+                return activityOptions;
             }
             set
             {
-                this.activityOptions = value;
-                this.valuesSet |= activityOptionsSet;
+                activityOptions = value;
+                valuesSet |= activityOptionsSet;
             }
         }
     }

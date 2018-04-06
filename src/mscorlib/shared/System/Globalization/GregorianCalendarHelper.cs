@@ -29,7 +29,7 @@ namespace System.Globalization
             this.yearOffset = yearOffset;
             this.minEraYear = minEraYear;
             this.maxEraYear = maxEraYear;
-            this.ticks = new DateTime(startYear, startMonth, startDay).Ticks;
+            ticks = new DateTime(startYear, startMonth, startDay).Ticks;
         }
 
         internal EraInfo(int era, int startYear, int startMonth, int startDay, int yearOffset, int minEraYear, int maxEraYear,
@@ -39,7 +39,7 @@ namespace System.Globalization
             this.yearOffset = yearOffset;
             this.minEraYear = minEraYear;
             this.maxEraYear = maxEraYear;
-            this.ticks = new DateTime(startYear, startMonth, startDay).Ticks;
+            ticks = new DateTime(startYear, startMonth, startDay).Ticks;
             this.eraName = eraName;
             this.abbrevEraName = abbrevEraName;
             this.englishEraName = englishEraName;

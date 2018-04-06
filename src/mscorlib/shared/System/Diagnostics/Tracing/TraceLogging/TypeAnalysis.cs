@@ -74,29 +74,29 @@ namespace System.Diagnostics.Tracing
                     fieldAttribute));
             }
 
-            this.properties = propertyList.ToArray();
+            properties = propertyList.ToArray();
 
-            foreach (var property in this.properties)
+            foreach (var property in properties)
             {
                 var typeInfo = property.typeInfo;
-                this.level = (EventLevel)Statics.Combine((int)typeInfo.Level, (int)this.level);
-                this.opcode = (EventOpcode)Statics.Combine((int)typeInfo.Opcode, (int)this.opcode);
-                this.keywords |= typeInfo.Keywords;
-                this.tags |= typeInfo.Tags;
+                level = (EventLevel)Statics.Combine((int)typeInfo.Level, (int)level);
+                opcode = (EventOpcode)Statics.Combine((int)typeInfo.Opcode, (int)opcode);
+                keywords |= typeInfo.Keywords;
+                tags |= typeInfo.Tags;
             }
 
             if (eventAttrib != null)
             {
-                this.level = (EventLevel)Statics.Combine((int)eventAttrib.Level, (int)this.level);
-                this.opcode = (EventOpcode)Statics.Combine((int)eventAttrib.Opcode, (int)this.opcode);
-                this.keywords |= eventAttrib.Keywords;
-                this.tags |= eventAttrib.Tags;
-                this.name = eventAttrib.Name;
+                level = (EventLevel)Statics.Combine((int)eventAttrib.Level, (int)level);
+                opcode = (EventOpcode)Statics.Combine((int)eventAttrib.Opcode, (int)opcode);
+                keywords |= eventAttrib.Keywords;
+                tags |= eventAttrib.Tags;
+                name = eventAttrib.Name;
             }
 
-            if (this.name == null)
+            if (name == null)
             {
-                this.name = dataType.Name;
+                name = dataType.Name;
             }
         }
     }

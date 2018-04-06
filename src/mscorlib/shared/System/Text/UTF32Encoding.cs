@@ -75,13 +75,13 @@ namespace System.Text
             // For UTF-X encodings, we use a replacement fallback with an empty string
             if (_isThrowException)
             {
-                this.encoderFallback = EncoderFallback.ExceptionFallback;
-                this.decoderFallback = DecoderFallback.ExceptionFallback;
+                encoderFallback = EncoderFallback.ExceptionFallback;
+                decoderFallback = DecoderFallback.ExceptionFallback;
             }
             else
             {
-                this.encoderFallback = new EncoderReplacementFallback("\xFFFD");
-                this.decoderFallback = new DecoderReplacementFallback("\xFFFD");
+                encoderFallback = new EncoderReplacementFallback("\xFFFD");
+                decoderFallback = new DecoderReplacementFallback("\xFFFD");
             }
         }
 
@@ -388,11 +388,11 @@ namespace System.Text
 
                 // We mustn't have left over fallback data when counting
                 if (fallbackBuffer.Remaining > 0)
-                    throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType()));
+                    throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, EncodingName, encoder.Fallback.GetType()));
             }
             else
             {
-                fallbackBuffer = this.encoderFallback.CreateFallbackBuffer();
+                fallbackBuffer = encoderFallback.CreateFallbackBuffer();
             }
 
             // Set our internal fallback interesting things.
@@ -523,11 +523,11 @@ namespace System.Text
 
                 // We mustn't have left over fallback data when not converting
                 if (encoder._throwOnOverflow && fallbackBuffer.Remaining > 0)
-                    throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType()));
+                    throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, EncodingName, encoder.Fallback.GetType()));
             }
             else
             {
-                fallbackBuffer = this.encoderFallback.CreateFallbackBuffer();
+                fallbackBuffer = encoderFallback.CreateFallbackBuffer();
             }
 
             // Set our internal fallback interesting things.
@@ -732,7 +732,7 @@ namespace System.Text
             }
             else
             {
-                fallbackBuffer = this.decoderFallback.CreateFallbackBuffer();
+                fallbackBuffer = decoderFallback.CreateFallbackBuffer();
             }
 
             // Set our internal fallback interesting things.
@@ -880,7 +880,7 @@ namespace System.Text
             }
             else
             {
-                fallbackBuffer = this.decoderFallback.CreateFallbackBuffer();
+                fallbackBuffer = decoderFallback.CreateFallbackBuffer();
             }
 
             // Set our internal fallback interesting things.
@@ -1176,7 +1176,7 @@ namespace System.Text
         public override int GetHashCode()
         {
             //Not great distribution, but this is relatively unlikely to be used as the key in a hashtable.
-            return this.EncoderFallback.GetHashCode() + this.DecoderFallback.GetHashCode() +
+            return EncoderFallback.GetHashCode() + DecoderFallback.GetHashCode() +
                    CodePage + (_emitUTF32ByteOrderMark ? 4 : 0) + (_bigEndian ? 8 : 0);
         }
 
@@ -1193,8 +1193,8 @@ namespace System.Text
 
             public override void Reset()
             {
-                this.iChar = 0;
-                this.readByteCount = 0;
+                iChar = 0;
+                readByteCount = 0;
                 if (_fallbackBuffer != null)
                     _fallbackBuffer.Reset();
             }
@@ -1205,7 +1205,7 @@ namespace System.Text
                 get
                 {
                     // ReadByteCount is our flag.  (iChar==0 doesn't mean much).
-                    return (this.readByteCount != 0);
+                    return (readByteCount != 0);
                 }
             }
         }

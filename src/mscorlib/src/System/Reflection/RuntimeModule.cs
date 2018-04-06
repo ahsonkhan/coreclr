@@ -384,7 +384,7 @@ namespace System.Reflection
 
         internal bool IsTransientInternal()
         {
-            return RuntimeModule.nIsTransientInternal(this.GetNativeHandle());
+            return RuntimeModule.nIsTransientInternal(GetNativeHandle());
         }
 
         internal MetadataImport MetadataImport

@@ -54,7 +54,7 @@ namespace System.Globalization
             SortVersion n = obj as SortVersion;
             if (n != null)
             {
-                return this.Equals(n);
+                return Equals(n);
             }
 
             return false;

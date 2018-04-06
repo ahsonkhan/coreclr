@@ -182,7 +182,7 @@ namespace System.Globalization
             {
                 if (_cultureInfo == null)
                 {
-                    _cultureInfo = CultureInfo.GetCultureInfo(this.CultureName);
+                    _cultureInfo = CultureInfo.GetCultureInfo(CultureName);
                 }
                 return _cultureInfo;
             }
@@ -207,14 +207,14 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////////
 
-        private string[] internalGetAbbreviatedDayOfWeekNames() => this.abbreviatedDayNames ?? internalGetAbbreviatedDayOfWeekNamesCore();
+        private string[] internalGetAbbreviatedDayOfWeekNames() => abbreviatedDayNames ?? internalGetAbbreviatedDayOfWeekNamesCore();
         [MethodImpl(MethodImplOptions.NoInlining)]
         private string[] internalGetAbbreviatedDayOfWeekNamesCore()
         {
             // Get the abbreviated day names for our current calendar
-            this.abbreviatedDayNames = _cultureData.AbbreviatedDayNames(Calendar.ID);
-            Debug.Assert(this.abbreviatedDayNames.Length == 7, "[DateTimeFormatInfo.GetAbbreviatedDayOfWeekNames] Expected 7 day names in a week");
-            return this.abbreviatedDayNames;
+            abbreviatedDayNames = _cultureData.AbbreviatedDayNames(Calendar.ID);
+            Debug.Assert(abbreviatedDayNames.Length == 7, "[DateTimeFormatInfo.GetAbbreviatedDayOfWeekNames] Expected 7 day names in a week");
+            return abbreviatedDayNames;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -229,14 +229,14 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////
 
-        private string[] internalGetSuperShortDayNames() => this.m_superShortDayNames ?? internalGetSuperShortDayNamesCore();
+        private string[] internalGetSuperShortDayNames() => m_superShortDayNames ?? internalGetSuperShortDayNamesCore();
         [MethodImpl(MethodImplOptions.NoInlining)]
         private string[] internalGetSuperShortDayNamesCore()
         {
             // Get the super short day names for our current calendar
-            this.m_superShortDayNames = _cultureData.SuperShortDayNames(Calendar.ID);
-            Debug.Assert(this.m_superShortDayNames.Length == 7, "[DateTimeFormatInfo.internalGetSuperShortDayNames] Expected 7 day names in a week");
-            return this.m_superShortDayNames;
+            m_superShortDayNames = _cultureData.SuperShortDayNames(Calendar.ID);
+            Debug.Assert(m_superShortDayNames.Length == 7, "[DateTimeFormatInfo.internalGetSuperShortDayNames] Expected 7 day names in a week");
+            return m_superShortDayNames;
         }
 
         ////////////////////////////////////////////////////////////////////////////
@@ -245,14 +245,14 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////////
 
-        private string[] internalGetDayOfWeekNames() => this.dayNames ?? internalGetDayOfWeekNamesCore();
+        private string[] internalGetDayOfWeekNames() => dayNames ?? internalGetDayOfWeekNamesCore();
         [MethodImpl(MethodImplOptions.NoInlining)]
         private string[] internalGetDayOfWeekNamesCore()
         {
             // Get the day names for our current calendar
-            this.dayNames = _cultureData.DayNames(Calendar.ID);
-            Debug.Assert(this.dayNames.Length == 7, "[DateTimeFormatInfo.GetDayOfWeekNames] Expected 7 day names in a week");
-            return this.dayNames;
+            dayNames = _cultureData.DayNames(Calendar.ID);
+            Debug.Assert(dayNames.Length == 7, "[DateTimeFormatInfo.GetDayOfWeekNames] Expected 7 day names in a week");
+            return dayNames;
         }
 
         ////////////////////////////////////////////////////////////////////////////
@@ -261,15 +261,15 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////////
 
-        private string[] internalGetAbbreviatedMonthNames() => this.abbreviatedMonthNames ?? internalGetAbbreviatedMonthNamesCore();
+        private string[] internalGetAbbreviatedMonthNames() => abbreviatedMonthNames ?? internalGetAbbreviatedMonthNamesCore();
         [MethodImpl(MethodImplOptions.NoInlining)]
         private string[] internalGetAbbreviatedMonthNamesCore()
         {
             // Get the month names for our current calendar
-            this.abbreviatedMonthNames = _cultureData.AbbreviatedMonthNames(Calendar.ID);
-            Debug.Assert(this.abbreviatedMonthNames.Length == 12 || this.abbreviatedMonthNames.Length == 13,
+            abbreviatedMonthNames = _cultureData.AbbreviatedMonthNames(Calendar.ID);
+            Debug.Assert(abbreviatedMonthNames.Length == 12 || abbreviatedMonthNames.Length == 13,
                 "[DateTimeFormatInfo.GetAbbreviatedMonthNames] Expected 12 or 13 month names in a year");
-            return this.abbreviatedMonthNames;
+            return abbreviatedMonthNames;
         }
 
 
@@ -279,15 +279,15 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////////
 
-        private string[] internalGetMonthNames() => this.monthNames ?? internalGetMonthNamesCore();
+        private string[] internalGetMonthNames() => monthNames ?? internalGetMonthNamesCore();
         [MethodImpl(MethodImplOptions.NoInlining)]
         private string[] internalGetMonthNamesCore()
         {
             // Get the month names for our current calendar
-            this.monthNames = _cultureData.MonthNames(Calendar.ID);
-            Debug.Assert(this.monthNames.Length == 12 || this.monthNames.Length == 13,
+            monthNames = _cultureData.MonthNames(Calendar.ID);
+            Debug.Assert(monthNames.Length == 12 || monthNames.Length == 13,
                 "[DateTimeFormatInfo.GetMonthNames] Expected 12 or 13 month names in a year");
-            return this.monthNames;
+            return monthNames;
         }
 
 
@@ -307,7 +307,7 @@ namespace System.Globalization
             // Remember our culture
             _cultureData = cultureData;
 
-            this.Calendar = cal;
+            Calendar = cal;
         }
 
         private void InitializeOverridableProperties(CultureData cultureData, CalendarId calendarId)
@@ -315,28 +315,28 @@ namespace System.Globalization
             Debug.Assert(cultureData != null);
             Debug.Assert(calendarId != CalendarId.UNINITIALIZED_VALUE, "[DateTimeFormatInfo.Populate] Expected initalized calendarId");
 
-            if (this.firstDayOfWeek == -1) { this.firstDayOfWeek = cultureData.IFIRSTDAYOFWEEK; }
-            if (this.calendarWeekRule == -1) { this.calendarWeekRule = cultureData.IFIRSTWEEKOFYEAR; }
+            if (firstDayOfWeek == -1) { firstDayOfWeek = cultureData.IFIRSTDAYOFWEEK; }
+            if (calendarWeekRule == -1) { calendarWeekRule = cultureData.IFIRSTWEEKOFYEAR; }
 
-            if (this.amDesignator == null) { this.amDesignator = cultureData.SAM1159; }
-            if (this.pmDesignator == null) { this.pmDesignator = cultureData.SPM2359; }
-            if (this.timeSeparator == null) { this.timeSeparator = cultureData.TimeSeparator; }
-            if (this.dateSeparator == null) { this.dateSeparator = cultureData.DateSeparator(calendarId); }
+            if (amDesignator == null) { amDesignator = cultureData.SAM1159; }
+            if (pmDesignator == null) { pmDesignator = cultureData.SPM2359; }
+            if (timeSeparator == null) { timeSeparator = cultureData.TimeSeparator; }
+            if (dateSeparator == null) { dateSeparator = cultureData.DateSeparator(calendarId); }
 
-            this.allLongTimePatterns = _cultureData.LongTimes;
-            Debug.Assert(this.allLongTimePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some long time patterns");
+            allLongTimePatterns = _cultureData.LongTimes;
+            Debug.Assert(allLongTimePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some long time patterns");
 
-            this.allShortTimePatterns = _cultureData.ShortTimes;
-            Debug.Assert(this.allShortTimePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some short time patterns");
+            allShortTimePatterns = _cultureData.ShortTimes;
+            Debug.Assert(allShortTimePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some short time patterns");
 
-            this.allLongDatePatterns = cultureData.LongDates(calendarId);
-            Debug.Assert(this.allLongDatePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some long date patterns");
+            allLongDatePatterns = cultureData.LongDates(calendarId);
+            Debug.Assert(allLongDatePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some long date patterns");
 
-            this.allShortDatePatterns = cultureData.ShortDates(calendarId);
-            Debug.Assert(this.allShortDatePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some short date patterns");
+            allShortDatePatterns = cultureData.ShortDates(calendarId);
+            Debug.Assert(allShortDatePatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some short date patterns");
 
-            this.allYearMonthPatterns = cultureData.YearMonths(calendarId);
-            Debug.Assert(this.allYearMonthPatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some year month patterns");
+            allYearMonthPatterns = cultureData.YearMonths(calendarId);
+            Debug.Assert(allYearMonthPatterns.Length > 0, "[DateTimeFormatInfo.Populate] Expected some year month patterns");
         }
 
         // Returns a default DateTimeFormatInfo that will be universally
@@ -397,7 +397,7 @@ namespace System.Globalization
             DateTimeFormatInfo n = (DateTimeFormatInfo)MemberwiseClone();
             // We can use the data member calendar in the setter, instead of the property Calendar,
             // since the cloned copy should have the same state as the original copy.
-            n.calendar = (Calendar)this.Calendar.Clone();
+            n.calendar = (Calendar)Calendar.Clone();
             n._isReadOnly = false;
             return n;
         }
@@ -407,12 +407,12 @@ namespace System.Globalization
         {
             get
             {
-                if (this.amDesignator == null)
+                if (amDesignator == null)
                 {
-                    this.amDesignator = _cultureData.SAM1159;
+                    amDesignator = _cultureData.SAM1159;
                 }
-                Debug.Assert(this.amDesignator != null, "DateTimeFormatInfo.AMDesignator, amDesignator != null");
-                return (this.amDesignator);
+                Debug.Assert(amDesignator != null, "DateTimeFormatInfo.AMDesignator, amDesignator != null");
+                return (amDesignator);
             }
 
             set
@@ -434,8 +434,8 @@ namespace System.Globalization
         {
             get
             {
-                Debug.Assert(this.calendar != null, "DateTimeFormatInfo.Calendar: calendar != null");
-                return (this.calendar);
+                Debug.Assert(calendar != null, "DateTimeFormatInfo.Calendar: calendar != null");
+                return (calendar);
             }
 
             set
@@ -451,9 +451,9 @@ namespace System.Globalization
                     return;
                 }
 
-                for (int i = 0; i < this.OptionalCalendars.Length; i++)
+                for (int i = 0; i < OptionalCalendars.Length; i++)
                 {
-                    if (this.OptionalCalendars[i] == value.ID)
+                    if (OptionalCalendars[i] == value.ID)
                     {
                         // We can use this one, so do so.
 
@@ -529,11 +529,11 @@ namespace System.Globalization
         {
             get
             {
-                if (this.optionalCalendars == null)
+                if (optionalCalendars == null)
                 {
-                    this.optionalCalendars = _cultureData.CalendarIds;
+                    optionalCalendars = _cultureData.CalendarIds;
                 }
-                return (this.optionalCalendars);
+                return (optionalCalendars);
             }
         }
 
@@ -575,7 +575,7 @@ namespace System.Globalization
                 // Compare the era name in a case-insensitive way for the appropriate culture.
                 if (m_eraNames[i].Length > 0)
                 {
-                    if (this.Culture.CompareInfo.Compare(eraName, m_eraNames[i], CompareOptions.IgnoreCase) == 0)
+                    if (Culture.CompareInfo.Compare(eraName, m_eraNames[i], CompareOptions.IgnoreCase) == 0)
                     {
                         return (i + 1);
                     }
@@ -584,7 +584,7 @@ namespace System.Globalization
             for (int i = 0; i < AbbreviatedEraNames.Length; i++)
             {
                 // Compare the abbreviated era name in a case-insensitive way for the appropriate culture.              
-                if (this.Culture.CompareInfo.Compare(eraName, m_abbrevEraNames[i], CompareOptions.IgnoreCase) == 0)
+                if (Culture.CompareInfo.Compare(eraName, m_abbrevEraNames[i], CompareOptions.IgnoreCase) == 0)
                 {
                     return (i + 1);
                 }
@@ -606,11 +606,11 @@ namespace System.Globalization
         {
             get
             {
-                if (this.m_eraNames == null)
+                if (m_eraNames == null)
                 {
-                    this.m_eraNames = _cultureData.EraNames(Calendar.ID); ;
+                    m_eraNames = _cultureData.EraNames(Calendar.ID); ;
                 }
-                return (this.m_eraNames);
+                return (m_eraNames);
             }
         }
 
@@ -645,11 +645,11 @@ namespace System.Globalization
         {
             get
             {
-                if (this.m_abbrevEraNames == null)
+                if (m_abbrevEraNames == null)
                 {
-                    this.m_abbrevEraNames = _cultureData.AbbrevEraNames(Calendar.ID);
+                    m_abbrevEraNames = _cultureData.AbbrevEraNames(Calendar.ID);
                 }
-                return (this.m_abbrevEraNames);
+                return (m_abbrevEraNames);
             }
         }
 
@@ -677,12 +677,12 @@ namespace System.Globalization
         {
             get
             {
-                if (this.m_abbrevEnglishEraNames == null)
+                if (m_abbrevEnglishEraNames == null)
                 {
                     Debug.Assert(Calendar.ID > 0, "[DateTimeFormatInfo.AbbreviatedEnglishEraNames] Expected Calendar.ID > 0");
-                    this.m_abbrevEnglishEraNames = _cultureData.AbbreviatedEnglishEraNames(Calendar.ID);
+                    m_abbrevEnglishEraNames = _cultureData.AbbreviatedEnglishEraNames(Calendar.ID);
                 }
-                return (this.m_abbrevEnglishEraNames);
+                return (m_abbrevEnglishEraNames);
             }
         }
 
@@ -696,7 +696,7 @@ namespace System.Globalization
                 {
                     dateSeparator = _cultureData.DateSeparator(Calendar.ID);
                 }
-                Debug.Assert(this.dateSeparator != null, "DateTimeFormatInfo.DateSeparator, dateSeparator != null");
+                Debug.Assert(dateSeparator != null, "DateTimeFormatInfo.DateSeparator, dateSeparator != null");
                 return dateSeparator;
             }
             set
@@ -717,13 +717,13 @@ namespace System.Globalization
         {
             get
             {
-                if (this.firstDayOfWeek == -1)
+                if (firstDayOfWeek == -1)
                 {
-                    this.firstDayOfWeek = _cultureData.IFIRSTDAYOFWEEK;
+                    firstDayOfWeek = _cultureData.IFIRSTDAYOFWEEK;
                 }
-                Debug.Assert(this.firstDayOfWeek != -1, "DateTimeFormatInfo.FirstDayOfWeek, firstDayOfWeek != -1");
+                Debug.Assert(firstDayOfWeek != -1, "DateTimeFormatInfo.FirstDayOfWeek, firstDayOfWeek != -1");
 
-                return ((DayOfWeek)this.firstDayOfWeek);
+                return ((DayOfWeek)firstDayOfWeek);
             }
 
             set
@@ -747,12 +747,12 @@ namespace System.Globalization
         {
             get
             {
-                if (this.calendarWeekRule == -1)
+                if (calendarWeekRule == -1)
                 {
-                    this.calendarWeekRule = _cultureData.IFIRSTWEEKOFYEAR;
+                    calendarWeekRule = _cultureData.IFIRSTWEEKOFYEAR;
                 }
-                Debug.Assert(this.calendarWeekRule != -1, "DateTimeFormatInfo.CalendarWeekRule, calendarWeekRule != -1");
-                return ((CalendarWeekRule)this.calendarWeekRule);
+                Debug.Assert(calendarWeekRule != -1, "DateTimeFormatInfo.CalendarWeekRule, calendarWeekRule != -1");
+                return ((CalendarWeekRule)calendarWeekRule);
             }
 
             set
@@ -807,13 +807,13 @@ namespace System.Globalization
             get
             {
                 // Initialize our long date pattern from the 1st array value if not set
-                if (this.longDatePattern == null)
+                if (longDatePattern == null)
                 {
                     // Initialize our data
-                    this.longDatePattern = this.UnclonedLongDatePatterns[0];
+                    longDatePattern = UnclonedLongDatePatterns[0];
                 }
 
-                return this.longDatePattern;
+                return longDatePattern;
             }
 
             set
@@ -827,13 +827,13 @@ namespace System.Globalization
                 }
 
                 // Remember the new string
-                this.longDatePattern = value;
+                longDatePattern = value;
 
                 // Clear the token hash table
                 ClearTokenHashTable();
 
                 // Clean up cached values that will be affected by this property.
-                this.fullDateTimePattern = null;
+                fullDateTimePattern = null;
             }
         }
 
@@ -847,13 +847,13 @@ namespace System.Globalization
             get
             {
                 // Initialize our long time pattern from the 1st array value if not set
-                if (this.longTimePattern == null)
+                if (longTimePattern == null)
                 {
                     // Initialize our data
-                    this.longTimePattern = this.UnclonedLongTimePatterns[0];
+                    longTimePattern = UnclonedLongTimePatterns[0];
                 }
 
-                return this.longTimePattern;
+                return longTimePattern;
             }
 
             set
@@ -867,15 +867,15 @@ namespace System.Globalization
                 }
 
                 // Remember the new string
-                this.longTimePattern = value;
+                longTimePattern = value;
 
                 // Clear the token hash table
                 ClearTokenHashTable();
 
                 // Clean up cached values that will be affected by this property.
-                this.fullDateTimePattern = null;     // Full date = long date + long Time
-                this.generalLongTimePattern = null;  // General long date = short date + long Time
-                this.dateTimeOffsetPattern = null;
+                fullDateTimePattern = null;     // Full date = long date + long Time
+                generalLongTimePattern = null;  // General long date = short date + long Time
+                dateTimeOffsetPattern = null;
             }
         }
 
@@ -885,13 +885,13 @@ namespace System.Globalization
         {
             get
             {
-                if (this.monthDayPattern == null)
+                if (monthDayPattern == null)
                 {
                     Debug.Assert(Calendar.ID > 0, "[DateTimeFormatInfo.MonthDayPattern] Expected calID > 0");
-                    this.monthDayPattern = _cultureData.MonthDay(Calendar.ID);
+                    monthDayPattern = _cultureData.MonthDay(Calendar.ID);
                 }
-                Debug.Assert(this.monthDayPattern != null, "DateTimeFormatInfo.MonthDayPattern, monthDayPattern != null");
-                return (this.monthDayPattern);
+                Debug.Assert(monthDayPattern != null, "DateTimeFormatInfo.MonthDayPattern, monthDayPattern != null");
+                return (monthDayPattern);
             }
 
             set
@@ -904,7 +904,7 @@ namespace System.Globalization
                         SR.ArgumentNull_String);
                 }
 
-                this.monthDayPattern = value;
+                monthDayPattern = value;
             }
         }
 
@@ -913,12 +913,12 @@ namespace System.Globalization
         {
             get
             {
-                if (this.pmDesignator == null)
+                if (pmDesignator == null)
                 {
-                    this.pmDesignator = _cultureData.SPM2359;
+                    pmDesignator = _cultureData.SPM2359;
                 }
-                Debug.Assert(this.pmDesignator != null, "DateTimeFormatInfo.PMDesignator, pmDesignator != null");
-                return (this.pmDesignator);
+                Debug.Assert(pmDesignator != null, "DateTimeFormatInfo.PMDesignator, pmDesignator != null");
+                return (pmDesignator);
             }
 
             set
@@ -955,13 +955,13 @@ namespace System.Globalization
             get
             {
                 // Initialize our short date pattern from the 1st array value if not set
-                if (this.shortDatePattern == null)
+                if (shortDatePattern == null)
                 {
                     // Initialize our data
-                    this.shortDatePattern = this.UnclonedShortDatePatterns[0];
+                    shortDatePattern = UnclonedShortDatePatterns[0];
                 }
 
-                return this.shortDatePattern;
+                return shortDatePattern;
             }
 
             set
@@ -973,7 +973,7 @@ namespace System.Globalization
                         SR.ArgumentNull_String);
 
                 // Remember the new string
-                this.shortDatePattern = value;
+                shortDatePattern = value;
 
                 // Clear the token hash table, note that even short dates could require this
                 ClearTokenHashTable();
@@ -996,12 +996,12 @@ namespace System.Globalization
             get
             {
                 // Initialize our short time pattern from the 1st array value if not set
-                if (this.shortTimePattern == null)
+                if (shortTimePattern == null)
                 {
                     // Initialize our data
-                    this.shortTimePattern = this.UnclonedShortTimePatterns[0];
+                    shortTimePattern = UnclonedShortTimePatterns[0];
                 }
-                return this.shortTimePattern;
+                return shortTimePattern;
             }
 
             set
@@ -1015,7 +1015,7 @@ namespace System.Globalization
                 }
 
                 // Remember the new string
-                this.shortTimePattern = value;
+                shortTimePattern = value;
 
                 // Clear the token hash table, note that even short times could require this
                 ClearTokenHashTable();
@@ -1148,7 +1148,7 @@ namespace System.Globalization
                 {
                     timeSeparator = _cultureData.TimeSeparator;
                 }
-                Debug.Assert(this.timeSeparator != null, "DateTimeFormatInfo.TimeSeparator, timeSeparator != null");
+                Debug.Assert(timeSeparator != null, "DateTimeFormatInfo.TimeSeparator, timeSeparator != null");
                 return (timeSeparator);
             }
 
@@ -1186,12 +1186,12 @@ namespace System.Globalization
             get
             {
                 // Initialize our year/month pattern from the 1st array value if not set
-                if (this.yearMonthPattern == null)
+                if (yearMonthPattern == null)
                 {
                     // Initialize our data
-                    this.yearMonthPattern = this.UnclonedYearMonthPatterns[0];
+                    yearMonthPattern = UnclonedYearMonthPatterns[0];
                 }
-                return this.yearMonthPattern;
+                return yearMonthPattern;
             }
 
             set
@@ -1205,7 +1205,7 @@ namespace System.Globalization
                 }
 
                 // Remember the new string
-                this.yearMonthPattern = value;
+                yearMonthPattern = value;
 
                 // Clear the token hash table, note that even short times could require this
                 ClearTokenHashTable();
@@ -1279,7 +1279,7 @@ namespace System.Globalization
                     throw new ArgumentException(SR.Format(SR.Argument_InvalidArrayLength, 7), nameof(value));
                 }
                 CheckNullValue(value, value.Length);
-                this.m_superShortDayNames = value;
+                m_superShortDayNames = value;
             }
         }
 
@@ -1440,22 +1440,22 @@ namespace System.Globalization
         {
             if (abbreviated)
             {
-                if (this.m_genitiveAbbreviatedMonthNames == null)
+                if (m_genitiveAbbreviatedMonthNames == null)
                 {
-                    this.m_genitiveAbbreviatedMonthNames = _cultureData.AbbreviatedGenitiveMonthNames(this.Calendar.ID);
-                    Debug.Assert(this.m_genitiveAbbreviatedMonthNames.Length == 13,
+                    m_genitiveAbbreviatedMonthNames = _cultureData.AbbreviatedGenitiveMonthNames(Calendar.ID);
+                    Debug.Assert(m_genitiveAbbreviatedMonthNames.Length == 13,
                         "[DateTimeFormatInfo.GetGenitiveMonthNames] Expected 13 abbreviated genitive month names in a year");
                 }
-                return (this.m_genitiveAbbreviatedMonthNames);
+                return (m_genitiveAbbreviatedMonthNames);
             }
 
-            if (this.genitiveMonthNames == null)
+            if (genitiveMonthNames == null)
             {
-                this.genitiveMonthNames = _cultureData.GenitiveMonthNames(this.Calendar.ID);
-                Debug.Assert(this.genitiveMonthNames.Length == 13,
+                genitiveMonthNames = _cultureData.GenitiveMonthNames(Calendar.ID);
+                Debug.Assert(genitiveMonthNames.Length == 13,
                     "[DateTimeFormatInfo.GetGenitiveMonthNames] Expected 13 genitive month names in a year");
             }
-            return (this.genitiveMonthNames);
+            return (genitiveMonthNames);
         }
 
         //
@@ -1467,11 +1467,11 @@ namespace System.Globalization
         //
         internal string[] internalGetLeapYearMonthNames(/*bool abbreviated*/)
         {
-            if (this.leapYearMonthNames == null)
+            if (leapYearMonthNames == null)
             {
                 Debug.Assert(Calendar.ID > 0, "[DateTimeFormatInfo.internalGetLeapYearMonthNames] Expected Calendar.ID > 0");
-                this.leapYearMonthNames = _cultureData.LeapYearMonthNames(Calendar.ID);
-                Debug.Assert(this.leapYearMonthNames.Length == 13,
+                leapYearMonthNames = _cultureData.LeapYearMonthNames(Calendar.ID);
+                Debug.Assert(leapYearMonthNames.Length == 13,
                     "[DateTimeFormatInfo.internalGetLeapYearMonthNames] Expepcted 13 leap year month names");
             }
             return (leapYearMonthNames);
@@ -1555,10 +1555,10 @@ namespace System.Globalization
             switch (format)
             {
                 case 'd':
-                    result = this.AllShortDatePatterns;
+                    result = AllShortDatePatterns;
                     break;
                 case 'D':
-                    result = this.AllLongDatePatterns;
+                    result = AllLongDatePatterns;
                     break;
                 case 'f':
                     result = GetCombinedPatterns(AllLongDatePatterns, AllShortTimePatterns, " ");
@@ -1589,17 +1589,17 @@ namespace System.Globalization
                     result = new string[] { sortableDateTimePattern };
                     break;
                 case 't':
-                    result = this.AllShortTimePatterns;
+                    result = AllShortTimePatterns;
                     break;
                 case 'T':
-                    result = this.AllLongTimePatterns;
+                    result = AllLongTimePatterns;
                     break;
                 case 'u':
                     result = new string[] { UniversalSortableDateTimePattern };
                     break;
                 case 'y':
                 case 'Y':
-                    result = this.AllYearMonthPatterns;
+                    result = AllYearMonthPatterns;
                     break;
                 default:
                     throw new ArgumentException(SR.Format(SR.Format_BadFormatSpecifier, format), nameof(format));
@@ -1713,7 +1713,7 @@ namespace System.Globalization
         {
             get
             {
-                return GetMergedPatterns(this.UnclonedYearMonthPatterns, this.YearMonthPattern);
+                return GetMergedPatterns(UnclonedYearMonthPatterns, YearMonthPattern);
             }
         }
 
@@ -1721,7 +1721,7 @@ namespace System.Globalization
         {
             get
             {
-                return GetMergedPatterns(this.UnclonedShortDatePatterns, this.ShortDatePattern);
+                return GetMergedPatterns(UnclonedShortDatePatterns, ShortDatePattern);
             }
         }
 
@@ -1729,7 +1729,7 @@ namespace System.Globalization
         {
             get
             {
-                return GetMergedPatterns(this.UnclonedShortTimePatterns, this.ShortTimePattern);
+                return GetMergedPatterns(UnclonedShortTimePatterns, ShortTimePattern);
             }
         }
 
@@ -1737,7 +1737,7 @@ namespace System.Globalization
         {
             get
             {
-                return GetMergedPatterns(this.UnclonedLongDatePatterns, this.LongDatePattern);
+                return GetMergedPatterns(UnclonedLongDatePatterns, LongDatePattern);
             }
         }
 
@@ -1745,7 +1745,7 @@ namespace System.Globalization
         {
             get
             {
-                return GetMergedPatterns(this.UnclonedLongTimePatterns, this.LongTimePattern);
+                return GetMergedPatterns(UnclonedLongTimePatterns, LongTimePattern);
             }
         }
 
@@ -1758,8 +1758,8 @@ namespace System.Globalization
                 if (allYearMonthPatterns == null)
                 {
                     Debug.Assert(Calendar.ID > 0, "[DateTimeFormatInfo.UnclonedYearMonthPatterns] Expected Calendar.ID > 0");
-                    this.allYearMonthPatterns = _cultureData.YearMonths(this.Calendar.ID);
-                    Debug.Assert(this.allYearMonthPatterns.Length > 0,
+                    allYearMonthPatterns = _cultureData.YearMonths(Calendar.ID);
+                    Debug.Assert(allYearMonthPatterns.Length > 0,
                         "[DateTimeFormatInfo.UnclonedYearMonthPatterns] Expected some year month patterns");
                 }
 
@@ -1777,12 +1777,12 @@ namespace System.Globalization
                 if (allShortDatePatterns == null)
                 {
                     Debug.Assert(Calendar.ID > 0, "[DateTimeFormatInfo.UnclonedShortDatePatterns] Expected Calendar.ID > 0");
-                    this.allShortDatePatterns = _cultureData.ShortDates(this.Calendar.ID);
-                    Debug.Assert(this.allShortDatePatterns.Length > 0,
+                    allShortDatePatterns = _cultureData.ShortDates(Calendar.ID);
+                    Debug.Assert(allShortDatePatterns.Length > 0,
                         "[DateTimeFormatInfo.UnclonedShortDatePatterns] Expected some short date patterns");
                 }
 
-                return this.allShortDatePatterns;
+                return allShortDatePatterns;
             }
         }
 
@@ -1795,12 +1795,12 @@ namespace System.Globalization
                 if (allLongDatePatterns == null)
                 {
                     Debug.Assert(Calendar.ID > 0, "[DateTimeFormatInfo.UnclonedLongDatePatterns] Expected Calendar.ID > 0");
-                    this.allLongDatePatterns = _cultureData.LongDates(this.Calendar.ID);
-                    Debug.Assert(this.allLongDatePatterns.Length > 0,
+                    allLongDatePatterns = _cultureData.LongDates(Calendar.ID);
+                    Debug.Assert(allLongDatePatterns.Length > 0,
                         "[DateTimeFormatInfo.UnclonedLongDatePatterns] Expected some long date patterns");
                 }
 
-                return this.allLongDatePatterns;
+                return allLongDatePatterns;
             }
         }
 
@@ -1810,14 +1810,14 @@ namespace System.Globalization
         {
             get
             {
-                if (this.allShortTimePatterns == null)
+                if (allShortTimePatterns == null)
                 {
-                    this.allShortTimePatterns = _cultureData.ShortTimes;
-                    Debug.Assert(this.allShortTimePatterns.Length > 0,
+                    allShortTimePatterns = _cultureData.ShortTimes;
+                    Debug.Assert(allShortTimePatterns.Length > 0,
                         "[DateTimeFormatInfo.UnclonedShortTimePatterns] Expected some short time patterns");
                 }
 
-                return this.allShortTimePatterns;
+                return allShortTimePatterns;
             }
         }
 
@@ -1827,14 +1827,14 @@ namespace System.Globalization
         {
             get
             {
-                if (this.allLongTimePatterns == null)
+                if (allLongTimePatterns == null)
                 {
-                    this.allLongTimePatterns = _cultureData.LongTimes;
-                    Debug.Assert(this.allLongTimePatterns.Length > 0,
+                    allLongTimePatterns = _cultureData.LongTimes;
+                    Debug.Assert(allLongTimePatterns.Length > 0,
                         "[DateTimeFormatInfo.UnclonedLongTimePatterns] Expected some long time patterns");
                 }
 
-                return this.allLongTimePatterns;
+                return allLongTimePatterns;
             }
         }
 
@@ -1979,7 +1979,7 @@ namespace System.Globalization
                 }
                 CheckNullValue(value, value.Length - 1);
                 ClearTokenHashTable();
-                this.m_genitiveAbbreviatedMonthNames = value;
+                m_genitiveAbbreviatedMonthNames = value;
             }
         }
 
@@ -2283,7 +2283,7 @@ namespace System.Globalization
 
                 bool koreanLanguage = LanguageName.Equals(KoreanLangName);
 
-                string sep = this.TimeSeparator.Trim();
+                string sep = TimeSeparator.Trim();
                 if (IgnorableComma != sep) InsertHash(temp, IgnorableComma, TokenType.IgnorableSymbol, 0);
                 if (IgnorablePeriod != sep) InsertHash(temp, IgnorablePeriod, TokenType.IgnorableSymbol, 0);
 
@@ -2295,18 +2295,18 @@ namespace System.Globalization
                     // DateTime.Parse behavior.  For instance, the DateTimeFormatInfo.Tokenize() method might return SEP_DateOrOffset for KoreanHourSuff
                     // instead of SEP_HourSuff.
                     //
-                    InsertHash(temp, this.TimeSeparator, TokenType.SEP_Time, 0);
+                    InsertHash(temp, TimeSeparator, TokenType.SEP_Time, 0);
                 }
 
-                InsertHash(temp, this.AMDesignator, TokenType.SEP_Am | TokenType.Am, 0);
-                InsertHash(temp, this.PMDesignator, TokenType.SEP_Pm | TokenType.Pm, 1);
+                InsertHash(temp, AMDesignator, TokenType.SEP_Am | TokenType.Am, 0);
+                InsertHash(temp, PMDesignator, TokenType.SEP_Pm | TokenType.Pm, 1);
 
                 // TODO: This ignores similar custom cultures
                 if (LanguageName.Equals("sq"))
                 {
                     // Albanian allows time formats like "12:00.PD"
-                    InsertHash(temp, IgnorablePeriod + this.AMDesignator, TokenType.SEP_Am | TokenType.Am, 0);
-                    InsertHash(temp, IgnorablePeriod + this.PMDesignator, TokenType.SEP_Pm | TokenType.Pm, 1);
+                    InsertHash(temp, IgnorablePeriod + AMDesignator, TokenType.SEP_Am | TokenType.Am, 0);
+                    InsertHash(temp, IgnorablePeriod + PMDesignator, TokenType.SEP_Pm | TokenType.Pm, 1);
                 }
 
                 // CJK suffix
@@ -2374,7 +2374,7 @@ namespace System.Globalization
                             case DateTimeFormatInfoScanner.IgnorableSymbolChar:
                                 string symbol = dateWords[i].Substring(1);
                                 InsertHash(temp, symbol, TokenType.IgnorableSymbol, 0);
-                                if (this.DateSeparator.Trim(null).Equals(symbol))
+                                if (DateSeparator.Trim(null).Equals(symbol))
                                 {
                                     // The date separator is the same as the ignorable symbol.
                                     useDateSepAsIgnorableSymbol = true;
@@ -2396,7 +2396,7 @@ namespace System.Globalization
                 if (!useDateSepAsIgnorableSymbol)
                 {
                     // Use the normal date separator.
-                    InsertHash(temp, this.DateSeparator, TokenType.SEP_Date, 0);
+                    InsertHash(temp, DateSeparator, TokenType.SEP_Date, 0);
                 }
                 // Add the regular month names.
                 AddMonthNames(temp, null);
@@ -2455,7 +2455,7 @@ namespace System.Globalization
                         string specialDayOfWeek = "(" + GetAbbreviatedDayName((DayOfWeek)i) + ")";
                         InsertHash(temp, specialDayOfWeek, TokenType.DayOfWeekToken, i);
                     }
-                    if (this.Calendar.GetType() != typeof(JapaneseCalendar))
+                    if (Calendar.GetType() != typeof(JapaneseCalendar))
                     {
                         // Special case for Japanese.  If this is a Japanese DTFI, and the calendar is not Japanese calendar,
                         // we will check Japanese Era name as well when the calendar is Gregorian.
@@ -2634,7 +2634,7 @@ namespace System.Globalization
             bool isLetter = Char.IsLetter(ch);
             if (isLetter)
             {
-                ch = this.Culture.TextInfo.ToLower(ch);
+                ch = Culture.TextInfo.ToLower(ch);
                 if (IsHebrewChar(ch) && TokenMask == TokenType.RegularTokenMask)
                 {
                     bool badFormat;
@@ -2740,7 +2740,7 @@ namespace System.Globalization
                 // Remember this slot
                 TokenHashValue temp = hashTable[hashcode];
 
-                if (temp != null && this.Culture.TextInfo.ToLower(temp.tokenString[0]) != ch)
+                if (temp != null && Culture.TextInfo.ToLower(temp.tokenString[0]) != ch)
                 {
                     continue;
                 }
@@ -2775,7 +2775,7 @@ namespace System.Globalization
                 if (str.Length == 0)
                     return;
             }
-            char ch = this.Culture.TextInfo.ToLower(str[0]);
+            char ch = Culture.TextInfo.ToLower(str[0]);
             int hashcode = ch % TOKEN_HASH_SIZE;
             int hashProbe = 1 + ch % SECOND_PRIME;
             do
@@ -2794,7 +2794,7 @@ namespace System.Globalization
                     {
                         // If there are two tokens with the same prefix, we have to make sure that the longer token should be at the front of
                         // the shorter ones.
-                        if (this.CompareStringIgnoreCaseOptimized(str, 0, value.tokenString.Length, value.tokenString, 0, value.tokenString.Length))
+                        if (CompareStringIgnoreCaseOptimized(str, 0, value.tokenString.Length, value.tokenString, 0, value.tokenString.Length))
                         {
                             if (str.Length > value.tokenString.Length)
                             {
@@ -2853,7 +2853,7 @@ namespace System.Globalization
                 return true;
             }
 
-            return (this.Culture.CompareInfo.Compare(string1, offset1, length1, string2, offset2, length2, CompareOptions.IgnoreCase) == 0);
+            return (Culture.CompareInfo.Compare(string1, offset1, length1, string2, offset2, length2, CompareOptions.IgnoreCase) == 0);
         }
 
         // class DateTimeFormatInfo

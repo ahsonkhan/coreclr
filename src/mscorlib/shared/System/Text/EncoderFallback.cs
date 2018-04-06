@@ -111,9 +111,9 @@ namespace System.Text
             this.charEnd = charEnd;
             this.encoder = encoder;
             this.setEncoder = setEncoder;
-            this.bUsedEncoder = false;
-            this.bFallingBack = false;
-            this.iRecursionCount = 0;
+            bUsedEncoder = false;
+            bFallingBack = false;
+            iRecursionCount = 0;
         }
 
         internal char InternalGetNextChar()
@@ -145,17 +145,17 @@ namespace System.Text
             if (Char.IsHighSurrogate(ch))
             {
                 // See if there's a low surrogate to go with it
-                if (chars >= this.charEnd)
+                if (chars >= charEnd)
                 {
                     // Nothing left in input buffer
                     // No input, return 0 if mustflush is false
-                    if (this.encoder != null && !this.encoder.MustFlush)
+                    if (encoder != null && !encoder.MustFlush)
                     {
                         // Done, nothing to fallback
-                        if (this.setEncoder)
+                        if (setEncoder)
                         {
                             bUsedEncoder = true;
-                            this.encoder._charLeftOver = ch;
+                            encoder._charLeftOver = ch;
                         }
                         bFallingBack = false;
                         return false;

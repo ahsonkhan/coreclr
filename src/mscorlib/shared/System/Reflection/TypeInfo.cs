@@ -62,7 +62,7 @@ namespace System.Reflection
             if (typeInfo.IsSubclassOf(this))
                 return true;
 
-            if (this.IsInterface)
+            if (IsInterface)
             {
                 return typeInfo.ImplementInterface(this);
             }

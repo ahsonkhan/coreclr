@@ -31,7 +31,7 @@ namespace System.Diagnostics.Tracing
         {
             this.name = name;
             this.propertyInfo = propertyInfo;
-            this.getter = PropertyValue.GetPropertyGetter(propertyInfo);
+            getter = PropertyValue.GetPropertyGetter(propertyInfo);
             this.typeInfo = typeInfo;
             this.fieldAttribute = fieldAttribute;
         }

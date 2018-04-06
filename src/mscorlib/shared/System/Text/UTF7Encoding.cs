@@ -93,8 +93,8 @@ namespace System.Text
             // UTF7 had an odd decoderFallback behavior, and the Encoder fallback
             // is irrelevant because we encode surrogates individually and never check for unmatched ones
             // (so nothing can fallback during encoding)
-            this.encoderFallback = new EncoderReplacementFallback(String.Empty);
-            this.decoderFallback = new DecoderUTF7Fallback();
+            encoderFallback = new EncoderReplacementFallback(String.Empty);
+            decoderFallback = new DecoderUTF7Fallback();
         }
 
         public override bool Equals(object value)
@@ -113,7 +113,7 @@ namespace System.Text
 
         public override int GetHashCode()
         {
-            return this.CodePage + this.EncoderFallback.GetHashCode() + this.DecoderFallback.GetHashCode();
+            return CodePage + EncoderFallback.GetHashCode() + DecoderFallback.GetHashCode();
         }
 
         // The following methods are copied from EncodingNLS.cs.
@@ -798,9 +798,9 @@ namespace System.Text
 
             public override void Reset()
             {
-                this.bits = 0;
-                this.bitCount = -1;
-                this.firstByte = false;
+                bits = 0;
+                bitCount = -1;
+                firstByte = false;
                 if (_fallbackBuffer != null)
                     _fallbackBuffer.Reset();
             }
@@ -812,7 +812,7 @@ namespace System.Text
                 {
                     // NOTE: This forces the last -, which some encoder might not encode.  If we
                     // don't see it we don't think we're done reading.
-                    return (this.bitCount != -1);
+                    return (bitCount != -1);
                 }
             }
         }
@@ -833,8 +833,8 @@ namespace System.Text
 
             public override void Reset()
             {
-                this.bitCount = -1;
-                this.bits = 0;
+                bitCount = -1;
+                bits = 0;
                 if (_fallbackBuffer != null)
                     _fallbackBuffer.Reset();
             }
@@ -844,7 +844,7 @@ namespace System.Text
             {
                 get
                 {
-                    return (this.bits != 0 || this.bitCount != -1);
+                    return (bits != 0 || bitCount != -1);
                 }
             }
         }

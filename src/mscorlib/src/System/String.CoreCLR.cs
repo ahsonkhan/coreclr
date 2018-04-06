@@ -133,7 +133,7 @@ namespace System
                     CP_ACP,
                     flgs,
                     pwzChar,
-                    this.Length,
+                    Length,
                     pbNativeBuffer,
                     cbNativeBuffer,
                     IntPtr.Zero,

@@ -277,7 +277,7 @@ namespace System.Text
             Debug.Assert(m_ChunkOffset + m_ChunkChars.Length >= m_ChunkOffset, "The length of the string is greater than int.MaxValue.");
 
             StringBuilder currentBlock = this;
-            int maxCapacity = this.m_MaxCapacity;
+            int maxCapacity = m_MaxCapacity;
             for (;;)
             {
                 // All blocks have the same max capacity.
@@ -404,7 +404,7 @@ namespace System.Text
         /// <param name="length">The number of characters to read in this builder.</param>
         public string ToString(int startIndex, int length)
         {
-            int currentLength = this.Length;
+            int currentLength = Length;
             if (startIndex < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
@@ -428,7 +428,7 @@ namespace System.Text
             {
                 fixed (char* destinationPtr = result)
                 {
-                    this.CopyTo(startIndex, new Span<char>(destinationPtr, length), length);
+                    CopyTo(startIndex, new Span<char>(destinationPtr, length), length);
                     return result;
                 }
             }
@@ -436,7 +436,7 @@ namespace System.Text
 
         public StringBuilder Clear()
         {
-            this.Length = 0;
+            Length = 0;
             return this;
         }
 
@@ -931,11 +931,11 @@ namespace System.Text
             // Ensure we don't insert more chars than we can hold, and we don't
             // have any integer overflow in our new length.
             long insertingChars = (long)value.Length * count;
-            if (insertingChars > MaxCapacity - this.Length)
+            if (insertingChars > MaxCapacity - Length)
             {
                 throw new OutOfMemoryException();
             }
-            Debug.Assert(insertingChars + this.Length < int.MaxValue);
+            Debug.Assert(insertingChars + Length < int.MaxValue);
 
             StringBuilder chunk;
             int indexInChunk;

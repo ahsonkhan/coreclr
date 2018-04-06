@@ -103,7 +103,7 @@ namespace System.Diagnostics.Tracing
         {
             for (int i = 0; i < Keys.Count; i++)
             {
-                yield return new KeyValuePair<string, object>(this.m_names[i], this.m_values[i]);
+                yield return new KeyValuePair<string, object>(m_names[i], m_values[i]);
             }
         }
 

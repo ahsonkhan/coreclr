@@ -47,7 +47,7 @@ namespace System.Threading
 
                 throw Win32Marshal.GetExceptionForLastWin32Error();
             }
-            this.SafeWaitHandle = myHandle;
+            SafeWaitHandle = myHandle;
         }
 
         public Semaphore(int initialCount, int maximumCount, string name, out bool createdNew)
@@ -78,12 +78,12 @@ namespace System.Threading
                 throw Win32Marshal.GetExceptionForLastWin32Error();
             }
             createdNew = errorCode != Interop.Errors.ERROR_ALREADY_EXISTS;
-            this.SafeWaitHandle = myHandle;
+            SafeWaitHandle = myHandle;
         }
 
         private Semaphore(SafeWaitHandle handle)
         {
-            this.SafeWaitHandle = handle;
+            SafeWaitHandle = handle;
         }
 
         private static SafeWaitHandle CreateSemaphore(int initialCount, int maximumCount, string name)

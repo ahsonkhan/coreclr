@@ -100,21 +100,21 @@ namespace System.Diagnostics.Tracing
                 throw new ArgumentNullException(nameof(name));
             }
 
-            this.typeInfos = MakeArray(paramInfos);
+            typeInfos = MakeArray(paramInfos);
 #if FEATURE_PERFTRACING
             this.paramNames = MakeParamNameArray(paramInfos);
 #endif
             this.name = name;
             this.tags = tags;
-            this.level = Statics.DefaultLevel;
+            level = Statics.DefaultLevel;
 
             var collector = new TraceLoggingMetadataCollector();
             for (int i = 0; i < typeInfos.Length; ++i)
             {
                 var typeInfo = typeInfos[i];
-                this.level = Statics.Combine((int)typeInfo.Level, this.level);
-                this.opcode = Statics.Combine((int)typeInfo.Opcode, this.opcode);
-                this.keywords |= typeInfo.Keywords;
+                level = Statics.Combine((int)typeInfo.Level, level);
+                opcode = Statics.Combine((int)typeInfo.Opcode, opcode);
+                keywords |= typeInfo.Keywords;
                 var paramName = paramInfos[i].Name;
                 if (Statics.ShouldOverrideFieldName(paramName))
                 {
@@ -123,10 +123,10 @@ namespace System.Diagnostics.Tracing
                 typeInfo.WriteMetadata(collector, paramName, EventFieldFormat.Default);
             }
 
-            this.typeMetadata = collector.GetMetadata();
-            this.scratchSize = collector.ScratchSize;
-            this.dataCount = collector.DataCount;
-            this.pinCount = collector.PinCount;
+            typeMetadata = collector.GetMetadata();
+            scratchSize = collector.ScratchSize;
+            dataCount = collector.DataCount;
+            pinCount = collector.PinCount;
         }
 
         private TraceLoggingEventTypes(
@@ -140,23 +140,23 @@ namespace System.Diagnostics.Tracing
             }
 
             this.typeInfos = typeInfos;
-            this.name = defaultName;
+            name = defaultName;
             this.tags = tags;
-            this.level = Statics.DefaultLevel;
+            level = Statics.DefaultLevel;
 
             var collector = new TraceLoggingMetadataCollector();
             foreach (var typeInfo in typeInfos)
             {
-                this.level = Statics.Combine((int)typeInfo.Level, this.level);
-                this.opcode = Statics.Combine((int)typeInfo.Opcode, this.opcode);
-                this.keywords |= typeInfo.Keywords;
+                level = Statics.Combine((int)typeInfo.Level, level);
+                opcode = Statics.Combine((int)typeInfo.Opcode, opcode);
+                keywords |= typeInfo.Keywords;
                 typeInfo.WriteMetadata(collector, null, EventFieldFormat.Default);
             }
 
-            this.typeMetadata = collector.GetMetadata();
-            this.scratchSize = collector.ScratchSize;
-            this.dataCount = collector.DataCount;
-            this.pinCount = collector.PinCount;
+            typeMetadata = collector.GetMetadata();
+            scratchSize = collector.ScratchSize;
+            dataCount = collector.DataCount;
+            pinCount = collector.PinCount;
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         internal string Name
         {
-            get { return this.name; }
+            get { return name; }
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         internal EventLevel Level
         {
-            get { return (EventLevel)this.level; }
+            get { return (EventLevel)level; }
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         internal EventOpcode Opcode
         {
-            get { return (EventOpcode)this.opcode; }
+            get { return (EventOpcode)opcode; }
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         internal EventKeywords Keywords
         {
-            get { return (EventKeywords)this.keywords; }
+            get { return (EventKeywords)keywords; }
         }
 
         /// <summary>
@@ -196,15 +196,15 @@ namespace System.Diagnostics.Tracing
         /// </summary>
         internal EventTags Tags
         {
-            get { return this.tags; }
+            get { return tags; }
         }
 
         internal NameInfo GetNameInfo(string name, EventTags tags)
         {
-            var ret = this.nameInfos.TryGet(new KeyValuePair<string, EventTags>(name, tags));
+            var ret = nameInfos.TryGet(new KeyValuePair<string, EventTags>(name, tags));
             if (ret == null)
             {
-                ret = this.nameInfos.GetOrAdd(new NameInfo(name, tags, this.typeMetadata.Length));
+                ret = nameInfos.GetOrAdd(new NameInfo(name, tags, typeMetadata.Length));
             }
 
             return ret;

@@ -819,7 +819,7 @@ namespace System
             if (obj == null)
                 return false;
 
-            Type thisType = this.GetType();
+            Type thisType = GetType();
             Type thatType = obj.GetType();
 
             if (thatType != thisType)

@@ -95,7 +95,7 @@ namespace System.Text
             Debug.Assert(byteStart != null, "[DecoderFallback.InternalFallback]Used InternalFallback without calling InternalInitialize");
 
             // See if there's a fallback character and we have an output buffer then copy our string.
-            if (this.Fallback(bytes, (int)(pBytes - byteStart - bytes.Length)))
+            if (Fallback(bytes, (int)(pBytes - byteStart - bytes.Length)))
             {
                 // Copy the chars to our output
                 char ch;
@@ -150,7 +150,7 @@ namespace System.Text
             Debug.Assert(byteStart != null, "[DecoderFallback.InternalFallback]Used InternalFallback without calling InternalInitialize");
 
             // See if there's a fallback character and we have an output buffer then copy our string.
-            if (this.Fallback(bytes, (int)(pBytes - byteStart - bytes.Length)))
+            if (Fallback(bytes, (int)(pBytes - byteStart - bytes.Length)))
             {
                 int count = 0;
 

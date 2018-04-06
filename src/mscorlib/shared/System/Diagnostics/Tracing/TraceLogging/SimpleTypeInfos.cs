@@ -277,9 +277,9 @@ namespace System.Diagnostics.Tracing
         {
             var typeArgs = type.GenericTypeArguments;
             Debug.Assert(typeArgs.Length == 1);
-            this.valueInfo = TraceLoggingTypeInfo.GetInstance(typeArgs[0], recursionCheck);
-            this.hasValueGetter = PropertyValue.GetPropertyGetter(type.GetTypeInfo().GetDeclaredProperty("HasValue"));
-            this.valueGetter = PropertyValue.GetPropertyGetter(type.GetTypeInfo().GetDeclaredProperty("Value"));
+            valueInfo = TraceLoggingTypeInfo.GetInstance(typeArgs[0], recursionCheck);
+            hasValueGetter = PropertyValue.GetPropertyGetter(type.GetTypeInfo().GetDeclaredProperty("HasValue"));
+            valueGetter = PropertyValue.GetPropertyGetter(type.GetTypeInfo().GetDeclaredProperty("Value"));
         }
 
         public override void WriteMetadata(
@@ -289,7 +289,7 @@ namespace System.Diagnostics.Tracing
         {
             var group = collector.AddGroup(name);
             group.AddScalar("HasValue", TraceLoggingDataType.Boolean8);
-            this.valueInfo.WriteMetadata(group, "Value", format);
+            valueInfo.WriteMetadata(group, "Value", format);
         }
 
         public override void WriteData(TraceLoggingDataCollector collector, PropertyValue value)
@@ -297,7 +297,7 @@ namespace System.Diagnostics.Tracing
             var hasValue = hasValueGetter(value);
             collector.AddScalar(hasValue);
             var val = hasValue.ScalarValue.AsBoolean ? valueGetter(value) : valueInfo.PropertyValueFactory(Activator.CreateInstance(valueInfo.DataType));
-            this.valueInfo.WriteData(collector, val);
+            valueInfo.WriteData(collector, val);
         }
     }
 }

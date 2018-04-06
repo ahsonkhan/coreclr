@@ -984,11 +984,11 @@ namespace System.Reflection.Emit
 
             if (state == __ExceptionInfo.State_Catch)
             {
-                this.Emit(OpCodes.Leave, endLabel);
+                Emit(OpCodes.Leave, endLabel);
             }
             else if (state == __ExceptionInfo.State_Finally || state == __ExceptionInfo.State_Fault)
             {
-                this.Emit(OpCodes.Endfinally);
+                Emit(OpCodes.Endfinally);
             }
 
             //Check if we've alredy set this label.
@@ -1015,7 +1015,7 @@ namespace System.Reflection.Emit
             __ExceptionInfo current = m_currExcStack[m_currExcStackCount - 1];
 
             Label endLabel = current.GetEndLabel();
-            this.Emit(OpCodes.Leave, endLabel);
+            Emit(OpCodes.Leave, endLabel);
 
             current.MarkFilterAddr(m_length);
         }
@@ -1037,7 +1037,7 @@ namespace System.Reflection.Emit
                     throw new ArgumentException(SR.Argument_ShouldNotSpecifyExceptionType);
                 }
 
-                this.Emit(OpCodes.Endfilter);
+                Emit(OpCodes.Endfilter);
             }
             else
             {
@@ -1048,7 +1048,7 @@ namespace System.Reflection.Emit
                 }
 
                 Label endLabel = current.GetEndLabel();
-                this.Emit(OpCodes.Leave, endLabel);
+                Emit(OpCodes.Leave, endLabel);
             }
 
             current.MarkCatchAddr(m_length, exceptionType);
@@ -1064,7 +1064,7 @@ namespace System.Reflection.Emit
 
             // emit the leave for the clause before this one.
             Label endLabel = current.GetEndLabel();
-            this.Emit(OpCodes.Leave, endLabel);
+            Emit(OpCodes.Leave, endLabel);
 
             current.MarkFaultAddr(m_length);
         }
@@ -1082,18 +1082,18 @@ namespace System.Reflection.Emit
             if (state != __ExceptionInfo.State_Try)
             {
                 // generate leave for any preceeding catch clause
-                this.Emit(OpCodes.Leave, endLabel);
+                Emit(OpCodes.Leave, endLabel);
                 catchEndAddr = m_length;
             }
 
             MarkLabel(endLabel);
 
 
-            Label finallyEndLabel = this.DefineLabel();
+            Label finallyEndLabel = DefineLabel();
             current.SetFinallyEndLabel(finallyEndLabel);
 
             // generate leave for try clause                                                  
-            this.Emit(OpCodes.Leave, finallyEndLabel);
+            Emit(OpCodes.Leave, finallyEndLabel);
             if (catchEndAddr == 0)
                 catchEndAddr = m_length;
             current.MarkFinallyAddr(m_length, catchEndAddr);
@@ -1164,8 +1164,8 @@ namespace System.Reflection.Emit
             {
                 throw new ArgumentException(SR.Argument_MissingDefaultConstructor);
             }
-            this.Emit(OpCodes.Newobj, con);
-            this.Emit(OpCodes.Throw);
+            Emit(OpCodes.Newobj, con);
+            Emit(OpCodes.Throw);
         }
 
         private static Type GetConsoleType()

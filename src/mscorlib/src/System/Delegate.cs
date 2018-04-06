@@ -107,7 +107,7 @@ namespace System
         protected virtual object DynamicInvokeImpl(object[] args)
         {
             RuntimeMethodHandleInternal method = new RuntimeMethodHandleInternal(GetInvokeMethod());
-            RuntimeMethodInfo invoke = (RuntimeMethodInfo)RuntimeType.GetMethodBase((RuntimeType)this.GetType(), method);
+            RuntimeMethodInfo invoke = (RuntimeMethodInfo)RuntimeType.GetMethodBase((RuntimeType)GetType(), method);
 
             return invoke.Invoke(this, BindingFlags.Default, null, args, null);
         }
@@ -262,7 +262,7 @@ namespace System
                         else
                         {
                             // it's an open one, need to fetch the first arg of the instantiation
-                            MethodInfo invoke = this.GetType().GetMethod("Invoke");
+                            MethodInfo invoke = GetType().GetMethod("Invoke");
                             declaringType = (RuntimeType)invoke.GetParameters()[0].ParameterType;
                         }
                     }

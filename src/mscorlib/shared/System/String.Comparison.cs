@@ -657,10 +657,10 @@ namespace System
                     return CompareInfo.Invariant.IsSuffix(this, value, CompareOptions.IgnoreCase);
 
                 case StringComparison.Ordinal:
-                    return this.Length < value.Length ? false : (CompareOrdinalHelper(this, this.Length - value.Length, value.Length, value, 0, value.Length) == 0);
+                    return Length < value.Length ? false : (CompareOrdinalHelper(this, Length - value.Length, value.Length, value, 0, value.Length) == 0);
 
                 case StringComparison.OrdinalIgnoreCase:
-                    return this.Length < value.Length ? false : (CompareInfo.CompareOrdinalIgnoreCase(this, this.Length - value.Length, value.Length, value, 0, value.Length) == 0);
+                    return Length < value.Length ? false : (CompareInfo.CompareOrdinalIgnoreCase(this, Length - value.Length, value.Length, value, 0, value.Length) == 0);
 
                 default:
                     throw new ArgumentException(SR.NotSupported_StringComparison, nameof(comparisonType));
@@ -699,7 +699,7 @@ namespace System
             if (str == null)
                 return false;
 
-            if (this.Length != str.Length)
+            if (Length != str.Length)
                 return false;
 
             return EqualsHelper(this, str);
@@ -718,7 +718,7 @@ namespace System
             if (value == null)
                 return false;
 
-            if (this.Length != value.Length)
+            if (Length != value.Length)
                 return false;
 
             return EqualsHelper(this, value);
@@ -753,21 +753,21 @@ namespace System
                     return (CompareInfo.Invariant.Compare(this, value, CompareOptions.IgnoreCase) == 0);
 
                 case StringComparison.Ordinal:
-                    if (this.Length != value.Length)
+                    if (Length != value.Length)
                         return false;
                     return EqualsHelper(this, value);
 
                 case StringComparison.OrdinalIgnoreCase:
-                    if (this.Length != value.Length)
+                    if (Length != value.Length)
                         return false;
 #if CORECLR
                     // If both strings are ASCII strings, we can take the fast path.
-                    if (this.IsAscii() && value.IsAscii())
+                    if (IsAscii() && value.IsAscii())
                     {
                         return EqualsIgnoreCaseAsciiHelper(this, value);
                     }
 #endif
-                    return (CompareInfo.CompareOrdinalIgnoreCase(this, 0, this.Length, value, 0, value.Length) == 0);
+                    return (CompareInfo.CompareOrdinalIgnoreCase(this, 0, Length, value, 0, value.Length) == 0);
 
                 default:
                     throw new ArgumentException(SR.NotSupported_StringComparison, nameof(comparisonType));
@@ -843,12 +843,12 @@ namespace System
 
         public static bool operator ==(string a, string b)
         {
-            return string.Equals(a, b);
+            return Equals(a, b);
         }
 
         public static bool operator !=(string a, string b)
         {
-            return !string.Equals(a, b);
+            return !Equals(a, b);
         }
 
         // Gets a hash code for this string.  If strings A and B are such that A.Equals(B), then
@@ -870,7 +870,7 @@ namespace System
             {
                 fixed (char* src = &_firstChar)
                 {
-                    Debug.Assert(src[this.Length] == '\0', "src[this.Length] == '\\0'");
+                    Debug.Assert(src[Length] == '\0', "src[this.Length] == '\\0'");
                     Debug.Assert(((int)src) % 4 == 0, "Managed string should start at 4 bytes boundary");
 #if BIT64
                     int hash1 = 5381;
@@ -958,19 +958,19 @@ namespace System
                     return CompareInfo.Invariant.IsPrefix(this, value, CompareOptions.IgnoreCase);
 
                 case StringComparison.Ordinal:
-                    if (this.Length < value.Length || _firstChar != value._firstChar)
+                    if (Length < value.Length || _firstChar != value._firstChar)
                     {
                         return false;
                     }
                     return (value.Length == 1) ?
                             true :                 // First char is the same and thats all there is to compare
                             SpanHelpers.SequenceEqual(
-                                ref Unsafe.As<char, byte>(ref this.GetRawStringData()),
+                                ref Unsafe.As<char, byte>(ref GetRawStringData()),
                                 ref Unsafe.As<char, byte>(ref value.GetRawStringData()),
                                 ((nuint)value.Length) * 2);
 
                 case StringComparison.OrdinalIgnoreCase:
-                    if (this.Length < value.Length)
+                    if (Length < value.Length)
                     {
                         return false;
                     }

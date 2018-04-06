@@ -232,7 +232,7 @@ namespace System.Collections
             if (index < 0)
                 throw new ArgumentOutOfRangeException(nameof(index), SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (array.Length - index < this.Count)
+            if (array.Length - index < Count)
                 throw new ArgumentException(SR.ArgumentOutOfRange_Index, nameof(index));
 
             for (DictionaryNode node = head; node != null; node = node.next)

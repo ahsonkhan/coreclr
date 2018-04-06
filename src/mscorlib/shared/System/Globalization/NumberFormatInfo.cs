@@ -182,7 +182,7 @@ namespace System.Globalization
                 if (cultureData.IsInvariantCulture)
                 {
                     // For invariant culture
-                    this.m_isInvariant = true;
+                    m_isInvariant = true;
                 }
             }
         }

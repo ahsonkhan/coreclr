@@ -28,7 +28,7 @@ namespace System
             {
                 return false;
             }
-            RuntimeType thisType = (RuntimeType)this.GetType();
+            RuntimeType thisType = (RuntimeType)GetType();
             RuntimeType thatType = (RuntimeType)obj.GetType();
 
             if (thatType != thisType)
@@ -90,7 +90,7 @@ namespace System
 
         public override string ToString()
         {
-            return this.GetType().ToString();
+            return GetType().ToString();
         }
     }
 }

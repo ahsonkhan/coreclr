@@ -31,15 +31,15 @@ namespace System.Text
         internal DecoderNLS(Encoding encoding)
         {
             _encoding = encoding;
-            _fallback = this._encoding.DecoderFallback;
-            this.Reset();
+            _fallback = _encoding.DecoderFallback;
+            Reset();
         }
 
         // This is used by our child deserializers
         internal DecoderNLS()
         {
             _encoding = null;
-            this.Reset();
+            Reset();
         }
 
         public override void Reset()
@@ -210,7 +210,7 @@ namespace System.Text
             bytesUsed = _bytesUsed;
 
             // Its completed if they've used what they wanted AND if they didn't want flush or if we are flushed
-            completed = (bytesUsed == byteCount) && (!flush || !this.HasState) &&
+            completed = (bytesUsed == byteCount) && (!flush || !HasState) &&
                                (_fallbackBuffer == null || _fallbackBuffer.Remaining == 0);
 
             // Our data thingy are now full, we can return

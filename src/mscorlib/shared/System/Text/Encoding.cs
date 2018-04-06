@@ -183,7 +183,7 @@ namespace System.Text
             _codePage = codePage;
 
             // Use default encoder/decoder fallbacks
-            this.SetDefaultFallbacks();
+            SetDefaultFallbacks();
         }
 
         // This constructor is needed to allow any sub-classing implementation to provide encoder/decoder fallback objects 
@@ -572,7 +572,7 @@ namespace System.Text
 
             set
             {
-                if (this.IsReadOnly)
+                if (IsReadOnly)
                     throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
 
                 if (value == null)
@@ -592,7 +592,7 @@ namespace System.Text
 
             set
             {
-                if (this.IsReadOnly)
+                if (IsReadOnly)
                     throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
 
                 if (value == null)
@@ -605,7 +605,7 @@ namespace System.Text
 
         public virtual object Clone()
         {
-            Encoding newEncoding = (Encoding)this.MemberwiseClone();
+            Encoding newEncoding = (Encoding)MemberwiseClone();
 
             // New one should be readable
             newEncoding._isReadOnly = false;
@@ -1111,7 +1111,7 @@ namespace System.Text
         // Returns true if the encoding is always normalized for the specified encoding form
         public bool IsAlwaysNormalized()
         {
-            return this.IsAlwaysNormalized(NormalizationForm.FormC);
+            return IsAlwaysNormalized(NormalizationForm.FormC);
         }
 
         public virtual bool IsAlwaysNormalized(NormalizationForm form)
@@ -1254,7 +1254,7 @@ namespace System.Text
 
         public override int GetHashCode()
         {
-            return _codePage + this.EncoderFallback.GetHashCode() + this.DecoderFallback.GetHashCode();
+            return _codePage + EncoderFallback.GetHashCode() + DecoderFallback.GetHashCode();
         }
 
         internal virtual char[] GetBestFitUnicodeToBytesData()
@@ -1656,13 +1656,13 @@ namespace System.Text
                 _byteEnd = inByteStart + inByteCount;
 
                 if (_encoder == null)
-                    this.fallbackBuffer = _enc.EncoderFallback.CreateFallbackBuffer();
+                    fallbackBuffer = _enc.EncoderFallback.CreateFallbackBuffer();
                 else
                 {
-                    this.fallbackBuffer = _encoder.FallbackBuffer;
+                    fallbackBuffer = _encoder.FallbackBuffer;
                     // If we're not converting we must not have data in our fallback buffer
                     if (_encoder._throwOnOverflow && _encoder.InternalHasFallbackBuffer &&
-                        this.fallbackBuffer.Remaining > 0)
+                        fallbackBuffer.Remaining > 0)
                         throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty,
                             _encoder.Encoding.EncodingName, _encoder.Fallback.GetType()));
                 }
@@ -1677,7 +1677,7 @@ namespace System.Text
                     if (_bytes >= _byteEnd - moreBytesExpected)
                     {
                         // Throw maybe.  Check which buffer to back up (only matters if Converting)
-                        this.MovePrevious(true);            // Throw if necessary
+                        MovePrevious(true);            // Throw if necessary
                         return false;                       // No throw, but no store either
                     }
 

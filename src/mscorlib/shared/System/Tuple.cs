@@ -147,7 +147,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             return comparer.Compare(m_Item1, objTuple.m_Item1);
@@ -250,7 +250,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;
@@ -368,7 +368,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;
@@ -497,7 +497,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;
@@ -637,7 +637,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;
@@ -788,7 +788,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;
@@ -950,7 +950,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;
@@ -1128,7 +1128,7 @@ namespace System
 
             if (objTuple == null)
             {
-                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, this.GetType().ToString()), nameof(other));
+                throw new ArgumentException(SR.Format(SR.ArgumentException_TupleIncorrectType, GetType().ToString()), nameof(other));
             }
 
             int c = 0;

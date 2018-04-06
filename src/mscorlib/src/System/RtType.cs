@@ -2660,7 +2660,7 @@ namespace System
 
         public override Type[] GetInterfaces()
         {
-            RuntimeType[] candidates = this.Cache.GetInterfaceList(MemberListType.All, null);
+            RuntimeType[] candidates = Cache.GetInterfaceList(MemberListType.All, null);
             Type[] interfaces = new Type[candidates.Length];
             for (int i = 0; i < candidates.Length; i++)
                 JitHelpers.UnsafeSetArrayElement(interfaces, i, candidates[i]);
@@ -3190,7 +3190,7 @@ namespace System
                         typeCode = TypeCode.Decimal;
                     else if (this == Convert.ConvertTypes[(int)TypeCode.DateTime])
                         typeCode = TypeCode.DateTime;
-                    else if (this.IsEnum)
+                    else if (IsEnum)
                         typeCode = Type.GetTypeCode(Enum.GetUnderlyingType(this));
                     else
                         typeCode = TypeCode.Object;
@@ -3290,11 +3290,11 @@ namespace System
                 if (c.IsSubclassOf(this))
                     return true;
 
-                if (this.IsInterface)
+                if (IsInterface)
                 {
                     return c.ImplementInterface(this);
                 }
-                else if (this.IsGenericParameter)
+                else if (IsGenericParameter)
                 {
                     Type[] constraints = GetGenericParameterConstraints();
                     for (int i = 0; i < constraints.Length; i++)
@@ -3390,7 +3390,7 @@ namespace System
                 if (fullname == null)
                     return null;
 
-                return Assembly.CreateQualifiedName(this.Assembly.FullName, fullname);
+                return Assembly.CreateQualifiedName(Assembly.FullName, fullname);
             }
         }
 
@@ -3607,7 +3607,7 @@ namespace System
             if (valueType.IsEnum)
             {
                 if (!valueType.IsEquivalentTo(this))
-                    throw new ArgumentException(SR.Format(SR.Arg_EnumAndObjectMustBeSameType, valueType.ToString(), this.ToString()));
+                    throw new ArgumentException(SR.Format(SR.Arg_EnumAndObjectMustBeSameType, valueType.ToString(), ToString()));
 
                 valueType = (RuntimeType)valueType.GetEnumUnderlyingType();
             }
@@ -4541,7 +4541,7 @@ namespace System
         {
             get
             {
-                if (this.IsPublic || this.IsNotPublic)
+                if (IsPublic || IsNotPublic)
                     return MemberTypes.TypeInfo;
                 else
                     return MemberTypes.NestedType;
@@ -4583,7 +4583,7 @@ namespace System
                 throw new ArgumentException(
                     SR.Format(SR.Acc_CreateGenericEx, this));
 
-            Type elementType = this.GetRootElementType();
+            Type elementType = GetRootElementType();
 
             if (Object.ReferenceEquals(elementType, typeof(ArgIterator)))
                 throw new NotSupportedException(SR.Acc_CreateArgIterator);
@@ -4823,7 +4823,7 @@ namespace System
                     object instance = RuntimeTypeHandle.Allocate(this);
 
                     // if m_ctor is null, this type doesn't have a default ctor
-                    Debug.Assert(ace.m_ctor != null || this.IsValueType);
+                    Debug.Assert(ace.m_ctor != null || IsValueType);
 
                     if (ace.m_ctor != null)
                     {

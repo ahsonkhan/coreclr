@@ -1038,7 +1038,7 @@ namespace System.Reflection.Emit
             if (fromTypeBuilder.IsSubclassOf(this))
                 return true;
 
-            if (this.IsInterface == false)
+            if (IsInterface == false)
                 return false;
 
             // now is This type a base type on one of the interface impl?

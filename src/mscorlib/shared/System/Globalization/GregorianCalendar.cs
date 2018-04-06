@@ -98,7 +98,7 @@ namespace System.Globalization
                             SR.Format(SR.ArgumentOutOfRange_Range,
                     GregorianCalendarTypes.Localized, GregorianCalendarTypes.TransliteratedFrench));
             }
-            this.m_type = type;
+            m_type = type;
         }
 
         public virtual GregorianCalendarTypes CalendarType

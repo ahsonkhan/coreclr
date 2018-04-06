@@ -31,7 +31,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
                 throw new ArgumentNullException(nameof(array));
             if (index < 0)
                 throw new ArgumentOutOfRangeException(nameof(index));
-            if (array.Length <= index && this.Count > 0)
+            if (array.Length <= index && Count > 0)
                 throw new ArgumentException(SR.Arg_IndexOutOfRangeException);
             if (array.Length - index < dictionary.Count)
                 throw new ArgumentException(SR.Argument_InsufficientSpaceToCopyCollection);

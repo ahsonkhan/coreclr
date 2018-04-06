@@ -126,7 +126,7 @@ namespace System.Runtime.Serialization
 
             if (requireSameTokenInPartialTrust)
             {
-                DemandForUnsafeAssemblyNameAssignments(this.ObjectType.Assembly.FullName, type.Assembly.FullName);
+                DemandForUnsafeAssemblyNameAssignments(ObjectType.Assembly.FullName, type.Assembly.FullName);
             }
 
             if (!Object.ReferenceEquals(objectType, type))

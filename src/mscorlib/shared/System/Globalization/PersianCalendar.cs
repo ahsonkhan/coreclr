@@ -225,7 +225,7 @@ namespace System.Globalization
             //  Calculate the Persian Month.
             //
 
-            int ordinalDay = (int)(NumDays - CalendricalCalculationsHelper.GetNumberOfDays(this.ToDateTime(y, 1, 1, 0, 0, 0, 0, 1)));
+            int ordinalDay = (int)(NumDays - CalendricalCalculationsHelper.GetNumberOfDays(ToDateTime(y, 1, 1, 0, 0, 0, 0, 1)));
 
             if (part == DatePartDayOfYear)
             {

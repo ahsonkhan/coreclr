@@ -859,15 +859,15 @@ namespace System.Globalization
             {
                 if (_sLocalizedDisplayName == null)
                 {
-                    if (this.IsSupplementalCustomCulture)
+                    if (IsSupplementalCustomCulture)
                     {
-                        if (this.IsNeutralCulture)
+                        if (IsNeutralCulture)
                         {
-                            _sLocalizedDisplayName = this.SNATIVELANGUAGE;
+                            _sLocalizedDisplayName = SNATIVELANGUAGE;
                         }
                         else
                         {
-                            _sLocalizedDisplayName = this.SNATIVEDISPLAYNAME;
+                            _sLocalizedDisplayName = SNATIVEDISPLAYNAME;
                         }
                     }
                     else
@@ -899,9 +899,9 @@ namespace System.Globalization
                     if (string.IsNullOrEmpty(_sLocalizedDisplayName))
                     {
                         // If its neutral use the language name
-                        if (this.IsNeutralCulture)
+                        if (IsNeutralCulture)
                         {
-                            _sLocalizedDisplayName = this.SLOCALIZEDLANGUAGE;
+                            _sLocalizedDisplayName = SLOCALIZEDLANGUAGE;
                         }
                         else
                         {
@@ -913,7 +913,7 @@ namespace System.Globalization
                                 ((ci = GetUserDefaultCulture()) != null) &&
                                 !CultureInfo.DefaultThreadCurrentUICulture.Name.Equals(ci.Name))
                             {
-                                _sLocalizedDisplayName = this.SNATIVEDISPLAYNAME;
+                                _sLocalizedDisplayName = SNATIVEDISPLAYNAME;
                             }
                             else
                             {
@@ -935,9 +935,9 @@ namespace System.Globalization
                 if (_sEnglishDisplayName == null)
                 {
                     // If its neutral use the language name
-                    if (this.IsNeutralCulture)
+                    if (IsNeutralCulture)
                     {
-                        _sEnglishDisplayName = this.SENGLISHLANGUAGE;
+                        _sEnglishDisplayName = SENGLISHLANGUAGE;
                         // differentiate the legacy display names
                         switch (_sName)
                         {
@@ -957,17 +957,17 @@ namespace System.Globalization
                             // Our existing names mostly look like:
                             // "English" + "United States" -> "English (United States)"
                             // "Azeri (Latin)" + "Azerbaijan" -> "Azeri (Latin, Azerbaijan)"
-                            if (this.SENGLISHLANGUAGE[this.SENGLISHLANGUAGE.Length - 1] == ')')
+                            if (SENGLISHLANGUAGE[SENGLISHLANGUAGE.Length - 1] == ')')
                             {
                                 // "Azeri (Latin)" + "Azerbaijan" -> "Azeri (Latin, Azerbaijan)"
                                 _sEnglishDisplayName =
-                                    this.SENGLISHLANGUAGE.Substring(0, _sEnglishLanguage.Length - 1) +
-                                    ", " + this.SENGCOUNTRY + ")";
+                                    SENGLISHLANGUAGE.Substring(0, _sEnglishLanguage.Length - 1) +
+                                    ", " + SENGCOUNTRY + ")";
                             }
                             else
                             {
                                 // "English" + "United States" -> "English (United States)"
-                                _sEnglishDisplayName = this.SENGLISHLANGUAGE + " (" + this.SENGCOUNTRY + ")";
+                                _sEnglishDisplayName = SENGLISHLANGUAGE + " (" + SENGCOUNTRY + ")";
                             }
                         }
                     }
@@ -984,9 +984,9 @@ namespace System.Globalization
                 if (_sNativeDisplayName == null)
                 {
                     // If its neutral use the language name
-                    if (this.IsNeutralCulture)
+                    if (IsNeutralCulture)
                     {
-                        _sNativeDisplayName = this.SNATIVELANGUAGE;
+                        _sNativeDisplayName = SNATIVELANGUAGE;
                         // differentiate the legacy display names
                         switch (_sName)
                         {
@@ -1006,7 +1006,7 @@ namespace System.Globalization
                         if (string.IsNullOrEmpty(_sNativeDisplayName))
                         {
                             // These should primarily be "Deutsch (Deutschland)" type names
-                            _sNativeDisplayName = this.SNATIVELANGUAGE + " (" + this.SNATIVECOUNTRY + ")";
+                            _sNativeDisplayName = SNATIVELANGUAGE + " (" + SNATIVECOUNTRY + ")";
                         }
                     }
                 }
@@ -1241,7 +1241,7 @@ namespace System.Globalization
                     else
                     {
                         // Input Language is same as LCID for built-in cultures
-                        _iInputLanguageHandle = this.ILANGUAGE;
+                        _iInputLanguageHandle = ILANGUAGE;
                     }
                 }
                 return _iInputLanguageHandle;
@@ -1907,7 +1907,7 @@ namespace System.Globalization
             if (calendarData == null)
             {
                 Debug.Assert(_sWindowsName != null, "[CultureData.GetCalendar] Expected _sWindowsName to be populated by already");
-                calendarData = new CalendarData(_sWindowsName, calendarId, this.UseUserOverride);
+                calendarData = new CalendarData(_sWindowsName, calendarId, UseUserOverride);
                 _calendars[calendarIndex] = calendarData;
             }
 
@@ -1928,7 +1928,7 @@ namespace System.Globalization
                 // 1 - Right to left (eg arabic locales)
                 // 2 - Vertical top to bottom with columns to the left and also left to right (ja-JP locales)
                 // 3 - Vertical top to bottom with columns proceeding to the right
-                return (this.IREADINGLAYOUT == 1);
+                return (IREADINGLAYOUT == 1);
             }
         }
 
@@ -1986,7 +1986,7 @@ namespace System.Globalization
         {
             get
             {
-                return IsCustomCultureId(this.ILANGUAGE);
+                return IsCustomCultureId(ILANGUAGE);
             }
         }
 
@@ -2064,7 +2064,7 @@ namespace System.Globalization
         {
             get
             {
-                return string.IsNullOrEmpty(this.SNAME);
+                return string.IsNullOrEmpty(SNAME);
             }
         }
 
@@ -2082,7 +2082,7 @@ namespace System.Globalization
 
                 if (defaultCalId == 0)
                 {
-                    defaultCalId = this.CalendarIds[0];
+                    defaultCalId = CalendarIds[0];
                 }
 
                 return CultureInfo.GetCalendarInstance(defaultCalId);
@@ -2094,21 +2094,21 @@ namespace System.Globalization
         {
             Debug.Assert(calendarId > 0, "[CultureData.saEraNames] Expected Calendar.ID > 0");
 
-            return this.GetCalendar(calendarId).saEraNames;
+            return GetCalendar(calendarId).saEraNames;
         }
 
         internal string[] AbbrevEraNames(CalendarId calendarId)
         {
             Debug.Assert(calendarId > 0, "[CultureData.saAbbrevEraNames] Expected Calendar.ID > 0");
 
-            return this.GetCalendar(calendarId).saAbbrevEraNames;
+            return GetCalendar(calendarId).saAbbrevEraNames;
         }
 
         internal string[] AbbreviatedEnglishEraNames(CalendarId calendarId)
         {
             Debug.Assert(calendarId > 0, "[CultureData.saAbbrevEraNames] Expected Calendar.ID > 0");
 
-            return this.GetCalendar(calendarId).saAbbrevEnglishEraNames;
+            return GetCalendar(calendarId).saAbbrevEnglishEraNames;
         }
 
         //// string array DEFAULTS
@@ -2309,7 +2309,7 @@ namespace System.Globalization
 
         internal void GetNFIValues(NumberFormatInfo nfi)
         {
-            if (GlobalizationMode.Invariant || this.IsInvariantCulture)
+            if (GlobalizationMode.Invariant || IsInvariantCulture)
             {
                 // FUTURE: NumberFormatInfo already has default values for many of these fields.  Can we not do this?
                 nfi.positiveSign = _sPositiveSign;
@@ -2361,18 +2361,18 @@ namespace System.Globalization
             //
             // Gather additional data
             //
-            nfi.numberGroupSizes = this.WAGROUPING;
-            nfi.currencyGroupSizes = this.WAMONGROUPING;
+            nfi.numberGroupSizes = WAGROUPING;
+            nfi.currencyGroupSizes = WAMONGROUPING;
 
             // prefer the cached value since these do not have user overrides
-            nfi.percentNegativePattern = this.INEGATIVEPERCENT;
-            nfi.percentPositivePattern = this.IPOSITIVEPERCENT;
-            nfi.percentSymbol = this.SPERCENT;
-            nfi.perMilleSymbol = this.SPERMILLE;
+            nfi.percentNegativePattern = INEGATIVEPERCENT;
+            nfi.percentPositivePattern = IPOSITIVEPERCENT;
+            nfi.percentSymbol = SPERCENT;
+            nfi.perMilleSymbol = SPERMILLE;
 
-            nfi.negativeInfinitySymbol = this.SNEGINFINITY;
-            nfi.positiveInfinitySymbol = this.SPOSINFINITY;
-            nfi.nanSymbol = this.SNAN;
+            nfi.negativeInfinitySymbol = SNEGINFINITY;
+            nfi.positiveInfinitySymbol = SPOSINFINITY;
+            nfi.nanSymbol = SNAN;
 
             //
             // We don't have percent values, so use the number values

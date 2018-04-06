@@ -363,7 +363,7 @@ namespace System
                 return systemType.GetHashCode();
             return base.GetHashCode();
         }
-        public virtual bool Equals(Type o) => o == null ? false : object.ReferenceEquals(this.UnderlyingSystemType, o.UnderlyingSystemType);
+        public virtual bool Equals(Type o) => o == null ? false : object.ReferenceEquals(UnderlyingSystemType, o.UnderlyingSystemType);
 
         public static Type ReflectionOnlyGetType(string typeName, bool throwIfNotFound, bool ignoreCase) { throw new PlatformNotSupportedException(SR.PlatformNotSupported_ReflectionOnly); }
 

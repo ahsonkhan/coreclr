@@ -240,7 +240,7 @@ namespace System.Globalization
             if (m_name == null)
             {
                 // From whidbey, didn't have a name
-                CultureInfo ci = CultureInfo.GetCultureInfo(this.culture);
+                CultureInfo ci = CultureInfo.GetCultureInfo(culture);
                 m_name = ci._name;
             }
             else
@@ -253,7 +253,7 @@ namespace System.Globalization
         private void OnSerializing(StreamingContext ctx)
         {
             // This is merely for serialization compatibility with Whidbey/Orcas, it can go away when we don't want that compat any more.
-            culture = CultureInfo.GetCultureInfo(this.Name).LCID; // This is the lcid of the constructing culture (still have to dereference to get target sort)
+            culture = CultureInfo.GetCultureInfo(Name).LCID; // This is the lcid of the constructing culture (still have to dereference to get target sort)
             Debug.Assert(m_name != null, "CompareInfo.OnSerializing - expected m_name to be set already");
         }
 
@@ -1196,7 +1196,7 @@ namespace System.Globalization
 
             if (that != null)
             {
-                return this.Name == that.Name;
+                return Name == that.Name;
             }
 
             return (false);
@@ -1216,7 +1216,7 @@ namespace System.Globalization
 
         public override int GetHashCode()
         {
-            return (this.Name.GetHashCode());
+            return (Name.GetHashCode());
         }
 
         internal static unsafe int GetIgnoreCaseHash(string source)
@@ -1330,7 +1330,7 @@ namespace System.Globalization
         ////////////////////////////////////////////////////////////////////////
         public override string ToString()
         {
-            return ("CompareInfo - " + this.Name);
+            return ("CompareInfo - " + Name);
         }
 
         public SortVersion Version

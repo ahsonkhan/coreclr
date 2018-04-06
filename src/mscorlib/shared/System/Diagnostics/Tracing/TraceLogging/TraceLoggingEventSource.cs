@@ -118,13 +118,13 @@ namespace System.Diagnostics.Tracing
                 throw new ArgumentNullException(nameof(eventName));
             }
 
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
 
             var options = new EventSourceOptions();
-            this.WriteImpl(eventName, ref options, null, null, null, SimpleEventTypes<EmptyStruct>.Instance);
+            WriteImpl(eventName, ref options, null, null, null, SimpleEventTypes<EmptyStruct>.Instance);
         }
 
         /// <summary>
@@ -143,12 +143,12 @@ namespace System.Diagnostics.Tracing
                 throw new ArgumentNullException(nameof(eventName));
             }
 
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
 
-            this.WriteImpl(eventName, ref options, null, null, null, SimpleEventTypes<EmptyStruct>.Instance);
+            WriteImpl(eventName, ref options, null, null, null, SimpleEventTypes<EmptyStruct>.Instance);
         }
 
         /// <summary>
@@ -174,13 +174,13 @@ namespace System.Diagnostics.Tracing
             string eventName,
             T data)
         {
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
 
             var options = new EventSourceOptions();
-            this.WriteImpl(eventName, ref options, data, null, null, SimpleEventTypes<T>.Instance);
+            WriteImpl(eventName, ref options, data, null, null, SimpleEventTypes<T>.Instance);
         }
 
         /// <summary>
@@ -211,12 +211,12 @@ namespace System.Diagnostics.Tracing
             EventSourceOptions options,
             T data)
         {
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
 
-            this.WriteImpl(eventName, ref options, data, null, null, SimpleEventTypes<T>.Instance);
+            WriteImpl(eventName, ref options, data, null, null, SimpleEventTypes<T>.Instance);
         }
 
         /// <summary>
@@ -249,12 +249,12 @@ namespace System.Diagnostics.Tracing
             ref EventSourceOptions options,
             ref T data)
         {
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
 
-            this.WriteImpl(eventName, ref options, data, null, null, SimpleEventTypes<T>.Instance);
+            WriteImpl(eventName, ref options, data, null, null, SimpleEventTypes<T>.Instance);
         }
 
         /// <summary>
@@ -296,14 +296,14 @@ namespace System.Diagnostics.Tracing
             ref Guid relatedActivityId,
             ref T data)
         {
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
 
             fixed (Guid* pActivity = &activityId, pRelated = &relatedActivityId)
             {
-                this.WriteImpl(
+                WriteImpl(
                     eventName,
                     ref options,
                     data,
@@ -353,7 +353,7 @@ namespace System.Diagnostics.Tracing
              Guid* childActivityID,
             params object[] values)
         {
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
@@ -364,7 +364,7 @@ namespace System.Diagnostics.Tracing
                 ? options.keywords
                 : eventTypes.keywords;
 
-            if (this.IsEnabled((EventLevel)level, keywords))
+            if (IsEnabled((EventLevel)level, keywords))
             {
                 WriteMultiMergeInner(eventName, ref options, eventTypes, activityID, childActivityID, values);
             }
@@ -454,11 +454,11 @@ namespace System.Diagnostics.Tracing
                 pins[i] = default;
 
             fixed (byte*
-                pMetadata0 = this.providerMetadata,
+                pMetadata0 = providerMetadata,
                 pMetadata1 = nameInfo.nameMetadata,
                 pMetadata2 = eventTypes.typeMetadata)
             {
-                descriptors[0].SetMetadata(pMetadata0, this.providerMetadata.Length, 2);
+                descriptors[0].SetMetadata(pMetadata0, providerMetadata.Length, 2);
                 descriptors[1].SetMetadata(pMetadata1, nameInfo.nameMetadata.Length, 1);
                 descriptors[2].SetMetadata(pMetadata2, eventTypes.typeMetadata.Length, 1);
 
@@ -481,7 +481,7 @@ namespace System.Diagnostics.Tracing
                         info.WriteData(TraceLoggingDataCollector.Instance, info.PropertyValueFactory(values[i]));
                     }
 
-                    this.WriteEventRaw(
+                    WriteEventRaw(
                         eventName,
                         ref descriptor,
                         eventHandle,
@@ -492,7 +492,7 @@ namespace System.Diagnostics.Tracing
                 }
                 finally
                 {
-                    this.WriteCleanup(pins, pinCount);
+                    WriteCleanup(pins, pinCount);
                 }
             }
 #endif // FEATURE_MANAGED_ETW
@@ -537,7 +537,7 @@ namespace System.Diagnostics.Tracing
             EventData* data)
         {
 #if FEATURE_MANAGED_ETW
-            if (!this.IsEnabled())
+            if (!IsEnabled())
             {
                 return;
             }
@@ -545,7 +545,7 @@ namespace System.Diagnostics.Tracing
             fixed (EventSourceOptions* pOptions = &options)
             {
                 EventDescriptor descriptor;
-                var nameInfo = this.UpdateDescriptor(eventName, eventTypes, ref options, out descriptor);
+                var nameInfo = UpdateDescriptor(eventName, eventTypes, ref options, out descriptor);
                 if (nameInfo == null)
                 {
                     return;
@@ -566,11 +566,11 @@ namespace System.Diagnostics.Tracing
                     descriptors[i] = default;
 
                 fixed (byte*
-                    pMetadata0 = this.providerMetadata,
+                    pMetadata0 = providerMetadata,
                     pMetadata1 = nameInfo.nameMetadata,
                     pMetadata2 = eventTypes.typeMetadata)
                 {
-                    descriptors[0].SetMetadata(pMetadata0, this.providerMetadata.Length, 2);
+                    descriptors[0].SetMetadata(pMetadata0, providerMetadata.Length, 2);
                     descriptors[1].SetMetadata(pMetadata1, nameInfo.nameMetadata.Length, 1);
                     descriptors[2].SetMetadata(pMetadata2, eventTypes.typeMetadata.Length, 1);
                     int numDescrs = 3;
@@ -587,7 +587,7 @@ namespace System.Diagnostics.Tracing
                         numDescrs++;
                     }
 
-                    this.WriteEventRaw(
+                    WriteEventRaw(
                         eventName,
                         ref descriptor,
                         eventHandle,
@@ -614,7 +614,7 @@ namespace System.Diagnostics.Tracing
                 {
                     EventDescriptor descriptor;
                     options.Opcode = options.IsOpcodeSet ? options.Opcode : GetOpcodeWithDefault(options.Opcode, eventName);
-                    var nameInfo = this.UpdateDescriptor(eventName, eventTypes, ref options, out descriptor);
+                    var nameInfo = UpdateDescriptor(eventName, eventTypes, ref options, out descriptor);
                     if (nameInfo == null)
                     {
                         return;
@@ -639,11 +639,11 @@ namespace System.Diagnostics.Tracing
                         pins[i] = default;
 
                     fixed (byte*
-                        pMetadata0 = this.providerMetadata,
+                        pMetadata0 = providerMetadata,
                         pMetadata1 = nameInfo.nameMetadata,
                         pMetadata2 = eventTypes.typeMetadata)
                     {
-                        descriptors[0].SetMetadata(pMetadata0, this.providerMetadata.Length, 2);
+                        descriptors[0].SetMetadata(pMetadata0, providerMetadata.Length, 2);
                         descriptors[1].SetMetadata(pMetadata1, nameInfo.nameMetadata.Length, 1);
                         descriptors[2].SetMetadata(pMetadata2, eventTypes.typeMetadata.Length, 1);
 #endif // FEATURE_MANAGED_ETW
@@ -686,7 +686,7 @@ namespace System.Diagnostics.Tracing
                             var info = eventTypes.typeInfos[0];
                             info.WriteData(TraceLoggingDataCollector.Instance, info.PropertyValueFactory(data));
 
-                            this.WriteEventRaw(
+                            WriteEventRaw(
                                 eventName,
                                 ref descriptor,
                                 eventHandle,
@@ -714,7 +714,7 @@ namespace System.Diagnostics.Tracing
 #if FEATURE_MANAGED_ETW
                         finally
                         {
-                            this.WriteCleanup(pins, pinCount);
+                            WriteCleanup(pins, pinCount);
                         }
                     }
 #endif // FEATURE_MANAGED_ETW
@@ -808,13 +808,13 @@ namespace System.Diagnostics.Tracing
                         traitMetaData[lenPos + 1] = unchecked((byte)(valueLen >> 8));
                     }
                 }
-                providerMetadata = Statics.MetadataForString(this.Name, 0, traitMetaData.Count, 0);
+                providerMetadata = Statics.MetadataForString(Name, 0, traitMetaData.Count, 0);
                 int startPos = providerMetadata.Length - traitMetaData.Count;
                 foreach (var b in traitMetaData)
                     providerMetadata[startPos++] = b;
             }
             else
-                providerMetadata = Statics.MetadataForString(this.Name, 0, 0, 0);
+                providerMetadata = Statics.MetadataForString(Name, 0, 0, 0);
 #endif //FEATURE_MANAGED_ETW
         }
 
@@ -899,7 +899,7 @@ namespace System.Diagnostics.Tracing
                 ? options.keywords
                 : eventInfo.keywords;
 
-            if (this.IsEnabled((EventLevel)level, keywords))
+            if (IsEnabled((EventLevel)level, keywords))
             {
                 nameInfo = eventInfo.GetNameInfo(name ?? eventInfo.Name, tags);
                 identity = nameInfo.identity;

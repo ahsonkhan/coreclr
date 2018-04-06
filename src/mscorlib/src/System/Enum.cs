@@ -709,9 +709,9 @@ namespace System
             // Each entry contains a list of sorted pair of enum field names and values, sorted by values
             public TypeValuesAndNames(bool isFlag, ulong[] values, string[] names)
             {
-                this.IsFlag = isFlag;
-                this.Values = values;
-                this.Names = names;
+                IsFlag = isFlag;
+                Values = values;
+                Names = names;
             }
 
             public bool IsFlag;
@@ -911,7 +911,7 @@ namespace System
             }
             else if (ret == retIncompatibleMethodTables)
             {
-                Type thisType = this.GetType();
+                Type thisType = GetType();
                 Type targetType = target.GetType();
 
                 throw new ArgumentException(SR.Format(SR.Arg_EnumAndObjectMustBeSameType, targetType.ToString(), thisType.ToString()));
@@ -964,9 +964,9 @@ namespace System
             if (flag == null)
                 throw new ArgumentNullException(nameof(flag));
 
-            if (!this.GetType().IsEquivalentTo(flag.GetType()))
+            if (!GetType().IsEquivalentTo(flag.GetType()))
             {
-                throw new ArgumentException(SR.Format(SR.Argument_EnumTypeDoesNotMatch, flag.GetType(), this.GetType()));
+                throw new ArgumentException(SR.Format(SR.Argument_EnumTypeDoesNotMatch, flag.GetType(), GetType()));
             }
 
             return InternalHasFlag(flag);

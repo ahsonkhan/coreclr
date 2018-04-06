@@ -723,7 +723,7 @@ namespace System
         public bool IsNormalized(NormalizationForm normalizationForm)
         {
 #if CORECLR
-            if (this.IsFastSort())
+            if (IsFastSort())
             {
                 // If its FastSort && one of the 4 main forms, then its already normalized
                 if (normalizationForm == NormalizationForm.FormC ||
@@ -744,7 +744,7 @@ namespace System
         public string Normalize(NormalizationForm normalizationForm)
         {
 #if CORECLR
-            if (this.IsAscii())
+            if (IsAscii())
             {
                 // If its FastSort && one of the 4 main forms, then its already normalized
                 if (normalizationForm == NormalizationForm.FormC ||

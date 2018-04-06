@@ -466,7 +466,7 @@ namespace System.Reflection.Emit
             {
                 return false;
             }
-            if (!(this.m_strName.Equals(((MethodBuilder)obj).m_strName)))
+            if (!(m_strName.Equals(((MethodBuilder)obj).m_strName)))
             {
                 return false;
             }
@@ -486,7 +486,7 @@ namespace System.Reflection.Emit
 
         public override int GetHashCode()
         {
-            return this.m_strName.GetHashCode();
+            return m_strName.GetHashCode();
         }
 
         public override string ToString()

@@ -35,7 +35,7 @@ namespace System.Runtime.InteropServices
         internal ComEventsSink(object rcw, Guid iid)
         {
             _iidSourceItf = iid;
-            this.Advise(rcw);
+            Advise(rcw);
         }
 
         #endregion

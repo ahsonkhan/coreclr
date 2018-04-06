@@ -363,7 +363,7 @@ namespace System.Globalization
             RegionInfo that = value as RegionInfo;
             if (that != null)
             {
-                return this.Name.Equals(that.Name);
+                return Name.Equals(that.Name);
             }
 
             return (false);
@@ -380,7 +380,7 @@ namespace System.Globalization
         ////////////////////////////////////////////////////////////////////////
         public override int GetHashCode()
         {
-            return (this.Name.GetHashCode());
+            return (Name.GetHashCode());
         }
 
 

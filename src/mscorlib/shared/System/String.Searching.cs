@@ -39,7 +39,7 @@ namespace System
 
         public int IndexOf(char value, int startIndex)
         {
-            return IndexOf(value, startIndex, this.Length - startIndex);
+            return IndexOf(value, startIndex, Length - startIndex);
         }
 
         public int IndexOf(char value, StringComparison comparisonType)
@@ -87,12 +87,12 @@ namespace System
         //
         public int IndexOfAny(char[] anyOf)
         {
-            return IndexOfAny(anyOf, 0, this.Length);
+            return IndexOfAny(anyOf, 0, Length);
         }
 
         public int IndexOfAny(char[] anyOf, int startIndex)
         {
-            return IndexOfAny(anyOf, startIndex, this.Length - startIndex);
+            return IndexOfAny(anyOf, startIndex, Length - startIndex);
         }
 
         public int IndexOfAny(char[] anyOf, int startIndex, int count)
@@ -288,12 +288,12 @@ namespace System
 
         public int IndexOf(string value, int startIndex, int count)
         {
-            if (startIndex < 0 || startIndex > this.Length)
+            if (startIndex < 0 || startIndex > Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_Index);
             }
 
-            if (count < 0 || count > this.Length - startIndex)
+            if (count < 0 || count > Length - startIndex)
             {
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_Count);
             }
@@ -303,12 +303,12 @@ namespace System
 
         public int IndexOf(string value, StringComparison comparisonType)
         {
-            return IndexOf(value, 0, this.Length, comparisonType);
+            return IndexOf(value, 0, Length, comparisonType);
         }
 
         public int IndexOf(string value, int startIndex, StringComparison comparisonType)
         {
-            return IndexOf(value, startIndex, this.Length - startIndex, comparisonType);
+            return IndexOf(value, startIndex, Length - startIndex, comparisonType);
         }
 
         public int IndexOf(string value, int startIndex, int count, StringComparison comparisonType)
@@ -317,10 +317,10 @@ namespace System
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            if (startIndex < 0 || startIndex > this.Length)
+            if (startIndex < 0 || startIndex > Length)
                 throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_Index);
 
-            if (count < 0 || startIndex > this.Length - count)
+            if (count < 0 || startIndex > Length - count)
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_Count);
 
             switch (comparisonType)
@@ -384,7 +384,7 @@ namespace System
         //
         public int LastIndexOfAny(char[] anyOf)
         {
-            return LastIndexOfAny(anyOf, this.Length - 1, this.Length);
+            return LastIndexOfAny(anyOf, Length - 1, Length);
         }
 
         public int LastIndexOfAny(char[] anyOf, int startIndex)
@@ -462,7 +462,7 @@ namespace System
         //
         public int LastIndexOf(string value)
         {
-            return LastIndexOf(value, this.Length - 1, this.Length, StringComparison.CurrentCulture);
+            return LastIndexOf(value, Length - 1, Length, StringComparison.CurrentCulture);
         }
 
         public int LastIndexOf(string value, int startIndex)
@@ -482,7 +482,7 @@ namespace System
 
         public int LastIndexOf(string value, StringComparison comparisonType)
         {
-            return LastIndexOf(value, this.Length - 1, this.Length, comparisonType);
+            return LastIndexOf(value, Length - 1, Length, comparisonType);
         }
 
         public int LastIndexOf(string value, int startIndex, StringComparison comparisonType)
@@ -496,15 +496,15 @@ namespace System
                 throw new ArgumentNullException(nameof(value));
 
             // Special case for 0 length input strings
-            if (this.Length == 0 && (startIndex == -1 || startIndex == 0))
+            if (Length == 0 && (startIndex == -1 || startIndex == 0))
                 return (value.Length == 0) ? 0 : -1;
 
             // Now after handling empty strings, make sure we're not out of range
-            if (startIndex < 0 || startIndex > this.Length)
+            if (startIndex < 0 || startIndex > Length)
                 throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_Index);
 
             // Make sure that we allow startIndex == this.Length
-            if (startIndex == this.Length)
+            if (startIndex == Length)
             {
                 startIndex--;
                 if (count > 0)

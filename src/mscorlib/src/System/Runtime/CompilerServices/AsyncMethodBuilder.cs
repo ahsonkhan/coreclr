@@ -91,7 +91,7 @@ namespace System.Runtime.CompilerServices
         {
             if (AsyncCausalityTracer.LoggingOn)
             {
-                AsyncCausalityTracer.TraceOperationCompletion(CausalityTraceLevel.Required, this.Task.Id, AsyncCausalityStatus.Completed);
+                AsyncCausalityTracer.TraceOperationCompletion(CausalityTraceLevel.Required, Task.Id, AsyncCausalityStatus.Completed);
             }
 
             // Mark the builder as completed.  As this is a void-returning method, this mostly
@@ -117,7 +117,7 @@ namespace System.Runtime.CompilerServices
 
             if (AsyncCausalityTracer.LoggingOn)
             {
-                AsyncCausalityTracer.TraceOperationCompletion(CausalityTraceLevel.Required, this.Task.Id, AsyncCausalityStatus.Error);
+                AsyncCausalityTracer.TraceOperationCompletion(CausalityTraceLevel.Required, Task.Id, AsyncCausalityStatus.Error);
             }
 
             if (_synchronizationContext != null)
@@ -701,7 +701,7 @@ namespace System.Runtime.CompilerServices
             }
 
             // Get the task, forcing initialization if it hasn't already been initialized.
-            Task<TResult> task = this.Task;
+            Task<TResult> task = Task;
 
             // If the exception represents cancellation, cancel the task.  Otherwise, fault the task.
             var oce = exception as OperationCanceledException;

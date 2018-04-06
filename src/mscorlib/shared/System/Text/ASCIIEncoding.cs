@@ -34,8 +34,8 @@ namespace System.Text
         internal override void SetDefaultFallbacks()
         {
             // For ASCIIEncoding we just use default replacement fallback
-            this.encoderFallback = EncoderFallback.ReplacementFallback;
-            this.decoderFallback = DecoderFallback.ReplacementFallback;
+            encoderFallback = EncoderFallback.ReplacementFallback;
+            decoderFallback = DecoderFallback.ReplacementFallback;
         }
 
         // WARNING: GetByteCount(string chars), GetBytes(string chars,...), and GetString(byte[] byteIndex...)
@@ -359,7 +359,7 @@ namespace System.Text
                     // We always need the fallback buffer in get bytes so we can flush any remaining ones if necessary
                     fallbackBuffer = encoder.FallbackBuffer;
                     if (fallbackBuffer.Remaining > 0 && encoder._throwOnOverflow)
-                        throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType()));
+                        throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, EncodingName, encoder.Fallback.GetType()));
 
                     // Set our internal fallback interesting things.
                     fallbackBuffer.InternalInitialize(chars, charEnd, encoder, false);
@@ -372,7 +372,7 @@ namespace System.Text
             }
             else
             {
-                fallback = this.EncoderFallback as EncoderReplacementFallback;
+                fallback = EncoderFallback as EncoderReplacementFallback;
             }
 
             // If we have an encoder AND we aren't using default fallback,
@@ -437,7 +437,7 @@ namespace System.Text
                     {
                         // Initialize the buffer
                         if (encoder == null)
-                            fallbackBuffer = this.encoderFallback.CreateFallbackBuffer();
+                            fallbackBuffer = encoderFallback.CreateFallbackBuffer();
                         else
                             fallbackBuffer = encoder.FallbackBuffer;
                         fallbackBuffer.InternalInitialize(charEnd - charCount, charEnd, encoder, false);
@@ -496,7 +496,7 @@ namespace System.Text
                     // We always need the fallback buffer in get bytes so we can flush any remaining ones if necessary
                     fallbackBuffer = encoder.FallbackBuffer;
                     if (fallbackBuffer.Remaining > 0 && encoder._throwOnOverflow)
-                        throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType()));
+                        throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, EncodingName, encoder.Fallback.GetType()));
 
                     // Set our internal fallback interesting things.
                     fallbackBuffer.InternalInitialize(charStart, charEnd, encoder, true);
@@ -512,7 +512,7 @@ namespace System.Text
             }
             else
             {
-                fallback = this.EncoderFallback as EncoderReplacementFallback;
+                fallback = EncoderFallback as EncoderReplacementFallback;
             }
 
 
@@ -617,7 +617,7 @@ namespace System.Text
                     if (fallbackBuffer == null)
                     {
                         if (encoder == null)
-                            fallbackBuffer = this.encoderFallback.CreateFallbackBuffer();
+                            fallbackBuffer = encoderFallback.CreateFallbackBuffer();
                         else
                             fallbackBuffer = encoder.FallbackBuffer;
                         fallbackBuffer.InternalInitialize(charEnd - charCount, charEnd, encoder, true);
@@ -686,7 +686,7 @@ namespace System.Text
             DecoderReplacementFallback fallback = null;
 
             if (decoder == null)
-                fallback = this.DecoderFallback as DecoderReplacementFallback;
+                fallback = DecoderFallback as DecoderReplacementFallback;
             else
             {
                 fallback = decoder.Fallback as DecoderReplacementFallback;
@@ -727,7 +727,7 @@ namespace System.Text
                     if (fallbackBuffer == null)
                     {
                         if (decoder == null)
-                            fallbackBuffer = this.DecoderFallback.CreateFallbackBuffer();
+                            fallbackBuffer = DecoderFallback.CreateFallbackBuffer();
                         else
                             fallbackBuffer = decoder.FallbackBuffer;
                         fallbackBuffer.InternalInitialize(byteEnd - count, null);
@@ -769,7 +769,7 @@ namespace System.Text
             char* charsForFallback;
 
             if (decoder == null)
-                fallback = this.DecoderFallback as DecoderReplacementFallback;
+                fallback = DecoderFallback as DecoderReplacementFallback;
             else
             {
                 fallback = decoder.Fallback as DecoderReplacementFallback;
@@ -828,7 +828,7 @@ namespace System.Text
                     if (fallbackBuffer == null)
                     {
                         if (decoder == null)
-                            fallbackBuffer = this.DecoderFallback.CreateFallbackBuffer();
+                            fallbackBuffer = DecoderFallback.CreateFallbackBuffer();
                         else
                             fallbackBuffer = decoder.FallbackBuffer;
                         fallbackBuffer.InternalInitialize(byteEnd - byteCount, charEnd);

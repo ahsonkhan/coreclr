@@ -68,14 +68,14 @@ namespace System
         public bool TryGetTarget(out T target)
         {
             // Call the worker method that has more performant but less user friendly signature.
-            T o = this.Target;
+            T o = Target;
             target = o;
             return o != null;
         }
 
         public void SetTarget(T target)
         {
-            this.Target = target;
+            Target = target;
         }
 
         // This is property for better debugging experience (VS debugger shows values of properties when you hover over the variables)
@@ -103,7 +103,7 @@ namespace System
                 throw new ArgumentNullException(nameof(info));
             }
 
-            info.AddValue("TrackedObject", this.Target, typeof(T)); // Do not rename (binary serialization)
+            info.AddValue("TrackedObject", Target, typeof(T)); // Do not rename (binary serialization)
             info.AddValue("TrackResurrection", IsTrackResurrection()); // Do not rename (binary serialization)
         }
 

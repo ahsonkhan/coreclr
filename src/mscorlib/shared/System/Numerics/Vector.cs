@@ -170,7 +170,7 @@ namespace System.Numerics
             {
                 if (typeof(T) == typeof(byte))
                 {
-                    fixed (byte* basePtr = &this.register.byte_0)
+                    fixed (byte* basePtr = &register.byte_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -180,7 +180,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(sbyte))
                 {
-                    fixed (sbyte* basePtr = &this.register.sbyte_0)
+                    fixed (sbyte* basePtr = &register.sbyte_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -190,7 +190,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(ushort))
                 {
-                    fixed (ushort* basePtr = &this.register.uint16_0)
+                    fixed (ushort* basePtr = &register.uint16_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -200,7 +200,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(short))
                 {
-                    fixed (short* basePtr = &this.register.int16_0)
+                    fixed (short* basePtr = &register.int16_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -210,7 +210,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(uint))
                 {
-                    fixed (uint* basePtr = &this.register.uint32_0)
+                    fixed (uint* basePtr = &register.uint32_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -220,7 +220,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(int))
                 {
-                    fixed (int* basePtr = &this.register.int32_0)
+                    fixed (int* basePtr = &register.int32_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -230,7 +230,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(ulong))
                 {
-                    fixed (ulong* basePtr = &this.register.uint64_0)
+                    fixed (ulong* basePtr = &register.uint64_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -240,7 +240,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(long))
                 {
-                    fixed (long* basePtr = &this.register.int64_0)
+                    fixed (long* basePtr = &register.int64_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -250,7 +250,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(float))
                 {
-                    fixed (float* basePtr = &this.register.single_0)
+                    fixed (float* basePtr = &register.single_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -260,7 +260,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(double))
                 {
-                    fixed (double* basePtr = &this.register.double_0)
+                    fixed (double* basePtr = &register.double_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -397,7 +397,7 @@ namespace System.Numerics
             {
                 if (typeof(T) == typeof(byte))
                 {
-                    fixed (byte* basePtr = &this.register.byte_0)
+                    fixed (byte* basePtr = &register.byte_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -407,7 +407,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(sbyte))
                 {
-                    fixed (sbyte* basePtr = &this.register.sbyte_0)
+                    fixed (sbyte* basePtr = &register.sbyte_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -417,7 +417,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(ushort))
                 {
-                    fixed (ushort* basePtr = &this.register.uint16_0)
+                    fixed (ushort* basePtr = &register.uint16_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -427,7 +427,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(short))
                 {
-                    fixed (short* basePtr = &this.register.int16_0)
+                    fixed (short* basePtr = &register.int16_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -437,7 +437,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(uint))
                 {
-                    fixed (uint* basePtr = &this.register.uint32_0)
+                    fixed (uint* basePtr = &register.uint32_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -447,7 +447,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(int))
                 {
-                    fixed (int* basePtr = &this.register.int32_0)
+                    fixed (int* basePtr = &register.int32_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -457,7 +457,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(ulong))
                 {
-                    fixed (ulong* basePtr = &this.register.uint64_0)
+                    fixed (ulong* basePtr = &register.uint64_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -467,7 +467,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(long))
                 {
-                    fixed (long* basePtr = &this.register.int64_0)
+                    fixed (long* basePtr = &register.int64_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -477,7 +477,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(float))
                 {
-                    fixed (float* basePtr = &this.register.single_0)
+                    fixed (float* basePtr = &register.single_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -487,7 +487,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(double))
                 {
-                    fixed (double* basePtr = &this.register.double_0)
+                    fixed (double* basePtr = &register.double_0)
                     {
                         for (int g = 0; g < Count; g++)
                         {
@@ -500,7 +500,7 @@ namespace System.Numerics
             {
                 if (typeof(T) == typeof(byte))
                 {
-                    fixed (byte* basePtr = &this.register.byte_0)
+                    fixed (byte* basePtr = &register.byte_0)
                     {
                         *(basePtr + 0) = (byte)(object)values[0 + index];
                         *(basePtr + 1) = (byte)(object)values[1 + index];
@@ -522,7 +522,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(sbyte))
                 {
-                    fixed (sbyte* basePtr = &this.register.sbyte_0)
+                    fixed (sbyte* basePtr = &register.sbyte_0)
                     {
                         *(basePtr + 0) = (sbyte)(object)values[0 + index];
                         *(basePtr + 1) = (sbyte)(object)values[1 + index];
@@ -544,7 +544,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(ushort))
                 {
-                    fixed (ushort* basePtr = &this.register.uint16_0)
+                    fixed (ushort* basePtr = &register.uint16_0)
                     {
                         *(basePtr + 0) = (ushort)(object)values[0 + index];
                         *(basePtr + 1) = (ushort)(object)values[1 + index];
@@ -558,7 +558,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(short))
                 {
-                    fixed (short* basePtr = &this.register.int16_0)
+                    fixed (short* basePtr = &register.int16_0)
                     {
                         *(basePtr + 0) = (short)(object)values[0 + index];
                         *(basePtr + 1) = (short)(object)values[1 + index];
@@ -572,7 +572,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(uint))
                 {
-                    fixed (uint* basePtr = &this.register.uint32_0)
+                    fixed (uint* basePtr = &register.uint32_0)
                     {
                         *(basePtr + 0) = (uint)(object)values[0 + index];
                         *(basePtr + 1) = (uint)(object)values[1 + index];
@@ -582,7 +582,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(int))
                 {
-                    fixed (int* basePtr = &this.register.int32_0)
+                    fixed (int* basePtr = &register.int32_0)
                     {
                         *(basePtr + 0) = (int)(object)values[0 + index];
                         *(basePtr + 1) = (int)(object)values[1 + index];
@@ -592,7 +592,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(ulong))
                 {
-                    fixed (ulong* basePtr = &this.register.uint64_0)
+                    fixed (ulong* basePtr = &register.uint64_0)
                     {
                         *(basePtr + 0) = (ulong)(object)values[0 + index];
                         *(basePtr + 1) = (ulong)(object)values[1 + index];
@@ -600,7 +600,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(long))
                 {
-                    fixed (long* basePtr = &this.register.int64_0)
+                    fixed (long* basePtr = &register.int64_0)
                     {
                         *(basePtr + 0) = (long)(object)values[0 + index];
                         *(basePtr + 1) = (long)(object)values[1 + index];
@@ -608,7 +608,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(float))
                 {
-                    fixed (float* basePtr = &this.register.single_0)
+                    fixed (float* basePtr = &register.single_0)
                     {
                         *(basePtr + 0) = (float)(object)values[0 + index];
                         *(basePtr + 1) = (float)(object)values[1 + index];
@@ -618,7 +618,7 @@ namespace System.Numerics
                 }
                 else if (typeof(T) == typeof(double))
                 {
-                    fixed (double* basePtr = &this.register.double_0)
+                    fixed (double* basePtr = &register.double_0)
                     {
                         *(basePtr + 0) = (double)(object)values[0 + index];
                         *(basePtr + 1) = (double)(object)values[1 + index];
@@ -640,7 +640,7 @@ namespace System.Numerics
             {
                 byte* castedPtr = (byte*)dataPointer;
                 castedPtr += offset;
-                fixed (byte* registerBase = &this.register.byte_0)
+                fixed (byte* registerBase = &register.byte_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -652,7 +652,7 @@ namespace System.Numerics
             {
                 sbyte* castedPtr = (sbyte*)dataPointer;
                 castedPtr += offset;
-                fixed (sbyte* registerBase = &this.register.sbyte_0)
+                fixed (sbyte* registerBase = &register.sbyte_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -664,7 +664,7 @@ namespace System.Numerics
             {
                 ushort* castedPtr = (ushort*)dataPointer;
                 castedPtr += offset;
-                fixed (ushort* registerBase = &this.register.uint16_0)
+                fixed (ushort* registerBase = &register.uint16_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -676,7 +676,7 @@ namespace System.Numerics
             {
                 short* castedPtr = (short*)dataPointer;
                 castedPtr += offset;
-                fixed (short* registerBase = &this.register.int16_0)
+                fixed (short* registerBase = &register.int16_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -688,7 +688,7 @@ namespace System.Numerics
             {
                 uint* castedPtr = (uint*)dataPointer;
                 castedPtr += offset;
-                fixed (uint* registerBase = &this.register.uint32_0)
+                fixed (uint* registerBase = &register.uint32_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -700,7 +700,7 @@ namespace System.Numerics
             {
                 int* castedPtr = (int*)dataPointer;
                 castedPtr += offset;
-                fixed (int* registerBase = &this.register.int32_0)
+                fixed (int* registerBase = &register.int32_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -712,7 +712,7 @@ namespace System.Numerics
             {
                 ulong* castedPtr = (ulong*)dataPointer;
                 castedPtr += offset;
-                fixed (ulong* registerBase = &this.register.uint64_0)
+                fixed (ulong* registerBase = &register.uint64_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -724,7 +724,7 @@ namespace System.Numerics
             {
                 long* castedPtr = (long*)dataPointer;
                 castedPtr += offset;
-                fixed (long* registerBase = &this.register.int64_0)
+                fixed (long* registerBase = &register.int64_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -736,7 +736,7 @@ namespace System.Numerics
             {
                 float* castedPtr = (float*)dataPointer;
                 castedPtr += offset;
-                fixed (float* registerBase = &this.register.single_0)
+                fixed (float* registerBase = &register.single_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -748,7 +748,7 @@ namespace System.Numerics
             {
                 double* castedPtr = (double*)dataPointer;
                 castedPtr += offset;
-                fixed (double* registerBase = &this.register.double_0)
+                fixed (double* registerBase = &register.double_0)
                 {
                     for (int g = 0; g < Count; g++)
                     {
@@ -765,7 +765,7 @@ namespace System.Numerics
 
         private Vector(ref Register existingRegister)
         {
-            this.register = existingRegister;
+            register = existingRegister;
         }
 
 #if netcoreapp
@@ -958,22 +958,22 @@ namespace System.Numerics
                     byte[] byteArray = (byte[])(object)destination;
                     fixed (byte* destinationBase = byteArray)
                     {
-                        destinationBase[startIndex + 0] = this.register.byte_0;
-                        destinationBase[startIndex + 1] = this.register.byte_1;
-                        destinationBase[startIndex + 2] = this.register.byte_2;
-                        destinationBase[startIndex + 3] = this.register.byte_3;
-                        destinationBase[startIndex + 4] = this.register.byte_4;
-                        destinationBase[startIndex + 5] = this.register.byte_5;
-                        destinationBase[startIndex + 6] = this.register.byte_6;
-                        destinationBase[startIndex + 7] = this.register.byte_7;
-                        destinationBase[startIndex + 8] = this.register.byte_8;
-                        destinationBase[startIndex + 9] = this.register.byte_9;
-                        destinationBase[startIndex + 10] = this.register.byte_10;
-                        destinationBase[startIndex + 11] = this.register.byte_11;
-                        destinationBase[startIndex + 12] = this.register.byte_12;
-                        destinationBase[startIndex + 13] = this.register.byte_13;
-                        destinationBase[startIndex + 14] = this.register.byte_14;
-                        destinationBase[startIndex + 15] = this.register.byte_15;
+                        destinationBase[startIndex + 0] = register.byte_0;
+                        destinationBase[startIndex + 1] = register.byte_1;
+                        destinationBase[startIndex + 2] = register.byte_2;
+                        destinationBase[startIndex + 3] = register.byte_3;
+                        destinationBase[startIndex + 4] = register.byte_4;
+                        destinationBase[startIndex + 5] = register.byte_5;
+                        destinationBase[startIndex + 6] = register.byte_6;
+                        destinationBase[startIndex + 7] = register.byte_7;
+                        destinationBase[startIndex + 8] = register.byte_8;
+                        destinationBase[startIndex + 9] = register.byte_9;
+                        destinationBase[startIndex + 10] = register.byte_10;
+                        destinationBase[startIndex + 11] = register.byte_11;
+                        destinationBase[startIndex + 12] = register.byte_12;
+                        destinationBase[startIndex + 13] = register.byte_13;
+                        destinationBase[startIndex + 14] = register.byte_14;
+                        destinationBase[startIndex + 15] = register.byte_15;
                     }
                 }
                 else if (typeof(T) == typeof(sbyte))
@@ -981,22 +981,22 @@ namespace System.Numerics
                     sbyte[] sbyteArray = (sbyte[])(object)destination;
                     fixed (sbyte* destinationBase = sbyteArray)
                     {
-                        destinationBase[startIndex + 0] = this.register.sbyte_0;
-                        destinationBase[startIndex + 1] = this.register.sbyte_1;
-                        destinationBase[startIndex + 2] = this.register.sbyte_2;
-                        destinationBase[startIndex + 3] = this.register.sbyte_3;
-                        destinationBase[startIndex + 4] = this.register.sbyte_4;
-                        destinationBase[startIndex + 5] = this.register.sbyte_5;
-                        destinationBase[startIndex + 6] = this.register.sbyte_6;
-                        destinationBase[startIndex + 7] = this.register.sbyte_7;
-                        destinationBase[startIndex + 8] = this.register.sbyte_8;
-                        destinationBase[startIndex + 9] = this.register.sbyte_9;
-                        destinationBase[startIndex + 10] = this.register.sbyte_10;
-                        destinationBase[startIndex + 11] = this.register.sbyte_11;
-                        destinationBase[startIndex + 12] = this.register.sbyte_12;
-                        destinationBase[startIndex + 13] = this.register.sbyte_13;
-                        destinationBase[startIndex + 14] = this.register.sbyte_14;
-                        destinationBase[startIndex + 15] = this.register.sbyte_15;
+                        destinationBase[startIndex + 0] = register.sbyte_0;
+                        destinationBase[startIndex + 1] = register.sbyte_1;
+                        destinationBase[startIndex + 2] = register.sbyte_2;
+                        destinationBase[startIndex + 3] = register.sbyte_3;
+                        destinationBase[startIndex + 4] = register.sbyte_4;
+                        destinationBase[startIndex + 5] = register.sbyte_5;
+                        destinationBase[startIndex + 6] = register.sbyte_6;
+                        destinationBase[startIndex + 7] = register.sbyte_7;
+                        destinationBase[startIndex + 8] = register.sbyte_8;
+                        destinationBase[startIndex + 9] = register.sbyte_9;
+                        destinationBase[startIndex + 10] = register.sbyte_10;
+                        destinationBase[startIndex + 11] = register.sbyte_11;
+                        destinationBase[startIndex + 12] = register.sbyte_12;
+                        destinationBase[startIndex + 13] = register.sbyte_13;
+                        destinationBase[startIndex + 14] = register.sbyte_14;
+                        destinationBase[startIndex + 15] = register.sbyte_15;
                     }
                 }
                 else if (typeof(T) == typeof(ushort))
@@ -1004,14 +1004,14 @@ namespace System.Numerics
                     ushort[] uint16Array = (ushort[])(object)destination;
                     fixed (ushort* destinationBase = uint16Array)
                     {
-                        destinationBase[startIndex + 0] = this.register.uint16_0;
-                        destinationBase[startIndex + 1] = this.register.uint16_1;
-                        destinationBase[startIndex + 2] = this.register.uint16_2;
-                        destinationBase[startIndex + 3] = this.register.uint16_3;
-                        destinationBase[startIndex + 4] = this.register.uint16_4;
-                        destinationBase[startIndex + 5] = this.register.uint16_5;
-                        destinationBase[startIndex + 6] = this.register.uint16_6;
-                        destinationBase[startIndex + 7] = this.register.uint16_7;
+                        destinationBase[startIndex + 0] = register.uint16_0;
+                        destinationBase[startIndex + 1] = register.uint16_1;
+                        destinationBase[startIndex + 2] = register.uint16_2;
+                        destinationBase[startIndex + 3] = register.uint16_3;
+                        destinationBase[startIndex + 4] = register.uint16_4;
+                        destinationBase[startIndex + 5] = register.uint16_5;
+                        destinationBase[startIndex + 6] = register.uint16_6;
+                        destinationBase[startIndex + 7] = register.uint16_7;
                     }
                 }
                 else if (typeof(T) == typeof(short))
@@ -1019,14 +1019,14 @@ namespace System.Numerics
                     short[] int16Array = (short[])(object)destination;
                     fixed (short* destinationBase = int16Array)
                     {
-                        destinationBase[startIndex + 0] = this.register.int16_0;
-                        destinationBase[startIndex + 1] = this.register.int16_1;
-                        destinationBase[startIndex + 2] = this.register.int16_2;
-                        destinationBase[startIndex + 3] = this.register.int16_3;
-                        destinationBase[startIndex + 4] = this.register.int16_4;
-                        destinationBase[startIndex + 5] = this.register.int16_5;
-                        destinationBase[startIndex + 6] = this.register.int16_6;
-                        destinationBase[startIndex + 7] = this.register.int16_7;
+                        destinationBase[startIndex + 0] = register.int16_0;
+                        destinationBase[startIndex + 1] = register.int16_1;
+                        destinationBase[startIndex + 2] = register.int16_2;
+                        destinationBase[startIndex + 3] = register.int16_3;
+                        destinationBase[startIndex + 4] = register.int16_4;
+                        destinationBase[startIndex + 5] = register.int16_5;
+                        destinationBase[startIndex + 6] = register.int16_6;
+                        destinationBase[startIndex + 7] = register.int16_7;
                     }
                 }
                 else if (typeof(T) == typeof(uint))
@@ -1034,10 +1034,10 @@ namespace System.Numerics
                     uint[] uint32Array = (uint[])(object)destination;
                     fixed (uint* destinationBase = uint32Array)
                     {
-                        destinationBase[startIndex + 0] = this.register.uint32_0;
-                        destinationBase[startIndex + 1] = this.register.uint32_1;
-                        destinationBase[startIndex + 2] = this.register.uint32_2;
-                        destinationBase[startIndex + 3] = this.register.uint32_3;
+                        destinationBase[startIndex + 0] = register.uint32_0;
+                        destinationBase[startIndex + 1] = register.uint32_1;
+                        destinationBase[startIndex + 2] = register.uint32_2;
+                        destinationBase[startIndex + 3] = register.uint32_3;
                     }
                 }
                 else if (typeof(T) == typeof(int))
@@ -1045,10 +1045,10 @@ namespace System.Numerics
                     int[] int32Array = (int[])(object)destination;
                     fixed (int* destinationBase = int32Array)
                     {
-                        destinationBase[startIndex + 0] = this.register.int32_0;
-                        destinationBase[startIndex + 1] = this.register.int32_1;
-                        destinationBase[startIndex + 2] = this.register.int32_2;
-                        destinationBase[startIndex + 3] = this.register.int32_3;
+                        destinationBase[startIndex + 0] = register.int32_0;
+                        destinationBase[startIndex + 1] = register.int32_1;
+                        destinationBase[startIndex + 2] = register.int32_2;
+                        destinationBase[startIndex + 3] = register.int32_3;
                     }
                 }
                 else if (typeof(T) == typeof(ulong))
@@ -1056,8 +1056,8 @@ namespace System.Numerics
                     ulong[] uint64Array = (ulong[])(object)destination;
                     fixed (ulong* destinationBase = uint64Array)
                     {
-                        destinationBase[startIndex + 0] = this.register.uint64_0;
-                        destinationBase[startIndex + 1] = this.register.uint64_1;
+                        destinationBase[startIndex + 0] = register.uint64_0;
+                        destinationBase[startIndex + 1] = register.uint64_1;
                     }
                 }
                 else if (typeof(T) == typeof(long))
@@ -1065,8 +1065,8 @@ namespace System.Numerics
                     long[] int64Array = (long[])(object)destination;
                     fixed (long* destinationBase = int64Array)
                     {
-                        destinationBase[startIndex + 0] = this.register.int64_0;
-                        destinationBase[startIndex + 1] = this.register.int64_1;
+                        destinationBase[startIndex + 0] = register.int64_0;
+                        destinationBase[startIndex + 1] = register.int64_1;
                     }
                 }
                 else if (typeof(T) == typeof(float))
@@ -1074,10 +1074,10 @@ namespace System.Numerics
                     float[] singleArray = (float[])(object)destination;
                     fixed (float* destinationBase = singleArray)
                     {
-                        destinationBase[startIndex + 0] = this.register.single_0;
-                        destinationBase[startIndex + 1] = this.register.single_1;
-                        destinationBase[startIndex + 2] = this.register.single_2;
-                        destinationBase[startIndex + 3] = this.register.single_3;
+                        destinationBase[startIndex + 0] = register.single_0;
+                        destinationBase[startIndex + 1] = register.single_1;
+                        destinationBase[startIndex + 2] = register.single_2;
+                        destinationBase[startIndex + 3] = register.single_3;
                     }
                 }
                 else if (typeof(T) == typeof(double))
@@ -1085,8 +1085,8 @@ namespace System.Numerics
                     double[] doubleArray = (double[])(object)destination;
                     fixed (double* destinationBase = doubleArray)
                     {
-                        destinationBase[startIndex + 0] = this.register.double_0;
-                        destinationBase[startIndex + 1] = this.register.double_1;
+                        destinationBase[startIndex + 0] = register.double_0;
+                        destinationBase[startIndex + 1] = register.double_1;
                     }
                 }
             }
@@ -1106,70 +1106,70 @@ namespace System.Numerics
                 }
                 if (typeof(T) == typeof(byte))
                 {
-                    fixed (byte* basePtr = &this.register.byte_0)
+                    fixed (byte* basePtr = &register.byte_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(sbyte))
                 {
-                    fixed (sbyte* basePtr = &this.register.sbyte_0)
+                    fixed (sbyte* basePtr = &register.sbyte_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(ushort))
                 {
-                    fixed (ushort* basePtr = &this.register.uint16_0)
+                    fixed (ushort* basePtr = &register.uint16_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(short))
                 {
-                    fixed (short* basePtr = &this.register.int16_0)
+                    fixed (short* basePtr = &register.int16_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(uint))
                 {
-                    fixed (uint* basePtr = &this.register.uint32_0)
+                    fixed (uint* basePtr = &register.uint32_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(int))
                 {
-                    fixed (int* basePtr = &this.register.int32_0)
+                    fixed (int* basePtr = &register.int32_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(ulong))
                 {
-                    fixed (ulong* basePtr = &this.register.uint64_0)
+                    fixed (ulong* basePtr = &register.uint64_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(long))
                 {
-                    fixed (long* basePtr = &this.register.int64_0)
+                    fixed (long* basePtr = &register.int64_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(float))
                 {
-                    fixed (float* basePtr = &this.register.single_0)
+                    fixed (float* basePtr = &register.single_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
                 }
                 else if (typeof(T) == typeof(double))
                 {
-                    fixed (double* basePtr = &this.register.double_0)
+                    fixed (double* basePtr = &register.double_0)
                     {
                         return (T)(object)*(basePtr + index);
                     }
@@ -1220,108 +1220,108 @@ namespace System.Numerics
                 if (typeof(T) == typeof(byte))
                 {
                     return
-                        this.register.byte_0 == other.register.byte_0
-                        && this.register.byte_1 == other.register.byte_1
-                        && this.register.byte_2 == other.register.byte_2
-                        && this.register.byte_3 == other.register.byte_3
-                        && this.register.byte_4 == other.register.byte_4
-                        && this.register.byte_5 == other.register.byte_5
-                        && this.register.byte_6 == other.register.byte_6
-                        && this.register.byte_7 == other.register.byte_7
-                        && this.register.byte_8 == other.register.byte_8
-                        && this.register.byte_9 == other.register.byte_9
-                        && this.register.byte_10 == other.register.byte_10
-                        && this.register.byte_11 == other.register.byte_11
-                        && this.register.byte_12 == other.register.byte_12
-                        && this.register.byte_13 == other.register.byte_13
-                        && this.register.byte_14 == other.register.byte_14
-                        && this.register.byte_15 == other.register.byte_15;
+                        register.byte_0 == other.register.byte_0
+                        && register.byte_1 == other.register.byte_1
+                        && register.byte_2 == other.register.byte_2
+                        && register.byte_3 == other.register.byte_3
+                        && register.byte_4 == other.register.byte_4
+                        && register.byte_5 == other.register.byte_5
+                        && register.byte_6 == other.register.byte_6
+                        && register.byte_7 == other.register.byte_7
+                        && register.byte_8 == other.register.byte_8
+                        && register.byte_9 == other.register.byte_9
+                        && register.byte_10 == other.register.byte_10
+                        && register.byte_11 == other.register.byte_11
+                        && register.byte_12 == other.register.byte_12
+                        && register.byte_13 == other.register.byte_13
+                        && register.byte_14 == other.register.byte_14
+                        && register.byte_15 == other.register.byte_15;
                 }
                 else if (typeof(T) == typeof(sbyte))
                 {
                     return
-                        this.register.sbyte_0 == other.register.sbyte_0
-                        && this.register.sbyte_1 == other.register.sbyte_1
-                        && this.register.sbyte_2 == other.register.sbyte_2
-                        && this.register.sbyte_3 == other.register.sbyte_3
-                        && this.register.sbyte_4 == other.register.sbyte_4
-                        && this.register.sbyte_5 == other.register.sbyte_5
-                        && this.register.sbyte_6 == other.register.sbyte_6
-                        && this.register.sbyte_7 == other.register.sbyte_7
-                        && this.register.sbyte_8 == other.register.sbyte_8
-                        && this.register.sbyte_9 == other.register.sbyte_9
-                        && this.register.sbyte_10 == other.register.sbyte_10
-                        && this.register.sbyte_11 == other.register.sbyte_11
-                        && this.register.sbyte_12 == other.register.sbyte_12
-                        && this.register.sbyte_13 == other.register.sbyte_13
-                        && this.register.sbyte_14 == other.register.sbyte_14
-                        && this.register.sbyte_15 == other.register.sbyte_15;
+                        register.sbyte_0 == other.register.sbyte_0
+                        && register.sbyte_1 == other.register.sbyte_1
+                        && register.sbyte_2 == other.register.sbyte_2
+                        && register.sbyte_3 == other.register.sbyte_3
+                        && register.sbyte_4 == other.register.sbyte_4
+                        && register.sbyte_5 == other.register.sbyte_5
+                        && register.sbyte_6 == other.register.sbyte_6
+                        && register.sbyte_7 == other.register.sbyte_7
+                        && register.sbyte_8 == other.register.sbyte_8
+                        && register.sbyte_9 == other.register.sbyte_9
+                        && register.sbyte_10 == other.register.sbyte_10
+                        && register.sbyte_11 == other.register.sbyte_11
+                        && register.sbyte_12 == other.register.sbyte_12
+                        && register.sbyte_13 == other.register.sbyte_13
+                        && register.sbyte_14 == other.register.sbyte_14
+                        && register.sbyte_15 == other.register.sbyte_15;
                 }
                 else if (typeof(T) == typeof(ushort))
                 {
                     return
-                        this.register.uint16_0 == other.register.uint16_0
-                        && this.register.uint16_1 == other.register.uint16_1
-                        && this.register.uint16_2 == other.register.uint16_2
-                        && this.register.uint16_3 == other.register.uint16_3
-                        && this.register.uint16_4 == other.register.uint16_4
-                        && this.register.uint16_5 == other.register.uint16_5
-                        && this.register.uint16_6 == other.register.uint16_6
-                        && this.register.uint16_7 == other.register.uint16_7;
+                        register.uint16_0 == other.register.uint16_0
+                        && register.uint16_1 == other.register.uint16_1
+                        && register.uint16_2 == other.register.uint16_2
+                        && register.uint16_3 == other.register.uint16_3
+                        && register.uint16_4 == other.register.uint16_4
+                        && register.uint16_5 == other.register.uint16_5
+                        && register.uint16_6 == other.register.uint16_6
+                        && register.uint16_7 == other.register.uint16_7;
                 }
                 else if (typeof(T) == typeof(short))
                 {
                     return
-                        this.register.int16_0 == other.register.int16_0
-                        && this.register.int16_1 == other.register.int16_1
-                        && this.register.int16_2 == other.register.int16_2
-                        && this.register.int16_3 == other.register.int16_3
-                        && this.register.int16_4 == other.register.int16_4
-                        && this.register.int16_5 == other.register.int16_5
-                        && this.register.int16_6 == other.register.int16_6
-                        && this.register.int16_7 == other.register.int16_7;
+                        register.int16_0 == other.register.int16_0
+                        && register.int16_1 == other.register.int16_1
+                        && register.int16_2 == other.register.int16_2
+                        && register.int16_3 == other.register.int16_3
+                        && register.int16_4 == other.register.int16_4
+                        && register.int16_5 == other.register.int16_5
+                        && register.int16_6 == other.register.int16_6
+                        && register.int16_7 == other.register.int16_7;
                 }
                 else if (typeof(T) == typeof(uint))
                 {
                     return
-                        this.register.uint32_0 == other.register.uint32_0
-                        && this.register.uint32_1 == other.register.uint32_1
-                        && this.register.uint32_2 == other.register.uint32_2
-                        && this.register.uint32_3 == other.register.uint32_3;
+                        register.uint32_0 == other.register.uint32_0
+                        && register.uint32_1 == other.register.uint32_1
+                        && register.uint32_2 == other.register.uint32_2
+                        && register.uint32_3 == other.register.uint32_3;
                 }
                 else if (typeof(T) == typeof(int))
                 {
                     return
-                        this.register.int32_0 == other.register.int32_0
-                        && this.register.int32_1 == other.register.int32_1
-                        && this.register.int32_2 == other.register.int32_2
-                        && this.register.int32_3 == other.register.int32_3;
+                        register.int32_0 == other.register.int32_0
+                        && register.int32_1 == other.register.int32_1
+                        && register.int32_2 == other.register.int32_2
+                        && register.int32_3 == other.register.int32_3;
                 }
                 else if (typeof(T) == typeof(ulong))
                 {
                     return
-                        this.register.uint64_0 == other.register.uint64_0
-                        && this.register.uint64_1 == other.register.uint64_1;
+                        register.uint64_0 == other.register.uint64_0
+                        && register.uint64_1 == other.register.uint64_1;
                 }
                 else if (typeof(T) == typeof(long))
                 {
                     return
-                        this.register.int64_0 == other.register.int64_0
-                        && this.register.int64_1 == other.register.int64_1;
+                        register.int64_0 == other.register.int64_0
+                        && register.int64_1 == other.register.int64_1;
                 }
                 else if (typeof(T) == typeof(float))
                 {
                     return
-                        this.register.single_0 == other.register.single_0
-                        && this.register.single_1 == other.register.single_1
-                        && this.register.single_2 == other.register.single_2
-                        && this.register.single_3 == other.register.single_3;
+                        register.single_0 == other.register.single_0
+                        && register.single_1 == other.register.single_1
+                        && register.single_2 == other.register.single_2
+                        && register.single_3 == other.register.single_3;
                 }
                 else if (typeof(T) == typeof(double))
                 {
                     return
-                        this.register.double_0 == other.register.double_0
-                        && this.register.double_1 == other.register.double_1;
+                        register.double_0 == other.register.double_0
+                        && register.double_1 == other.register.double_1;
                 }
                 else
                 {
@@ -1429,108 +1429,108 @@ namespace System.Numerics
             {
                 if (typeof(T) == typeof(byte))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.byte_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_3.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_4.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_5.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_6.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_7.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_8.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_9.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_10.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_11.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_12.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_13.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_14.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.byte_15.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_4.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_5.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_6.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_7.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_8.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_9.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_10.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_11.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_12.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_13.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_14.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.byte_15.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(sbyte))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_3.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_4.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_5.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_6.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_7.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_8.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_9.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_10.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_11.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_12.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_13.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_14.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.sbyte_15.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_4.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_5.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_6.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_7.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_8.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_9.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_10.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_11.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_12.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_13.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_14.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.sbyte_15.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(ushort))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.uint16_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_3.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_4.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_5.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_6.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint16_7.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_4.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_5.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_6.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint16_7.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(short))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.int16_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_3.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_4.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_5.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_6.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int16_7.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_4.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_5.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_6.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int16_7.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(uint))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.uint32_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint32_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint32_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint32_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint32_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint32_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint32_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint32_3.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(int))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.int32_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int32_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int32_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int32_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int32_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int32_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int32_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int32_3.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(ulong))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.uint64_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.uint64_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint64_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.uint64_1.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(long))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.int64_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.int64_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int64_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.int64_1.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(float))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.single_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.single_1.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.single_2.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.single_3.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.single_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.single_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.single_2.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.single_3.GetHashCode());
                     return hash;
                 }
                 else if (typeof(T) == typeof(double))
                 {
-                    hash = HashHelpers.Combine(hash, this.register.double_0.GetHashCode());
-                    hash = HashHelpers.Combine(hash, this.register.double_1.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.double_0.GetHashCode());
+                    hash = HashHelpers.Combine(hash, register.double_1.GetHashCode());
                     return hash;
                 }
                 else

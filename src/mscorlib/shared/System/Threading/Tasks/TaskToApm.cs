@@ -171,7 +171,7 @@ namespace System.Threading.Tasks
                 Debug.Assert(task != null);
                 Debug.Assert(!completedSynchronously || task.IsCompleted, "If completedSynchronously is true, the task must be completed.");
 
-                this.Task = task;
+                Task = task;
                 _state = state;
                 _completedSynchronously = completedSynchronously;
             }
@@ -182,8 +182,8 @@ namespace System.Threading.Tasks
 
             object IAsyncResult.AsyncState { get { return _state; } }
             bool IAsyncResult.CompletedSynchronously { get { return _completedSynchronously; } }
-            bool IAsyncResult.IsCompleted { get { return this.Task.IsCompleted; } }
-            WaitHandle IAsyncResult.AsyncWaitHandle { get { return ((IAsyncResult)this.Task).AsyncWaitHandle; } }
+            bool IAsyncResult.IsCompleted { get { return Task.IsCompleted; } }
+            WaitHandle IAsyncResult.AsyncWaitHandle { get { return ((IAsyncResult)Task).AsyncWaitHandle; } }
         }
     }
 }

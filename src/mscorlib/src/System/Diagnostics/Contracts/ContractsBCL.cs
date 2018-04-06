@@ -155,7 +155,7 @@ namespace System.Diagnostics.Contracts
         private readonly string _condition;
 
         public ContractFailureKind Kind { get { return _kind; } }
-        public string Failure { get { return this.Message; } }
+        public string Failure { get { return Message; } }
         public string UserMessage { get { return _userMessage; } }
         public string Condition { get { return _condition; } }
 
