@@ -184,7 +184,7 @@ namespace System.Reflection
         #endregion
 
         #region Object Overrides
-        public override String ToString()
+        public override string ToString()
         {
             if (m_toString == null)
                 m_toString = ReturnType.FormatTypeName() + " " + FormatNameAndSig();
@@ -283,7 +283,7 @@ namespace System.Reflection
         #endregion
 
         #region MemberInfo Overrides
-        public override String Name
+        public override string Name
         {
             get
             {

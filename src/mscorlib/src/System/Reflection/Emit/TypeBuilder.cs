@@ -171,14 +171,14 @@ namespace System.Reflection.Emit
 
         #region Internal Static FCalls
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        internal static extern int DefineMethod(RuntimeModule module, int tkParent, String name, byte[] signature, int sigLength,
+        internal static extern int DefineMethod(RuntimeModule module, int tkParent, string name, byte[] signature, int sigLength,
             MethodAttributes attributes);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         internal static extern int DefineMethodSpec(RuntimeModule module, int tkParent, byte[] signature, int sigLength);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        internal static extern int DefineField(RuntimeModule module, int tkParent, String name, byte[] signature, int sigLength,
+        internal static extern int DefineField(RuntimeModule module, int tkParent, string name, byte[] signature, int sigLength,
             FieldAttributes attributes);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
@@ -209,11 +209,11 @@ namespace System.Reflection.Emit
         }
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        internal static extern int DefineProperty(RuntimeModule module, int tkParent, String name, PropertyAttributes attributes,
+        internal static extern int DefineProperty(RuntimeModule module, int tkParent, string name, PropertyAttributes attributes,
             byte[] signature, int sigLength);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        internal static extern int DefineEvent(RuntimeModule module, int tkParent, String name, EventAttributes attributes, int tkEventType);
+        internal static extern int DefineEvent(RuntimeModule module, int tkParent, string name, EventAttributes attributes, int tkEventType);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         internal static extern void DefineMethodSemantics(RuntimeModule module, int tkAssociation,
@@ -227,7 +227,7 @@ namespace System.Reflection.Emit
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         internal static extern int SetParamInfo(RuntimeModule module, int tkMethod, int iSequence,
-            ParameterAttributes iParamAttributes, String strParamName);
+            ParameterAttributes iParamAttributes, string strParamName);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         internal static extern int GetTokenFromSig(RuntimeModule module, byte[] signature, int sigLength);
@@ -378,7 +378,7 @@ namespace System.Reflection.Emit
                         break;
 
                     default:
-                        if (type == typeof(String))
+                        if (type == typeof(string))
                         {
                             fixed (char* pString = (string)value)
                                 SetConstantValue(module.GetNativeHandle(), tk, (int)CorElementType.String, pString);
@@ -415,9 +415,9 @@ namespace System.Reflection.Emit
         private List<CustAttr> m_ca;
         private TypeToken m_tdType;
         private ModuleBuilder m_module;
-        private String m_strName;
-        private String m_strNameSpace;
-        private String m_strFullQualName;
+        private string m_strName;
+        private string m_strNameSpace;
+        private string m_strFullQualName;
         private Type m_typeParent;
         private List<Type> m_typeInterfaces;
         private TypeAttributes m_iAttr;
@@ -483,7 +483,7 @@ namespace System.Reflection.Emit
         }
 
         internal TypeBuilder(
-            String name,
+            string name,
             TypeAttributes attr,
             Type parent,
             Type[] interfaces,
@@ -495,7 +495,7 @@ namespace System.Reflection.Emit
             Init(name, attr, parent, interfaces, module, iPackingSize, iTypeSize, enclosingType);
         }
 
-        private void Init(String fullname, TypeAttributes attr, Type parent, Type[] interfaces, ModuleBuilder module,
+        private void Init(string fullname, TypeAttributes attr, Type parent, Type[] interfaces, ModuleBuilder module,
             PackingSize iPackingSize, int iTypeSize, TypeBuilder enclosingType)
         {
             if (fullname == null)
@@ -594,9 +594,9 @@ namespace System.Reflection.Emit
         #endregion
         #region Private Members
 
-        private FieldBuilder DefineDataHelper(String name, byte[] data, int size, FieldAttributes attributes)
+        private FieldBuilder DefineDataHelper(string name, byte[] data, int size, FieldAttributes attributes)
         {
-            String strValueClassName;
+            string strValueClassName;
             TypeBuilder valueClassType;
             FieldBuilder fdBuilder;
             TypeAttributes typeAttributes;
@@ -678,11 +678,11 @@ namespace System.Reflection.Emit
         #region FCalls
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         private static extern int DefineType(RuntimeModule module,
-            String fullname, int tkParent, TypeAttributes attributes, int tkEnclosingType, int[] interfaceTokens);
+            string fullname, int tkParent, TypeAttributes attributes, int tkEnclosingType, int[] interfaceTokens);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         private static extern int DefineGenericParam(RuntimeModule module,
-            String name, int tkParent, GenericParameterAttributes attributes, int position, int[] constraints);
+            string name, int tkParent, GenericParameterAttributes attributes, int position, int[] constraints);
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
         private static extern void TermCreateClass(RuntimeModule module, int tk, ObjectHandleOnStack type);
@@ -751,7 +751,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region Object Overrides
-        public override String ToString()
+        public override string ToString()
         {
             return TypeNameBuilder.ToString(this, TypeNameBuilder.Format.ToString);
         }
@@ -771,7 +771,7 @@ namespace System.Reflection.Emit
             get { return m_DeclaringType; }
         }
 
-        public override String Name
+        public override string Name
         {
             get { return m_strName; }
         }
@@ -800,8 +800,8 @@ namespace System.Reflection.Emit
             }
         }
 
-        public override object InvokeMember(String name, BindingFlags invokeAttr, Binder binder, object target,
-            object[] args, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParameters)
+        public override object InvokeMember(string name, BindingFlags invokeAttr, Binder binder, object target,
+            object[] args, ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -819,7 +819,7 @@ namespace System.Reflection.Emit
             get { throw new NotSupportedException(SR.NotSupported_DynamicModule); }
         }
 
-        public override String FullName
+        public override string FullName
         {
             get
             {
@@ -830,12 +830,12 @@ namespace System.Reflection.Emit
             }
         }
 
-        public override String Namespace
+        public override string Namespace
         {
             get { return m_strNameSpace; }
         }
 
-        public override String AssemblyQualifiedName
+        public override string AssemblyQualifiedName
         {
             get
             {
@@ -865,7 +865,7 @@ namespace System.Reflection.Emit
             return m_bakedRuntimeType.GetConstructors(bindingAttr);
         }
 
-        protected override MethodInfo GetMethodImpl(String name, BindingFlags bindingAttr, Binder binder,
+        protected override MethodInfo GetMethodImpl(string name, BindingFlags bindingAttr, Binder binder,
                 CallingConventions callConvention, Type[] types, ParameterModifier[] modifiers)
         {
             if (!IsCreated())
@@ -889,7 +889,7 @@ namespace System.Reflection.Emit
             return m_bakedRuntimeType.GetMethods(bindingAttr);
         }
 
-        public override FieldInfo GetField(String name, BindingFlags bindingAttr)
+        public override FieldInfo GetField(string name, BindingFlags bindingAttr)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -905,7 +905,7 @@ namespace System.Reflection.Emit
             return m_bakedRuntimeType.GetFields(bindingAttr);
         }
 
-        public override Type GetInterface(String name, bool ignoreCase)
+        public override Type GetInterface(string name, bool ignoreCase)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -928,7 +928,7 @@ namespace System.Reflection.Emit
             return m_typeInterfaces.ToArray();
         }
 
-        public override EventInfo GetEvent(String name, BindingFlags bindingAttr)
+        public override EventInfo GetEvent(string name, BindingFlags bindingAttr)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -944,7 +944,7 @@ namespace System.Reflection.Emit
             return m_bakedRuntimeType.GetEvents();
         }
 
-        protected override PropertyInfo GetPropertyImpl(String name, BindingFlags bindingAttr, Binder binder,
+        protected override PropertyInfo GetPropertyImpl(string name, BindingFlags bindingAttr, Binder binder,
                 Type returnType, Type[] types, ParameterModifier[] modifiers)
         {
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
@@ -966,7 +966,7 @@ namespace System.Reflection.Emit
             return m_bakedRuntimeType.GetNestedTypes(bindingAttr);
         }
 
-        public override Type GetNestedType(String name, BindingFlags bindingAttr)
+        public override Type GetNestedType(string name, BindingFlags bindingAttr)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -974,7 +974,7 @@ namespace System.Reflection.Emit
             return m_bakedRuntimeType.GetNestedType(name, bindingAttr);
         }
 
-        public override MemberInfo[] GetMember(String name, MemberTypes type, BindingFlags bindingAttr)
+        public override MemberInfo[] GetMember(string name, MemberTypes type, BindingFlags bindingAttr)
         {
             if (!IsCreated())
                 throw new NotSupportedException(SR.NotSupported_TypeNotYetCreated);
@@ -1325,28 +1325,28 @@ namespace System.Reflection.Emit
             DefineMethodImpl(m_module.GetNativeHandle(), m_tdType.Token, tkBody.Token, tkDecl.Token);
         }
 
-        public MethodBuilder DefineMethod(String name, MethodAttributes attributes, Type returnType, Type[] parameterTypes)
+        public MethodBuilder DefineMethod(string name, MethodAttributes attributes, Type returnType, Type[] parameterTypes)
         {
             return DefineMethod(name, attributes, CallingConventions.Standard, returnType, parameterTypes);
         }
 
-        public MethodBuilder DefineMethod(String name, MethodAttributes attributes)
+        public MethodBuilder DefineMethod(string name, MethodAttributes attributes)
         {
             return DefineMethod(name, attributes, CallingConventions.Standard, null, null);
         }
 
-        public MethodBuilder DefineMethod(String name, MethodAttributes attributes, CallingConventions callingConvention)
+        public MethodBuilder DefineMethod(string name, MethodAttributes attributes, CallingConventions callingConvention)
         {
             return DefineMethod(name, attributes, callingConvention, null, null);
         }
 
-        public MethodBuilder DefineMethod(String name, MethodAttributes attributes, CallingConventions callingConvention,
+        public MethodBuilder DefineMethod(string name, MethodAttributes attributes, CallingConventions callingConvention,
             Type returnType, Type[] parameterTypes)
         {
             return DefineMethod(name, attributes, callingConvention, returnType, null, null, parameterTypes, null, null);
         }
 
-        public MethodBuilder DefineMethod(String name, MethodAttributes attributes, CallingConventions callingConvention,
+        public MethodBuilder DefineMethod(string name, MethodAttributes attributes, CallingConventions callingConvention,
             Type returnType, Type[] returnTypeRequiredCustomModifiers, Type[] returnTypeOptionalCustomModifiers,
             Type[] parameterTypes, Type[][] parameterTypeRequiredCustomModifiers, Type[][] parameterTypeOptionalCustomModifiers)
         {
@@ -1358,7 +1358,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private MethodBuilder DefineMethodNoLock(String name, MethodAttributes attributes, CallingConventions callingConvention,
+        private MethodBuilder DefineMethodNoLock(string name, MethodAttributes attributes, CallingConventions callingConvention,
             Type returnType, Type[] returnTypeRequiredCustomModifiers, Type[] returnTypeOptionalCustomModifiers,
             Type[] parameterTypes, Type[][] parameterTypeRequiredCustomModifiers, Type[][] parameterTypeOptionalCustomModifiers)
         {
@@ -1533,7 +1533,7 @@ namespace System.Reflection.Emit
 
             ThrowIfCreated();
 
-            String name;
+            string name;
 
             if ((attributes & MethodAttributes.Static) == 0)
             {
@@ -1558,7 +1558,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region Define Nested Type
-        public TypeBuilder DefineNestedType(String name)
+        public TypeBuilder DefineNestedType(string name)
         {
             lock (SyncRoot)
             {
@@ -1566,7 +1566,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public TypeBuilder DefineNestedType(String name, TypeAttributes attr, Type parent, Type[] interfaces)
+        public TypeBuilder DefineNestedType(string name, TypeAttributes attr, Type parent, Type[] interfaces)
         {
             lock (SyncRoot)
             {
@@ -1578,7 +1578,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public TypeBuilder DefineNestedType(String name, TypeAttributes attr, Type parent)
+        public TypeBuilder DefineNestedType(string name, TypeAttributes attr, Type parent)
         {
             lock (SyncRoot)
             {
@@ -1586,7 +1586,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public TypeBuilder DefineNestedType(String name, TypeAttributes attr)
+        public TypeBuilder DefineNestedType(string name, TypeAttributes attr)
         {
             lock (SyncRoot)
             {
@@ -1594,7 +1594,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public TypeBuilder DefineNestedType(String name, TypeAttributes attr, Type parent, int typeSize)
+        public TypeBuilder DefineNestedType(string name, TypeAttributes attr, Type parent, int typeSize)
         {
             lock (SyncRoot)
             {
@@ -1602,7 +1602,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public TypeBuilder DefineNestedType(String name, TypeAttributes attr, Type parent, PackingSize packSize)
+        public TypeBuilder DefineNestedType(string name, TypeAttributes attr, Type parent, PackingSize packSize)
         {
             lock (SyncRoot)
             {
@@ -1610,7 +1610,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        public TypeBuilder DefineNestedType(String name, TypeAttributes attr, Type parent, PackingSize packSize, int typeSize)
+        public TypeBuilder DefineNestedType(string name, TypeAttributes attr, Type parent, PackingSize packSize, int typeSize)
         {
             lock (SyncRoot)
             {
@@ -1618,7 +1618,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private TypeBuilder DefineNestedTypeNoLock(String name, TypeAttributes attr, Type parent, Type[] interfaces, PackingSize packSize, int typeSize)
+        private TypeBuilder DefineNestedTypeNoLock(string name, TypeAttributes attr, Type parent, Type[] interfaces, PackingSize packSize, int typeSize)
         {
             return new TypeBuilder(name, attr, parent, interfaces, m_module, packSize, typeSize, this);
         }
@@ -1626,12 +1626,12 @@ namespace System.Reflection.Emit
         #endregion
 
         #region Define Field
-        public FieldBuilder DefineField(String fieldName, Type type, FieldAttributes attributes)
+        public FieldBuilder DefineField(string fieldName, Type type, FieldAttributes attributes)
         {
             return DefineField(fieldName, type, null, null, attributes);
         }
 
-        public FieldBuilder DefineField(String fieldName, Type type, Type[] requiredCustomModifiers,
+        public FieldBuilder DefineField(string fieldName, Type type, Type[] requiredCustomModifiers,
             Type[] optionalCustomModifiers, FieldAttributes attributes)
         {
             lock (SyncRoot)
@@ -1640,7 +1640,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private FieldBuilder DefineFieldNoLock(String fieldName, Type type, Type[] requiredCustomModifiers,
+        private FieldBuilder DefineFieldNoLock(string fieldName, Type type, Type[] requiredCustomModifiers,
             Type[] optionalCustomModifiers, FieldAttributes attributes)
         {
             ThrowIfCreated();
@@ -1659,7 +1659,7 @@ namespace System.Reflection.Emit
             return new FieldBuilder(this, fieldName, type, requiredCustomModifiers, optionalCustomModifiers, attributes);
         }
 
-        public FieldBuilder DefineInitializedData(String name, byte[] data, FieldAttributes attributes)
+        public FieldBuilder DefineInitializedData(string name, byte[] data, FieldAttributes attributes)
         {
             lock (SyncRoot)
             {
@@ -1667,7 +1667,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private FieldBuilder DefineInitializedDataNoLock(String name, byte[] data, FieldAttributes attributes)
+        private FieldBuilder DefineInitializedDataNoLock(string name, byte[] data, FieldAttributes attributes)
         {
             if (data == null)
                 throw new ArgumentNullException(nameof(data));
@@ -1679,7 +1679,7 @@ namespace System.Reflection.Emit
             return DefineDataHelper(name, data, data.Length, attributes);
         }
 
-        public FieldBuilder DefineUninitializedData(String name, int size, FieldAttributes attributes)
+        public FieldBuilder DefineUninitializedData(string name, int size, FieldAttributes attributes)
         {
             lock (SyncRoot)
             {
@@ -1687,7 +1687,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private FieldBuilder DefineUninitializedDataNoLock(String name, int size, FieldAttributes attributes)
+        private FieldBuilder DefineUninitializedDataNoLock(string name, int size, FieldAttributes attributes)
         {
             // This method will define an uninitialized Data in .sdata.
             // We will create a fake TypeDef to represent the data with size. This TypeDef
@@ -1698,19 +1698,19 @@ namespace System.Reflection.Emit
         #endregion
 
         #region Define Properties and Events
-        public PropertyBuilder DefineProperty(String name, PropertyAttributes attributes, Type returnType, Type[] parameterTypes)
+        public PropertyBuilder DefineProperty(string name, PropertyAttributes attributes, Type returnType, Type[] parameterTypes)
         {
             return DefineProperty(name, attributes, returnType, null, null, parameterTypes, null, null);
         }
 
-        public PropertyBuilder DefineProperty(String name, PropertyAttributes attributes,
+        public PropertyBuilder DefineProperty(string name, PropertyAttributes attributes,
             CallingConventions callingConvention, Type returnType, Type[] parameterTypes)
         {
             return DefineProperty(name, attributes, callingConvention, returnType, null, null, parameterTypes, null, null);
         }
 
 
-        public PropertyBuilder DefineProperty(String name, PropertyAttributes attributes,
+        public PropertyBuilder DefineProperty(string name, PropertyAttributes attributes,
             Type returnType, Type[] returnTypeRequiredCustomModifiers, Type[] returnTypeOptionalCustomModifiers,
             Type[] parameterTypes, Type[][] parameterTypeRequiredCustomModifiers, Type[][] parameterTypeOptionalCustomModifiers)
         {
@@ -1719,7 +1719,7 @@ namespace System.Reflection.Emit
                 parameterTypes, parameterTypeRequiredCustomModifiers, parameterTypeOptionalCustomModifiers);
         }
 
-        public PropertyBuilder DefineProperty(String name, PropertyAttributes attributes, CallingConventions callingConvention,
+        public PropertyBuilder DefineProperty(string name, PropertyAttributes attributes, CallingConventions callingConvention,
             Type returnType, Type[] returnTypeRequiredCustomModifiers, Type[] returnTypeOptionalCustomModifiers,
             Type[] parameterTypes, Type[][] parameterTypeRequiredCustomModifiers, Type[][] parameterTypeOptionalCustomModifiers)
         {
@@ -1730,7 +1730,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private PropertyBuilder DefinePropertyNoLock(String name, PropertyAttributes attributes, CallingConventions callingConvention,
+        private PropertyBuilder DefinePropertyNoLock(string name, PropertyAttributes attributes, CallingConventions callingConvention,
             Type returnType, Type[] returnTypeRequiredCustomModifiers, Type[] returnTypeOptionalCustomModifiers,
             Type[] parameterTypes, Type[][] parameterTypeRequiredCustomModifiers, Type[][] parameterTypeOptionalCustomModifiers)
         {
@@ -1778,7 +1778,7 @@ namespace System.Reflection.Emit
                     this);
         }
 
-        public EventBuilder DefineEvent(String name, EventAttributes attributes, Type eventtype)
+        public EventBuilder DefineEvent(string name, EventAttributes attributes, Type eventtype)
         {
             lock (SyncRoot)
             {
@@ -1786,7 +1786,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private EventBuilder DefineEventNoLock(String name, EventAttributes attributes, Type eventtype)
+        private EventBuilder DefineEventNoLock(string name, EventAttributes attributes, Type eventtype)
         {
             if (name == null)
                 throw new ArgumentNullException(nameof(name));

@@ -30,7 +30,7 @@ namespace System.Reflection.Emit
         //
         internal PropertyBuilder(
             ModuleBuilder mod,            // the module containing this PropertyBuilder
-            String name,           // property name
+            string name,           // property name
             SignatureHelper sig,            // property signature descriptor info
             PropertyAttributes attr,           // property attribute such as DefaultProperty, Bindable, DisplayBind, etc
             Type returnType,     // return type of the property.
@@ -231,7 +231,7 @@ namespace System.Reflection.Emit
             throw new NotSupportedException(SR.NotSupported_DynamicModule);
         }
 
-        public override String Name
+        public override string Name
         {
             get { return m_name; }
         }
@@ -247,7 +247,7 @@ namespace System.Reflection.Emit
         }
 
         // These are package private so that TypeBuilder can access them.
-        private String m_name;                // The name of the property
+        private string m_name;                // The name of the property
         private PropertyToken m_prToken;            // The token of this property
         private int m_tkProperty;
         private ModuleBuilder m_moduleBuilder;

@@ -172,7 +172,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToDateTime(value, CultureInfo.InvariantCulture);
         }
 
-        public String ToString(object value)
+        public string ToString(object value)
         {
             if (value == null)
             {

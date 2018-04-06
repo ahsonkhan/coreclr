@@ -67,23 +67,23 @@ namespace System
         }
 
         // Converts the current value to a String in base-10 with no extra padding.
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatUInt32(m_value, null, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatUInt32(m_value, null, provider);
         }
 
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatUInt32(m_value, format, null);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatUInt32(m_value, format, provider);
         }
@@ -94,14 +94,14 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ushort Parse(String s)
+        public static ushort Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
         [CLSCompliant(false)]
-        public static ushort Parse(String s, NumberStyles style)
+        public static ushort Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -110,14 +110,14 @@ namespace System
 
 
         [CLSCompliant(false)]
-        public static ushort Parse(String s, IFormatProvider provider)
+        public static ushort Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
         }
 
         [CLSCompliant(false)]
-        public static ushort Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static ushort Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -148,7 +148,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(String s, out UInt16 result)
+        public static bool TryParse(string s, out UInt16 result)
         {
             if (s == null)
             {
@@ -166,7 +166,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(String s, NumberStyles style, IFormatProvider provider, out UInt16 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out UInt16 result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

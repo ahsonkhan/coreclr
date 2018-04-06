@@ -53,8 +53,8 @@ namespace System.Runtime.InteropServices.ComTypes
         void Inverse(out IMoniker ppmk);
         void CommonPrefixWith(IMoniker pmkOther, out IMoniker ppmkPrefix);
         void RelativePathTo(IMoniker pmkOther, out IMoniker ppmkRelPath);
-        void GetDisplayName(IBindCtx pbc, IMoniker pmkToLeft, [MarshalAs(UnmanagedType.LPWStr)] out String ppszDisplayName);
-        void ParseDisplayName(IBindCtx pbc, IMoniker pmkToLeft, [MarshalAs(UnmanagedType.LPWStr)] String pszDisplayName, out int pchEaten, out IMoniker ppmkOut);
+        void GetDisplayName(IBindCtx pbc, IMoniker pmkToLeft, [MarshalAs(UnmanagedType.LPWStr)] out string ppszDisplayName);
+        void ParseDisplayName(IBindCtx pbc, IMoniker pmkToLeft, [MarshalAs(UnmanagedType.LPWStr)] string pszDisplayName, out int pchEaten, out IMoniker ppmkOut);
         [PreserveSig]
         int IsSystemMoniker(out int pdwMksys);
     }

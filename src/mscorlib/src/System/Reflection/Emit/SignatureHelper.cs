@@ -889,7 +889,7 @@ namespace System.Reflection.Emit
             return m_signature;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Length: " + m_currSig + Environment.NewLine);

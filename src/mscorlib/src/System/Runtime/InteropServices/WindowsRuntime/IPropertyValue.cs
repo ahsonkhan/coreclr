@@ -45,7 +45,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         Boolean GetBoolean();
 
-        String GetString();
+        string GetString();
 
         Guid GetGuid();
 
@@ -81,7 +81,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         Boolean[] GetBooleanArray();
 
-        String[] GetStringArray();
+        string[] GetStringArray();
 
         object[] GetInspectableArray();
 

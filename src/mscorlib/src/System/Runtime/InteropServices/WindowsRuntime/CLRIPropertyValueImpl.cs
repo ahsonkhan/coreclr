@@ -134,9 +134,9 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             return (bool)_data;
         }
 
-        public String GetString()
+        public string GetString()
         {
-            return CoerceScalarValue<String>(PropertyType.String);
+            return CoerceScalarValue<string>(PropertyType.String);
         }
 
 
@@ -243,9 +243,9 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             return (bool[])_data;
         }
 
-        public String[] GetStringArray()
+        public string[] GetStringArray()
         {
-            return CoerceArrayValue<String>(PropertyType.StringArray);
+            return CoerceArrayValue<string>(PropertyType.StringArray);
         }
 
         public object[] GetInspectableArray()
@@ -367,7 +367,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
                 {
                     return (T)(object)Guid.Parse((string)value);
                 }
-                else if (type == PropertyType.Guid && typeof(T) == typeof(String))
+                else if (type == PropertyType.Guid && typeof(T) == typeof(string))
                 {
                     return (T)(object)((Guid)value).ToString("D", System.Globalization.CultureInfo.InvariantCulture);
                 }

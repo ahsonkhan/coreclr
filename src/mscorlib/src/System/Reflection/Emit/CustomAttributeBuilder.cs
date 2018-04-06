@@ -70,7 +70,7 @@ namespace System.Reflection.Emit
             {
                 return t != typeof(IntPtr) && t != typeof(UIntPtr);
             }
-            if (t == typeof(String) || t == typeof(Type))
+            if (t == typeof(string) || t == typeof(Type))
             {
                 return true;
             }
@@ -357,7 +357,7 @@ namespace System.Reflection.Emit
                 writer.Write((byte)CustomAttributeEncoding.Enum);
                 EmitString(writer, type.AssemblyQualifiedName);
             }
-            else if (type == typeof(String))
+            else if (type == typeof(string))
             {
                 writer.Write((byte)CustomAttributeEncoding.String);
             }
@@ -377,7 +377,7 @@ namespace System.Reflection.Emit
             }
         }
 
-        private void EmitString(BinaryWriter writer, String str)
+        private void EmitString(BinaryWriter writer, string str)
         {
             // Strings are emitted with a length prefix in a compressed format (1, 2 or 4 bytes) as used internally by metadata.
             byte[] utf8Str = Encoding.UTF8.GetBytes(str);
@@ -436,12 +436,12 @@ namespace System.Reflection.Emit
                         break;
                 }
             }
-            else if (type == typeof(String))
+            else if (type == typeof(string))
             {
                 if (value == null)
                     writer.Write((byte)0xff);
                 else
-                    EmitString(writer, (String)value);
+                    EmitString(writer, (string)value);
             }
             else if (type == typeof(Type))
             {
@@ -449,7 +449,7 @@ namespace System.Reflection.Emit
                     writer.Write((byte)0xff);
                 else
                 {
-                    String typeName = TypeNameBuilder.ToString((Type)value, TypeNameBuilder.Format.AssemblyQualifiedName);
+                    string typeName = TypeNameBuilder.ToString((Type)value, TypeNameBuilder.Format.AssemblyQualifiedName);
                     if (typeName == null)
                         throw new ArgumentException(SR.Format(SR.Argument_InvalidTypeForCA, value.GetType()));
                     EmitString(writer, typeName);
@@ -519,7 +519,7 @@ namespace System.Reflection.Emit
                 // TypeBuilder), so we need to canonicalize this case back to Type. If we have a null value we follow the convention
                 // used by C# and emit a null typed as a string (it doesn't really matter what type we pick as long as it's a
                 // reference type).
-                Type ot = value == null ? typeof(String) : value is Type ? typeof(Type) : value.GetType();
+                Type ot = value == null ? typeof(string) : value is Type ? typeof(Type) : value.GetType();
 
                 // value cannot be a "System.Object" object.
                 // If we allow this we will get into an infinite recursion

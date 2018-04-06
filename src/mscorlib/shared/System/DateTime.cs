@@ -125,8 +125,8 @@ namespace System
         private const UInt64 KindLocalAmbiguousDst = 0xC000000000000000;
         private const Int32 KindShift = 62;
 
-        private const String TicksField = "ticks"; // Do not rename (binary serialization)
-        private const String DateDataField = "dateData"; // Do not rename (binary serialization)
+        private const string TicksField = "ticks"; // Do not rename (binary serialization)
+        private const string DateDataField = "dateData"; // Do not rename (binary serialization)
 
         // The data is stored as an unsigned 64-bit integer
         //   Bits 01-62: The value of 100-nanosecond ticks where 0 represents 1/1/0001 12:00am, up until the value
@@ -1089,7 +1089,7 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTime Parse(String s)
+        public static DateTime Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return (DateTimeParse.Parse(s, DateTimeFormatInfo.CurrentInfo, DateTimeStyles.None));
@@ -1099,13 +1099,13 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTime Parse(String s, IFormatProvider provider)
+        public static DateTime Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return (DateTimeParse.Parse(s, DateTimeFormatInfo.GetInstance(provider), DateTimeStyles.None));
         }
 
-        public static DateTime Parse(String s, IFormatProvider provider, DateTimeStyles styles)
+        public static DateTime Parse(string s, IFormatProvider provider, DateTimeStyles styles)
         {
             DateTimeFormatInfo.ValidateStyles(styles, nameof(styles));
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -1122,7 +1122,7 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTime ParseExact(String s, String format, IFormatProvider provider)
+        public static DateTime ParseExact(string s, string format, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             if (format == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.format);
@@ -1133,7 +1133,7 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTime ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+        public static DateTime ParseExact(string s, string format, IFormatProvider provider, DateTimeStyles style)
         {
             DateTimeFormatInfo.ValidateStyles(style, nameof(style));
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -1147,7 +1147,7 @@ namespace System
             return DateTimeParse.ParseExact(s, format, DateTimeFormatInfo.GetInstance(provider), style);
         }
 
-        public static DateTime ParseExact(String s, String[] formats, IFormatProvider provider, DateTimeStyles style)
+        public static DateTime ParseExact(string s, string[] formats, IFormatProvider provider, DateTimeStyles style)
         {
             DateTimeFormatInfo.ValidateStyles(style, nameof(style));
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -1253,42 +1253,42 @@ namespace System
             return new DateTime(tick, DateTimeKind.Local, isAmbiguousLocalDst);
         }
 
-        public String ToLongDateString()
+        public string ToLongDateString()
         {
             return DateTimeFormat.Format(this, "D", null);
         }
 
-        public String ToLongTimeString()
+        public string ToLongTimeString()
         {
             return DateTimeFormat.Format(this, "T", null);
         }
 
-        public String ToShortDateString()
+        public string ToShortDateString()
         {
             return DateTimeFormat.Format(this, "d", null);
         }
 
-        public String ToShortTimeString()
+        public string ToShortTimeString()
         {
             return DateTimeFormat.Format(this, "t", null);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return DateTimeFormat.Format(this, null, null);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return DateTimeFormat.Format(this, format, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return DateTimeFormat.Format(this, null, provider);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return DateTimeFormat.Format(this, format, provider);
         }
@@ -1301,7 +1301,7 @@ namespace System
             return TimeZoneInfo.ConvertTimeToUtc(this, TimeZoneInfoOptions.NoThrowOnInvalidTime);
         }
 
-        public static Boolean TryParse(String s, out DateTime result)
+        public static Boolean TryParse(string s, out DateTime result)
         {
             if (s == null)
             {
@@ -1316,7 +1316,7 @@ namespace System
             return DateTimeParse.TryParse(s, DateTimeFormatInfo.CurrentInfo, DateTimeStyles.None, out result);
         }
 
-        public static Boolean TryParse(String s, IFormatProvider provider, DateTimeStyles styles, out DateTime result)
+        public static Boolean TryParse(string s, IFormatProvider provider, DateTimeStyles styles, out DateTime result)
         {
             DateTimeFormatInfo.ValidateStyles(styles, nameof(styles));
 
@@ -1335,7 +1335,7 @@ namespace System
             return DateTimeParse.TryParse(s, DateTimeFormatInfo.GetInstance(provider), styles, out result);
         }
 
-        public static Boolean TryParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style, out DateTime result)
+        public static Boolean TryParseExact(string s, string format, IFormatProvider provider, DateTimeStyles style, out DateTime result)
         {
             DateTimeFormatInfo.ValidateStyles(style, nameof(style));
 
@@ -1354,7 +1354,7 @@ namespace System
             return DateTimeParse.TryParseExact(s, format, DateTimeFormatInfo.GetInstance(provider), style, out result);
         }
 
-        public static Boolean TryParseExact(String s, String[] formats, IFormatProvider provider, DateTimeStyles style, out DateTime result)
+        public static Boolean TryParseExact(string s, string[] formats, IFormatProvider provider, DateTimeStyles style, out DateTime result)
         {
             DateTimeFormatInfo.ValidateStyles(style, nameof(style));
 
@@ -1434,7 +1434,7 @@ namespace System
         // Returns a string array containing all of the known date and time options for the 
         // current culture.  The strings returned are properly formatted date and 
         // time strings for the current instance of DateTime.
-        public String[] GetDateTimeFormats()
+        public string[] GetDateTimeFormats()
         {
             return (GetDateTimeFormats(CultureInfo.CurrentCulture));
         }
@@ -1442,7 +1442,7 @@ namespace System
         // Returns a string array containing all of the known date and time options for the 
         // using the information provided by IFormatProvider.  The strings returned are properly formatted date and 
         // time strings for the current instance of DateTime.
-        public String[] GetDateTimeFormats(IFormatProvider provider)
+        public string[] GetDateTimeFormats(IFormatProvider provider)
         {
             return (DateTimeFormat.GetAllDateTimes(this, DateTimeFormatInfo.GetInstance(provider)));
         }
@@ -1451,7 +1451,7 @@ namespace System
         // Returns a string array containing all of the date and time options for the 
         // given format format and current culture.  The strings returned are properly formatted date and 
         // time strings for the current instance of DateTime.
-        public String[] GetDateTimeFormats(char format)
+        public string[] GetDateTimeFormats(char format)
         {
             return (GetDateTimeFormats(format, CultureInfo.CurrentCulture));
         }
@@ -1459,7 +1459,7 @@ namespace System
         // Returns a string array containing all of the date and time options for the 
         // given format format and given culture.  The strings returned are properly formatted date and 
         // time strings for the current instance of DateTime.
-        public String[] GetDateTimeFormats(char format, IFormatProvider provider)
+        public string[] GetDateTimeFormats(char format, IFormatProvider provider)
         {
             return (DateTimeFormat.GetAllDateTimes(this, format, DateTimeFormatInfo.GetInstance(provider)));
         }

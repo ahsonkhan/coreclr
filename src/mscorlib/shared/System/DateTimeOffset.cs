@@ -597,7 +597,7 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTimeOffset Parse(String input)
+        public static DateTimeOffset Parse(string input)
         {
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
 
@@ -613,13 +613,13 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTimeOffset Parse(String input, IFormatProvider formatProvider)
+        public static DateTimeOffset Parse(string input, IFormatProvider formatProvider)
         {
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
             return Parse(input, formatProvider, DateTimeStyles.None);
         }
 
-        public static DateTimeOffset Parse(String input, IFormatProvider formatProvider, DateTimeStyles styles)
+        public static DateTimeOffset Parse(string input, IFormatProvider formatProvider, DateTimeStyles styles)
         {
             styles = ValidateStyles(styles, nameof(styles));
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
@@ -643,7 +643,7 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTimeOffset ParseExact(String input, String format, IFormatProvider formatProvider)
+        public static DateTimeOffset ParseExact(string input, string format, IFormatProvider formatProvider)
         {
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
             if (format == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.format);
@@ -654,7 +654,7 @@ namespace System
         // date and optionally a time in a culture-specific or universal format.
         // Leading and trailing whitespace characters are allowed.
         // 
-        public static DateTimeOffset ParseExact(String input, String format, IFormatProvider formatProvider, DateTimeStyles styles)
+        public static DateTimeOffset ParseExact(string input, string format, IFormatProvider formatProvider, DateTimeStyles styles)
         {
             styles = ValidateStyles(styles, nameof(styles));
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
@@ -676,7 +676,7 @@ namespace System
             return new DateTimeOffset(dateResult.Ticks, offset);
         }
 
-        public static DateTimeOffset ParseExact(String input, String[] formats, IFormatProvider formatProvider, DateTimeStyles styles)
+        public static DateTimeOffset ParseExact(string input, string[] formats, IFormatProvider formatProvider, DateTimeStyles styles)
         {
             styles = ValidateStyles(styles, nameof(styles));
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
@@ -753,22 +753,22 @@ namespace System
             return new DateTimeOffset(UtcDateTime.ToLocalTime(throwOnOverflow));
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return DateTimeFormat.Format(ClockDateTime, null, null, Offset);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return DateTimeFormat.Format(ClockDateTime, format, null, Offset);
         }
 
-        public String ToString(IFormatProvider formatProvider)
+        public string ToString(IFormatProvider formatProvider)
         {
             return DateTimeFormat.Format(ClockDateTime, null, formatProvider, Offset);
         }
 
-        public String ToString(String format, IFormatProvider formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             return DateTimeFormat.Format(ClockDateTime, format, formatProvider, Offset);
         }
@@ -781,7 +781,7 @@ namespace System
             return new DateTimeOffset(UtcDateTime);
         }
 
-        public static Boolean TryParse(String input, out DateTimeOffset result)
+        public static Boolean TryParse(string input, out DateTimeOffset result)
         {
             TimeSpan offset;
             DateTime dateResult;
@@ -801,7 +801,7 @@ namespace System
             return parsed;
         }
 
-        public static Boolean TryParse(String input, IFormatProvider formatProvider, DateTimeStyles styles, out DateTimeOffset result)
+        public static Boolean TryParse(string input, IFormatProvider formatProvider, DateTimeStyles styles, out DateTimeOffset result)
         {
             styles = ValidateStyles(styles, nameof(styles));
             if (input == null)
@@ -829,7 +829,7 @@ namespace System
             return parsed;
         }
 
-        public static Boolean TryParseExact(String input, String format, IFormatProvider formatProvider, DateTimeStyles styles,
+        public static Boolean TryParseExact(string input, string format, IFormatProvider formatProvider, DateTimeStyles styles,
                                             out DateTimeOffset result)
         {
             styles = ValidateStyles(styles, nameof(styles));
@@ -860,7 +860,7 @@ namespace System
             return parsed;
         }
 
-        public static Boolean TryParseExact(String input, String[] formats, IFormatProvider formatProvider, DateTimeStyles styles,
+        public static Boolean TryParseExact(string input, string[] formats, IFormatProvider formatProvider, DateTimeStyles styles,
                                             out DateTimeOffset result)
         {
             styles = ValidateStyles(styles, nameof(styles));
@@ -925,7 +925,7 @@ namespace System
             return new DateTime(utcTicks, DateTimeKind.Unspecified);
         }
 
-        private static DateTimeStyles ValidateStyles(DateTimeStyles style, String parameterName)
+        private static DateTimeStyles ValidateStyles(DateTimeStyles style, string parameterName)
         {
             if ((style & DateTimeFormatInfo.InvalidDateTimeStyles) != 0)
             {

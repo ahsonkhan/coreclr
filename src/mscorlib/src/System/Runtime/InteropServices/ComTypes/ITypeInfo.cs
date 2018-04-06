@@ -181,7 +181,7 @@ namespace System.Runtime.InteropServices.ComTypes
     public struct VARDESC
     {
         public int memid;
-        public String lpstrSchema;
+        public string lpstrSchema;
 
         [System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit, CharSet = CharSet.Unicode)]
 
@@ -216,9 +216,9 @@ namespace System.Runtime.InteropServices.ComTypes
     {
         public Int16 wCode;
         public Int16 wReserved;
-        [MarshalAs(UnmanagedType.BStr)] public String bstrSource;
-        [MarshalAs(UnmanagedType.BStr)] public String bstrDescription;
-        [MarshalAs(UnmanagedType.BStr)] public String bstrHelpFile;
+        [MarshalAs(UnmanagedType.BStr)] public string bstrSource;
+        [MarshalAs(UnmanagedType.BStr)] public string bstrDescription;
+        [MarshalAs(UnmanagedType.BStr)] public string bstrHelpFile;
         public int dwHelpContext;
         public IntPtr pvReserved;
         public IntPtr pfnDeferredFillIn;
@@ -302,17 +302,17 @@ namespace System.Runtime.InteropServices.ComTypes
         void GetTypeComp(out ITypeComp ppTComp);
         void GetFuncDesc(int index, out IntPtr ppFuncDesc);
         void GetVarDesc(int index, out IntPtr ppVarDesc);
-        void GetNames(int memid, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 2), Out] String[] rgBstrNames, int cMaxNames, out int pcNames);
+        void GetNames(int memid, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 2), Out] string[] rgBstrNames, int cMaxNames, out int pcNames);
         void GetRefTypeOfImplType(int index, out int href);
         void GetImplTypeFlags(int index, out IMPLTYPEFLAGS pImplTypeFlags);
-        void GetIDsOfNames([MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 1), In] String[] rgszNames, int cNames, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 1), Out] int[] pMemId);
+        void GetIDsOfNames([MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 1), In] string[] rgszNames, int cNames, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 1), Out] int[] pMemId);
         void Invoke([MarshalAs(UnmanagedType.IUnknown)] object pvInstance, int memid, Int16 wFlags, ref DISPPARAMS pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, out int puArgErr);
-        void GetDocumentation(int index, out String strName, out String strDocString, out int dwHelpContext, out String strHelpFile);
+        void GetDocumentation(int index, out string strName, out string strDocString, out int dwHelpContext, out string strHelpFile);
         void GetDllEntry(int memid, INVOKEKIND invKind, IntPtr pBstrDllName, IntPtr pBstrName, IntPtr pwOrdinal);
         void GetRefTypeInfo(int hRef, out ITypeInfo ppTI);
         void AddressOfMember(int memid, INVOKEKIND invKind, out IntPtr ppv);
         void CreateInstance([MarshalAs(UnmanagedType.IUnknown)] object pUnkOuter, [In] ref Guid riid, [MarshalAs(UnmanagedType.IUnknown), Out] out object ppvObj);
-        void GetMops(int memid, out String pBstrMops);
+        void GetMops(int memid, out string pBstrMops);
         void GetContainingTypeLib(out ITypeLib ppTLB, out int pIndex);
         [PreserveSig]
         void ReleaseTypeAttr(IntPtr pTypeAttr);

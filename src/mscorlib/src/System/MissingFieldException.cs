@@ -27,13 +27,13 @@ namespace System
             HResult = HResults.COR_E_MISSINGFIELD;
         }
 
-        public MissingFieldException(String message)
+        public MissingFieldException(string message)
             : base(message)
         {
             HResult = HResults.COR_E_MISSINGFIELD;
         }
 
-        public MissingFieldException(String message, Exception inner)
+        public MissingFieldException(string message, Exception inner)
             : base(message, inner)
         {
             HResult = HResults.COR_E_MISSINGFIELD;
@@ -43,7 +43,7 @@ namespace System
         {
         }
 
-        public override String Message
+        public override string Message
         {
             get
             {
@@ -59,7 +59,7 @@ namespace System
             }
         }
 
-        public MissingFieldException(String className, String fieldName)
+        public MissingFieldException(string className, string fieldName)
         {
             ClassName = className;
             MemberName = fieldName;

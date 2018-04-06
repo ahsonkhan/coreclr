@@ -148,12 +148,12 @@ namespace System
         }
 
         // Overrides System.Object.ToString.
-        public override String ToString()
+        public override string ToString()
         {
             return Char.ToString(m_value);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Char.ToString(m_value);
         }
@@ -168,7 +168,7 @@ namespace System
         // Provides a string representation of a character.
         public static string ToString(char c) => string.CreateFromChar(c);
 
-        public static char Parse(String s)
+        public static char Parse(string s)
         {
             if (s == null)
             {
@@ -182,7 +182,7 @@ namespace System
             return s[0];
         }
 
-        public static bool TryParse(String s, out Char result)
+        public static bool TryParse(string s, out Char result)
         {
             result = '\0';
             if (s == null)
@@ -535,7 +535,7 @@ namespace System
             return (CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.Control);
         }
 
-        public static bool IsControl(String s, int index)
+        public static bool IsControl(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -552,7 +552,7 @@ namespace System
         }
 
 
-        public static bool IsDigit(String s, int index)
+        public static bool IsDigit(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -568,7 +568,7 @@ namespace System
             return (CharUnicodeInfo.GetUnicodeCategory(s, index) == UnicodeCategory.DecimalDigitNumber);
         }
 
-        public static bool IsLetter(String s, int index)
+        public static bool IsLetter(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -589,7 +589,7 @@ namespace System
             return (CheckLetter(CharUnicodeInfo.GetUnicodeCategory(s, index)));
         }
 
-        public static bool IsLetterOrDigit(String s, int index)
+        public static bool IsLetterOrDigit(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -605,7 +605,7 @@ namespace System
             return CheckLetterOrDigit(CharUnicodeInfo.GetUnicodeCategory(s, index));
         }
 
-        public static bool IsLower(String s, int index)
+        public static bool IsLower(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -655,7 +655,7 @@ namespace System
             return (CheckNumber(CharUnicodeInfo.GetUnicodeCategory(c)));
         }
 
-        public static bool IsNumber(String s, int index)
+        public static bool IsNumber(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -683,7 +683,7 @@ namespace System
         //
         ////////////////////////////////////////////////////////////////////////
 
-        public static bool IsPunctuation(String s, int index)
+        public static bool IsPunctuation(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -732,7 +732,7 @@ namespace System
             return (CheckSeparator(CharUnicodeInfo.GetUnicodeCategory(c)));
         }
 
-        public static bool IsSeparator(String s, int index)
+        public static bool IsSeparator(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -753,7 +753,7 @@ namespace System
             return (c >= HIGH_SURROGATE_START && c <= LOW_SURROGATE_END);
         }
 
-        public static bool IsSurrogate(String s, int index)
+        public static bool IsSurrogate(string s, int index)
         {
             if (s == null)
             {
@@ -792,7 +792,7 @@ namespace System
             return (CheckSymbol(CharUnicodeInfo.GetUnicodeCategory(c)));
         }
 
-        public static bool IsSymbol(String s, int index)
+        public static bool IsSymbol(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -809,7 +809,7 @@ namespace System
         }
 
 
-        public static bool IsUpper(String s, int index)
+        public static bool IsUpper(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -830,7 +830,7 @@ namespace System
             return (CharUnicodeInfo.GetUnicodeCategory(s, index) == UnicodeCategory.UppercaseLetter);
         }
 
-        public static bool IsWhiteSpace(String s, int index)
+        public static bool IsWhiteSpace(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -856,7 +856,7 @@ namespace System
             return CharUnicodeInfo.GetUnicodeCategory((int)c);
         }
 
-        public static UnicodeCategory GetUnicodeCategory(String s, int index)
+        public static UnicodeCategory GetUnicodeCategory(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -876,7 +876,7 @@ namespace System
             return CharUnicodeInfo.GetNumericValue(c);
         }
 
-        public static double GetNumericValue(String s, int index)
+        public static double GetNumericValue(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -896,7 +896,7 @@ namespace System
             return ((c >= CharUnicodeInfo.HIGH_SURROGATE_START) && (c <= CharUnicodeInfo.HIGH_SURROGATE_END));
         }
 
-        public static bool IsHighSurrogate(String s, int index)
+        public static bool IsHighSurrogate(string s, int index)
         {
             if (s == null)
             {
@@ -917,7 +917,7 @@ namespace System
             return ((c >= CharUnicodeInfo.LOW_SURROGATE_START) && (c <= CharUnicodeInfo.LOW_SURROGATE_END));
         }
 
-        public static bool IsLowSurrogate(String s, int index)
+        public static bool IsLowSurrogate(string s, int index)
         {
             if (s == null)
             {
@@ -933,7 +933,7 @@ namespace System
         /*================================= IsSurrogatePair ============================
          ** Check if the string specified by the index starts with a surrogate pair.
          ==============================================================================*/
-        public static bool IsSurrogatePair(String s, int index)
+        public static bool IsSurrogatePair(string s, int index)
         {
             if (s == null)
             {
@@ -972,7 +972,7 @@ namespace System
          ** Convert an UTF32 value into a surrogate pair.
          ==============================================================================*/
 
-        public static String ConvertFromUtf32(int utf32)
+        public static string ConvertFromUtf32(int utf32)
         {
             // For UTF32 values from U+00D800 ~ U+00DFFF, we should throw.  They
             // are considered as irregular code unit sequence, but they are not illegal.
@@ -1025,7 +1025,7 @@ namespace System
         ** This method throws if a low surrogate is seen without preceding a high-surrogate.
         ==============================================================================*/
 
-        public static int ConvertToUtf32(String s, int index)
+        public static int ConvertToUtf32(string s, int index)
         {
             if (s == null)
             {

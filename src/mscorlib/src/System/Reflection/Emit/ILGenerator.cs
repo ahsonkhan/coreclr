@@ -815,7 +815,7 @@ namespace System.Reflection.Emit
             PutInteger4(tempVal);
         }
 
-        public virtual void Emit(OpCode opcode, String str)
+        public virtual void Emit(OpCode opcode, string str)
         {
             // Puts the opcode onto the IL stream followed by the metadata token
             // represented by str.  The location of str is recorded for future
@@ -1173,13 +1173,13 @@ namespace System.Reflection.Emit
             return Type.GetType("System.Console, System.Console", throwOnError: true);
         }
 
-        public virtual void EmitWriteLine(String value)
+        public virtual void EmitWriteLine(string value)
         {
             // Emits the IL to call Console.WriteLine with a string.
 
             Emit(OpCodes.Ldstr, value);
             Type[] parameterTypes = new Type[1];
-            parameterTypes[0] = typeof(String);
+            parameterTypes[0] = typeof(string);
             MethodInfo mi = GetConsoleType().GetMethod("WriteLine", parameterTypes);
             Emit(OpCodes.Call, mi);
         }
@@ -1300,7 +1300,7 @@ namespace System.Reflection.Emit
             return localBuilder;
         }
 
-        public virtual void UsingNamespace(String usingNamespace)
+        public virtual void UsingNamespace(string usingNamespace)
         {
             // Specifying the namespace to be used in evaluating locals and watches
             // for the current active lexical scope.
@@ -1663,7 +1663,7 @@ namespace System.Reflection.Emit
         }
 
         internal void AddLocalSymInfoToCurrentScope(
-            String strName,
+            string strName,
             byte[] signature,
             int slot,
             int startOffset,
@@ -1678,7 +1678,7 @@ namespace System.Reflection.Emit
         }
 
         internal void AddUsingNamespaceToCurrentScope(
-            String strNamespace)
+            string strNamespace)
         {
             int i = GetCurrentActiveScopeIndex();
             if (m_localSymInfos[i] == null)

@@ -181,7 +181,7 @@ namespace System
         }
         // System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[System.__Canon]
         // System.Runtime.CompilerServices.TaskAwaiter'[System.__Canon]
-        private static async Task<String> AsyncHelper2<T>()
+        private static async Task<string> AsyncHelper2<T>()
         {
             return await Task.FromResult<string>("");
         }

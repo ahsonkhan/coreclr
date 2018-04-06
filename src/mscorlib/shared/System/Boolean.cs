@@ -41,11 +41,11 @@ namespace System
 
         // The internal string representation of true.
         // 
-        internal const String TrueLiteral = "True";
+        internal const string TrueLiteral = "True";
 
         // The internal string representation of false.
         // 
-        internal const String FalseLiteral = "False";
+        internal const string FalseLiteral = "False";
 
 
         //
@@ -54,11 +54,11 @@ namespace System
 
         // The public string representation of true.
         // 
-        public static readonly String TrueString = TrueLiteral;
+        public static readonly string TrueString = TrueLiteral;
 
         // The public string representation of false.
         // 
-        public static readonly String FalseString = FalseLiteral;
+        public static readonly string FalseString = FalseLiteral;
 
         //
         // Overriden Instance Methods
@@ -81,7 +81,7 @@ namespace System
         **Exceptions: None.
         ==============================================================================*/
         // Converts the boolean value of this instance to a String.
-        public override String ToString()
+        public override string ToString()
         {
             if (false == m_value)
             {
@@ -90,7 +90,7 @@ namespace System
             return TrueLiteral;
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return ToString();
         }
@@ -177,7 +177,7 @@ namespace System
 
         // Determines whether a String represents true or false.
         // 
-        public static Boolean Parse(String value)
+        public static Boolean Parse(string value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
             return Parse(value.AsSpan());
@@ -188,7 +188,7 @@ namespace System
 
         // Determines whether a String represents true or false.
         // 
-        public static Boolean TryParse(String value, out Boolean result)
+        public static Boolean TryParse(string value, out Boolean result)
         {
             if (value == null)
             {

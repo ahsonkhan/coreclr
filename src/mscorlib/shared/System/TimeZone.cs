@@ -87,12 +87,12 @@ namespace System
             }
         }
 
-        public abstract String StandardName
+        public abstract string StandardName
         {
             get;
         }
 
-        public abstract String DaylightName
+        public abstract string DaylightName
         {
             get;
         }

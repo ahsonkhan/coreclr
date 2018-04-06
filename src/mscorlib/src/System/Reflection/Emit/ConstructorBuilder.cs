@@ -21,7 +21,7 @@ namespace System.Reflection.Emit
 
         #region Constructor
 
-        internal ConstructorBuilder(String name, MethodAttributes attributes, CallingConventions callingConvention,
+        internal ConstructorBuilder(string name, MethodAttributes attributes, CallingConventions callingConvention,
             Type[] parameterTypes, Type[][] requiredCustomModifiers, Type[][] optionalCustomModifiers, ModuleBuilder mod, TypeBuilder type)
         {
             int sigLength;
@@ -38,7 +38,7 @@ namespace System.Reflection.Emit
             token = m_methodBuilder.GetToken();
         }
 
-        internal ConstructorBuilder(String name, MethodAttributes attributes, CallingConventions callingConvention,
+        internal ConstructorBuilder(string name, MethodAttributes attributes, CallingConventions callingConvention,
             Type[] parameterTypes, ModuleBuilder mod, TypeBuilder type) :
             this(name, attributes, callingConvention, parameterTypes, null, null, mod, type)
         {
@@ -59,7 +59,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region Object Overrides
-        public override String ToString()
+        public override string ToString()
         {
             return m_methodBuilder.ToString();
         }
@@ -87,7 +87,7 @@ namespace System.Reflection.Emit
             get { return m_methodBuilder.DeclaringType; }
         }
 
-        public override String Name
+        public override string Name
         {
             get { return m_methodBuilder.Name; }
         }
@@ -155,7 +155,7 @@ namespace System.Reflection.Emit
             return m_methodBuilder.GetToken();
         }
 
-        public ParameterBuilder DefineParameter(int iSequence, ParameterAttributes attributes, String strParamName)
+        public ParameterBuilder DefineParameter(int iSequence, ParameterAttributes attributes, string strParamName)
         {
             // Theoretically we shouldn't allow iSequence to be 0 because in reflection ctors don't have 
             // return parameters. But we'll allow it for backward compatibility with V2. The attributes 
@@ -204,7 +204,7 @@ namespace System.Reflection.Emit
             return m_methodBuilder.ReturnType;
         }
 
-        public String Signature
+        public string Signature
         {
             get { return m_methodBuilder.Signature; }
         }

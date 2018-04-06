@@ -11,14 +11,14 @@ namespace System.Text
     public sealed class EncoderReplacementFallback : EncoderFallback
     {
         // Our variables
-        private String _strDefault;
+        private string _strDefault;
 
         // Construction.  Default replacement fallback uses no best fit and ? replacement string
         public EncoderReplacementFallback() : this("?")
         {
         }
 
-        public EncoderReplacementFallback(String replacement)
+        public EncoderReplacementFallback(string replacement)
         {
             // Must not be null
             if (replacement == null)
@@ -63,7 +63,7 @@ namespace System.Text
             _strDefault = replacement;
         }
 
-        public String DefaultString
+        public string DefaultString
         {
             get
             {
@@ -106,7 +106,7 @@ namespace System.Text
     public sealed class EncoderReplacementFallbackBuffer : EncoderFallbackBuffer
     {
         // Store our default string
-        private String _strDefault;
+        private string _strDefault;
         private int _fallbackCount = -1;
         private int _fallbackIndex = -1;
 

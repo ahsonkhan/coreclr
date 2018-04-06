@@ -44,7 +44,7 @@ namespace System.Reflection.Emit
 
         #region MemberBase
         public override MemberTypes MemberType { get { return m_method.MemberType; } }
-        public override String Name { get { return m_method.Name; } }
+        public override string Name { get { return m_method.Name; } }
         public override Type DeclaringType { get { return m_method.DeclaringType; } }
         public override Type ReflectedType { get { return m_method.ReflectedType; } }
         public override object[] GetCustomAttributes(bool inherit) { return m_method.GetCustomAttributes(inherit); }

@@ -67,22 +67,22 @@ namespace System
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatInt32(m_value, null, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatInt32(m_value, null, provider);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return ToString(format, null);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             if (m_value < 0 && format != null && format.Length > 0 && (format[0] == 'X' || format[0] == 'x'))
             {
@@ -103,26 +103,26 @@ namespace System
             return Number.TryFormatInt32(m_value, format, provider, destination, out charsWritten);
         }
 
-        public static short Parse(String s)
+        public static short Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
-        public static short Parse(String s, NumberStyles style)
+        public static short Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, style, NumberFormatInfo.CurrentInfo);
         }
 
-        public static short Parse(String s, IFormatProvider provider)
+        public static short Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static short Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static short Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -162,7 +162,7 @@ namespace System
             return (short)i;
         }
 
-        public static bool TryParse(String s, out Int16 result)
+        public static bool TryParse(string s, out Int16 result)
         {
             if (s == null)
             {
@@ -178,7 +178,7 @@ namespace System
             return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static bool TryParse(String s, NumberStyles style, IFormatProvider provider, out Int16 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out Int16 result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

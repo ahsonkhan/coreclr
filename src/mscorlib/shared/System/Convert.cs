@@ -120,7 +120,7 @@ namespace System
             typeof(Decimal),
             typeof(DateTime),
             typeof(object), //TypeCode is discontinuous so we need a placeholder.
-            typeof(String)
+            typeof(string)
         };
 
         // Need to special case Enum because typecode will be underlying type, e.g. Int32
@@ -142,7 +142,7 @@ namespace System
             Debug.Assert(ConvertTypes.Length == ((int)TypeCode.String + 1), "[Convert.cctor]ConvertTypes.Length == ((int)TypeCode.String + 1)");
             Debug.Assert(ConvertTypes[(int)TypeCode.Empty] == typeof(System.Empty),
                             "[Convert.cctor]ConvertTypes[(int)TypeCode.Empty]==typeof(System.Empty)");
-            Debug.Assert(ConvertTypes[(int)TypeCode.String] == typeof(String),
+            Debug.Assert(ConvertTypes[(int)TypeCode.String] == typeof(string),
                             "[Convert.cctor]ConvertTypes[(int)TypeCode.String]==typeof(System.String)");
             Debug.Assert(ConvertTypes[(int)TypeCode.Int32] == typeof(int),
                             "[Convert.cctor]ConvertTypes[(int)TypeCode.Int32]==typeof(int)");
@@ -472,14 +472,14 @@ namespace System
             return value != 0;
         }
 
-        public static bool ToBoolean(String value)
+        public static bool ToBoolean(string value)
         {
             if (value == null)
                 return false;
             return Boolean.Parse(value);
         }
 
-        public static bool ToBoolean(String value, IFormatProvider provider)
+        public static bool ToBoolean(string value, IFormatProvider provider)
         {
             if (value == null)
                 return false;
@@ -586,12 +586,12 @@ namespace System
         // @VariantSwitch
         // Remove FormatExceptions;
         //
-        public static char ToChar(String value)
+        public static char ToChar(string value)
         {
             return ToChar(value, null);
         }
 
-        public static char ToChar(String value, IFormatProvider provider)
+        public static char ToChar(string value, IFormatProvider provider)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -733,7 +733,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static sbyte ToSByte(String value)
+        public static sbyte ToSByte(string value)
         {
             if (value == null)
                 return 0;
@@ -741,7 +741,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static sbyte ToSByte(String value, IFormatProvider provider)
+        public static sbyte ToSByte(string value, IFormatProvider provider)
         {
             return SByte.Parse(value, NumberStyles.Integer, provider);
         }
@@ -844,14 +844,14 @@ namespace System
             return Decimal.ToByte(Decimal.Round(value, 0));
         }
 
-        public static byte ToByte(String value)
+        public static byte ToByte(string value)
         {
             if (value == null)
                 return 0;
             return Byte.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static byte ToByte(String value, IFormatProvider provider)
+        public static byte ToByte(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -954,14 +954,14 @@ namespace System
             return Decimal.ToInt16(Decimal.Round(value, 0));
         }
 
-        public static short ToInt16(String value)
+        public static short ToInt16(string value)
         {
             if (value == null)
                 return 0;
             return Int16.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static short ToInt16(String value, IFormatProvider provider)
+        public static short ToInt16(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1078,7 +1078,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ushort ToUInt16(String value)
+        public static ushort ToUInt16(string value)
         {
             if (value == null)
                 return 0;
@@ -1086,7 +1086,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ushort ToUInt16(String value, IFormatProvider provider)
+        public static ushort ToUInt16(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1207,14 +1207,14 @@ namespace System
             return Decimal.ToInt32(Decimal.Round(value, 0));
         }
 
-        public static int ToInt32(String value)
+        public static int ToInt32(string value)
         {
             if (value == null)
                 return 0;
             return Int32.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static int ToInt32(String value, IFormatProvider provider)
+        public static int ToInt32(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1336,7 +1336,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static uint ToUInt32(String value)
+        public static uint ToUInt32(string value)
         {
             if (value == null)
                 return 0;
@@ -1344,7 +1344,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static uint ToUInt32(String value, IFormatProvider provider)
+        public static uint ToUInt32(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1451,7 +1451,7 @@ namespace System
             return Int64.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static long ToInt64(String value, IFormatProvider provider)
+        public static long ToInt64(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1564,7 +1564,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ulong ToUInt64(String value)
+        public static ulong ToUInt64(string value)
         {
             if (value == null)
                 return 0;
@@ -1572,7 +1572,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ulong ToUInt64(String value, IFormatProvider provider)
+        public static ulong ToUInt64(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1664,14 +1664,14 @@ namespace System
             return (float)value;
         }
 
-        public static float ToSingle(String value)
+        public static float ToSingle(string value)
         {
             if (value == null)
                 return 0;
             return Single.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static float ToSingle(String value, IFormatProvider provider)
+        public static float ToSingle(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1769,14 +1769,14 @@ namespace System
             return (double)value;
         }
 
-        public static double ToDouble(String value)
+        public static double ToDouble(string value)
         {
             if (value == null)
                 return 0;
             return Double.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static double ToDouble(String value, IFormatProvider provider)
+        public static double ToDouble(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0;
@@ -1867,14 +1867,14 @@ namespace System
             return (decimal)value;
         }
 
-        public static decimal ToDecimal(String value)
+        public static decimal ToDecimal(string value)
         {
             if (value == null)
                 return 0m;
             return Decimal.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static Decimal ToDecimal(String value, IFormatProvider provider)
+        public static Decimal ToDecimal(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0m;
@@ -1916,14 +1916,14 @@ namespace System
             return value == null ? DateTime.MinValue : ((IConvertible)value).ToDateTime(provider);
         }
 
-        public static DateTime ToDateTime(String value)
+        public static DateTime ToDateTime(string value)
         {
             if (value == null)
                 return new DateTime(0);
             return DateTime.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static DateTime ToDateTime(String value, IFormatProvider provider)
+        public static DateTime ToDateTime(string value, IFormatProvider provider)
         {
             if (value == null)
                 return new DateTime(0);
@@ -2168,12 +2168,12 @@ namespace System
             return value.ToString(provider);
         }
 
-        public static String ToString(String value)
+        public static string ToString(string value)
         {
             return value;
         }
 
-        public static String ToString(String value, IFormatProvider provider)
+        public static string ToString(string value, IFormatProvider provider)
         {
             return value; // avoid the null check
         }
@@ -2186,7 +2186,7 @@ namespace System
         // be 2, 8, 10, or 16.  If base is 16, the number may be preceded
         // by 0x; any other leading or trailing characters cause an error.
         //
-        public static byte ToByte(String value, int fromBase)
+        public static byte ToByte(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2209,7 +2209,7 @@ namespace System
         // by 0x; any other leading or trailing characters cause an error.
         //
         [CLSCompliant(false)]
-        public static sbyte ToSByte(String value, int fromBase)
+        public static sbyte ToSByte(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2234,7 +2234,7 @@ namespace System
         // be 2, 8, 10, or 16.  If fromBase is 16, the number may be preceded
         // by 0x; any other leading or trailing characters cause an error.
         //
-        public static short ToInt16(String value, int fromBase)
+        public static short ToInt16(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2260,7 +2260,7 @@ namespace System
         // by 0x; any other leading or trailing characters cause an error.
         //
         [CLSCompliant(false)]
-        public static ushort ToUInt16(String value, int fromBase)
+        public static ushort ToUInt16(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2282,7 +2282,7 @@ namespace System
         // be 2, 8, 10, or 16.  If fromBase is 16, the number may be preceded
         // by 0x; any other leading or trailing characters cause an error.
         //
-        public static int ToInt32(String value, int fromBase)
+        public static int ToInt32(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2298,7 +2298,7 @@ namespace System
         // by 0x; any other leading or trailing characters cause an error.
         //
         [CLSCompliant(false)]
-        public static uint ToUInt32(String value, int fromBase)
+        public static uint ToUInt32(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2313,7 +2313,7 @@ namespace System
         // be 2, 8, 10, or 16.  If fromBase is 16, the number may be preceded
         // by 0x; any other leading or trailing characters cause an error.
         //
-        public static long ToInt64(String value, int fromBase)
+        public static long ToInt64(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2329,7 +2329,7 @@ namespace System
         // by 0x; any other leading or trailing characters cause an error.
         //
         [CLSCompliant(false)]
-        public static ulong ToUInt64(String value, int fromBase)
+        public static ulong ToUInt64(string value, int fromBase)
         {
             if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
             {
@@ -2341,7 +2341,7 @@ namespace System
         }
 
         // Convert the byte value to a string in base fromBase
-        public static String ToString(byte value, int toBase)
+        public static string ToString(byte value, int toBase)
         {
             if (toBase != 2 && toBase != 8 && toBase != 10 && toBase != 16)
             {
@@ -2351,7 +2351,7 @@ namespace System
         }
 
         // Convert the Int16 value to a string in base fromBase
-        public static String ToString(short value, int toBase)
+        public static string ToString(short value, int toBase)
         {
             if (toBase != 2 && toBase != 8 && toBase != 10 && toBase != 16)
             {
@@ -2361,7 +2361,7 @@ namespace System
         }
 
         // Convert the Int32 value to a string in base toBase
-        public static String ToString(int value, int toBase)
+        public static string ToString(int value, int toBase)
         {
             if (toBase != 2 && toBase != 8 && toBase != 10 && toBase != 16)
             {
@@ -2371,7 +2371,7 @@ namespace System
         }
 
         // Convert the Int64 value to a string in base toBase
-        public static String ToString(long value, int toBase)
+        public static string ToString(long value, int toBase)
         {
             if (toBase != 2 && toBase != 8 && toBase != 10 && toBase != 16)
             {
@@ -2380,7 +2380,7 @@ namespace System
             return ParseNumbers.LongToString(value, toBase, -1, ' ', 0);
         }
 
-        public static String ToBase64String(byte[] inArray)
+        public static string ToBase64String(byte[] inArray)
         {
             if (inArray == null)
             {
@@ -2389,7 +2389,7 @@ namespace System
             return ToBase64String(new ReadOnlySpan<byte>(inArray), Base64FormattingOptions.None);
         }
 
-        public static String ToBase64String(byte[] inArray, Base64FormattingOptions options)
+        public static string ToBase64String(byte[] inArray, Base64FormattingOptions options)
         {
             if (inArray == null)
             {
@@ -2398,12 +2398,12 @@ namespace System
             return ToBase64String(new ReadOnlySpan<byte>(inArray), options);
         }
 
-        public static String ToBase64String(byte[] inArray, int offset, int length)
+        public static string ToBase64String(byte[] inArray, int offset, int length)
         {
             return ToBase64String(inArray, offset, length, Base64FormattingOptions.None);
         }
 
-        public static String ToBase64String(byte[] inArray, int offset, int length, Base64FormattingOptions options)
+        public static string ToBase64String(byte[] inArray, int offset, int length, Base64FormattingOptions options)
         {
             if (inArray == null)
                 throw new ArgumentNullException(nameof(inArray));
@@ -2629,7 +2629,7 @@ namespace System
         /// </summary>
         /// <param name="s">The string to convert</param>
         /// <returns>The array of bytes represented by the specified Base64 string.</returns>
-        public static Byte[] FromBase64String(String s)
+        public static Byte[] FromBase64String(string s)
         {
             // "s" is an unfortunate parameter name, but we need to keep it for backward compat.
 

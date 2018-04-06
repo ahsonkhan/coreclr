@@ -1050,7 +1050,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             {
                 uint length;
                 char* rawBuffer = UnsafeNativeMethods.WindowsGetStringRawBuffer(hstring, &length);
-                return new String(rawBuffer, 0, checked((int)length));
+                return new string(rawBuffer, 0, checked((int)length));
             }
         }
 
@@ -1239,7 +1239,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         // HSTRING marshaling methods:
 
-        public static IntPtr StringToHString(String s)
+        public static IntPtr StringToHString(string s)
         {
             if (!Environment.IsWinRTSupported)
                 throw new PlatformNotSupportedException(SR.PlatformNotSupported_WinRT);
@@ -1256,7 +1256,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             }
         }
 
-        public static String PtrToStringHString(IntPtr ptr)
+        public static string PtrToStringHString(IntPtr ptr)
         {
             if (!Environment.IsWinRTSupported)
             {

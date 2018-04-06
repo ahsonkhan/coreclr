@@ -44,7 +44,7 @@ namespace System.Reflection.Emit
 
         #region MemberInfo Overrides
         public override MemberTypes MemberType { get { return m_method.MemberType; } }
-        public override String Name { get { return m_method.Name; } }
+        public override string Name { get { return m_method.Name; } }
         public override Type DeclaringType { get { return m_type; } }
         public override Type ReflectedType { get { return m_type; } }
         public override object[] GetCustomAttributes(bool inherit) { return m_method.GetCustomAttributes(inherit); }
@@ -123,7 +123,7 @@ namespace System.Reflection.Emit
 
         #region MemberInfo Overrides
         public override MemberTypes MemberType { get { return m_ctor.MemberType; } }
-        public override String Name { get { return m_ctor.Name; } }
+        public override string Name { get { return m_ctor.Name; } }
         public override Type DeclaringType { get { return m_type; } }
         public override Type ReflectedType { get { return m_type; } }
         public override object[] GetCustomAttributes(bool inherit) { return m_ctor.GetCustomAttributes(inherit); }
@@ -224,7 +224,7 @@ namespace System.Reflection.Emit
 
         #region MemberInfo Overrides
         public override MemberTypes MemberType { get { return System.Reflection.MemberTypes.Field; } }
-        public override String Name { get { return m_field.Name; } }
+        public override string Name { get { return m_field.Name; } }
         public override Type DeclaringType { get { return m_type; } }
         public override Type ReflectedType { get { return m_type; } }
         public override object[] GetCustomAttributes(bool inherit) { return m_field.GetCustomAttributes(inherit); }

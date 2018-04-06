@@ -481,22 +481,22 @@ namespace System
         // optionally followed by a decimal point (".") and another sequence of
         // digits.
         //
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatDecimal(this, null, NumberFormatInfo.CurrentInfo);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatDecimal(this, format, NumberFormatInfo.CurrentInfo);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatDecimal(this, null, NumberFormatInfo.GetInstance(provider));
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatDecimal(this, format, NumberFormatInfo.GetInstance(provider));
         }
@@ -513,26 +513,26 @@ namespace System
         // Parse also allows a currency symbol, a trailing negative sign, and
         // parentheses in the number.
         //
-        public static Decimal Parse(String s)
+        public static Decimal Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseDecimal(s, NumberStyles.Number, NumberFormatInfo.CurrentInfo);
         }
 
-        public static Decimal Parse(String s, NumberStyles style)
+        public static Decimal Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseDecimal(s, style, NumberFormatInfo.CurrentInfo);
         }
 
-        public static Decimal Parse(String s, IFormatProvider provider)
+        public static Decimal Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseDecimal(s, NumberStyles.Number, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static Decimal Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static Decimal Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -545,7 +545,7 @@ namespace System
             return Number.ParseDecimal(s, style, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static Boolean TryParse(String s, out Decimal result)
+        public static Boolean TryParse(string s, out Decimal result)
         {
             if (s == null)
             {
@@ -561,7 +561,7 @@ namespace System
             return Number.TryParseDecimal(s, NumberStyles.Number, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static Boolean TryParse(String s, NumberStyles style, IFormatProvider provider, out Decimal result)
+        public static Boolean TryParse(string s, NumberStyles style, IFormatProvider provider, out Decimal result)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
 

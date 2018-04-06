@@ -120,7 +120,7 @@ namespace System.Reflection
         #endregion
 
         #region Object Overrides
-        public override String ToString()
+        public override string ToString()
         {
             return FormatNameAndSig(false);
         }
@@ -184,7 +184,7 @@ namespace System.Reflection
 
         #region MemberInfo Overrides
         public override MemberTypes MemberType { get { return MemberTypes.Property; } }
-        public override String Name
+        public override string Name
         {
             get
             {

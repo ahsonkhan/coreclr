@@ -73,7 +73,7 @@ namespace System
             _Minor = minor;
         }
 
-        public Version(String version)
+        public Version(string version)
         {
             Version v = Version.Parse(version);
             _Major = v.Major;

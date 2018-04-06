@@ -43,7 +43,7 @@ namespace System.Reflection
         #endregion
 
         #region MemberInfo Overrides
-        public override String Name
+        public override string Name
         {
             get
             {

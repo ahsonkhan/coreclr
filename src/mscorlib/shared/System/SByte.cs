@@ -71,22 +71,22 @@ namespace System
 
 
         // Provides a string representation of a byte.
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatInt32(m_value, null, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatInt32(m_value, null, provider);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return ToString(format, null);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             if (m_value < 0 && format != null && format.Length > 0 && (format[0] == 'X' || format[0] == 'x'))
             {
@@ -107,14 +107,14 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static sbyte Parse(String s)
+        public static sbyte Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
         [CLSCompliant(false)]
-        public static sbyte Parse(String s, NumberStyles style)
+        public static sbyte Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -122,7 +122,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static sbyte Parse(String s, IFormatProvider provider)
+        public static sbyte Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
@@ -133,7 +133,7 @@ namespace System
         // NumberFormatInfo is assumed.
         // 
         [CLSCompliant(false)]
-        public static sbyte Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static sbyte Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -147,7 +147,7 @@ namespace System
             return Parse(s, style, NumberFormatInfo.GetInstance(provider));
         }
 
-        private static sbyte Parse(String s, NumberStyles style, NumberFormatInfo info)
+        private static sbyte Parse(string s, NumberStyles style, NumberFormatInfo info)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, style, info);
@@ -179,7 +179,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(String s, out SByte result)
+        public static bool TryParse(string s, out SByte result)
         {
             if (s == null)
             {
@@ -197,7 +197,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static bool TryParse(String s, NumberStyles style, IFormatProvider provider, out SByte result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out SByte result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

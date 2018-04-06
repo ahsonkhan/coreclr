@@ -740,7 +740,7 @@ namespace System.Globalization
 
                         // insert n at position i of the output:  Really tricky if we have surrogates
                         int iUseInsertLocation;
-                        String strTemp = Char.ConvertFromUtf32(n);
+                        string strTemp = Char.ConvertFromUtf32(n);
 
                         // If we have supplimentary characters
                         if (numSurrogatePairs > 0)

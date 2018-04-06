@@ -111,7 +111,7 @@ namespace System.Threading
         private ExecutionContext m_ExecutionContext;    // this call context follows the logical thread
         private SynchronizationContext m_SynchronizationContext;    // On CoreCLR, this is maintained separately from ExecutionContext
 
-        private String m_Name;
+        private string m_Name;
         private Delegate m_Delegate;             // Delegate
 
         private object m_ThreadStartArg;
@@ -503,7 +503,7 @@ namespace System.Threading
 
         // Retrieves the name of the thread.
         //
-        public new String Name
+        public new string Name
         {
             get
             {
@@ -523,7 +523,7 @@ namespace System.Threading
         }
 
         [DllImport(JitHelpers.QCall, CharSet = CharSet.Unicode)]
-        private static extern void InformThreadNameChange(ThreadHandle t, String name, int len);
+        private static extern void InformThreadNameChange(ThreadHandle t, string name, int len);
 
     } // End of class Thread
 

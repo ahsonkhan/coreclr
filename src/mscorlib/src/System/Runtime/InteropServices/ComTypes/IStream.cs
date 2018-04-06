@@ -19,7 +19,7 @@ namespace System.Runtime.InteropServices.ComTypes
 
     public struct STATSTG
     {
-        public String pwcsName;
+        public string pwcsName;
         public int type;
         public Int64 cbSize;
         public FILETIME mtime;

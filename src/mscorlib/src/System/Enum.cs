@@ -31,7 +31,7 @@ namespace System
     {
         #region Private Constants
         private const char enumSeparatorChar = ',';
-        private const String enumSeparatorString = ", ";
+        private const string enumSeparatorString = ", ";
         #endregion
 
         #region Private Static Methods
@@ -42,7 +42,7 @@ namespace System
             if (entry == null || (getNames && entry.Names == null))
             {
                 ulong[] values = null;
-                String[] names = null;
+                string[] names = null;
                 bool isFlags = enumType.IsDefined(typeof(System.FlagsAttribute), false);
 
                 GetEnumValuesAndNames(
@@ -58,7 +58,7 @@ namespace System
             return entry;
         }
 
-        private unsafe String InternalFormattedHexString()
+        private unsafe string InternalFormattedHexString()
         {
             fixed (void* pValue = &JitHelpers.GetPinningHelper(this).m_data)
             {
@@ -86,7 +86,7 @@ namespace System
             }
         }
 
-        private static String InternalFormattedHexString(object value)
+        private static string InternalFormattedHexString(object value)
         {
             TypeCode typeCode = Convert.GetTypeCode(value);
 
@@ -119,7 +119,7 @@ namespace System
             }
         }
 
-        internal static String GetEnumName(RuntimeType eT, ulong ulValue)
+        internal static string GetEnumName(RuntimeType eT, ulong ulValue)
         {
             Debug.Assert(eT != null);
             ulong[] ulValues = Enum.InternalGetValues(eT);
@@ -134,7 +134,7 @@ namespace System
             return null; // return null so the caller knows to .ToString() the input
         }
 
-        private static String InternalFormat(RuntimeType eT, ulong value)
+        private static string InternalFormat(RuntimeType eT, ulong value)
         {
             Debug.Assert(eT != null);
 
@@ -151,7 +151,7 @@ namespace System
             }
         }
 
-        private static String InternalFlagsFormat(RuntimeType eT, ulong result)
+        private static string InternalFlagsFormat(RuntimeType eT, ulong result)
         {
             // These values are sorted by value. Don't change this
             TypeValuesAndNames entry = GetCachedValuesAndNames(eT, true);
@@ -159,11 +159,11 @@ namespace System
             return InternalFlagsFormat(eT, entry, result);
         }
 
-        private static String InternalFlagsFormat(RuntimeType eT, TypeValuesAndNames entry, ulong result)
+        private static string InternalFlagsFormat(RuntimeType eT, TypeValuesAndNames entry, ulong result)
         {
             Debug.Assert(eT != null);
 
-            String[] names = entry.Names;
+            string[] names = entry.Names;
             ulong[] values = entry.Values;
             Debug.Assert(names.Length == values.Length);
 
@@ -345,12 +345,12 @@ namespace System
             }
         }
 
-        public static bool TryParse(Type enumType, String value, out object result)
+        public static bool TryParse(Type enumType, string value, out object result)
         {
             return TryParse(enumType, value, false, out result);
         }
 
-        public static bool TryParse(Type enumType, String value, bool ignoreCase, out object result)
+        public static bool TryParse(Type enumType, string value, bool ignoreCase, out object result)
         {
             result = null;
             EnumResult parseResult = new EnumResult();
@@ -361,12 +361,12 @@ namespace System
             return retValue;
         }
 
-        public static bool TryParse<TEnum>(String value, out TEnum result) where TEnum : struct
+        public static bool TryParse<TEnum>(string value, out TEnum result) where TEnum : struct
         {
             return TryParse(value, false, out result);
         }
 
-        public static bool TryParse<TEnum>(String value, bool ignoreCase, out TEnum result) where TEnum : struct
+        public static bool TryParse<TEnum>(string value, bool ignoreCase, out TEnum result) where TEnum : struct
         {
             result = default;
             EnumResult parseResult = new EnumResult();
@@ -377,12 +377,12 @@ namespace System
             return retValue;
         }
 
-        public static object Parse(Type enumType, String value)
+        public static object Parse(Type enumType, string value)
         {
             return Parse(enumType, value, false);
         }
 
-        public static object Parse(Type enumType, String value, bool ignoreCase)
+        public static object Parse(Type enumType, string value, bool ignoreCase)
         {
             EnumResult parseResult = new EnumResult() { canThrow = true };
             if (TryParseEnum(enumType, value, ignoreCase, ref parseResult))
@@ -391,12 +391,12 @@ namespace System
                 throw parseResult.GetEnumParseException();
         }
 
-        public static TEnum Parse<TEnum>(String value) where TEnum : struct
+        public static TEnum Parse<TEnum>(string value) where TEnum : struct
         {
             return Parse<TEnum>(value, false);
         }
 
-        public static TEnum Parse<TEnum>(String value, bool ignoreCase) where TEnum : struct
+        public static TEnum Parse<TEnum>(string value, bool ignoreCase) where TEnum : struct
         {
             EnumResult parseResult = new EnumResult() { canThrow = true };
             if (TryParseEnum(typeof(TEnum), value, ignoreCase, ref parseResult))
@@ -405,7 +405,7 @@ namespace System
                 throw parseResult.GetEnumParseException();
         }
 
-        private static bool TryParseEnum(Type enumType, String value, bool ignoreCase, ref EnumResult parseResult)
+        private static bool TryParseEnum(Type enumType, string value, bool ignoreCase, ref EnumResult parseResult)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -475,7 +475,7 @@ namespace System
             // Find the field. Let's assume that these are always static classes 
             // because the class is an enum.
             TypeValuesAndNames entry = GetCachedValuesAndNames(rtType, true);
-            String[] enumNames = entry.Names;
+            string[] enumNames = entry.Names;
             ulong[] enumValues = entry.Values;
 
             StringComparison comparison = ignoreCase ?
@@ -562,7 +562,7 @@ namespace System
             return GetCachedValuesAndNames(enumType, false).Values;
         }
 
-        public static String GetName(Type enumType, object value)
+        public static string GetName(Type enumType, object value)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -570,7 +570,7 @@ namespace System
             return enumType.GetEnumName(value);
         }
 
-        public static String[] GetNames(Type enumType)
+        public static string[] GetNames(Type enumType)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -578,7 +578,7 @@ namespace System
             return enumType.GetEnumNames();
         }
 
-        internal static String[] InternalGetNames(RuntimeType enumType)
+        internal static string[] InternalGetNames(RuntimeType enumType)
         {
             // Get all of the names
             return GetCachedValuesAndNames(enumType, true).Names;
@@ -638,7 +638,7 @@ namespace System
             return enumType.IsEnumDefined(value);
         }
 
-        public static String Format(Type enumType, object value, String format)
+        public static string Format(Type enumType, object value, string format)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -707,7 +707,7 @@ namespace System
         private class TypeValuesAndNames
         {
             // Each entry contains a list of sorted pair of enum field names and values, sorted by values
-            public TypeValuesAndNames(bool isFlag, ulong[] values, String[] names)
+            public TypeValuesAndNames(bool isFlag, ulong[] values, string[] names)
             {
                 this.IsFlag = isFlag;
                 this.Values = values;
@@ -716,7 +716,7 @@ namespace System
 
             public bool IsFlag;
             public ulong[] Values;
-            public String[] Names;
+            public string[] Names;
         }
         #endregion
 
@@ -871,7 +871,7 @@ namespace System
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             // Returns the value in a human readable format.  For PASCAL style enums who's value maps directly the name of the field is returned.
             // For PASCAL style enums who's values do not map directly the decimal value of the field is returned.
@@ -887,7 +887,7 @@ namespace System
 
         #region IFormattable
         [Obsolete("The provider argument is not used. Please use ToString(String).")]
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return ToString(format);
         }
@@ -927,7 +927,7 @@ namespace System
         #endregion
 
         #region Public Methods
-        public String ToString(String format)
+        public string ToString(string format)
         {
             char formatCh;
             if (format == null || format.Length == 0)
@@ -953,7 +953,7 @@ namespace System
         }
 
         [Obsolete("The provider argument is not used. Please use ToString().")]
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return ToString();
         }

@@ -305,18 +305,18 @@ namespace System
 
         // See System.Globalization.TimeSpanParse and System.Globalization.TimeSpanFormat 
         #region ParseAndFormat
-        private static void ValidateStyles(TimeSpanStyles style, String parameterName)
+        private static void ValidateStyles(TimeSpanStyles style, string parameterName)
         {
             if (style != TimeSpanStyles.None && style != TimeSpanStyles.AssumeNegative)
                 throw new ArgumentException(SR.Argument_InvalidTimeSpanStyles, parameterName);
         }
-        public static TimeSpan Parse(String s)
+        public static TimeSpan Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
             /* Constructs a TimeSpan from a string.  Leading and trailing white space characters are allowed. */
             return TimeSpanParse.Parse(s, null);
         }
-        public static TimeSpan Parse(String input, IFormatProvider formatProvider)
+        public static TimeSpan Parse(string input, IFormatProvider formatProvider)
         {
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
             return TimeSpanParse.Parse(input, formatProvider);
@@ -325,18 +325,18 @@ namespace System
         {
             return TimeSpanParse.Parse(input, formatProvider);
         }
-        public static TimeSpan ParseExact(String input, String format, IFormatProvider formatProvider)
+        public static TimeSpan ParseExact(string input, string format, IFormatProvider formatProvider)
         {
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
             if (format == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.format);
             return TimeSpanParse.ParseExact(input, format, formatProvider, TimeSpanStyles.None);
         }
-        public static TimeSpan ParseExact(String input, String[] formats, IFormatProvider formatProvider)
+        public static TimeSpan ParseExact(string input, string[] formats, IFormatProvider formatProvider)
         {
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
             return TimeSpanParse.ParseExactMultiple(input, formats, formatProvider, TimeSpanStyles.None);
         }
-        public static TimeSpan ParseExact(String input, String format, IFormatProvider formatProvider, TimeSpanStyles styles)
+        public static TimeSpan ParseExact(string input, string format, IFormatProvider formatProvider, TimeSpanStyles styles)
         {
             ValidateStyles(styles, nameof(styles));
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
@@ -349,7 +349,7 @@ namespace System
             ValidateStyles(styles, nameof(styles));
             return TimeSpanParse.ParseExact(input, format, formatProvider, styles);
         }
-        public static TimeSpan ParseExact(String input, String[] formats, IFormatProvider formatProvider, TimeSpanStyles styles)
+        public static TimeSpan ParseExact(string input, string[] formats, IFormatProvider formatProvider, TimeSpanStyles styles)
         {
             ValidateStyles(styles, nameof(styles));
             if (input == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.input);
@@ -360,7 +360,7 @@ namespace System
             ValidateStyles(styles, nameof(styles));
             return TimeSpanParse.ParseExactMultiple(input, formats, formatProvider, styles);
         }
-        public static Boolean TryParse(String s, out TimeSpan result)
+        public static Boolean TryParse(string s, out TimeSpan result)
         {
             if (s == null)
             {
@@ -374,7 +374,7 @@ namespace System
             return TimeSpanParse.TryParse(s, null, out result);
         }
 
-        public static Boolean TryParse(String input, IFormatProvider formatProvider, out TimeSpan result)
+        public static Boolean TryParse(string input, IFormatProvider formatProvider, out TimeSpan result)
         {
             if (input == null)
             {
@@ -387,7 +387,7 @@ namespace System
         {
             return TimeSpanParse.TryParse(input, formatProvider, out result);
         }
-        public static Boolean TryParseExact(String input, String format, IFormatProvider formatProvider, out TimeSpan result)
+        public static Boolean TryParseExact(string input, string format, IFormatProvider formatProvider, out TimeSpan result)
         {
             if (input == null || format == null)
             {
@@ -401,7 +401,7 @@ namespace System
         {
             return TimeSpanParse.TryParseExact(input, format, formatProvider, TimeSpanStyles.None, out result);
         }
-        public static Boolean TryParseExact(String input, String[] formats, IFormatProvider formatProvider, out TimeSpan result)
+        public static Boolean TryParseExact(string input, string[] formats, IFormatProvider formatProvider, out TimeSpan result)
         {
             if (input == null)
             {
@@ -415,7 +415,7 @@ namespace System
             return TimeSpanParse.TryParseExactMultiple(input, formats, formatProvider, TimeSpanStyles.None, out result);
         }
 
-        public static Boolean TryParseExact(String input, String format, IFormatProvider formatProvider, TimeSpanStyles styles, out TimeSpan result)
+        public static Boolean TryParseExact(string input, string format, IFormatProvider formatProvider, TimeSpanStyles styles, out TimeSpan result)
         {
             ValidateStyles(styles, nameof(styles));
             if (input == null || format == null)
@@ -432,7 +432,7 @@ namespace System
             ValidateStyles(styles, nameof(styles));
             return TimeSpanParse.TryParseExact(input, format, formatProvider, styles, out result);
         }
-        public static Boolean TryParseExact(String input, String[] formats, IFormatProvider formatProvider, TimeSpanStyles styles, out TimeSpan result)
+        public static Boolean TryParseExact(string input, string[] formats, IFormatProvider formatProvider, TimeSpanStyles styles, out TimeSpan result)
         {
             ValidateStyles(styles, nameof(styles));
             if (input == null)
@@ -448,15 +448,15 @@ namespace System
             ValidateStyles(styles, nameof(styles));
             return TimeSpanParse.TryParseExactMultiple(input, formats, formatProvider, styles, out result);
         }
-        public override String ToString()
+        public override string ToString()
         {
             return TimeSpanFormat.Format(this, null, null);
         }
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return TimeSpanFormat.Format(this, format, null);
         }
-        public String ToString(String format, IFormatProvider formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             return TimeSpanFormat.Format(this, format, formatProvider);
         }

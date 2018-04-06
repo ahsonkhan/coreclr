@@ -1132,7 +1132,7 @@ namespace System
         }
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        internal static extern String GetName(RtFieldInfo field);
+        internal static extern string GetName(RtFieldInfo field);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private static extern unsafe void* _GetUtf8Name(RuntimeFieldHandleInternal field);
@@ -1539,7 +1539,7 @@ namespace System
         internal abstract unsafe void GetEHInfo(int EHNumber, void* exception);
         internal abstract unsafe byte[] GetRawEHInfo();
         // token resolution
-        internal abstract String GetStringLiteral(int token);
+        internal abstract string GetStringLiteral(int token);
         internal abstract void ResolveToken(int token, out IntPtr typeHandle, out IntPtr methodHandle, out IntPtr fieldHandle);
         internal abstract byte[] ResolveSignature(int token, int fromMethod);
         // 

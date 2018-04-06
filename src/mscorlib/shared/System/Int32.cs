@@ -76,22 +76,22 @@ namespace System
             return m_value;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatInt32(m_value, null, null);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatInt32(m_value, format, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatInt32(m_value, null, provider);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatInt32(m_value, format, provider);
         }
@@ -101,13 +101,13 @@ namespace System
             return Number.TryFormatInt32(m_value, format, provider, destination, out charsWritten);
         }
 
-        public static int Parse(String s)
+        public static int Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseInt32(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
-        public static int Parse(String s, NumberStyles style)
+        public static int Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -118,7 +118,7 @@ namespace System
         // a NumberFormatInfo isn't specified, the current culture's 
         // NumberFormatInfo is assumed.
         // 
-        public static int Parse(String s, IFormatProvider provider)
+        public static int Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseInt32(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
@@ -128,7 +128,7 @@ namespace System
         // a NumberFormatInfo isn't specified, the current culture's 
         // NumberFormatInfo is assumed.
         // 
-        public static int Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static int Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -144,7 +144,7 @@ namespace System
         // Parses an integer from a String. Returns false rather
         // than throwing exceptin if input is invalid
         // 
-        public static bool TryParse(String s, out Int32 result)
+        public static bool TryParse(string s, out Int32 result)
         {
             if (s == null)
             {
@@ -163,7 +163,7 @@ namespace System
         // Parses an integer from a String in the given style. Returns false rather
         // than throwing exceptin if input is invalid
         // 
-        public static bool TryParse(String s, NumberStyles style, IFormatProvider provider, out Int32 result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out Int32 result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

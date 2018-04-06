@@ -325,7 +325,7 @@ namespace System.IO
         // a four-byte unsigned integer, and then writes that many characters 
         // to the stream.
         // 
-        public unsafe virtual void Write(String value)
+        public unsafe virtual void Write(string value)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));

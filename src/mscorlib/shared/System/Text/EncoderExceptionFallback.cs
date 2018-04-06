@@ -111,27 +111,27 @@ namespace System.Text
             HResult = HResults.COR_E_ARGUMENT;
         }
 
-        public EncoderFallbackException(String message)
+        public EncoderFallbackException(string message)
             : base(message)
         {
             HResult = HResults.COR_E_ARGUMENT;
         }
 
-        public EncoderFallbackException(String message, Exception innerException)
+        public EncoderFallbackException(string message, Exception innerException)
             : base(message, innerException)
         {
             HResult = HResults.COR_E_ARGUMENT;
         }
 
         internal EncoderFallbackException(
-            String message, char charUnknown, int index) : base(message)
+            string message, char charUnknown, int index) : base(message)
         {
             _charUnknown = charUnknown;
             _index = index;
         }
 
         internal EncoderFallbackException(
-            String message, char charUnknownHigh, char charUnknownLow, int index) : base(message)
+            string message, char charUnknownHigh, char charUnknownLow, int index) : base(message)
         {
             if (!Char.IsHighSurrogate(charUnknownHigh))
             {

@@ -49,7 +49,7 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////
 
-        internal static int InternalConvertToUtf32(String s, int index)
+        internal static int InternalConvertToUtf32(string s, int index)
         {
             Debug.Assert(s != null, "s != null");
             Debug.Assert(index >= 0 && index < s.Length, "index < s.Length");
@@ -90,7 +90,7 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////
 
-        internal static int InternalConvertToUtf32(String s, int index, out int charLength)
+        internal static int InternalConvertToUtf32(string s, int index, out int charLength)
         {
             Debug.Assert(s != null, "s != null");
             Debug.Assert(s.Length > 0, "s.Length > 0");
@@ -121,7 +121,7 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////
 
-        internal static bool IsWhiteSpace(String s, int index)
+        internal static bool IsWhiteSpace(string s, int index)
         {
             Debug.Assert(s != null, "s!=null");
             Debug.Assert(index >= 0 && index < s.Length, "index >= 0 && index < s.Length");
@@ -221,7 +221,7 @@ namespace System.Globalization
         }
 
 
-        public static double GetNumericValue(String s, int index)
+        public static double GetNumericValue(string s, int index)
         {
             if (s == null)
             {
@@ -239,7 +239,7 @@ namespace System.Globalization
             return (sbyte)(InternalGetDigitValues(ch) >> 8);
         }
 
-        public static int GetDecimalDigitValue(String s, int index)
+        public static int GetDecimalDigitValue(string s, int index)
         {
             if (s == null)
             {
@@ -259,7 +259,7 @@ namespace System.Globalization
             return (sbyte)(InternalGetDigitValues(ch) & 0x00FF);
         }
 
-        public static int GetDigitValue(String s, int index)
+        public static int GetDigitValue(string s, int index)
         {
             if (s == null)
             {
@@ -279,7 +279,7 @@ namespace System.Globalization
             return (GetUnicodeCategory((int)ch));
         }
 
-        public static UnicodeCategory GetUnicodeCategory(String s, int index)
+        public static UnicodeCategory GetUnicodeCategory(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -347,7 +347,7 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////
 
-        internal static UnicodeCategory InternalGetUnicodeCategory(String value, int index)
+        internal static UnicodeCategory InternalGetUnicodeCategory(string value, int index)
         {
             Debug.Assert(value != null, "value can not be null");
             Debug.Assert(index < value.Length, "index < value.Length");
@@ -355,7 +355,7 @@ namespace System.Globalization
             return (GetUnicodeCategory(InternalConvertToUtf32(value, index)));
         }
 
-        internal static BidiCategory GetBidiCategory(String s, int index)
+        internal static BidiCategory GetBidiCategory(string s, int index)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
@@ -375,7 +375,7 @@ namespace System.Globalization
         //
         ////////////////////////////////////////////////////////////////////////
 
-        internal static UnicodeCategory InternalGetUnicodeCategory(String str, int index, out int charLength)
+        internal static UnicodeCategory InternalGetUnicodeCategory(string str, int index, out int charLength)
         {
             Debug.Assert(str != null, "str can not be null");
             Debug.Assert(str.Length > 0, "str.Length > 0"); ;

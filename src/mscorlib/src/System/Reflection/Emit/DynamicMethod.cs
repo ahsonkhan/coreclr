@@ -263,7 +263,7 @@ namespace System.Reflection.Emit
             return s_anonymouslyHostedDynamicMethodsModule;
         }
 
-        private unsafe void Init(String name,
+        private unsafe void Init(string name,
                                  MethodAttributes attributes,
                                  CallingConventions callingConvention,
                                  Type returnType,
@@ -408,9 +408,9 @@ namespace System.Reflection.Emit
         // MethodInfo api. They mostly forward to RTDynamicMethod
         //
 
-        public override String ToString() { return m_dynMethod.ToString(); }
+        public override string ToString() { return m_dynMethod.ToString(); }
 
-        public override String Name { get { return m_dynMethod.Name; } }
+        public override string Name { get { return m_dynMethod.Name; } }
 
         public override Type DeclaringType { get { return m_dynMethod.DeclaringType; } }
 
@@ -519,7 +519,7 @@ namespace System.Reflection.Emit
         // DynamicMethod specific methods
         //
 
-        public ParameterBuilder DefineParameter(int position, ParameterAttributes attributes, String parameterName)
+        public ParameterBuilder DefineParameter(int position, ParameterAttributes attributes, string parameterName)
         {
             if (position < 0 || position > m_parameterTypes.Length)
                 throw new ArgumentOutOfRangeException(SR.ArgumentOutOfRange_ParamSequence);
@@ -577,11 +577,11 @@ namespace System.Reflection.Emit
         {
             internal DynamicMethod m_owner;
             private RuntimeParameterInfo[] m_parameters;
-            private String m_name;
+            private string m_name;
             private MethodAttributes m_attributes;
             private CallingConventions m_callingConvention;
 
-            internal RTDynamicMethod(DynamicMethod owner, String name, MethodAttributes attributes, CallingConventions callingConvention)
+            internal RTDynamicMethod(DynamicMethod owner, string name, MethodAttributes attributes, CallingConventions callingConvention)
             {
                 m_owner = owner;
                 m_name = name;
@@ -592,12 +592,12 @@ namespace System.Reflection.Emit
             //
             // MethodInfo api
             //
-            public override String ToString()
+            public override string ToString()
             {
                 return ReturnType.FormatTypeName() + " " + FormatNameAndSig();
             }
 
-            public override String Name
+            public override string Name
             {
                 get { return m_name; }
             }

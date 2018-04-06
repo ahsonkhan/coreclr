@@ -73,22 +73,22 @@ namespace System
             return (unchecked((int)m_value) ^ (int)(m_value >> 32));
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatInt64(m_value, null, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatInt64(m_value, null, provider);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatInt64(m_value, format, null);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatInt64(m_value, format, provider);
         }
@@ -98,20 +98,20 @@ namespace System
             return Number.TryFormatInt64(m_value, format, provider, destination, out charsWritten);
         }
 
-        public static long Parse(String s)
+        public static long Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
-        public static long Parse(String s, NumberStyles style)
+        public static long Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseInt64(s, style, NumberFormatInfo.CurrentInfo);
         }
 
-        public static long Parse(String s, IFormatProvider provider)
+        public static long Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseInt64(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
@@ -122,7 +122,7 @@ namespace System
         // a NumberFormatInfo isn't specified, the current culture's 
         // NumberFormatInfo is assumed.
         // 
-        public static long Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static long Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -135,7 +135,7 @@ namespace System
             return Number.ParseInt64(s, style, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static Boolean TryParse(String s, out Int64 result)
+        public static Boolean TryParse(string s, out Int64 result)
         {
             if (s == null)
             {
@@ -151,7 +151,7 @@ namespace System
             return Number.TryParseInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static Boolean TryParse(String s, NumberStyles style, IFormatProvider provider, out Int64 result)
+        public static Boolean TryParse(string s, NumberStyles style, IFormatProvider provider, out Int64 result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

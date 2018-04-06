@@ -17,13 +17,13 @@ namespace System.Reflection.Emit
         private int m_fieldTok;
         private FieldToken m_tkField;
         private TypeBuilder m_typeBuilder;
-        private String m_fieldName;
+        private string m_fieldName;
         private FieldAttributes m_Attributes;
         private Type m_fieldType;
         #endregion
 
         #region Constructor
-        internal FieldBuilder(TypeBuilder typeBuilder, String fieldName, Type type,
+        internal FieldBuilder(TypeBuilder typeBuilder, string fieldName, Type type,
             Type[] requiredCustomModifiers, Type[] optionalCustomModifiers, FieldAttributes attributes)
         {
             if (fieldName == null)
@@ -78,7 +78,7 @@ namespace System.Reflection.Emit
             get { return m_typeBuilder.Module; }
         }
 
-        public override String Name
+        public override string Name
         {
             get { return m_fieldName; }
         }

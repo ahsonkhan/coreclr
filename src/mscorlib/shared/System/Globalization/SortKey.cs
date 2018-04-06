@@ -33,7 +33,7 @@ namespace System.Globalization
         // The following constructor is designed to be called from CompareInfo to get the 
         // the sort key of specific string for synthetic culture
         //
-        internal SortKey(String localeName, String str, CompareOptions options, byte[] keyData)
+        internal SortKey(string localeName, string str, CompareOptions options, byte[] keyData)
         {
             _keyData = keyData;
             _localeName = localeName;
@@ -49,7 +49,7 @@ namespace System.Globalization
         //  of SortKey.
         //
         ////////////////////////////////////////////////////////////////////////
-        public virtual String OriginalString
+        public virtual string OriginalString
         {
             get
             {
@@ -167,7 +167,7 @@ namespace System.Globalization
         //  SortKey.
         //
         ////////////////////////////////////////////////////////////////////////
-        public override String ToString()
+        public override string ToString()
         {
             return ("SortKey - " + _localeName + ", " + _options + ", " + _string);
         }

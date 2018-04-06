@@ -16,7 +16,7 @@ namespace System.Reflection.Emit
         #region Private Data Members
         private ModuleBuilder m_module;
         private Type m_containingType;
-        private String m_name;
+        private string m_name;
         private CallingConventions m_callingConvention;
         private Type m_returnType;
         private MethodToken m_mdMethod;
@@ -25,7 +25,7 @@ namespace System.Reflection.Emit
         #endregion
 
         #region Constructor
-        internal SymbolMethod(ModuleBuilder mod, MethodToken token, Type arrayClass, String methodName,
+        internal SymbolMethod(ModuleBuilder mod, MethodToken token, Type arrayClass, string methodName,
             CallingConventions callingConvention, Type returnType, Type[] parameterTypes)
         {
             // This is a kind of MethodInfo to represent methods for array type of unbaked type
@@ -83,7 +83,7 @@ namespace System.Reflection.Emit
             get { return m_containingType as Type; }
         }
 
-        public override String Name
+        public override string Name
         {
             get { return m_name; }
         }

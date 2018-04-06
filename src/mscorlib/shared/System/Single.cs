@@ -229,22 +229,22 @@ namespace System
             return bits;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatSingle(m_value, null, NumberFormatInfo.CurrentInfo);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatSingle(m_value, null, NumberFormatInfo.GetInstance(provider));
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatSingle(m_value, format, NumberFormatInfo.CurrentInfo);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatSingle(m_value, format, NumberFormatInfo.GetInstance(provider));
         }
@@ -262,26 +262,26 @@ namespace System
         // PositiveInfinity or NegativeInfinity for a number that is too
         // large or too small.
         //
-        public static float Parse(String s)
+        public static float Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseSingle(s, NumberStyles.Float | NumberStyles.AllowThousands, NumberFormatInfo.CurrentInfo);
         }
 
-        public static float Parse(String s, NumberStyles style)
+        public static float Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseSingle(s, style, NumberFormatInfo.CurrentInfo);
         }
 
-        public static float Parse(String s, IFormatProvider provider)
+        public static float Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseSingle(s, NumberStyles.Float | NumberStyles.AllowThousands, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static float Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static float Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -294,7 +294,7 @@ namespace System
             return Number.ParseSingle(s, style, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static Boolean TryParse(String s, out Single result)
+        public static Boolean TryParse(string s, out Single result)
         {
             if (s == null)
             {
@@ -310,7 +310,7 @@ namespace System
             return TryParse(s, NumberStyles.Float | NumberStyles.AllowThousands, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static Boolean TryParse(String s, NumberStyles style, IFormatProvider provider, out Single result)
+        public static Boolean TryParse(string s, NumberStyles style, IFormatProvider provider, out Single result)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
 

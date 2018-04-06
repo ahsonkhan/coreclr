@@ -74,22 +74,22 @@ namespace System
             return ((int)m_value) ^ (int)(m_value >> 32);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatUInt64(m_value, null, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatUInt64(m_value, null, provider);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatUInt64(m_value, format, null);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatUInt64(m_value, format, provider);
         }
@@ -100,14 +100,14 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ulong Parse(String s)
+        public static ulong Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseUInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
         [CLSCompliant(false)]
-        public static ulong Parse(String s, NumberStyles style)
+        public static ulong Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -122,7 +122,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static ulong Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static ulong Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -137,7 +137,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static Boolean TryParse(String s, out UInt64 result)
+        public static Boolean TryParse(string s, out UInt64 result)
         {
             if (s == null)
             {
@@ -155,7 +155,7 @@ namespace System
         }
 
         [CLSCompliant(false)]
-        public static Boolean TryParse(String s, NumberStyles style, IFormatProvider provider, out UInt64 result)
+        public static Boolean TryParse(string s, NumberStyles style, IFormatProvider provider, out UInt64 result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 

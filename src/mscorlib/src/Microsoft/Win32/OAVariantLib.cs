@@ -48,7 +48,7 @@ namespace Microsoft.Win32
             typeof(UInt64),
             typeof(Single),
             typeof(Double),
-            typeof(String),
+            typeof(string),
             typeof(void),
             typeof(DateTime),
             typeof(TimeSpan),

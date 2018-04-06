@@ -618,7 +618,7 @@ namespace System.Diagnostics.Tracing
                 if (Statics.IsEnum(dataType))
                     dataType = Enum.GetUnderlyingType(dataType);
 
-                if (dataType == typeof(String))
+                if (dataType == typeof(string))
                 {
                     result = new StringTypeInfo();
                 }

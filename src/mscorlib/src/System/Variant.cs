@@ -100,7 +100,7 @@ namespace System
             typeof(UInt64),
             typeof(Single),
             typeof(Double),
-            typeof(String),
+            typeof(string),
             typeof(void),           // ptr for the moment
             typeof(DateTime),
             typeof(TimeSpan),
@@ -282,7 +282,7 @@ namespace System
                 return;
             }
 
-            if (obj is String)
+            if (obj is string)
             {
                 m_flags = CV_STRING;
                 m_objref = obj;

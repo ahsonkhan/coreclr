@@ -314,7 +314,7 @@ namespace System.Globalization
             }
         }
 
-        internal unsafe int IndexOfCore(String source, String target, int startIndex, int count, CompareOptions options, int* matchLengthPtr)
+        internal unsafe int IndexOfCore(string source, string target, int startIndex, int count, CompareOptions options, int* matchLengthPtr)
         {
             Debug.Assert(!_invariantMode);
 
@@ -531,7 +531,7 @@ namespace System.Globalization
             return retValue;
         }
 
-        private unsafe SortKey CreateSortKey(String source, CompareOptions options)
+        private unsafe SortKey CreateSortKey(string source, CompareOptions options)
         {
             Debug.Assert(!_invariantMode);
 

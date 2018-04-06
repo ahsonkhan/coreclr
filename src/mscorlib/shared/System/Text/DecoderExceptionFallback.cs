@@ -112,19 +112,19 @@ namespace System.Text
             HResult = HResults.COR_E_ARGUMENT;
         }
 
-        public DecoderFallbackException(String message)
+        public DecoderFallbackException(string message)
             : base(message)
         {
             HResult = HResults.COR_E_ARGUMENT;
         }
 
-        public DecoderFallbackException(String message, Exception innerException)
+        public DecoderFallbackException(string message, Exception innerException)
             : base(message, innerException)
         {
             HResult = HResults.COR_E_ARGUMENT;
         }
 
-        public DecoderFallbackException(String message, byte[] bytesUnknown, int index)
+        public DecoderFallbackException(string message, byte[] bytesUnknown, int index)
             : base(message)
         {
             _bytesUnknown = bytesUnknown;

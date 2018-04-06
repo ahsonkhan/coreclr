@@ -201,7 +201,7 @@ namespace System.Reflection
         }
 
         // ctor for no metadata MethodInfo in the DynamicMethod and RuntimeMethodInfo cases
-        internal RuntimeParameterInfo(MethodInfo owner, String name, Type parameterType, int position)
+        internal RuntimeParameterInfo(MethodInfo owner, string name, Type parameterType, int position)
         {
             MemberImpl = owner;
             NameImpl = name;
@@ -238,7 +238,7 @@ namespace System.Reflection
             }
         }
 
-        public override String Name
+        public override string Name
         {
             get
             {

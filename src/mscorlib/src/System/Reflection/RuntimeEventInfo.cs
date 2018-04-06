@@ -70,7 +70,7 @@ namespace System.Reflection
         #endregion
 
         #region Object Overrides
-        public override String ToString()
+        public override string ToString()
         {
             if (m_addMethod == null || m_addMethod.GetParametersNoCopy().Length == 0)
                 throw new InvalidOperationException(SR.InvalidOperation_NoPublicAddMethod);
@@ -119,7 +119,7 @@ namespace System.Reflection
 
         #region MemberInfo Overrides
         public override MemberTypes MemberType { get { return MemberTypes.Event; } }
-        public override String Name
+        public override string Name
         {
             get
             {

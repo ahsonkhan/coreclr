@@ -9,14 +9,14 @@ namespace System.Text
     public sealed class DecoderReplacementFallback : DecoderFallback
     {
         // Our variables
-        private String _strDefault;
+        private string _strDefault;
 
         // Construction.  Default replacement fallback uses no best fit and ? replacement string
         public DecoderReplacementFallback() : this("?")
         {
         }
 
-        public DecoderReplacementFallback(String replacement)
+        public DecoderReplacementFallback(string replacement)
         {
             if (replacement == null)
                 throw new ArgumentNullException(nameof(replacement));
@@ -60,7 +60,7 @@ namespace System.Text
             _strDefault = replacement;
         }
 
-        public String DefaultString
+        public string DefaultString
         {
             get
             {
@@ -103,7 +103,7 @@ namespace System.Text
     public sealed class DecoderReplacementFallbackBuffer : DecoderFallbackBuffer
     {
         // Store our default string
-        private String _strDefault;
+        private string _strDefault;
         private int _fallbackCount = -1;
         private int _fallbackIndex = -1;
 

@@ -238,22 +238,22 @@ namespace System
             return unchecked((int)bits) ^ ((int)(bits >> 32));
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatDouble(m_value, null, NumberFormatInfo.CurrentInfo);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatDouble(m_value, format, NumberFormatInfo.CurrentInfo);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatDouble(m_value, null, NumberFormatInfo.GetInstance(provider));
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatDouble(m_value, format, NumberFormatInfo.GetInstance(provider));
         }
@@ -263,26 +263,26 @@ namespace System
             return Number.TryFormatDouble(m_value, format, NumberFormatInfo.GetInstance(provider), destination, out charsWritten);
         }
 
-        public static double Parse(String s)
+        public static double Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseDouble(s, NumberStyles.Float | NumberStyles.AllowThousands, NumberFormatInfo.CurrentInfo);
         }
 
-        public static double Parse(String s, NumberStyles style)
+        public static double Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseDouble(s, style, NumberFormatInfo.CurrentInfo);
         }
 
-        public static double Parse(String s, IFormatProvider provider)
+        public static double Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Number.ParseDouble(s, NumberStyles.Float | NumberStyles.AllowThousands, NumberFormatInfo.GetInstance(provider));
         }
 
-        public static double Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static double Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -305,7 +305,7 @@ namespace System
 
 
 
-        public static bool TryParse(String s, out double result)
+        public static bool TryParse(string s, out double result)
         {
             if (s == null)
             {
@@ -321,7 +321,7 @@ namespace System
             return TryParse(s, NumberStyles.Float | NumberStyles.AllowThousands, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static bool TryParse(String s, NumberStyles style, IFormatProvider provider, out double result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out double result)
         {
             NumberFormatInfo.ValidateParseStyleFloatingPoint(style);
 

@@ -34,8 +34,8 @@ namespace System
         // E.g. the offset for PST (Pacific Standard time) should be -8 * 60 * 60 * 1000 * 10000.
         // (1 millisecond = 10000 ticks)
         private long m_ticksOffset;
-        private String m_standardName;
-        private String m_daylightName;
+        private string m_standardName;
+        private string m_daylightName;
 
         internal CurrentSystemTimeZone()
         {
@@ -46,7 +46,7 @@ namespace System
             m_daylightName = local.DaylightName;
         }
 
-        public override String StandardName
+        public override string StandardName
         {
             get
             {
@@ -54,7 +54,7 @@ namespace System
             }
         }
 
-        public override String DaylightName
+        public override string DaylightName
         {
             get
             {

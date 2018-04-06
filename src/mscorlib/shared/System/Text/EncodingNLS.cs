@@ -61,7 +61,7 @@ namespace System.Text
         // So if you fix this, fix the others.  Currently those include:
         // EncodingNLS, UTF7Encoding, UTF8Encoding, UTF32Encoding, ASCIIEncoding, UnicodeEncoding
         // parent method is safe
-        public override unsafe int GetByteCount(String s)
+        public override unsafe int GetByteCount(string s)
         {
             // Validate input
             if (s==null)
@@ -91,7 +91,7 @@ namespace System.Text
         // All of our public Encodings that don't use EncodingNLS must have this (including EncodingNLS)
         // So if you fix this, fix the others.  Currently those include:
         // EncodingNLS, UTF7Encoding, UTF8Encoding, UTF32Encoding, ASCIIEncoding, UnicodeEncoding
-        public override unsafe int GetBytes(String s, int charIndex, int charCount,
+        public override unsafe int GetBytes(string s, int charIndex, int charCount,
                                               byte[] bytes, int byteIndex)
         {
             if (s == null || bytes == null)
@@ -265,7 +265,7 @@ namespace System.Text
         // So if you fix this, fix the others.  Currently those include:
         // EncodingNLS, UTF7Encoding, UTF8Encoding, UTF32Encoding, ASCIIEncoding, UnicodeEncoding
         // parent method is safe
-        public override unsafe String GetString(byte[] bytes, int index, int count)
+        public override unsafe string GetString(byte[] bytes, int index, int count)
         {
             // Validate Parameters
             if (bytes == null)

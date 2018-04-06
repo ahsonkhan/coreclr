@@ -71,7 +71,7 @@ namespace System.Reflection
         #endregion
 
         #region Object Overrides
-        public unsafe override String ToString()
+        public unsafe override string ToString()
         {
             return FieldType.FormatTypeName() + " " + Name;
         }

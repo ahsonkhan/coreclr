@@ -27,13 +27,13 @@ namespace System
             HResult = HResults.COR_E_MISSINGMEMBER;
         }
 
-        public MissingMemberException(String message)
+        public MissingMemberException(string message)
             : base(message)
         {
             HResult = HResults.COR_E_MISSINGMEMBER;
         }
 
-        public MissingMemberException(String message, Exception inner)
+        public MissingMemberException(string message, Exception inner)
             : base(message, inner)
         {
             HResult = HResults.COR_E_MISSINGMEMBER;
@@ -46,7 +46,7 @@ namespace System
             Signature = (byte[])info.GetValue("MMSignature", typeof(byte[]));
         }
 
-        public override String Message
+        public override string Message
         {
             get
             {
@@ -64,9 +64,9 @@ namespace System
 
         // Called to format signature
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        internal static extern String FormatSignature(byte[] signature);
+        internal static extern string FormatSignature(byte[] signature);
 
-        public MissingMemberException(String className, String memberName)
+        public MissingMemberException(string className, string memberName)
         {
             ClassName = className;
             MemberName = memberName;
@@ -84,8 +84,8 @@ namespace System
         // If ClassName != null, GetMessage will construct on the fly using it
         // and the other variables. This allows customization of the
         // format depending on the language environment.
-        protected String ClassName;
-        protected String MemberName;
+        protected string ClassName;
+        protected string MemberName;
         protected byte[] Signature;
     }
 }

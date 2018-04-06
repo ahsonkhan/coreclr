@@ -70,20 +70,20 @@ namespace System
             return m_value;
         }
 
-        public static byte Parse(String s)
+        public static byte Parse(string s)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
         }
 
-        public static byte Parse(String s, NumberStyles style)
+        public static byte Parse(string s, NumberStyles style)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, style, NumberFormatInfo.CurrentInfo);
         }
 
-        public static byte Parse(String s, IFormatProvider provider)
+        public static byte Parse(string s, IFormatProvider provider)
         {
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
             return Parse((ReadOnlySpan<char>)s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
@@ -92,7 +92,7 @@ namespace System
         // Parses an unsigned byte from a String in the given style.  If
         // a NumberFormatInfo isn't specified, the current culture's 
         // NumberFormatInfo is assumed.
-        public static byte Parse(String s, NumberStyles style, IFormatProvider provider)
+        public static byte Parse(string s, NumberStyles style, IFormatProvider provider)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
             if (s == null) ThrowHelper.ThrowArgumentNullException(ExceptionArgument.s);
@@ -121,7 +121,7 @@ namespace System
             return (byte)i;
         }
 
-        public static bool TryParse(String s, out Byte result)
+        public static bool TryParse(string s, out Byte result)
         {
             if (s == null)
             {
@@ -137,7 +137,7 @@ namespace System
             return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, out result);
         }
 
-        public static bool TryParse(String s, NumberStyles style, IFormatProvider provider, out Byte result)
+        public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out Byte result)
         {
             NumberFormatInfo.ValidateParseStyleInteger(style);
 
@@ -172,22 +172,22 @@ namespace System
             return true;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Number.FormatInt32(m_value, null, null);
         }
 
-        public String ToString(String format)
+        public string ToString(string format)
         {
             return Number.FormatInt32(m_value, format, null);
         }
 
-        public String ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider provider)
         {
             return Number.FormatInt32(m_value, null, provider);
         }
 
-        public String ToString(String format, IFormatProvider provider)
+        public string ToString(string format, IFormatProvider provider)
         {
             return Number.FormatInt32(m_value, format, provider);
         }

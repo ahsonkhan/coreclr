@@ -975,7 +975,7 @@ namespace System.Globalization
         ////////////////////////////////////////////////////////////////////////
 
 
-        public virtual int LastIndexOf(String source, char value)
+        public virtual int LastIndexOf(string source, char value)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));

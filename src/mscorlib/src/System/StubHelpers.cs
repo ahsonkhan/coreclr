@@ -110,7 +110,7 @@ namespace System.StubHelpers
             if (IntPtr.Zero == cstr)
                 return null;
             else
-                return new String((sbyte*)cstr);
+                return new string((sbyte*)cstr);
         }
 
         internal static void ClearNative(IntPtr pNative)
@@ -327,7 +327,7 @@ namespace System.StubHelpers
                 }
                 else
                 {
-                    ret = new String((char*)bstr, 0, (int)(length / 2));
+                    ret = new string((char*)bstr, 0, (int)(length / 2));
                 }
 
                 if ((length & 1) == 1)
@@ -402,7 +402,7 @@ namespace System.StubHelpers
                 return null;
             }
 
-            return new String((sbyte*)pNative, 0, cch);
+            return new string((sbyte*)pNative, 0, cch);
         }
 
         internal static unsafe void ClearNative(IntPtr pNative)
@@ -452,7 +452,7 @@ namespace System.StubHelpers
                 // We intentionally ignore the length field of the BSTR for back compat reasons.
                 // Unfortunately VB.NET uses Ansi BSTR marshaling when a string is passed ByRef
                 // and we cannot afford to break this common scenario.
-                return new String((sbyte*)bstr);
+                return new string((sbyte*)bstr);
             }
         }
 

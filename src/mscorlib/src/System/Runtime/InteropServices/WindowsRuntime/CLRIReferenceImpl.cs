@@ -239,8 +239,8 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
             if (type == typeof(int))
                 return new CLRIReferenceImpl<int>(PropertyType.Int32, (int)obj);
-            if (type == typeof(String))
-                return new CLRIReferenceImpl<String>(PropertyType.String, (String)obj);
+            if (type == typeof(string))
+                return new CLRIReferenceImpl<string>(PropertyType.String, (string)obj);
             if (type == typeof(byte))
                 return new CLRIReferenceImpl<byte>(PropertyType.UInt8, (byte)obj);
             if (type == typeof(short))
@@ -314,8 +314,8 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
             if (type == typeof(int))
                 return new CLRIReferenceArrayImpl<int>(PropertyType.Int32Array, (int[])obj);
-            if (type == typeof(String))
-                return new CLRIReferenceArrayImpl<String>(PropertyType.StringArray, (String[])obj);
+            if (type == typeof(string))
+                return new CLRIReferenceArrayImpl<string>(PropertyType.StringArray, (string[])obj);
             if (type == typeof(byte))
                 return new CLRIReferenceArrayImpl<byte>(PropertyType.UInt8Array, (byte[])obj);
             if (type == typeof(short))
