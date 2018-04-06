@@ -191,7 +191,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
         //
         public override string ToString()
         {
-            return WindowsRuntime.IStringableHelper.ToString(_target);
+            return IStringableHelper.ToString(_target);
         }
 
         //
