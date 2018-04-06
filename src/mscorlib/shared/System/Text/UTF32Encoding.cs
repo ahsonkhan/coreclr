@@ -1132,7 +1132,7 @@ namespace System.Text
             if (charCount > 0x7fffffff)
                 throw new ArgumentOutOfRangeException(nameof(byteCount), SR.ArgumentOutOfRange_GetCharCountOverflow);
 
-            return (int)charCount;
+            return charCount;
         }
 
 

@@ -246,7 +246,7 @@ namespace System
                     result = (UInt16)value;
                     break;
                 case TypeCode.Char:
-                    result = (UInt16)(Char)value;
+                    result = (Char)value;
                     break;
                 case TypeCode.UInt32:
                     result = (UInt32)value;

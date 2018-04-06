@@ -140,7 +140,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
                 return;
             }
 
-            int pivot = (Int32)(((Int64)firstItemIndex + (Int64)lastItemIndex) / (Int64)2);
+            int pivot = (Int32)((firstItemIndex + (Int64)lastItemIndex) / 2);
 
             firstPartition = new ConstantSplittableMap<TKey, TValue>(items, firstItemIndex, pivot);
             secondPartition = new ConstantSplittableMap<TKey, TValue>(items, pivot + 1, lastItemIndex);

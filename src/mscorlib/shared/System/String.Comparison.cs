@@ -39,8 +39,8 @@ namespace System
                     Debug.Assert((charA | charB) <= 0x7F, "strings have to be ASCII");
 
                     // uppercase both chars - notice that we need just one compare per char
-                    if ((uint)(charA - 'a') <= (uint)('z' - 'a')) charA -= 0x20;
-                    if ((uint)(charB - 'a') <= (uint)('z' - 'a')) charB -= 0x20;
+                    if ((uint)(charA - 'a') <= 'z' - 'a') charA -= 0x20;
+                    if ((uint)(charB - 'a') <= 'z' - 'a') charB -= 0x20;
 
                     //Return the (case-insensitive) difference between them.
                     if (charA != charB)
@@ -106,7 +106,7 @@ namespace System
                     // Ordinal equals or lowercase equals if the result ends up in the a-z range 
                     if (charA == charB ||
                        ((charA | 0x20) == (charB | 0x20) &&
-                          (uint)((charA | 0x20) - 'a') <= (uint)('z' - 'a')))
+                          (uint)((charA | 0x20) - 'a') <= 'z' - 'a'))
                     {
                         a++;
                         b++;

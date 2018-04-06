@@ -159,7 +159,7 @@ namespace System.Threading
         public virtual bool WaitOne(TimeSpan timeout, bool exitContext)
         {
             long tm = (long)timeout.TotalMilliseconds;
-            if (-1 > tm || (long)Int32.MaxValue < tm)
+            if (-1 > tm || Int32.MaxValue < tm)
             {
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
             }
@@ -298,7 +298,7 @@ namespace System.Threading
                                     bool exitContext)
         {
             long tm = (long)timeout.TotalMilliseconds;
-            if (-1 > tm || (long)Int32.MaxValue < tm)
+            if (-1 > tm || Int32.MaxValue < tm)
             {
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
             }
@@ -391,7 +391,7 @@ namespace System.Threading
                                     bool exitContext)
         {
             long tm = (long)timeout.TotalMilliseconds;
-            if (-1 > tm || (long)Int32.MaxValue < tm)
+            if (-1 > tm || Int32.MaxValue < tm)
             {
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
             }
@@ -439,7 +439,7 @@ namespace System.Threading
                                         bool exitContext)
         {
             long tm = (long)timeout.TotalMilliseconds;
-            if (-1 > tm || (long)Int32.MaxValue < tm)
+            if (-1 > tm || Int32.MaxValue < tm)
             {
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
             }

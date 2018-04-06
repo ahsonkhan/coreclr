@@ -1482,7 +1482,7 @@ namespace System.StubHelpers
         // Called from COMInterfaceMarshaler
         internal static object ConvertToManagedBox<K, V>(IntPtr pInsp)
         {
-            return (object)ConvertToManaged<K, V>(pInsp);
+            return ConvertToManaged<K, V>(pInsp);
         }
     }  // class KeyValuePairMarshaler
 

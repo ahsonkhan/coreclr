@@ -369,7 +369,7 @@ namespace System
             {
                 return (-1);
             }
-            return ((int)format[pos + 1]);
+            return format[pos + 1];
         }
 
         //
@@ -1172,7 +1172,7 @@ namespace System
             destination[16] = ':';
             WriteTwoDecimalDigits((uint)dateTime.Second, destination, 17);
             destination[19] = '.';
-            WriteDigits((uint)((ulong)dateTime.Ticks % (ulong)TimeSpan.TicksPerSecond), destination.Slice(20, 7));
+            WriteDigits((uint)((ulong)dateTime.Ticks % TimeSpan.TicksPerSecond), destination.Slice(20, 7));
 
             if (kind == DateTimeKind.Local)
             {

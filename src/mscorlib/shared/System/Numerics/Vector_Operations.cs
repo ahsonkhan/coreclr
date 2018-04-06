@@ -24,7 +24,7 @@ namespace System.Numerics
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
         public static Vector<Single> ConditionalSelect(Vector<int> condition, Vector<Single> left, Vector<Single> right)
         {
-            return (Vector<Single>)Vector<Single>.ConditionalSelect((Vector<Single>)condition, left, right);
+            return Vector<Single>.ConditionalSelect((Vector<Single>)condition, left, right);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace System.Numerics
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
         public static Vector<double> ConditionalSelect(Vector<long> condition, Vector<double> left, Vector<double> right)
         {
-            return (Vector<double>)Vector<double>.ConditionalSelect((Vector<double>)condition, left, right);
+            return Vector<double>.ConditionalSelect((Vector<double>)condition, left, right);
         }
 
         /// <summary>

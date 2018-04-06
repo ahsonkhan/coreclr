@@ -134,7 +134,7 @@ namespace System
         // Ends up only taking about 1/8 the time of the ECALL version.
         internal long GetI8FromVar()
         {
-            return ((long)m_data2 << 32 | ((long)m_data1 & 0xFFFFFFFFL));
+            return ((long)m_data2 << 32 | m_data1 & 0xFFFFFFFFL);
         }
 
         //
@@ -372,29 +372,29 @@ namespace System
                 case CV_EMPTY:
                     return null;
                 case CV_BOOLEAN:
-                    return (Object)(m_data1 != 0);
+                    return m_data1 != 0;
                 case CV_I1:
-                    return (Object)((sbyte)m_data1);
+                    return (sbyte)m_data1;
                 case CV_U1:
-                    return (Object)((byte)m_data1);
+                    return (byte)m_data1;
                 case CV_CHAR:
-                    return (Object)((char)m_data1);
+                    return (char)m_data1;
                 case CV_I2:
-                    return (Object)((short)m_data1);
+                    return (short)m_data1;
                 case CV_U2:
-                    return (Object)((ushort)m_data1);
+                    return (ushort)m_data1;
                 case CV_I4:
-                    return (Object)(m_data1);
+                    return m_data1;
                 case CV_U4:
-                    return (Object)((uint)m_data1);
+                    return (uint)m_data1;
                 case CV_I8:
-                    return (Object)(GetI8FromVar());
+                    return GetI8FromVar();
                 case CV_U8:
-                    return (Object)((ulong)GetI8FromVar());
+                    return (ulong)GetI8FromVar();
                 case CV_R4:
-                    return (Object)(GetR4FromVar());
+                    return GetR4FromVar();
                 case CV_R8:
-                    return (Object)(GetR8FromVar());
+                    return GetR8FromVar();
                 case CV_DATETIME:
                     return new DateTime(GetI8FromVar());
                 case CV_TIMESPAN:
@@ -445,7 +445,7 @@ namespace System
                         break;
 
                     case TypeCode.Object:
-                        v = new Variant((Object)o);
+                        v = new Variant(o);
                         break;
 
                     case TypeCode.DBNull:
@@ -609,7 +609,7 @@ namespace System
                         break;
 
                     case 9: /*VT_DISPATCH*/
-                        v = new Variant(new DispatchWrapper((Object)iv));
+                        v = new Variant(new DispatchWrapper(iv));
                         break;
 
                     case 10: /*VT_ERROR*/
@@ -621,11 +621,11 @@ namespace System
                         break;
 
                     case 12: /*VT_VARIANT*/
-                        v = new Variant((Object)iv);
+                        v = new Variant(iv);
                         break;
 
                     case 13: /*VT_UNKNOWN*/
-                        v = new Variant(new UnknownWrapper((Object)iv));
+                        v = new Variant(new UnknownWrapper(iv));
                         break;
 
                     case 14: /*VT_DECIMAL*/

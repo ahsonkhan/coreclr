@@ -198,7 +198,7 @@ namespace System.IO
             else
             {
                 FillBuffer(4);
-                return (int)(_buffer[0] | _buffer[1] << 8 | _buffer[2] << 16 | _buffer[3] << 24);
+                return _buffer[0] | _buffer[1] << 8 | _buffer[2] << 16 | _buffer[3] << 24;
             }
         }
 

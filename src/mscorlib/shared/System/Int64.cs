@@ -70,7 +70,7 @@ namespace System
         // The value of the lower 32 bits XORed with the uppper 32 bits.
         public override int GetHashCode()
         {
-            return (unchecked((int)((long)m_value)) ^ (int)(m_value >> 32));
+            return (unchecked((int)m_value) ^ (int)(m_value >> 32));
         }
 
         public override String ToString()

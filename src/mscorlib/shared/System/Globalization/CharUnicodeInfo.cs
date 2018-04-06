@@ -55,10 +55,10 @@ namespace System.Globalization
             Debug.Assert(index >= 0 && index < s.Length, "index < s.Length");
             if (index < s.Length - 1)
             {
-                int temp1 = (int)s[index] - HIGH_SURROGATE_START;
+                int temp1 = s[index] - HIGH_SURROGATE_START;
                 if (temp1 >= 0 && temp1 <= 0x3ff)
                 {
-                    int temp2 = (int)s[index + 1] - LOW_SURROGATE_START;
+                    int temp2 = s[index + 1] - LOW_SURROGATE_START;
                     if (temp2 >= 0 && temp2 <= 0x3ff)
                     {
                         // Convert the surrogate to UTF32 and get the result.
@@ -66,7 +66,7 @@ namespace System.Globalization
                     }
                 }
             }
-            return ((int)s[index]);
+            return s[index];
         }
         ////////////////////////////////////////////////////////////////////////
         //
@@ -98,10 +98,10 @@ namespace System.Globalization
             charLength = 1;
             if (index < s.Length - 1)
             {
-                int temp1 = (int)s[index] - HIGH_SURROGATE_START;
+                int temp1 = s[index] - HIGH_SURROGATE_START;
                 if (temp1 >= 0 && temp1 <= 0x3ff)
                 {
-                    int temp2 = (int)s[index + 1] - LOW_SURROGATE_START;
+                    int temp2 = s[index + 1] - LOW_SURROGATE_START;
                     if (temp2 >= 0 && temp2 <= 0x3ff)
                     {
                         // Convert the surrogate to UTF32 and get the result.
@@ -110,7 +110,7 @@ namespace System.Globalization
                     }
                 }
             }
-            return ((int)s[index]);
+            return s[index];
         }
 
         ////////////////////////////////////////////////////////////////////////

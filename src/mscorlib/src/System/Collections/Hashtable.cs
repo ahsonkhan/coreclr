@@ -261,13 +261,13 @@ namespace System.Collections
             // Hashcode must be positive.  Also, we must not use the sign bit, since
             // that is used for the collision bit.
             uint hashcode = (uint)GetHash(key) & 0x7FFFFFFF;
-            seed = (uint)hashcode;
+            seed = hashcode;
             // Restriction: incr MUST be between 1 and hashsize - 1, inclusive for
             // the modular arithmetic to work correctly.  This guarantees you'll
             // visit every bucket in the table exactly once within hashsize 
             // iterations.  Violate this and it'll cause obscure bugs forever.
             // If you change this calculation for h2(key), update putEntry too!
-            incr = (uint)(1 + ((seed * HashHelpers.HashPrime) % ((uint)hashsize - 1)));
+            incr = 1 + ((seed * HashHelpers.HashPrime) % ((uint)hashsize - 1));
             return hashcode;
         }
 
@@ -362,7 +362,7 @@ namespace System.Collections
                 if (((b.hash_coll & 0x7FFFFFFF) == hashcode) &&
                     KeyEquals(b.key, key))
                     return true;
-                bucketNumber = (int)(((long)bucketNumber + incr) % (uint)lbuckets.Length);
+                bucketNumber = (int)((bucketNumber + incr) % (uint)lbuckets.Length);
             } while (b.hash_coll < 0 && ++ntry < lbuckets.Length);
             return false;
         }
@@ -507,7 +507,7 @@ namespace System.Collections
                     if (((b.hash_coll & 0x7FFFFFFF) == hashcode) &&
                         KeyEquals(b.key, key))
                         return b.val;
-                    bucketNumber = (int)(((long)bucketNumber + incr) % (uint)lbuckets.Length);
+                    bucketNumber = (int)((bucketNumber + incr) % (uint)lbuckets.Length);
                 } while (b.hash_coll < 0 && ++ntry < lbuckets.Length);
                 return null;
             }
@@ -774,7 +774,7 @@ namespace System.Collections
                     }
                 }
 
-                bucketNumber = (int)(((long)bucketNumber + incr) % (uint)buckets.Length);
+                bucketNumber = (int)((bucketNumber + incr) % (uint)buckets.Length);
             } while (++ntry < buckets.Length);
 
             // This code is here if and only if there were no buckets without a collision bit set in the entire table
@@ -805,7 +805,7 @@ namespace System.Collections
             Debug.Assert(hashcode >= 0, "hashcode >= 0");  // make sure collision bit (sign bit) wasn't set.
 
             uint seed = (uint)hashcode;
-            uint incr = (uint)(1 + ((seed * HashHelpers.HashPrime) % ((uint)newBuckets.Length - 1)));
+            uint incr = 1 + ((seed * HashHelpers.HashPrime) % ((uint)newBuckets.Length - 1));
             int bucketNumber = (int)(seed % (uint)newBuckets.Length);
             do
             {
@@ -822,7 +822,7 @@ namespace System.Collections
                     newBuckets[bucketNumber].hash_coll |= unchecked((int)0x80000000);
                     occupancy++;
                 }
-                bucketNumber = (int)(((long)bucketNumber + incr) % (uint)newBuckets.Length);
+                bucketNumber = (int)((bucketNumber + incr) % (uint)newBuckets.Length);
             } while (true);
         }
 
@@ -869,7 +869,7 @@ namespace System.Collections
                     isWriterInProgress = false;
                     return;
                 }
-                bn = (int)(((long)bn + incr) % (uint)buckets.Length);
+                bn = (int)((bn + incr) % (uint)buckets.Length);
             } while (b.hash_coll < 0 && ++ntry < buckets.Length);
 
             //throw new ArgumentException(SR.Arg_RemoveArgNotFound);

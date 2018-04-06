@@ -37,9 +37,9 @@ namespace System
         // Note Epsilon should be a double whose hex representation is 0x1
         // on little endian machines.
         public const double Epsilon = 4.9406564584124654E-324;
-        public const double NegativeInfinity = (double)-1.0 / (double)(0.0);
-        public const double PositiveInfinity = (double)1.0 / (double)(0.0);
-        public const double NaN = (double)0.0 / (double)0.0;
+        public const double NegativeInfinity = -1.0 / 0.0;
+        public const double PositiveInfinity = 1.0 / 0.0;
+        public const double NaN = 0.0 / 0.0;
 
         // We use this explicit definition to avoid the confusion between 0.0 and -0.0.
         internal const double NegativeZero = -0.0;

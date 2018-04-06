@@ -205,7 +205,7 @@ namespace System.Globalization
 
         private static char InvariantToUpper(char c)
         {
-            return (uint)(c - 'a') <= (uint)('z' - 'a') ? (char)(c - 0x20) : c;
+            return (uint)(c - 'a') <= 'z' - 'a' ? (char)(c - 0x20) : c;
         }
 
         private unsafe SortKey InvariantCreateSortKey(string source, CompareOptions options)

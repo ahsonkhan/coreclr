@@ -17,7 +17,7 @@ namespace System
     {
         private ushort m_value; // Do not rename (binary serialization)
 
-        public const ushort MaxValue = (ushort)0xFFFF;
+        public const ushort MaxValue = 0xFFFF;
         public const ushort MinValue = 0;
 
 
@@ -35,7 +35,7 @@ namespace System
             }
             if (value is UInt16)
             {
-                return ((int)m_value - (int)(((UInt16)value).m_value));
+                return m_value - ((UInt16)value).m_value;
             }
             throw new ArgumentException(SR.Arg_MustBeUInt16);
         }
@@ -63,7 +63,7 @@ namespace System
         // Returns a HashCode for the UInt16
         public override int GetHashCode()
         {
-            return (int)m_value;
+            return m_value;
         }
 
         // Converts the current value to a String in base-10 with no extra padding.

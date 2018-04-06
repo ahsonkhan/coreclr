@@ -1269,7 +1269,7 @@ namespace System.Threading
             long tm = (long)timeout.TotalMilliseconds;
             if (tm < -1)
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
-            if (tm > (long)Int32.MaxValue)
+            if (tm > Int32.MaxValue)
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_LessEqualToIntegerMaxVal);
             return RegisterWaitForSingleObject(waitObject, callBack, state, (UInt32)tm, executeOnlyOnce, true);
         }
@@ -1285,7 +1285,7 @@ namespace System.Threading
             long tm = (long)timeout.TotalMilliseconds;
             if (tm < -1)
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
-            if (tm > (long)Int32.MaxValue)
+            if (tm > Int32.MaxValue)
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_LessEqualToIntegerMaxVal);
             return RegisterWaitForSingleObject(waitObject, callBack, state, (UInt32)tm, executeOnlyOnce, false);
         }

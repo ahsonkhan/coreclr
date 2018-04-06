@@ -61,7 +61,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             if (!exists)
                 return -1;
 
-            if (((uint)Int32.MaxValue) < index)
+            if (Int32.MaxValue < index)
             {
                 throw new InvalidOperationException(SR.InvalidOperation_CollectionBackingListTooLarge);
             }

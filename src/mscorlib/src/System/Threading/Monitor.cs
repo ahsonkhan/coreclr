@@ -119,7 +119,7 @@ namespace System.Threading
         private static int MillisecondsTimeoutFromTimeSpan(TimeSpan timeout)
         {
             long tm = (long)timeout.TotalMilliseconds;
-            if (tm < -1 || tm > (long)Int32.MaxValue)
+            if (tm < -1 || tm > Int32.MaxValue)
                 throw new ArgumentOutOfRangeException(nameof(timeout), SR.ArgumentOutOfRange_NeedNonNegOrNegative1);
             return (int)tm;
         }

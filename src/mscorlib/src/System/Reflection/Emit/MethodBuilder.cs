@@ -204,7 +204,7 @@ namespace System.Reflection.Emit
             int[] type;
             int numCatch;
             int start, end;
-            ModuleBuilder dynMod = (ModuleBuilder)m_module;
+            ModuleBuilder dynMod = m_module;
 
             m_containingType.ThrowIfCreated();
 
@@ -932,7 +932,7 @@ namespace System.Reflection.Emit
 
             ThrowIfGeneric();
 
-            customBuilder.CreateCustomAttribute((ModuleBuilder)m_module, MetadataTokenInternal);
+            customBuilder.CreateCustomAttribute(m_module, MetadataTokenInternal);
 
             if (IsKnownCA(customBuilder.m_con))
                 ParseCA(customBuilder.m_con, customBuilder.m_blob);

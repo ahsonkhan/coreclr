@@ -909,7 +909,7 @@ namespace System.Text
                      SR.ArgumentOutOfRange_NeedNonNegNum);
 
             // Just return length, SBCS stay the same length because they don't map to surrogate
-            long charCount = (long)byteCount;
+            long charCount = byteCount;
 
             // 1 to 1 for most characters.  Only surrogates with fallbacks have less, unknown fallbacks could be longer.
             if (DecoderFallback.MaxCharCount > 1)

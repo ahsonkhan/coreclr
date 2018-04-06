@@ -187,7 +187,7 @@ namespace Microsoft.Win32
         {
             public OSVERSIONINFOEX()
             {
-                OSVersionInfoSize = (int)Marshal.SizeOf(this);
+                OSVersionInfoSize = Marshal.SizeOf(this);
             }
 
             // The OSVersionInfoSize field must be set to Marshal.SizeOf(this)

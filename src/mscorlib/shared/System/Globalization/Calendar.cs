@@ -221,7 +221,7 @@ namespace System.Globalization
             // Based upon this, this method should be performing the comparison against the double
             // before attempting a cast. Otherwise, the result is undefined.
             double tempMillis = (value * scale + (value >= 0 ? 0.5 : -0.5));
-            if (!((tempMillis > -(double)MaxMillis) && (tempMillis < (double)MaxMillis)))
+            if (!((tempMillis > -MaxMillis) && (tempMillis < MaxMillis)))
             {
                 throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_AddValue);
             }
@@ -419,7 +419,7 @@ namespace System.Globalization
 
         public virtual double GetMilliseconds(DateTime time)
         {
-            return (double)((time.Ticks / TicksPerMillisecond) % 1000);
+            return (time.Ticks / TicksPerMillisecond) % 1000;
         }
 
         // Returns the minute part of the specified DateTime. The returned value is

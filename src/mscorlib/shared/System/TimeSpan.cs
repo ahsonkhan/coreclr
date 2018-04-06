@@ -87,7 +87,7 @@ namespace System
             Int64 totalMilliSeconds = ((Int64)days * 3600 * 24 + (Int64)hours * 3600 + (Int64)minutes * 60 + seconds) * 1000 + milliseconds;
             if (totalMilliSeconds > MaxMilliSeconds || totalMilliSeconds < MinMilliSeconds)
                 throw new ArgumentOutOfRangeException(null, SR.Overflow_TimeSpanTooLong);
-            _ticks = (long)totalMilliSeconds * TicksPerMillisecond;
+            _ticks = totalMilliSeconds * TicksPerMillisecond;
         }
 
         public long Ticks

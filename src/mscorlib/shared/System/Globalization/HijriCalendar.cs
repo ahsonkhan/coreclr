@@ -126,7 +126,7 @@ namespace System.Globalization
 
         private long GetAbsoluteDateHijri(int y, int m, int d)
         {
-            return (long)(DaysUpToHijriYear(y) + HijriMonthDays[m - 1] + d - 1 - HijriAdjustment);
+            return DaysUpToHijriYear(y) + HijriMonthDays[m - 1] + d - 1 - HijriAdjustment;
         }
 
         /*=================================DaysUpToHijriYear==========================

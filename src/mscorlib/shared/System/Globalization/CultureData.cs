@@ -645,7 +645,7 @@ namespace System.Globalization
                 if (name[i] >= 'A' && name[i] <= 'Z')
                 {
                     // lowercase characters before '-'
-                    normalizedName[i] = (char) (((int)name[i]) + 0x20);
+                    normalizedName[i] = (char)(name[i] + 0x20);
                     changed = true;
                 }
                 else
@@ -665,7 +665,7 @@ namespace System.Globalization
             {
                 if (name[i] >= 'a' && name[i] <= 'z')
                 {
-                    normalizedName[i] = (char) (((int)name[i]) - 0x20);
+                    normalizedName[i] = (char)(name[i] - 0x20);
                     changed = true;
                 }
                 else

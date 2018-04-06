@@ -993,8 +993,8 @@ namespace System
                 utf32 -= UNICODE_PLANE01_START;
                 uint surrogate = 0; // allocate 2 chars worth of stack space
                 char* address = (char*)&surrogate;
-                address[0] = (char)((utf32 / 0x400) + (int)CharUnicodeInfo.HIGH_SURROGATE_START);
-                address[1] = (char)((utf32 % 0x400) + (int)CharUnicodeInfo.LOW_SURROGATE_START);
+                address[0] = (char)((utf32 / 0x400) + CharUnicodeInfo.HIGH_SURROGATE_START);
+                address[1] = (char)((utf32 % 0x400) + CharUnicodeInfo.LOW_SURROGATE_START);
                 return new string(address, 0, 2);
             }
         }
@@ -1037,7 +1037,7 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(index), SR.ArgumentOutOfRange_Index);
             }
             // Check if the character at index is a high surrogate.
-            int temp1 = (int)s[index] - CharUnicodeInfo.HIGH_SURROGATE_START;
+            int temp1 = s[index] - CharUnicodeInfo.HIGH_SURROGATE_START;
             if (temp1 >= 0 && temp1 <= 0x7ff)
             {
                 // Found a surrogate char.
@@ -1046,7 +1046,7 @@ namespace System
                     // Found a high surrogate.
                     if (index < s.Length - 1)
                     {
-                        int temp2 = (int)s[index + 1] - CharUnicodeInfo.LOW_SURROGATE_START;
+                        int temp2 = s[index + 1] - CharUnicodeInfo.LOW_SURROGATE_START;
                         if (temp2 >= 0 && temp2 <= 0x3ff)
                         {
                             // Found a low surrogate.
@@ -1070,7 +1070,7 @@ namespace System
                 }
             }
             // Not a high-surrogate or low-surrogate. Genereate the UTF32 value for the BMP characters.
-            return ((int)s[index]);
+            return s[index];
         }
     }
 }

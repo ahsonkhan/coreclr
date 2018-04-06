@@ -429,7 +429,7 @@ namespace System.Diagnostics.Tracing
                 throw new ArgumentNullException(nameof(eventSource));
 
             // User-defined EventCommands should not conflict with the reserved commands.
-            if ((int)command <= (int)EventCommand.Update && (int)command != (int)EventCommand.SendManifest)
+            if (command <= (int)EventCommand.Update && (int)command != (int)EventCommand.SendManifest)
             {
                 throw new ArgumentException(SR.EventSource_InvalidCommand, nameof(command));
             }

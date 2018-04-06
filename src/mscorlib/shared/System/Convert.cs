@@ -2478,7 +2478,7 @@ namespace System
 
             inArrayLength = inArray.Length;
 
-            if (offsetIn > (int)(inArrayLength - length))
+            if (offsetIn > inArrayLength - length)
                 throw new ArgumentOutOfRangeException(nameof(offsetIn), SR.ArgumentOutOfRange_OffsetLength);
 
             if (inArrayLength == 0)
@@ -2491,7 +2491,7 @@ namespace System
             // Length of the char buffer required
             numElementsToCopy = ToBase64_CalculateAndValidateOutputLength(length, insertLineBreaks);
 
-            if (offsetOut > (int)(outArrayLength - numElementsToCopy))
+            if (offsetOut > outArrayLength - numElementsToCopy)
                 throw new ArgumentOutOfRangeException(nameof(offsetOut), SR.ArgumentOutOfRange_OffsetOut);
 
             fixed (char* outChars = &outArray[offsetOut])

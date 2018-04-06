@@ -126,7 +126,7 @@ namespace System.Globalization
                 int remains = Hundreds % 4;
                 if (remains > 0)
                 {
-                    szHebrew.Append((char)((int)'\x05e6' + remains));
+                    szHebrew.Append((char)('\x05e6' + remains));
                 }
             }
 
@@ -173,7 +173,7 @@ namespace System.Globalization
             //
             //  Get the Units.
             //
-            cUnits = (char)(Number > 0 ? ((int)'\x05d0' + Number - 1) : 0);
+            cUnits = (char)(Number > 0 ? '\x05d0' + Number - 1 : 0);
 
             if ((cUnits == '\x05d4') &&            // Hebrew Letter He  (5)
                 (cTens == '\x05d9'))
@@ -403,7 +403,7 @@ namespace System.Globalization
             }
             else
             {
-                int index = (int)ch - minHebrewNumberCh;
+                int index = ch - minHebrewNumberCh;
                 if (index >= 0 && index < s_hebrewValues.Length)
                 {
                     token = s_hebrewValues[index].token;
@@ -419,7 +419,7 @@ namespace System.Globalization
                     return (HebrewNumberParsingState.NotHebrewDigit);
                 }
             }
-            context.state = s_numberPasingState[(int)context.state * (int)HebrewTokenCount + (int)token];
+            context.state = s_numberPasingState[(int)context.state * HebrewTokenCount + (int)token];
             if (context.state == HS._err)
             {
                 // Invalid Hebrew state.  This indicates an incorrect Hebrew number.

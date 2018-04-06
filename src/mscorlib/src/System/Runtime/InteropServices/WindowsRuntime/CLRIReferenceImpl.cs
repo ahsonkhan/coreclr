@@ -42,7 +42,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         object IGetProxyTarget.GetTarget()
         {
-            return (object)_value;
+            return _value;
         }
 
         // We have T in an IReference<T>.  Need to QI for IReference<T> with the appropriate GUID, call
@@ -203,7 +203,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 
         object IGetProxyTarget.GetTarget()
         {
-            return (object)_value;
+            return _value;
         }
 
         // We have T in an IReferenceArray<T>.  Need to QI for IReferenceArray<T> with the appropriate GUID, call

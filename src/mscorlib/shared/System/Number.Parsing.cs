@@ -173,7 +173,7 @@ namespace System
                 n *= 10;
                 if (*p != '\0')
                 {
-                    n += (int)(*p++ - '0');
+                    n += *p++ - '0';
                 }
             }
             if (number.sign)
@@ -214,7 +214,7 @@ namespace System
                 n *= 10;
                 if (*p != '\0')
                 {
-                    n += (int)(*p++ - '0');
+                    n += *p++ - '0';
                 }
             }
             if (number.sign)

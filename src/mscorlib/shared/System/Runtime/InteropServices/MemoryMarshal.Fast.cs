@@ -145,7 +145,7 @@ namespace System.Runtime.InteropServices
                 // Ensure that casts are done in such a way that the JIT is able to "see"
                 // the uint->ulong casts and the multiply together so that on 32 bit targets
                 // 32x32to64 multiplication is used.
-                ulong toLengthUInt64 = (ulong)fromLength * (ulong)fromSize / (ulong)toSize;
+                ulong toLengthUInt64 = fromLength * (ulong)fromSize / toSize;
                 toLength = checked((int)toLengthUInt64);
             }
 
@@ -200,7 +200,7 @@ namespace System.Runtime.InteropServices
                 // Ensure that casts are done in such a way that the JIT is able to "see"
                 // the uint->ulong casts and the multiply together so that on 32 bit targets
                 // 32x32to64 multiplication is used.
-                ulong toLengthUInt64 = (ulong)fromLength * (ulong)fromSize / (ulong)toSize;
+                ulong toLengthUInt64 = fromLength * (ulong)fromSize / toSize;
                 toLength = checked((int)toLengthUInt64);
             }
 

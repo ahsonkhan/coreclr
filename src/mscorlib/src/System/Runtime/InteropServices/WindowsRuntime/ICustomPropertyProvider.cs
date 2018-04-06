@@ -497,7 +497,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
             { _iterator = iterator; }
 
             public bool HasCurrent { get { return _iterator.HasCurrent; } }
-            public object Current { get { return (object)_iterator.Current; } }
+            public object Current { get { return _iterator.Current; } }
             public bool MoveNext() { return _iterator.MoveNext(); }
         }
 

@@ -141,7 +141,7 @@ namespace System.IO
                 try
                 {
                     _buffer.AcquirePointer(ref pointer);
-                    result = *((byte*)(pointer + _offset + position));
+                    result = *(pointer + _offset + position);
                 }
                 finally
                 {
@@ -406,7 +406,7 @@ namespace System.IO
                 try
                 {
                     _buffer.AcquirePointer(ref pointer);
-                    *((byte*)(pointer + _offset + position)) = value;
+                    *(pointer + _offset + position) = value;
                 }
                 finally
                 {

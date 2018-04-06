@@ -431,7 +431,7 @@ namespace System.Globalization
                 int i = 0;
                 while (i < s.Length)
                 {
-                    if ((uint)(pSource[i] - 'A') <= (uint)('Z' - 'A'))
+                    if ((uint)(pSource[i] - 'A') <= 'Z' - 'A')
                     {
                         break;
                     }
@@ -487,7 +487,7 @@ namespace System.Globalization
                 int i = 0;
                 while (i < s.Length)
                 {
-                    if ((uint)(pSource[i] - 'a') <= (uint)('z' - 'a'))
+                    if ((uint)(pSource[i] - 'a') <= 'z' - 'a')
                     {
                         break;
                     }
@@ -533,7 +533,7 @@ namespace System.Globalization
 
         private static char ToLowerAsciiInvariant(char c)
         {
-            if ((uint)(c - 'A') <= (uint)('Z' - 'A'))
+            if ((uint)(c - 'A') <= 'Z' - 'A')
             {
                 c = (char)(c | 0x20);
             }
@@ -572,7 +572,7 @@ namespace System.Globalization
 
         internal static char ToUpperAsciiInvariant(char c)
         {
-            if ((uint)(c - 'a') <= (uint)('z' - 'a'))
+            if ((uint)(c - 'a') <= 'z' - 'a')
             {
                 c = (char)(c & ~0x20);
             }

@@ -124,7 +124,7 @@ namespace System.Runtime.InteropServices.WindowsRuntime
         {
             // We use '<=' and not '<' because Int32.MaxValue == index would imply
             // that Size > Int32.MaxValue:
-            if (((uint)Int32.MaxValue) <= index || index >= (uint)listCapacity)
+            if (Int32.MaxValue <= index || index >= (uint)listCapacity)
             {
                 Exception e = new ArgumentOutOfRangeException(nameof(index), SR.ArgumentOutOfRange_IndexLargerThanMaxValue);
                 e.SetErrorCode(HResults.E_BOUNDS);

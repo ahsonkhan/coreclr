@@ -182,7 +182,7 @@ namespace System.Text
 
             // If already falling back then fail
             if (bFallingBack && iRecursionCount++ > iMaxRecursion)
-                ThrowLastCharRecursive((int)ch);
+                ThrowLastCharRecursive(ch);
 
             // Fall back our char
             bFallingBack = Fallback(ch, index);

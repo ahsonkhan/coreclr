@@ -970,7 +970,7 @@ namespace System
             IntPtr minLength = (IntPtr)((firstLength < secondLength) ? firstLength : secondLength);
 
             IntPtr i = (IntPtr)0; // Use IntPtr for arithmetic to avoid unnecessary 64->32->64 truncations
-            IntPtr n = (IntPtr)(void*)minLength;
+            IntPtr n = (IntPtr)minLength;
 
 #if !netstandard11
             if (Vector.IsHardwareAccelerated && (byte*)n > (byte*)Vector<byte>.Count)

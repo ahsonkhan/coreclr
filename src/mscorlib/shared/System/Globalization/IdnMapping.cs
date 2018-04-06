@@ -458,7 +458,7 @@ namespace System.Globalization
 
                         /* Increase delta enough to advance the decoder's    */
                         /* <n,i> state to <m,0>, but guard against overflow: */
-                        delta += (int)((m - n) * ((numProcessed - numSurrogatePairs) + 1));
+                        delta += (m - n) * ((numProcessed - numSurrogatePairs) + 1);
                         Debug.Assert(delta > 0, "[IdnMapping.cs]1 punycode_encode - delta overflowed int");
                         n = m;
 
@@ -713,7 +713,7 @@ namespace System.Globalization
                             if (digit > (c_maxint - i) / w)
                                 throw new ArgumentException(SR.Argument_IdnBadPunycode, nameof(ascii));
 
-                            i += (int)(digit * w);
+                            i += digit * w;
                             int t = k <= bias ? c_tmin : k >= bias + c_tmax ? c_tmax : k - bias;
                             if (digit < t) 
                                 break;
