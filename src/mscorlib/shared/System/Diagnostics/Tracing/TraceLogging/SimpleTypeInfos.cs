@@ -247,7 +247,7 @@ namespace System.Diagnostics.Tracing
     /// </summary>
     internal sealed class DecimalTypeInfo : TraceLoggingTypeInfo
     {
-        public DecimalTypeInfo() : base(typeof(Decimal)) { }
+        public DecimalTypeInfo() : base(typeof(decimal)) { }
 
         public override void WriteMetadata(
             TraceLoggingMetadataCollector collector,

@@ -76,7 +76,7 @@ namespace System.Diagnostics.Tracing
             [FieldOffset(0)]
             public TimeSpan AsTimeSpan;
             [FieldOffset(0)]
-            public Decimal AsDecimal;
+            public decimal AsDecimal;
         }
 
         // Anything not covered by the Scalar union gets stored in this reference.
@@ -116,7 +116,7 @@ namespace System.Diagnostics.Tracing
         private PropertyValue(DateTime value) : this(new Scalar() { AsDateTime = value }, sizeof(DateTime)) { }
         private PropertyValue(DateTimeOffset value) : this(new Scalar() { AsDateTimeOffset = value }, sizeof(DateTimeOffset)) { }
         private PropertyValue(TimeSpan value) : this(new Scalar() { AsTimeSpan = value }, sizeof(TimeSpan)) { }
-        private PropertyValue(Decimal value) : this(new Scalar() { AsDecimal = value }, sizeof(Decimal)) { }
+        private PropertyValue(decimal value) : this(new Scalar() { AsDecimal = value }, sizeof(decimal)) { }
 
         public static Func<object, PropertyValue> GetFactory(Type type)
         {
@@ -138,7 +138,7 @@ namespace System.Diagnostics.Tracing
             if (type == typeof(DateTime)) return value => new PropertyValue((DateTime)value);
             if (type == typeof(DateTimeOffset)) return value => new PropertyValue((DateTimeOffset)value);
             if (type == typeof(TimeSpan)) return value => new PropertyValue((TimeSpan)value);
-            if (type == typeof(Decimal)) return value => new PropertyValue((Decimal)value);
+            if (type == typeof(decimal)) return value => new PropertyValue((decimal)value);
 
             return value => new PropertyValue(value);
         }
@@ -267,7 +267,7 @@ namespace System.Diagnostics.Tracing
                     if (type == typeof(DateTime)) { var f = (Func<TContainer, DateTime>)GetGetMethod(property, type); return container => new PropertyValue(f((TContainer)container.ReferenceValue)); }
                     if (type == typeof(DateTimeOffset)) { var f = (Func<TContainer, DateTimeOffset>)GetGetMethod(property, type); return container => new PropertyValue(f((TContainer)container.ReferenceValue)); }
                     if (type == typeof(TimeSpan)) { var f = (Func<TContainer, TimeSpan>)GetGetMethod(property, type); return container => new PropertyValue(f((TContainer)container.ReferenceValue)); }
-                    if (type == typeof(Decimal)) { var f = (Func<TContainer, Decimal>)GetGetMethod(property, type); return container => new PropertyValue(f((TContainer)container.ReferenceValue)); }
+                    if (type == typeof(decimal)) { var f = (Func<TContainer, decimal>)GetGetMethod(property, type); return container => new PropertyValue(f((TContainer)container.ReferenceValue)); }
 
                     return container => new PropertyValue(property.GetValue(container.ReferenceValue));
                 }

@@ -698,7 +698,7 @@ namespace System
             return Convert.ToDouble(this, provider);
         }
 
-        Decimal IConvertible.ToDecimal(IFormatProvider provider)
+        decimal IConvertible.ToDecimal(IFormatProvider provider)
         {
             return Convert.ToDecimal(this, provider);
         }

@@ -739,7 +739,7 @@ namespace System.IO
             public override void Write(double value) => _out.Write(value);
 
             [MethodImpl(MethodImplOptions.Synchronized)]
-            public override void Write(Decimal value) => _out.Write(value);
+            public override void Write(decimal value) => _out.Write(value);
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             public override void Write(string value) => _out.Write(value);

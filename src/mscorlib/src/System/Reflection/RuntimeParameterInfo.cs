@@ -394,7 +394,7 @@ namespace System.Reflection
             return defaultValue;
         }
 
-        private static Decimal GetRawDecimalConstant(CustomAttributeData attr)
+        private static decimal GetRawDecimalConstant(CustomAttributeData attr)
         {
             Debug.Assert(attr.Constructor.DeclaringType == typeof(DecimalConstantAttribute));
 
@@ -404,7 +404,7 @@ namespace System.Reflection
                 {
                     // This is not possible because Decimal cannot be represented directly in the metadata.
                     Debug.Fail("Decimal cannot be represented directly in the metadata.");
-                    return (Decimal)namedArgument.TypedValue.Value;
+                    return (decimal)namedArgument.TypedValue.Value;
                 }
             }
 

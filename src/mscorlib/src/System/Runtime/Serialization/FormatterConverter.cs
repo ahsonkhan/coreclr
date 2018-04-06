@@ -154,7 +154,7 @@ namespace System.Runtime.Serialization
             return System.Convert.ToDouble(value, CultureInfo.InvariantCulture);
         }
 
-        public Decimal ToDecimal(object value)
+        public decimal ToDecimal(object value)
         {
             if (value == null)
             {

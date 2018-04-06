@@ -53,7 +53,7 @@ namespace Microsoft.Win32
             typeof(DateTime),
             typeof(TimeSpan),
             typeof(object),
-            typeof(Decimal),
+            typeof(decimal),
             null,  // Enums - what do we do here?
             typeof(Missing),
             typeof(DBNull),

@@ -585,12 +585,12 @@ namespace System.Resources
             }
             else if (type == typeof(TimeSpan))
                 return new TimeSpan(_store.ReadInt64());
-            else if (type == typeof(Decimal))
+            else if (type == typeof(decimal))
             {
                 int[] bits = new int[4];
                 for (int i = 0; i < bits.Length; i++)
                     bits[i] = _store.ReadInt32();
-                return new Decimal(bits);
+                return new decimal(bits);
             }
             else
             {

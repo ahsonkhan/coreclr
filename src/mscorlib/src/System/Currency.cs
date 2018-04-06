@@ -16,7 +16,7 @@ namespace System
 
         // Constructs a Currency from a Decimal value.
         //
-        public Currency(Decimal value)
+        public Currency(decimal value)
         {
             m_value = Decimal.ToCurrency(value).m_value;
         }
@@ -50,14 +50,14 @@ namespace System
 
         // Converts a Currency to a Decimal.
         //
-        public static Decimal ToDecimal(Currency c)
+        public static decimal ToDecimal(Currency c)
         {
-            Decimal result = new Decimal();
+            decimal result = new decimal();
             FCallToDecimal(ref result, c);
             return result;
         }
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        private static extern void FCallToDecimal(ref Decimal result, Currency c);
+        private static extern void FCallToDecimal(ref decimal result, Currency c);
     }
 }

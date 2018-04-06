@@ -94,7 +94,7 @@ namespace System
             NullableHelper<Byte>();
             NullableHelper<Char>();
             NullableHelper<DateTime>();
-            NullableHelper<Decimal>();
+            NullableHelper<decimal>();
             NullableHelper<Double>();
             NullableHelper<Guid>();
             NullableHelper<Int16>();
@@ -108,7 +108,7 @@ namespace System
             new List<Byte>();
             new List<Char>();
             new List<DateTime>();
-            new List<Decimal>();
+            new List<decimal>();
             new List<Double>();
             new List<Guid>();
             new List<Int16>();
@@ -132,7 +132,7 @@ namespace System
             SZArrayHelper<Boolean>(null);
             SZArrayHelper<Byte>(null);
             SZArrayHelper<DateTime>(null);
-            SZArrayHelper<Decimal>(null);
+            SZArrayHelper<decimal>(null);
             SZArrayHelper<Double>(null);
             SZArrayHelper<Guid>(null);
             SZArrayHelper<Int16>(null);

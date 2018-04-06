@@ -674,7 +674,7 @@ namespace System.Diagnostics.Tracing
                 {
                     result = new DateTimeTypeInfo();
                 }
-                else if (dataType == typeof(Decimal))
+                else if (dataType == typeof(decimal))
                 {
                     result = new DecimalTypeInfo();
                 }

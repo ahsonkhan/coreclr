@@ -105,7 +105,7 @@ namespace System
             typeof(DateTime),
             typeof(TimeSpan),
             typeof(object),
-            typeof(Decimal),
+            typeof(decimal),
             typeof(object),     // Treat enum as Object
             typeof(System.Reflection.Missing),
             typeof(System.DBNull),
@@ -257,7 +257,7 @@ namespace System
             m_data2 = (int)(ticks >> 32);
         }
 
-        public Variant(Decimal val)
+        public Variant(decimal val)
         {
             m_objref = (object)val;
             m_flags = CV_DECIMAL;

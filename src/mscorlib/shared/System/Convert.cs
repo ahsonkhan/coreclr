@@ -117,7 +117,7 @@ namespace System
             typeof(UInt64),
             typeof(Single),
             typeof(Double),
-            typeof(Decimal),
+            typeof(decimal),
             typeof(DateTime),
             typeof(object), //TypeCode is discontinuous so we need a placeholder.
             typeof(string)
@@ -1874,7 +1874,7 @@ namespace System
             return Decimal.Parse(value, CultureInfo.CurrentCulture);
         }
 
-        public static Decimal ToDecimal(string value, IFormatProvider provider)
+        public static decimal ToDecimal(string value, IFormatProvider provider)
         {
             if (value == null)
                 return 0m;
@@ -2153,7 +2153,7 @@ namespace System
             return value.ToString(CultureInfo.CurrentCulture);
         }
 
-        public static string ToString(Decimal value, IFormatProvider provider)
+        public static string ToString(decimal value, IFormatProvider provider)
         {
             return value.ToString(provider);
         }

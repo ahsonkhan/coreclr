@@ -1064,7 +1064,7 @@ namespace System
             return Convert.ToDouble(GetValue(), CultureInfo.CurrentCulture);
         }
 
-        Decimal IConvertible.ToDecimal(IFormatProvider provider)
+        decimal IConvertible.ToDecimal(IFormatProvider provider)
         {
             return Convert.ToDecimal(GetValue(), CultureInfo.CurrentCulture);
         }

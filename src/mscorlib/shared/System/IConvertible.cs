@@ -54,7 +54,7 @@ namespace System
         ulong ToUInt64(IFormatProvider provider);
         float ToSingle(IFormatProvider provider);
         double ToDouble(IFormatProvider provider);
-        Decimal ToDecimal(IFormatProvider provider);
+        decimal ToDecimal(IFormatProvider provider);
         DateTime ToDateTime(IFormatProvider provider);
         string ToString(IFormatProvider provider);
         object ToType(Type conversionType, IFormatProvider provider);
