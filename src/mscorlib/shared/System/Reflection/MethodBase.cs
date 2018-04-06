@@ -64,7 +64,7 @@ namespace System.Reflection
 
         public static bool operator ==(MethodBase left, MethodBase right)
         {
-            if (object.ReferenceEquals(left, right))
+            if (ReferenceEquals(left, right))
                 return true;
 
             if ((object)left == null || (object)right == null)

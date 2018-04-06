@@ -207,7 +207,7 @@ namespace System
 
         public override int Compare(string x, string y)
         {
-            if (object.ReferenceEquals(x, y)) return 0;
+            if (ReferenceEquals(x, y)) return 0;
             if (x == null) return -1;
             if (y == null) return 1;
             return _compareInfo.Compare(x, y, _options);
@@ -215,7 +215,7 @@ namespace System
 
         public override bool Equals(string x, string y)
         {
-            if (object.ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, y)) return true;
             if (x == null || y == null) return false;
             return _compareInfo.Compare(x, y, _options) == 0;
         }

@@ -43,7 +43,7 @@ namespace System.Reflection.Emit
             if (g == null)
                 return false;
 
-            return object.ReferenceEquals(g.m_type, m_type);
+            return ReferenceEquals(g.m_type, m_type);
         }
         public override int GetHashCode() { return m_type.GetHashCode(); }
         #endregion

@@ -23,7 +23,7 @@ namespace System.Reflection
 
         public static bool operator ==(ConstructorInfo left, ConstructorInfo right)
         {
-            if (object.ReferenceEquals(left, right))
+            if (ReferenceEquals(left, right))
                 return true;
 
             if ((object)left == null || (object)right == null)

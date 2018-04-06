@@ -153,8 +153,8 @@ namespace System
         public int CompareTo(Version value)
         {
             return
-                object.ReferenceEquals(value, this) ? 0 :
-                object.ReferenceEquals(value, null) ? 1 :
+                ReferenceEquals(value, this) ? 0 :
+                ReferenceEquals(value, null) ? 1 :
                 _Major != value._Major ? (_Major > value._Major ? 1 : -1) :
                 _Minor != value._Minor ? (_Minor > value._Minor ? 1 : -1) :
                 _Build != value._Build ? (_Build > value._Build ? 1 : -1) :
@@ -169,8 +169,8 @@ namespace System
 
         public bool Equals(Version obj)
         {
-            return object.ReferenceEquals(obj, this) ||
-                (!object.ReferenceEquals(obj, null) &&
+            return ReferenceEquals(obj, this) ||
+                (!ReferenceEquals(obj, null) &&
                 _Major == obj._Major &&
                 _Minor == obj._Minor &&
                 _Build == obj._Build &&

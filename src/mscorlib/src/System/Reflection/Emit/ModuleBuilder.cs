@@ -116,7 +116,7 @@ namespace System.Reflection.Emit
         {
             Type foundType = null;
             if (m_TypeBuilderDict.TryGetValue(strTypeName, out foundType) &&
-                object.ReferenceEquals(foundType.DeclaringType, enclosingType))
+                ReferenceEquals(foundType.DeclaringType, enclosingType))
             {
                 // Cannot have two types with the same name
                 throw new ArgumentException(SR.Argument_DuplicateTypeName);

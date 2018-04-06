@@ -359,11 +359,11 @@ namespace System
         public override int GetHashCode()
         {
             Type systemType = UnderlyingSystemType;
-            if (!object.ReferenceEquals(systemType, this))
+            if (!ReferenceEquals(systemType, this))
                 return systemType.GetHashCode();
             return base.GetHashCode();
         }
-        public virtual bool Equals(Type o) => o == null ? false : object.ReferenceEquals(UnderlyingSystemType, o.UnderlyingSystemType);
+        public virtual bool Equals(Type o) => o == null ? false : ReferenceEquals(UnderlyingSystemType, o.UnderlyingSystemType);
 
         public static Type ReflectionOnlyGetType(string typeName, bool throwIfNotFound, bool ignoreCase) { throw new PlatformNotSupportedException(SR.PlatformNotSupported_ReflectionOnly); }
 

@@ -56,7 +56,7 @@ namespace System
         {
             if (obj == null)
                 return false;
-            if (object.ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, obj))
                 return true;
             if (!InternalEqualTypes(this, obj))
                 return false;

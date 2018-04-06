@@ -1312,7 +1312,7 @@ namespace System.Reflection.Emit
 
             ThrowIfCreated();
 
-            if (!object.ReferenceEquals(methodInfoBody.DeclaringType, this))
+            if (!ReferenceEquals(methodInfoBody.DeclaringType, this))
                 // Loader restriction: body method has to be from this class
                 throw new ArgumentException(SR.ArgumentException_BadMethodImplBody);
 
